@@ -244,7 +244,7 @@ BACKTEST_PF             = 1.47      # profit factor
 BACKTEST_AVG_WIN_R      = 1.418     # derived from WR + expectancy + PF
 BACKTEST_AVG_LOSS_R     = 1.053     # derived
 BACKTEST_TRADES_PER_DAY = 9.0       # estimated from 37-pair / 3-session setup
-BACKTEST_START_EQUITY   = 1000.0    # starting capital
+BACKTEST_START_EQUITY   = 150.15    # starting capital (reset 2026-02-18)
 
 # ─── Operational ───
 EQUITY_FLOOR    = 0         # disabled — trade with whatever equity we have

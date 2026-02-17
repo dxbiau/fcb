@@ -310,7 +310,7 @@ def _startup_report(equity: float):
     trades_per_day = total / max(days_active, 1)
 
     # Starting equity (from first trade entry)
-    start_equity = 1000.0  # fallback
+    start_equity = BACKTEST_START_EQUITY  # fallback = config value
     first_eq = trades[0].get("pnl_usd", 0)
     if trades[0].get("equity_after"):
         start_equity = trades[0]["equity_after"] - trades[0].get("pnl_usd", 0)
