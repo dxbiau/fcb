@@ -1,0 +1,86 @@
+# ═══════════════════════════════════════════════════
+# Exclude everything the live bot doesn't need
+# ═══════════════════════════════════════════════════
+
+# Data (hundreds of MB of CSV)
+data/
+results/
+old_cache/
+
+# Backtest & analysis (not needed in container)
+analysis/
+backtest/
+strategy/
+config.py
+run_backtest.py
+run_analysis.py
+
+# Research scripts
+analyze_sweep.py
+analyze_sweep2.py
+mega_sweep.py
+quick_scan.py
+screen_all_candles.py
+screen_session_opens.py
+sweep_configs.py
+sweep_fine.py
+x1000_analysis.py
+x1000_hunter.py
+guardian_replay.py
+peak_analysis.py
+truth_test.py
+truth_test2.py
+
+# Build & packaging
+pyproject.toml
+setup.cfg
+MANIFEST.in
+*.egg-info/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Virtualenv
+.venv/
+venv/
+
+# Tests
+tests/
+
+# Docs
+*.md
+!README.md
+LICENSE
+
+# Docker (don't copy into itself)
+Dockerfile
+docker-compose.yml
+.dockerignore
+deploy.sh
+
+# OS
+Thumbs.db
+.DS_Store
+
+# State backups (don't bake old state into image)
+live/state_demo_backup_*.json
+live/state.json
+live/trades.csv
+live/bot.lock
+live/logs/
+live/__pycache__/
