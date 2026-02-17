@@ -323,16 +323,15 @@ def _startup_report(equity: float):
         g = g_win * g_loss
         if g > 1.0:
             trades_to_x2 = int(math.ceil(math.log(2) / math.log(g)))
+            trades_to_x5 = int(math.ceil(math.log(5) / math.log(g)))
             trades_to_x10 = int(math.ceil(math.log(10) / math.log(g)))
-            trades_to_x100 = int(math.ceil(math.log(100) / math.log(g)))
-            trades_to_x1000 = int(math.ceil(math.log(1000) / math.log(g)))
-            days_to_x1000 = trades_to_x1000 / max(trades_per_day, 0.1)
+            days_to_x10 = trades_to_x10 / max(trades_per_day, 0.1)
         else:
-            trades_to_x2 = trades_to_x10 = trades_to_x100 = trades_to_x1000 = None
-            days_to_x1000 = None
+            trades_to_x2 = trades_to_x5 = trades_to_x10 = None
+            days_to_x10 = None
     else:
-        trades_to_x2 = trades_to_x10 = trades_to_x100 = trades_to_x1000 = None
-        days_to_x1000 = None
+        trades_to_x2 = trades_to_x5 = trades_to_x10 = None
+        days_to_x10 = None
 
     # Net P&L
     net_pnl = equity - start_equity
@@ -390,11 +389,10 @@ def _startup_report(equity: float):
     log.info("-" * 70)
     log.info("  PROJECTIONS (at current stats, {:.0f}% WR, {:.1f} trades/day, {}% risk)".format(
         wr, trades_per_day, int(risk_pct * 100)))
-    if trades_to_x1000 is not None:
+    if trades_to_x10 is not None:
         log.info(f"    x2:    {trades_to_x2:>6} trades  (~{trades_to_x2/max(trades_per_day,0.1):.0f} days)")
-        log.info(f"    x10:   {trades_to_x10:>6} trades  (~{trades_to_x10/max(trades_per_day,0.1):.0f} days)")
-        log.info(f"    x100:  {trades_to_x100:>6} trades  (~{trades_to_x100/max(trades_per_day,0.1):.0f} days)")
-        log.info(f"    x1000: {trades_to_x1000:>6} trades  (~{days_to_x1000:.0f} days)")
+        log.info(f"    x5:    {trades_to_x5:>6} trades  (~{trades_to_x5/max(trades_per_day,0.1):.0f} days)")
+        log.info(f"    x10:   {trades_to_x10:>6} trades  (~{days_to_x10:.0f} days)")
     else:
         log.info("    Insufficient data or negative expectancy — no projection available")
     log.info("=" * 70)
@@ -412,8 +410,8 @@ def _startup_report(equity: float):
     bt_g_win  = (1 + risk_pct * BACKTEST_AVG_WIN_R) ** (BACKTEST_WR / 100)
     bt_g_loss = (1 - risk_pct * BACKTEST_AVG_LOSS_R) ** (1 - BACKTEST_WR / 100)
     bt_g = bt_g_win * bt_g_loss
-    bt_trades_x1000 = int(math.ceil(math.log(1000) / math.log(bt_g))) if bt_g > 1 else 9999
-    bt_days_x1000   = bt_trades_x1000 / max(BACKTEST_TRADES_PER_DAY, 0.1)
+    bt_trades_x10 = int(math.ceil(math.log(10) / math.log(bt_g))) if bt_g > 1 else 9999
+    bt_days_x10   = bt_trades_x10 / max(BACKTEST_TRADES_PER_DAY, 0.1)
 
     # Live growth rate (g already computed above)
     live_g = g if (wr > 0 and avg_win_r > 0 and avg_loss_r > 0 and 'g' in dir() and g > 1) else 1.0
@@ -423,6 +421,7 @@ def _startup_report(equity: float):
         _lg_loss = (1 - risk_pct * avg_loss_r) ** (1 - wr / 100)
         live_g = _lg_win * _lg_loss
 
+    # Expected equity after N trades at backtest rate
     # Expected equity after N trades at backtest rate
     bt_expected_equity = start_equity * (bt_g ** total)
     equity_delta = equity - bt_expected_equity
@@ -434,8 +433,8 @@ def _startup_report(equity: float):
     days_elapsed = max((today - first_date).days, 1)
 
     # Progress percentages
-    pct_trades = (total / bt_trades_x1000 * 100) if bt_trades_x1000 else 0
-    pct_days   = (days_elapsed / bt_days_x1000 * 100) if bt_days_x1000 else 0
+    pct_trades = (total / bt_trades_x10 * 100) if bt_trades_x10 else 0
+    pct_days   = (days_elapsed / bt_days_x10 * 100) if bt_days_x10 else 0
 
     # Delta helpers
     def _arrow(live_val, bt_val, fmt=".3f", suffix="", pp=False):
@@ -471,8 +470,8 @@ def _startup_report(equity: float):
         status_note  = f"below backtest on {4-score}/4 metrics — review needed"
 
     # Effective pace comparison
-    live_trades_x1000 = trades_to_x1000 if trades_to_x1000 else None
-    live_days_x1000   = days_to_x1000 if days_to_x1000 else None
+    live_trades_x10 = trades_to_x10 if trades_to_x10 else None
+    live_days_x10   = days_to_x10 if days_to_x10 else None
 
     # Speed ratio
     if live_g > 1 and bt_g > 1:
@@ -501,20 +500,20 @@ def _startup_report(equity: float):
     bt_pnl_pct = (bt_expected_equity - start_equity) / start_equity * 100
     log.info(f"    Return:           {pnl_pct:>+9.2f}%      {DM}(expected: {bt_pnl_pct:+.2f}%){RS}")
     log.info(f"{G}{'-' * 70}{RS}")
-    log.info(f"{G}  ROAD TO x1000{RS}")
-    log.info(f"    Trades done:      {total:>6} / {bt_trades_x1000}  {DM}({pct_trades:.1f}% of backtest path){RS}")
-    log.info(f"    Days elapsed:     {days_elapsed:>6} / {bt_days_x1000:.0f}   {DM}({pct_days:.1f}% of expected timeline){RS}")
-    if live_trades_x1000 and live_days_x1000:
-        pace_arrow = UP if live_trades_x1000 < bt_trades_x1000 else DN
-        log.info(f"    At LIVE pace:     {live_trades_x1000:>6} trades  (~{live_days_x1000:.0f} days)")
-        log.info(f"    At BACKTEST pace: {bt_trades_x1000:>6} trades  (~{bt_days_x1000:.0f} days)")
-        saved = bt_days_x1000 - live_days_x1000
+    log.info(f"{G}  ROAD TO x10  ($150 → $1,500){RS}")
+    log.info(f"    Trades done:      {total:>6} / {bt_trades_x10}  {DM}({pct_trades:.1f}% of backtest path){RS}")
+    log.info(f"    Days elapsed:     {days_elapsed:>6} / {bt_days_x10:.0f}   {DM}({pct_days:.1f}% of expected timeline){RS}")
+    if live_trades_x10 and live_days_x10:
+        pace_arrow = UP if live_trades_x10 < bt_trades_x10 else DN
+        log.info(f"    At LIVE pace:     {live_trades_x10:>6} trades  (~{live_days_x10:.0f} days)")
+        log.info(f"    At BACKTEST pace: {bt_trades_x10:>6} trades  (~{bt_days_x10:.0f} days)")
+        saved = bt_days_x10 - live_days_x10
         if saved >= 0:
-            log.info(f"    Time saved:       {pace_arrow}{saved:>+.0f} days faster to x1000{RS}")
+            log.info(f"    Time saved:       {pace_arrow}{saved:>+.0f} days faster to x10{RS}")
         else:
-            log.info(f"    Time added:       {pace_arrow}{saved:>+.0f} days slower to x1000{RS}")
+            log.info(f"    Time added:       {pace_arrow}{saved:>+.0f} days slower to x10{RS}")
     else:
-        log.info(f"    At BACKTEST pace: {bt_trades_x1000:>6} trades  (~{bt_days_x1000:.0f} days)")
+        log.info(f"    At BACKTEST pace: {bt_trades_x10:>6} trades  (~{bt_days_x10:.0f} days)")
         log.info(f"    Live projection:  insufficient data")
     log.info(f"{G}{'-' * 70}{RS}")
     log.info(f"    Status:  {status_icon}  {status_label}  — {status_note}")
@@ -2013,7 +2012,7 @@ class FCBBot:
                  f"PnL: ${s['pnl_usd']:+.2f} ({s['pnl_pct']:+.1f}%)")
         log.info(f"  Pending: {s['pending']} position(s) still open")
 
-        # All-time with x1000 projection
+        # All-time with x10 projection
         total = s['total_trades']
         wr = s['all_time_wr']
         total_r = s['total_pnl_r']
@@ -2021,14 +2020,14 @@ class FCBBot:
                  f"{s['total_wins']}W / {s['total_losses']}L | "
                  f"WR={wr:.1f}% | {total_r:+.2f}R")
 
-        # x1000 projection
+        # x10 projection
         if total > 0 and total_r > 0 and s['start_equity'] > 0:
             import math
             growth = equity / s['start_equity'] if s['start_equity'] > 0 else 1
             if growth > 1:
                 log_growth_per_day = math.log(growth)
-                days_to_1000x = math.log(1000) / log_growth_per_day if log_growth_per_day > 0 else 9999
-                log.info(f"  x1000 projection: ~{days_to_1000x:.0f} days at today's pace")
+                days_to_10x = math.log(10) / log_growth_per_day if log_growth_per_day > 0 else 9999
+                log.info(f"  x10 projection: ~{days_to_10x:.0f} days at today's pace")
 
         log.info("━" * 60)
         log.session_end(session, equity,
