@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from typing import Dict, Set
 from live.config import STATE_FILE, INITIAL_PAIR_CLASS, PROMOTE_WINS, DEMOTE_LOSSES, REHABILITATE_WINS
 from live import logger as log
+from live import trade_logger as tlog
 
 
 def _utc_today() -> str:
@@ -177,6 +178,17 @@ class BotState:
         today = _utc_today()
         if self.date != today:
             log.info(f"Day rollover: {self.date} → {today}")
+            # Log day summary before resetting
+            tlog.log_day_rollover(
+                date=self.date,
+                start_equity=self.day_start_equity,
+                end_equity=self.equity,
+                total_entries=self.entries_today,
+                wins=self.wins_today,
+                losses=self.losses_today,
+                pnl_r=self.total_pnl_r,
+                pnl_usd=self.pnl_today_usd,
+            )
             self.date = today
             self.daily_counts = {}
             self.session_traded = {}
@@ -363,6 +375,14 @@ class BotState:
 
         if entry["class"] != old_class:
             log.info(f"Pair class change: {pair} {old_class} → {entry['class']}")
+            tlog.log_pair_class_change(
+                symbol=pair, old_class=old_class, new_class=entry["class"],
+                consec_wins=entry["consec_wins"],
+                consec_losses=entry["consec_losses"],
+                live_wins=entry["live_wins"],
+                live_losses=entry["live_losses"],
+                trigger="promotion" if entry["class"] == "A" else "demotion",
+            )
 
         self._save()
 

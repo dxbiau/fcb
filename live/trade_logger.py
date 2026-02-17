@@ -86,9 +86,18 @@ def log_entry(
     slip_r: float = 0.0,
     c2_close: float = 0.0, c2_body_ratio: float = 0.0,
     order_id: str = "",
+    # ── NEW: enriched context fields ──
+    fc_open: float = 0.0, fc_close: float = 0.0, fc_volume: float = 0.0,
+    c2_open: float = 0.0, c2_high: float = 0.0, c2_low: float = 0.0,
+    c2_volume: float = 0.0,
+    bid: float = 0.0, ask: float = 0.0,
+    open_positions: int = 0, entries_today: int = 0,
+    consec_wins: int = 0, consec_losses: int = 0,
+    live_wins: int = 0, live_losses: int = 0,
+    day_of_week: int = -1,
 ):
     """Log trade entry with complete first-candle and market context."""
-    _emit({
+    d = {
         "e": "ENTRY",
         "sym": symbol,
         "ses": session,
@@ -104,15 +113,39 @@ def log_entry(
         "risk%": round(risk_pct, 4),
         "eq": round(equity, 2),
         "cls": pair_class,
+        # First candle (full OHLCV)
+        "fc_o": round(fc_open, 8),
+        "fc_c": round(fc_close, 8),
         "fc_h": round(fc_high, 8),
         "fc_l": round(fc_low, 8),
         "fc_rng": round(fc_range_pct, 6),
         "fc_mid": round(fc_midpoint, 8),
-        "slip_r": round(slip_r, 4),
+        "fc_vol": round(fc_volume, 2),
+        # Candle 2 (full OHLCV)
+        "c2_o": round(c2_open, 8),
+        "c2_h": round(c2_high, 8),
+        "c2_l": round(c2_low, 8),
         "c2_cl": round(c2_close, 8),
         "c2_br": round(c2_body_ratio, 4),
+        "c2_vol": round(c2_volume, 2),
+        # Market microstructure
+        "slip_r": round(slip_r, 4),
+        "bid": round(bid, 8),
+        "ask": round(ask, 8),
+        "spread": round(ask - bid, 8) if (bid > 0 and ask > 0) else 0,
+        # Portfolio context
+        "open_pos": open_positions,
+        "ent_today": entries_today,
+        # Pair history
+        "cw": consec_wins,
+        "cl": consec_losses,
+        "lw": live_wins,
+        "ll": live_losses,
+        # Temporal
+        "dow": day_of_week,
         "oid": order_id,
-    })
+    }
+    _emit(d)
 
 
 # ═══════════════════════════════════════════════════════════
@@ -122,26 +155,49 @@ def log_entry(
 def log_guardian_sl(
     symbol: str, current_r: float, peak_r: float,
     new_sl: float, old_sl: float, reason: str,
+    # ── NEW: enriched context ──
+    direction: str = "", session: str = "",
+    current_price: float = 0.0, entry_price: float = 0.0,
+    tier_idx: int = -1, polls: int = 0,
+    secs_since_entry: float = 0.0,
 ):
     """Log every SL ratchet from the guardian."""
     _emit({
         "e": "GUARDIAN_SL",
         "sym": symbol,
+        "dir": direction,
+        "ses": session,
         "cur_r": round(current_r, 4),
         "peak_r": round(peak_r, 4),
         "new_sl": round(new_sl, 8),
         "old_sl": round(old_sl, 8),
         "rsn": reason,
+        "price": round(current_price, 8),
+        "entry": round(entry_price, 8),
+        "tier": tier_idx,
+        "polls": polls,
+        "dur_s": round(secs_since_entry, 0),
     })
 
 
-def log_trail_activate(symbol: str, current_r: float, peak_r: float):
+def log_trail_activate(
+    symbol: str, current_r: float, peak_r: float,
+    # ── NEW: enriched context ──
+    direction: str = "", session: str = "",
+    current_price: float = 0.0, entry_price: float = 0.0,
+    secs_since_entry: float = 0.0,
+):
     """Log trail engagement — the moment trailing starts."""
     _emit({
         "e": "TRAIL_ACTIVATE",
         "sym": symbol,
+        "dir": direction,
+        "ses": session,
         "cur_r": round(current_r, 4),
         "peak_r": round(peak_r, 4),
+        "price": round(current_price, 8),
+        "entry": round(entry_price, 8),
+        "dur_s": round(secs_since_entry, 0),
     })
 
 
@@ -152,16 +208,32 @@ def log_trail_activate(symbol: str, current_r: float, peak_r: float):
 def log_c3_check(
     symbol: str, direction: str, current_r: float,
     c3_body_pct: float, is_reversal: bool, action: str,
+    # ── NEW: enriched context ──
+    session: str = "",
+    c3_open: float = 0.0, c3_close: float = 0.0,
+    c3_high: float = 0.0, c3_low: float = 0.0,
+    c3_volume: float = 0.0,
+    entry_price: float = 0.0, peak_r: float = 0.0,
+    elapsed_min: float = 0.0,
 ):
     """Log C3 fakeout check result."""
     _emit({
         "e": "C3_CHECK",
         "sym": symbol,
         "dir": direction,
+        "ses": session,
         "cur_r": round(current_r, 4),
         "c3_body": round(c3_body_pct, 4),
         "rev": is_reversal,
-        "act": action,  # "exit", "hold_r_too_high", "clean"
+        "act": action,
+        "c3_o": round(c3_open, 8),
+        "c3_c": round(c3_close, 8),
+        "c3_h": round(c3_high, 8),
+        "c3_l": round(c3_low, 8),
+        "c3_vol": round(c3_volume, 2),
+        "entry": round(entry_price, 8),
+        "peak_r": round(peak_r, 4),
+        "elap_m": round(elapsed_min, 1),
     })
 
 
@@ -182,6 +254,23 @@ def log_exit(
     pair_class: str = "",
     fc_range_pct: float = 0.0,
     slip_r: float = 0.0,
+    # ── NEW: enriched context fields ──
+    qty: float = 0.0,
+    risk_per_unit: float = 0.0,
+    fee_r: float = 0.0,
+    risk_pct: float = 0.0,
+    original_sl: float = 0.0,
+    final_sl: float = 0.0,
+    peak_price: float = 0.0,
+    entry_time: str = "",
+    c3_exited: bool = False,
+    c3_checked: bool = False,
+    guardian_tier: int = -1,
+    guardian_polls: int = 0,
+    total_trades: int = 0,
+    cumulative_r: float = 0.0,
+    open_positions: int = 0,
+    day_of_week: int = -1,
 ):
     """Log trade exit with full lifecycle data."""
     _emit({
@@ -195,7 +284,7 @@ def log_exit(
         "pnl$": round(pnl_usd, 2),
         "peak_r": round(peak_r, 4),
         "exit_r": round(exit_r, 4),
-        "left_r": round(peak_r - exit_r, 4),  # R left on table
+        "left_r": round(peak_r - exit_r, 4),
         "dur_s": round(duration_secs, 0),
         "eq": round(equity_after, 2),
         "rsn": exit_reason,
@@ -204,6 +293,29 @@ def log_exit(
         "cls": pair_class,
         "fc_rng": round(fc_range_pct, 6),
         "slip_r": round(slip_r, 4),
+        # Sizing & fees
+        "qty": round(qty, 6),
+        "rpu": round(risk_per_unit, 8),
+        "fee_r": round(fee_r, 4),
+        "risk%": round(risk_pct, 4),
+        # SL lifecycle
+        "orig_sl": round(original_sl, 8),
+        "final_sl": round(final_sl, 8),
+        # Peak details
+        "peak_px": round(peak_price, 8),
+        # Timing
+        "ent_ts": entry_time,
+        # C3 detection
+        "c3_exit": c3_exited,
+        "c3_chk": c3_checked,
+        # Guardian lifecycle
+        "g_tier": guardian_tier,
+        "g_polls": guardian_polls,
+        # Portfolio context
+        "trade_n": total_trades,
+        "cum_r": round(cumulative_r, 3),
+        "open_pos": open_positions,
+        "dow": day_of_week,
     })
 
 
@@ -216,6 +328,16 @@ def log_skip(
     fc_high: float, fc_low: float, fc_range_pct: float,
     slip_r: float, reason: str,
     c2_close: float = 0.0,
+    # ── NEW: enriched context ──
+    pair_class: str = "",
+    equity: float = 0.0,
+    risk_pct: float = 0.0,
+    fc_open: float = 0.0, fc_close: float = 0.0, fc_volume: float = 0.0,
+    fc_midpoint: float = 0.0,
+    c2_open: float = 0.0, c2_high: float = 0.0, c2_low: float = 0.0,
+    c2_body_ratio: float = 0.0, c2_volume: float = 0.0,
+    signal_qty: float = 0.0, signal_fee_r: float = 0.0,
+    open_positions: int = 0,
 ):
     """Log a skipped breakout signal (for counterfactual analysis)."""
     _emit({
@@ -223,12 +345,27 @@ def log_skip(
         "sym": symbol,
         "ses": session,
         "dir": direction,
+        "fc_o": round(fc_open, 8),
+        "fc_c": round(fc_close, 8),
         "fc_h": round(fc_high, 8),
         "fc_l": round(fc_low, 8),
         "fc_rng": round(fc_range_pct, 6),
+        "fc_mid": round(fc_midpoint, 8),
+        "fc_vol": round(fc_volume, 2),
         "slip_r": round(slip_r, 4),
         "rsn": reason,
+        "c2_o": round(c2_open, 8),
+        "c2_h": round(c2_high, 8),
+        "c2_l": round(c2_low, 8),
         "c2_cl": round(c2_close, 8),
+        "c2_br": round(c2_body_ratio, 4),
+        "c2_vol": round(c2_volume, 2),
+        "cls": pair_class,
+        "eq": round(equity, 2),
+        "risk%": round(risk_pct, 4),
+        "sig_qty": round(signal_qty, 6),
+        "sig_fee": round(signal_fee_r, 4),
+        "open_pos": open_positions,
     })
 
 
@@ -236,13 +373,30 @@ def log_skip(
 #  SESSION MARKERS
 # ═══════════════════════════════════════════════════════════
 
-def log_session_open(session: str, equity: float, pair_count: int):
+def log_session_open(
+    session: str, equity: float, pair_count: int,
+    # ── NEW: enriched context ──
+    pending_positions: int = 0,
+    total_trades: int = 0,
+    day_start_equity: float = 0.0,
+    entries_today: int = 0,
+    wins_today: int = 0, losses_today: int = 0,
+    class_a_count: int = 0, class_b_count: int = 0,
+):
     """Log session open boundary."""
     _emit({
         "e": "SESSION_OPEN",
         "ses": session,
         "eq": round(equity, 2),
         "pairs": pair_count,
+        "pend": pending_positions,
+        "tot_trades": total_trades,
+        "day_eq": round(day_start_equity, 2),
+        "ent_today": entries_today,
+        "w_today": wins_today,
+        "l_today": losses_today,
+        "cls_a": class_a_count,
+        "cls_b": class_b_count,
     })
 
 
@@ -250,6 +404,10 @@ def log_session_close(
     session: str, equity: float,
     entries: int, wins: int, losses: int,
     pnl_r: float = 0.0, pnl_usd: float = 0.0,
+    # ── NEW: enriched context ──
+    pending_positions: int = 0,
+    total_trades: int = 0,
+    skips: int = 0,
 ):
     """Log session close with aggregate stats."""
     _emit({
@@ -261,6 +419,9 @@ def log_session_close(
         "losses": losses,
         "pnl_r": round(pnl_r, 4),
         "pnl$": round(pnl_usd, 2),
+        "pend": pending_positions,
+        "tot_trades": total_trades,
+        "skips": skips,
     })
 
 
@@ -268,13 +429,74 @@ def log_session_close(
 #  HEARTBEAT (periodic equity snapshot)
 # ═══════════════════════════════════════════════════════════
 
-def log_heartbeat(equity: float, pending: int, session: str = ""):
+def log_heartbeat(
+    equity: float, pending: int, session: str = "",
+    # ── NEW: enriched context ──
+    total_trades: int = 0, total_pnl_r: float = 0.0,
+    wins_today: int = 0, losses_today: int = 0,
+    position_details: list = None,
+):
     """Equity snapshot for equity curve reconstruction."""
-    _emit({
+    d = {
         "e": "HEARTBEAT",
         "eq": round(equity, 2),
         "pend": pending,
         "ses": session,
+        "tot_trades": total_trades,
+        "tot_r": round(total_pnl_r, 3),
+        "w_today": wins_today,
+        "l_today": losses_today,
+    }
+    # Per-position R snapshots (lightweight: sym + current_r only)
+    if position_details:
+        d["pos"] = position_details[:10]  # cap at 10 to keep line short
+    _emit(d)
+
+
+# ═══════════════════════════════════════════════════════════
+#  PAIR CLASS CHANGE
+# ═══════════════════════════════════════════════════════════
+
+def log_pair_class_change(
+    symbol: str, old_class: str, new_class: str,
+    consec_wins: int = 0, consec_losses: int = 0,
+    live_wins: int = 0, live_losses: int = 0,
+    trigger: str = "",
+):
+    """Log promotion/demotion of pair class."""
+    _emit({
+        "e": "CLASS_CHANGE",
+        "sym": symbol,
+        "old": old_class,
+        "new": new_class,
+        "cw": consec_wins,
+        "cl": consec_losses,
+        "lw": live_wins,
+        "ll": live_losses,
+        "trigger": trigger,
+    })
+
+
+# ═══════════════════════════════════════════════════════════
+#  DAY ROLLOVER
+# ═══════════════════════════════════════════════════════════
+
+def log_day_rollover(
+    date: str, start_equity: float, end_equity: float,
+    total_entries: int = 0, wins: int = 0, losses: int = 0,
+    pnl_r: float = 0.0, pnl_usd: float = 0.0,
+):
+    """Log end-of-day summary when day rolls over."""
+    _emit({
+        "e": "DAY_ROLLOVER",
+        "date": date,
+        "start_eq": round(start_equity, 2),
+        "end_eq": round(end_equity, 2),
+        "entries": total_entries,
+        "wins": wins,
+        "losses": losses,
+        "pnl_r": round(pnl_r, 4),
+        "pnl$": round(pnl_usd, 2),
     })
 
 

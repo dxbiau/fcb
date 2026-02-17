@@ -26,6 +26,9 @@ class FirstCandle:
     midpoint: float
     range_pct: float       # (high - low) / midpoint
     valid: bool            # range >= MIN_RANGE_PCT
+    open: float = 0.0
+    close: float = 0.0
+    volume: float = 0.0
 
 
 @dataclass
@@ -79,6 +82,9 @@ def capture_first_candle(symbol: str, session: str, candle: Dict) -> FirstCandle
         midpoint=mid,
         range_pct=range_pct,
         valid=range_pct >= MIN_RANGE_PCT,
+        open=candle.get("open", 0.0),
+        close=candle.get("close", 0.0),
+        volume=candle.get("volume", 0.0),
     )
 
 

@@ -803,6 +803,19 @@ class FCBBot:
             self.state.update_equity(equity)
             log.info(f"Current equity: ${equity:.2f}")
             log.session_start(session, equity, len(pairs))
+            # Structured JSONL session open
+            _cls_a = sum(1 for p in pairs if self.state.get_pair_class(p) == "A")
+            _cls_b = len(pairs) - _cls_a
+            tlog.log_session_open(
+                session=session, equity=equity, pair_count=len(pairs),
+                pending_positions=len(self.state.pending_entries),
+                total_trades=self.state.total_trades,
+                day_start_equity=self.state.day_start_equity,
+                entries_today=self.state.entries_today,
+                wins_today=self.state.wins_today,
+                losses_today=self.state.losses_today,
+                class_a_count=_cls_a, class_b_count=_cls_b,
+            )
         except Exception as e:
             log.warning(f"Could not fetch equity: {e}")
 
@@ -927,6 +940,14 @@ class FCBBot:
                         symbol=pair, session=session, direction=direction,
                         fc_high=fc.high, fc_low=fc.low, fc_range_pct=fc.range_pct,
                         slip_r=slip_r, reason="slip_exceeded", c2_close=c2_close,
+                        pair_class=pair_class, equity=equity, risk_pct=risk_pct,
+                        fc_open=fc.open, fc_close=fc.close, fc_volume=fc.volume,
+                        fc_midpoint=fc.midpoint,
+                        c2_open=candle2["open"], c2_high=candle2["high"],
+                        c2_low=candle2["low"], c2_body_ratio=c2_body_ratio,
+                        c2_volume=candle2.get("volume", 0),
+                        signal_qty=signal.position_size, signal_fee_r=signal.fee_r,
+                        open_positions=len(self.state.pending_entries),
                     )
                     continue
 
@@ -982,6 +1003,13 @@ class FCBBot:
                           trail_mode="guardian_v3")
 
                 # Place the order
+                _bid, _ask = 0.0, 0.0
+                try:
+                    _ticker = exch.get_ticker(self.ex, pair)
+                    _bid = float(_ticker.get("bid", 0) or 0)
+                    _ask = float(_ticker.get("ask", 0) or 0)
+                except Exception:
+                    pass
                 order = exch.place_market_order(
                     self.ex, pair, side, qty, sl_price, exchange_tp
                 )
@@ -1044,6 +1072,17 @@ class FCBBot:
                     fc_range_pct=fc.range_pct, fc_midpoint=fc.midpoint,
                     slip_r=slip_r, c2_close=c2_close,
                     c2_body_ratio=c2_body_ratio, order_id=order_id,
+                    fc_open=fc.open, fc_close=fc.close, fc_volume=fc.volume,
+                    c2_open=candle2["open"], c2_high=candle2["high"],
+                    c2_low=candle2["low"], c2_volume=candle2.get("volume", 0),
+                    bid=_bid, ask=_ask,
+                    open_positions=len(self.state.pending_entries),
+                    entries_today=self.state.entries_today,
+                    consec_wins=self.state.pair_classes.get(pair, {}).get("consec_wins", 0),
+                    consec_losses=self.state.pair_classes.get(pair, {}).get("consec_losses", 0),
+                    live_wins=self.state.pair_classes.get(pair, {}).get("live_wins", 0),
+                    live_losses=self.state.pair_classes.get(pair, {}).get("live_losses", 0),
+                    day_of_week=datetime.now(timezone.utc).weekday(),
                 )
 
                 entry_data = {
@@ -1318,6 +1357,12 @@ class FCBBot:
                                         symbol=symbol, direction=direction,
                                         current_r=current_r, c3_body_pct=c3_body_pct,
                                         is_reversal=True, action="exit",
+                                        session=entry.get("session", ""),
+                                        c3_open=c3_open, c3_close=c3_close,
+                                        c3_high=c3_high, c3_low=c3_low,
+                                        c3_volume=c3.get("volume", 0),
+                                        entry_price=entry_price,
+                                        peak_r=max_r, elapsed_min=elapsed_min,
                                     )
                                     try:
                                         exch.close_position(self.ex, symbol)
@@ -1334,6 +1379,12 @@ class FCBBot:
                                         symbol=symbol, direction=direction,
                                         current_r=current_r, c3_body_pct=c3_body_pct,
                                         is_reversal=True, action="hold_r_too_high",
+                                        session=entry.get("session", ""),
+                                        c3_open=c3_open, c3_close=c3_close,
+                                        c3_high=c3_high, c3_low=c3_low,
+                                        c3_volume=c3.get("volume", 0),
+                                        entry_price=entry_price,
+                                        peak_r=max_r, elapsed_min=elapsed_min,
                                     )
                                 else:
                                     log.info(
@@ -1345,6 +1396,12 @@ class FCBBot:
                                         symbol=symbol, direction=direction,
                                         current_r=current_r, c3_body_pct=c3_body_pct,
                                         is_reversal=False, action="clean",
+                                        session=entry.get("session", ""),
+                                        c3_open=c3_open, c3_close=c3_close,
+                                        c3_high=c3_high, c3_low=c3_low,
+                                        c3_volume=c3.get("volume", 0),
+                                        entry_price=entry_price,
+                                        peak_r=max_r, elapsed_min=elapsed_min,
                                     )
                         except Exception as e:
                             log.debug(f"  {symbol}: C3 check failed — {e}")
@@ -1641,6 +1698,23 @@ class FCBBot:
                     pair_class=entry.get("pair_class", ""),
                     fc_range_pct=entry.get("_fc_range_pct", 0),
                     slip_r=entry.get("_slip_r", 0),
+                    # enriched lifecycle fields
+                    qty=entry.get("qty", 0),
+                    risk_per_unit=entry.get("risk_per_unit", 0),
+                    fee_r=entry.get("fee_r", 0),
+                    risk_pct=entry.get("risk_pct", 0),
+                    original_sl=entry.get("original_sl", 0),
+                    final_sl=entry.get("sl", 0),
+                    peak_price=entry.get("_peak_price", entry.get("peak_price", 0)),
+                    entry_time=entry_time_str,
+                    c3_exited=bool(entry.get("c3_exited", False)),
+                    c3_checked=bool(entry.get("c3_checked", False)),
+                    guardian_tier=entry.get("_guardian_tier", -1),
+                    guardian_polls=entry.get("_guardian_polls", 0),
+                    total_trades=self.state.total_trades,
+                    cumulative_r=self.state.total_pnl_r,
+                    open_positions=len(still_pending),
+                    day_of_week=datetime.now(timezone.utc).weekday(),
                 )
 
             except Exception as e:
@@ -1959,6 +2033,15 @@ class FCBBot:
         log.info("━" * 60)
         log.session_end(session, equity,
                         s['entries_today'], s['wins'], s['losses'])
+        # Structured JSONL session close
+        tlog.log_session_close(
+            session=session, equity=equity,
+            entries=s['entries_today'], wins=s['wins'], losses=s['losses'],
+            pnl_r=s.get('total_pnl_r', 0), pnl_usd=s.get('pnl_usd', 0),
+            pending_positions=s['pending'],
+            total_trades=s['total_trades'],
+            skips=0,  # TODO: track session skip count
+        )
 
     def _print_daily_report(self):
         """Print full daily report after NY session.
@@ -2140,6 +2223,22 @@ class FCBBot:
 
             # Heartbeat for monitoring
             log.heartbeat(self.state.equity, len(self.state.pending_entries), session)
+            # Structured JSONL heartbeat — equity curve reconstruction
+            _pos_details = []
+            for _pe in self.state.pending_entries:
+                _sym = _pe.get("symbol", "")
+                _mr = _pe.get("_max_r", 0)
+                _pos_details.append({"s": _sym, "r": round(_mr, 3)})
+            tlog.log_heartbeat(
+                equity=self.state.equity,
+                pending=len(self.state.pending_entries),
+                session=session,
+                total_trades=self.state.total_trades,
+                total_pnl_r=self.state.total_pnl_r,
+                wins_today=self.state.wins_today,
+                losses_today=self.state.losses_today,
+                position_details=_pos_details if _pos_details else None,
+            )
 
             # Poll every 15s for scale-in checks & resolution.
             # Profit Guardian v2 handles real-time monitoring at 2s.

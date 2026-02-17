@@ -96,6 +96,20 @@ class ProfitGuardian(threading.Thread):
         self._trail_active: Dict[str, bool] = {}
         self._last_sl_update: Dict[str, float] = {}  # throttle SL moves
 
+    @staticmethod
+    def _secs_since_entry(entry: dict) -> float:
+        """Seconds elapsed since entry_time (safe on missing/bad data)."""
+        ts = entry.get("entry_time", "")
+        if not ts:
+            return 0.0
+        try:
+            et = datetime.fromisoformat(ts)
+            if et.tzinfo is None:
+                et = et.replace(tzinfo=timezone.utc)
+            return (datetime.now(timezone.utc) - et).total_seconds()
+        except Exception:
+            return 0.0
+
     def run(self):
         """Main guardian loop."""
         try:
@@ -214,6 +228,7 @@ class ProfitGuardian(threading.Thread):
             if current_r >= trigger_r:
                 self._current_tier[symbol] = i
                 tier_idx = i
+                entry["_guardian_tier"] = i
                 tier_sl = entry_price + (sl_r * risk_per_unit) if direction == "long" \
                     else entry_price - (sl_r * risk_per_unit)
                 tier_sl = exch.round_price(self.ex, symbol, tier_sl)
@@ -236,7 +251,12 @@ class ProfitGuardian(threading.Thread):
                     f"R={current_r:+.2f}, peak={peak_r:.2f}R, "
                     f"trailing {TRAIL_DISTANCE_R}R behind peak"
                 )
-                tlog.log_trail_activate(symbol=symbol, current_r=current_r, peak_r=peak_r)
+                tlog.log_trail_activate(
+                    symbol=symbol, current_r=current_r, peak_r=peak_r,
+                    direction=direction, session=entry.get("session", ""),
+                    current_price=current_price, entry_price=entry_price,
+                    secs_since_entry=self._secs_since_entry(entry),
+                )
 
             trail_r = peak_r - TRAIL_DISTANCE_R
             if direction == "long":
@@ -297,6 +317,10 @@ class ProfitGuardian(threading.Thread):
                 tlog.log_guardian_sl(
                     symbol=symbol, current_r=current_r, peak_r=peak_r,
                     new_sl=new_sl, old_sl=old_sl_val, reason=reason,
+                    direction=direction, session=entry.get("session", ""),
+                    current_price=current_price, entry_price=entry_price,
+                    tier_idx=tier_idx, polls=entry.get("_guardian_polls", 0),
+                    secs_since_entry=self._secs_since_entry(entry),
                 )
                 self.state._save()
             else:
