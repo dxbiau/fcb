@@ -100,7 +100,6 @@ IMPROVEMENT_PLAN.md
 PROJECT_TRACKER.md
 *.zip
 
-# ─── Old live modules (not part of deploy) ───
-live/guardian.py
-live/logger.py
-live/strategy.py
+# ─── Old live modules ───
+# NOTE: guardian.py, logger.py, strategy.py are REQUIRED by bot.py
+# They were previously ignored by mistake — now tracked.
