@@ -102,7 +102,10 @@ def preflight():
     print(f"  ✓ Pairs: {len(ALL_PAIRS)} unique across {len(PAIRS)} sessions")
     print(f"  ✓ Risk: A={RISK_PCT_A*100:.0f}% B={RISK_PCT_B*100:.0f}% | "
           f"TP={TP_R}R | Leverage={LEVERAGE}x")
-    print(f"  ✓ Equity floor: ${EQUITY_FLOOR:.0f}")
+    if EQUITY_FLOOR > 0:
+        print(f"  ✓ Equity floor: ${EQUITY_FLOOR:.0f}")
+    else:
+        print(f"  ✓ Equity floor: DISABLED")
 
     for sess, plist in PAIRS.items():
         a_count = sum(1 for _, c in plist if c == "A")
@@ -121,7 +124,7 @@ def preflight():
     print(f"  ✓ Equity: ${equity:.2f} USDT")
     if equity < 100:
         print(f"  ⚠ WARNING: Equity very low (${equity:.2f}).")
-    if equity < EQUITY_FLOOR:
+    if EQUITY_FLOOR > 0 and equity < EQUITY_FLOOR:
         print(f"  ✗ FATAL: Equity ${equity:.2f} < floor ${EQUITY_FLOOR:.0f}. "
               "Cannot start.")
         return False

@@ -45,7 +45,7 @@ from live import trade_logger as tlog
 from live.config import (
     API_KEY, API_SECRET, MAINNET, DEMO_MODE,
     PROFIT_TIERS, GUARDIAN_POLL_SECS,
-    TRAIL_ACTIVATION_R, TRAIL_DISTANCE_R,
+    TRAIL_ENABLED, TRAIL_ACTIVATION_R, TRAIL_DISTANCE_R,
 )
 
 
@@ -101,12 +101,19 @@ class ProfitGuardian(threading.Thread):
         try:
             log.info("Profit Guardian v3: creating exchange connection...")
             self.ex = _create_guardian_exchange()
-            log.info(
-                f"Profit Guardian v3: ONLINE — poll {GUARDIAN_POLL_SECS}s | "
-                f"trail activates at {TRAIL_ACTIVATION_R}R | "
-                f"trail distance {TRAIL_DISTANCE_R}R behind peak | "
-                f"{len(PROFIT_TIERS)} SL tiers (safety net)"
-            )
+            if TRAIL_ENABLED:
+                log.info(
+                    f"Profit Guardian v3: ONLINE — poll {GUARDIAN_POLL_SECS}s | "
+                    f"trail activates at {TRAIL_ACTIVATION_R}R | "
+                    f"trail distance {TRAIL_DISTANCE_R}R behind peak | "
+                    f"{len(PROFIT_TIERS)} SL tiers (safety net)"
+                )
+            else:
+                log.info(
+                    f"Profit Guardian v3: ONLINE — poll {GUARDIAN_POLL_SECS}s | "
+                    f"trail DISABLED (fixed TP on exchange) | "
+                    f"{len(PROFIT_TIERS)} progressive SL tiers active"
+                )
         except Exception as e:
             log.error(f"Profit Guardian v3: FAILED to connect — {e}")
             log.error(traceback.format_exc())
@@ -219,7 +226,8 @@ class ProfitGuardian(threading.Thread):
                     reason = label
 
         # 2. Trail: once R >= activation, SL = peak - trail_distance (in R)
-        if peak_r >= TRAIL_ACTIVATION_R:
+        #    Only active when TRAIL_ENABLED=True. Otherwise fixed TP on exchange handles exit.
+        if TRAIL_ENABLED and peak_r >= TRAIL_ACTIVATION_R:
             if not self._trail_active.get(symbol):
                 self._trail_active[symbol] = True
                 entry["_trail_active"] = True
@@ -301,7 +309,7 @@ class ProfitGuardian(threading.Thread):
         if poll_count % health_interval == 1:
             tag = "↗" if current_r > 0 else "↘"
             tier_label = f"T{tier_idx + 1}" if tier_idx >= 0 else "T0"
-            trail_tag = "TRAIL" if self._trail_active.get(symbol) else "wait"
+            trail_tag = "TRAIL" if self._trail_active.get(symbol) else ("wait" if TRAIL_ENABLED else "off")
             log.info(
                 f"  {tag} {symbol}: R={current_r:+.2f} | "
                 f"peak={peak_r:.2f}R | {tier_label} | {trail_tag} | "

@@ -27,7 +27,7 @@ from live.config import (
     MAX_TRADES_SESSION, MAX_TRADES_DAY,
     POLL_INTERVAL, TIMEFRAME, EQUITY_FLOOR, TRADE_LOG, TP_R,
     SCALE_OUT, SCALE_OUT_PCT,
-    TRAIL_ACTIVATION_R, TRAIL_DISTANCE_R, EXCHANGE_TP_R,
+    TRAIL_ENABLED, TRAIL_ACTIVATION_R, TRAIL_DISTANCE_R, EXCHANGE_TP_R,
     HYBRID_ENTRY, MAX_SLIP_R, SKIP_LOG,
     C3_EXIT, C3_REVERSAL_BODY_PCT, C3_MAX_R_TO_EXIT,
     BACKTEST_WR, BACKTEST_EXPECTANCY_R, BACKTEST_PF,
@@ -935,17 +935,19 @@ class FCBBot:
                 tp_price = exch.round_price(self.ex, pair, signal.take_profit)
                 qty = exch.round_qty(self.ex, pair, signal.position_size)
 
-                # ── EXCHANGE TP: 10R safety net — Guardian v3 trail handles real exit ──
-                # Data: fixed 1.5R TP = +334R. Trail 0.3R = +1,738R (5x better).
-                # Exchange TP is just a safety net in case bot crashes.
-                base_tp_price = tp_price  # store the real 1.5R level for reference
+                # ── EXCHANGE TP: fixed 1.5R take profit on exchange ──
+                base_tp_price = tp_price  # store the 1.5R level for reference
                 if direction == "long":
                     far_tp = c2_close + EXCHANGE_TP_R * signal.risk_per_unit
                 else:
                     far_tp = c2_close - EXCHANGE_TP_R * signal.risk_per_unit
                 exchange_tp = exch.round_price(self.ex, pair, far_tp)
-                log.info(f"  ↳ TRAIL MODE: exchange TP={exchange_tp} ({EXCHANGE_TP_R}R safety net), "
-                         f"Guardian trails SL at peak-{TRAIL_DISTANCE_R}R once R>={TRAIL_ACTIVATION_R}")
+                if TRAIL_ENABLED:
+                    log.info(f"  ↳ TRAIL MODE: exchange TP={exchange_tp} ({EXCHANGE_TP_R}R safety net), "
+                             f"Guardian trails SL at peak-{TRAIL_DISTANCE_R}R once R>={TRAIL_ACTIVATION_R}")
+                else:
+                    log.info(f"  ↳ FIXED TP: {exchange_tp} ({EXCHANGE_TP_R}R) — "
+                             f"progressive SL tiers active for loss protection")
 
                 if qty <= 0:
                     log.warning(f"  {pair}: qty rounds to 0, skipping")
@@ -2030,12 +2032,16 @@ class FCBBot:
         log.info("=" * 60)
 
     def _check_equity_floor(self):
-        """At NY close, check if equity dropped below $500. If so, stop bot."""
+        """At NY close, check if equity dropped below floor. If floor=0, skip."""
         try:
             equity = exch.get_equity(self.ex)
             self.state.update_equity(equity)
         except:
             equity = self.state.equity
+
+        if EQUITY_FLOOR <= 0:
+            log.info(f"Equity floor disabled — equity ${equity:.2f} (no floor)")
+            return
 
         if equity < EQUITY_FLOOR:
             log.critical("=" * 60)

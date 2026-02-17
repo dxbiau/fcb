@@ -73,9 +73,11 @@ TRAIL_POLL_SECS       = 15
 GUARDIAN_POLL_SECS   = 2            # Poll every 2 seconds
 
 # Trail parameters (validated: act=1.0 trail=0.3 → +1,738R across 12,355 trades)
+# DISABLED: markets too volatile for trailing — using fixed 1.5R TP instead
+TRAIL_ENABLED        = False         # Set True to re-enable Guardian v3 trailing
 TRAIL_ACTIVATION_R   = 1.0          # Start trailing once R >= 1.0
 TRAIL_DISTANCE_R     = 0.3          # Trail 0.3R behind peak
-EXCHANGE_TP_R        = 10.0         # Safety net TP on exchange (far away, trail handles exit)
+EXCHANGE_TP_R        = 1.5           # Fixed 1.5R TP on exchange (clean profit lock)
 
 # Progressive SL tiers: (trigger_R, new_SL_R, label)
 # Exchange crash safety net — if bot dies, these SLs protect you.
@@ -245,7 +247,7 @@ BACKTEST_TRADES_PER_DAY = 9.0       # estimated from 37-pair / 3-session setup
 BACKTEST_START_EQUITY   = 1000.0    # starting capital
 
 # ─── Operational ───
-EQUITY_FLOOR    = 500.0     # stop trading if equity < $500 at NY session close
+EQUITY_FLOOR    = 0         # disabled — trade with whatever equity we have
 
 TIMEFRAME       = "5m"
 POLL_INTERVAL   = 5         # seconds between checks within a candle
