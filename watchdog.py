@@ -45,6 +45,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.resolve()
 BOT_CMD = [sys.executable, str(BASE_DIR / "run_live.py"), "--yes"]
 HEARTBEAT_FILE = BASE_DIR / "live" / "logs" / "watchdog_heartbeat.json"
+CONTROL_FILE = BASE_DIR / "live" / "logs" / "bot_control.json"
 LOG_DIR = BASE_DIR / "live" / "logs"
 STATE_FILE = BASE_DIR / "live" / "state.json"
 
@@ -355,7 +356,9 @@ class Watchdog:
         self.crash_count = 0
         self.start_time = 0.0
         self._running = True
+        self._paused = False          # Dashboard can pause/resume via control file
         self._setup_signals()
+        self._write_status("running")  # Initial status
 
     def _setup_signals(self):
         """Handle SIGTERM/SIGINT gracefully (Docker sends SIGTERM on stop)."""
@@ -383,6 +386,58 @@ class Watchdog:
         """Get current backoff delay based on crash count."""
         idx = min(self.crash_count, len(BACKOFF_SCHEDULE) - 1)
         return BACKOFF_SCHEDULE[idx]
+
+    def _write_status(self, status: str):
+        """Write current bot status to control file for dashboard to read."""
+        try:
+            data = {}
+            if CONTROL_FILE.exists():
+                with open(CONTROL_FILE, "r") as f:
+                    data = json.load(f)
+            data["status"] = status
+            data["updated"] = datetime.now(timezone.utc).isoformat()
+            data["pid"] = self.process.pid if self.process and self.process.poll() is None else None
+            CONTROL_FILE.parent.mkdir(parents=True, exist_ok=True)
+            with open(CONTROL_FILE, "w") as f:
+                json.dump(data, f)
+        except Exception:
+            pass  # Non-critical
+
+    def _check_control_file(self):
+        """Check if dashboard sent a start/stop command via control file."""
+        if not CONTROL_FILE.exists():
+            return
+        try:
+            with open(CONTROL_FILE, "r") as f:
+                data = json.load(f)
+            cmd = data.get("command", "")
+            if cmd == "stop" and not self._paused:
+                log_info("DASHBOARD COMMAND: Stop bot")
+                self._paused = True
+                self._write_status("stopped")
+                # Kill the running bot process
+                if self.process and self.process.poll() is None:
+                    log_info("Stopping bot process...")
+                    self.process.terminate()
+                    try:
+                        self.process.wait(timeout=25)
+                        log_info("Bot stopped via dashboard ✓")
+                    except subprocess.TimeoutExpired:
+                        self.process.kill()
+                        self.process.wait(timeout=5)
+                # Clear command so it doesn't re-fire
+                data["command"] = ""
+                with open(CONTROL_FILE, "w") as f:
+                    json.dump(data, f)
+            elif cmd == "start" and self._paused:
+                log_info("DASHBOARD COMMAND: Start bot")
+                self._paused = False
+                data["command"] = ""
+                with open(CONTROL_FILE, "w") as f:
+                    json.dump(data, f)
+                self._write_status("running")
+        except Exception as e:
+            log_warn(f"Control file read error: {e}")
 
     def _start_bot(self):
         """Start the bot subprocess."""
@@ -459,6 +514,14 @@ class Watchdog:
         last_health_check = 0
 
         while self._running:
+            # Check for dashboard commands (start/stop toggle)
+            self._check_control_file()
+
+            # If paused by dashboard, just wait
+            if self._paused:
+                time.sleep(2)
+                continue
+
             # Start/restart bot
             if self.process is None or self.process.poll() is not None:
                 if self.process is not None:
@@ -511,6 +574,7 @@ class Watchdog:
                                   "bot has its own retry logic")
 
                 self._start_bot()
+                self._write_status("running")
                 last_health_check = time.time()
 
             # Health checks

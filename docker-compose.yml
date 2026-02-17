@@ -61,8 +61,8 @@ services:
       - PYTHONUNBUFFERED=1
 
     volumes:
-      # Read-only access to bot's log and state files
-      - fcb-logs:/app/live/logs:ro
+      # Read-write access to bot control file + read logs/state
+      - fcb-logs:/app/live/logs
       - ./live/state.json:/app/live/state.json:ro
 
     deploy:

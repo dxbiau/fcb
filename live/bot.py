@@ -49,6 +49,42 @@ from live.guardian import GuardianAgent
 
 
 # ═══════════════════════════════════════════════════════════
+#  ACTIVITY STATUS (read by dashboard)
+# ═══════════════════════════════════════════════════════════
+
+ACTIVITY_FILE = os.path.join("live", "logs", "bot_activity.json")
+
+def _write_activity(phase: str, detail: str = "", session: str = "",
+                    pairs: int = 0, positions: int = 0, next_session: str = "",
+                    next_session_time: str = ""):
+    """Write current bot activity to a JSON file for the dashboard.
+    
+    Called on every phase change so the dashboard can show exactly
+    what the bot is doing right now.
+    """
+    try:
+        data = {
+            "phase": phase,
+            "detail": detail,
+            "session": session,
+            "pairs": pairs,
+            "positions": positions,
+            "next_session": next_session,
+            "next_session_time": next_session_time,
+            "ts": datetime.now(timezone.utc).isoformat(),
+            "uptime_since": _BOT_START_TIME,
+        }
+        os.makedirs(os.path.dirname(ACTIVITY_FILE), exist_ok=True)
+        with open(ACTIVITY_FILE, "w") as f:
+            import json as _json
+            _json.dump(data, f)
+    except Exception:
+        pass  # Non-critical
+
+_BOT_START_TIME = datetime.now(timezone.utc).isoformat()
+
+
+# ═══════════════════════════════════════════════════════════
 #  SESSION HELPERS
 # ═══════════════════════════════════════════════════════════
 
@@ -505,6 +541,7 @@ class FCBBot:
         log.info("  FCB LIVE BOT — Starting")
         log.info("=" * 70)
 
+        _write_activity("STARTING", "Connecting to Bybit...")
         self.ex = exch.create_exchange()
 
         # Verify balance
@@ -532,6 +569,8 @@ class FCBBot:
                 log.error(f"  {pair}: FAILED to configure — {e}")
 
         log.info(f"Ready. {len(self.market_info)} pairs configured.")
+        _write_activity("READY", f"{len(self.market_info)} pairs configured",
+                        positions=len(self.state.pending_entries))
 
         # Initialize Guardian Agent (pre-entry checks, health, anomalies)
         self.guardian = GuardianAgent(self.ex, self.state)
@@ -677,6 +716,10 @@ class FCBBot:
             name, when = next_session_start()
             wait = (when - datetime.now(timezone.utc)).total_seconds()
             log.info(f"No active session. Next: {name} in {wait/60:.0f} min")
+            _write_activity("IDLE", f"No active session",
+                            next_session=name,
+                            next_session_time=when.isoformat(),
+                            positions=len(self.state.pending_entries))
             time.sleep(min(wait, 300))
             return
 
@@ -689,6 +732,9 @@ class FCBBot:
 
         # ── Phase 1: Capture first candles (minute 5 — after first candle closes) ──
         if 5 <= minute < 10:
+            _write_activity("CAPTURING", f"Reading first candles",
+                            session=sess, pairs=len(session_pairs),
+                            positions=len(self.state.pending_entries))
             # Check if positions from previous sessions have closed
             self._resolve_positions()
             # Guardian health check on wake-up
@@ -701,6 +747,9 @@ class FCBBot:
 
         # ── Phase 2: Check breakouts (minute 10+) ──
         if 10 <= minute < 15:
+            _write_activity("SCANNING", f"Checking breakouts",
+                            session=sess, pairs=len(session_pairs),
+                            positions=len(self.state.pending_entries))
             self._check_breakouts(sess, session_pairs)
 
             # NOTE: Do NOT cancel scale-in orders here — they need to stay
@@ -734,6 +783,9 @@ class FCBBot:
             wait = (5 - minute) * 60
             log.info(f"Session {sess} started {minute}m ago. "
                      f"Waiting {wait/60:.1f}m for first candle to close...")
+            _write_activity("WAITING", f"First candle closing in {wait/60:.0f}m",
+                            session=sess, pairs=len(session_pairs),
+                            positions=len(self.state.pending_entries))
             time.sleep(wait)
             return
 
@@ -2034,6 +2086,8 @@ class FCBBot:
             self._sleep_until_next_session()
             return
 
+        _write_activity("MONITORING", f"{len(session_entries)} open position(s)",
+                        session=session, positions=len(session_entries))
         log.info(f"Monitoring {len(session_entries)} open position(s) for session {session}...")
 
         while self._running:
@@ -2114,6 +2168,10 @@ class FCBBot:
             time.sleep(5)
             return
 
+        _write_activity("SLEEPING", f"Until {name} at {when.strftime('%H:%M')} UTC",
+                        next_session=name,
+                        next_session_time=when.isoformat(),
+                        positions=len(self.state.pending_entries))
         log.info(f"Sleeping until {name} session at {when.strftime('%H:%M')} UTC "
                  f"({wait/60:.0f} min)...")
 
