@@ -19,6 +19,9 @@ import json
 import os
 import sys
 import csv
+import subprocess
+import threading
+import time
 import http.server
 import socketserver
 import urllib.parse
@@ -34,6 +37,185 @@ TRADE_CSV = os.path.join("live", "trades.csv")
 STATE_FILE = os.path.join("live", "state.json")
 CONTROL_FILE = os.path.join("live", "logs", "bot_control.json")
 ACTIVITY_FILE = os.path.join("live", "logs", "bot_activity.json")
+SWEEP_STATUS_FILE = os.path.join("live", "logs", "sweep_status.json")
+
+# ═══════════════════════════════════════════════════════════
+#  SWEEP JOB — runs discover_bybit_pairs.py as subprocess
+# ═══════════════════════════════════════════════════════════
+
+_sweep_lock = threading.Lock()
+_sweep_proc = None  # subprocess.Popen | None
+_sweep_start_time = None
+
+
+def _start_sweep() -> dict:
+    """Launch a pair discovery scan as a background subprocess."""
+    global _sweep_proc, _sweep_start_time
+    with _sweep_lock:
+        if _sweep_proc is not None and _sweep_proc.poll() is None:
+            return {"ok": False, "error": "Sweep already running"}
+        try:
+            # Find Python executable
+            py = sys.executable
+            script = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "discover_bybit_pairs.py")
+            if not os.path.exists(script):
+                return {"ok": False, "error": "discover_bybit_pairs.py not found"}
+
+            # Write initial status
+            status = {"status": "running", "started": datetime.now(timezone.utc).isoformat(),
+                      "elapsed": 0}
+            os.makedirs(os.path.dirname(SWEEP_STATUS_FILE), exist_ok=True)
+            with open(SWEEP_STATUS_FILE, "w") as f:
+                json.dump(status, f)
+
+            # Launch subprocess
+            _sweep_proc = subprocess.Popen(
+                [py, script],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=os.path.dirname(os.path.abspath(__file__)),
+                text=True,
+            )
+            _sweep_start_time = time.time()
+
+            # Monitor in background thread
+            t = threading.Thread(target=_monitor_sweep, daemon=True)
+            t.start()
+
+            return {"ok": True, "message": "Sweep started"}
+        except Exception as e:
+            return {"ok": False, "error": str(e)}
+
+
+def _monitor_sweep():
+    """Background thread: wait for sweep subprocess to finish, then write results."""
+    global _sweep_proc
+    proc = _sweep_proc
+    if proc is None:
+        return
+
+    try:
+        stdout, _ = proc.communicate(timeout=600)  # 10 min max
+        elapsed = int(time.time() - _sweep_start_time)
+
+        if proc.returncode == 0:
+            # Count passed results from the most recent discovery file
+            passed_count = 0
+            results_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+            if os.path.exists(results_dir):
+                import glob
+                passed_files = sorted(glob.glob(os.path.join(results_dir, "bybit_discovery_passed_*.csv")))
+                if passed_files:
+                    try:
+                        with open(passed_files[-1], "r") as f:
+                            passed_count = sum(1 for _ in f) - 1  # minus header
+                    except Exception:
+                        pass
+
+            status = {"status": "done", "elapsed": elapsed,
+                      "passed": max(passed_count, 0),
+                      "finished": datetime.now(timezone.utc).isoformat(),
+                      "output_tail": (stdout or "")[-500:]}
+        else:
+            status = {"status": "error", "elapsed": elapsed,
+                      "error": f"Exit code {proc.returncode}",
+                      "output_tail": (stdout or "")[-500:]}
+
+        with open(SWEEP_STATUS_FILE, "w") as f:
+            json.dump(status, f)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        status = {"status": "error", "error": "Timed out after 10 minutes",
+                  "elapsed": 600}
+        with open(SWEEP_STATUS_FILE, "w") as f:
+            json.dump(status, f)
+    except Exception as e:
+        status = {"status": "error", "error": str(e), "elapsed": 0}
+        with open(SWEEP_STATUS_FILE, "w") as f:
+            json.dump(status, f)
+
+
+def _get_sweep_status() -> dict:
+    """Read current sweep status."""
+    if not os.path.exists(SWEEP_STATUS_FILE):
+        return {"status": "idle"}
+    try:
+        with open(SWEEP_STATUS_FILE, "r") as f:
+            data = json.load(f)
+        # If running, update elapsed time
+        if data.get("status") == "running":
+            if _sweep_start_time:
+                data["elapsed"] = int(time.time() - _sweep_start_time)
+        return data
+    except Exception:
+        return {"status": "idle"}
+
+
+def _force_equity_check() -> dict:
+    """Directly query Bybit for current equity. Read-only, no bot needed."""
+    try:
+        import ccxt
+        from live.config import API_KEY, API_SECRET, MAINNET
+
+        ex = ccxt.bybit({
+            "apiKey": API_KEY,
+            "secret": API_SECRET,
+            "enableRateLimit": True,
+            "options": {"defaultType": "swap"},
+        })
+        if MAINNET:
+            ex.set_sandbox_mode(False)
+
+        balance = ex.fetch_balance({"type": "swap"})
+        equity = float(balance.get("total", {}).get("USDT", 0))
+        return {"ok": True, "equity": round(equity, 2)}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+def _close_all_positions() -> dict:
+    """Close ALL open positions on Bybit. Emergency action."""
+    try:
+        import ccxt
+        from live.config import API_KEY, API_SECRET, MAINNET
+
+        ex = ccxt.bybit({
+            "apiKey": API_KEY,
+            "secret": API_SECRET,
+            "enableRateLimit": True,
+            "options": {"defaultType": "swap"},
+        })
+        if MAINNET:
+            ex.set_sandbox_mode(False)
+
+        positions = ex.fetch_positions()
+        open_pos = [p for p in positions
+                     if abs(float(p.get("contracts", 0) or 0)) > 0]
+
+        if not open_pos:
+            return {"ok": True, "closed": 0, "detail": "No open positions found."}
+
+        closed = 0
+        errors = []
+        for pos in open_pos:
+            sym = pos["symbol"]
+            side = pos.get("side", "")
+            contracts = abs(float(pos.get("contracts", 0) or 0))
+            try:
+                close_side = "sell" if side == "long" else "buy"
+                ex.create_market_order(sym, close_side, contracts,
+                                        params={"reduceOnly": True})
+                closed += 1
+            except Exception as e:
+                errors.append(f"{sym}: {e}")
+
+        detail = f"Closed {closed}/{len(open_pos)} positions."
+        if errors:
+            detail += " Errors: " + "; ".join(errors)
+        return {"ok": True, "closed": closed, "detail": detail}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
 
 
 def _read_state() -> dict:
@@ -408,6 +590,8 @@ body{font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;backgroun
   border:1px solid;transition:all 0.3s ease;
 }
 .status-badge.running{background:var(--green-dim);border-color:rgba(16,185,129,0.3);color:var(--green)}
+.status-badge.active{background:var(--green-dim);border-color:rgba(16,185,129,0.3);color:var(--green)}
+.status-badge.sleeping{background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:var(--yellow)}
 .status-badge.stopped{background:var(--red-dim);border-color:rgba(239,68,68,0.3);color:var(--red)}
 .pulse-dot{width:8px;height:8px;border-radius:50%;position:relative}
 .pulse-dot.live{background:var(--green)}
@@ -415,6 +599,12 @@ body{font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;backgroun
   content:'';position:absolute;top:-3px;left:-3px;width:14px;height:14px;
   border-radius:50%;background:var(--green);opacity:0;
   animation:pulse 2s infinite;
+}
+.pulse-dot.sleeping{background:var(--yellow)}
+.pulse-dot.sleeping::after{
+  content:'';position:absolute;top:-3px;left:-3px;width:14px;height:14px;
+  border-radius:50%;background:var(--yellow);opacity:0;
+  animation:pulse 3s infinite;
 }
 .pulse-dot.dead{background:var(--red)}
 @keyframes pulse{0%{opacity:0.5;transform:scale(1)}100%{opacity:0;transform:scale(2.2)}}
@@ -567,6 +757,32 @@ tr:hover td{background:rgba(99,102,241,0.04)}
 .csv-log-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .csv-log-wrap table{min-width:900px}
 
+/* ─── Action Buttons ─── */
+.action-btn{
+  display:flex;align-items:center;gap:8px;width:100%;
+  padding:9px 12px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--surface2);
+  color:var(--text);cursor:pointer;font-size:0.78em;font-weight:600;
+  font-family:inherit;transition:all 0.2s ease;text-align:left;
+}
+.action-btn:hover{border-color:var(--accent);background:rgba(59,130,246,0.08);transform:translateY(-1px);box-shadow:var(--glow)}
+.action-btn:active{transform:translateY(0)}
+.action-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.action-btn .btn-icon{font-size:1.1em;width:20px;text-align:center}
+.action-btn .btn-label{flex:1}
+.action-btn .btn-spinner{display:none;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+.action-btn.loading .btn-spinner{display:inline-block}
+.action-btn.loading .btn-icon{display:none}
+.action-btn.sweep{border-color:rgba(6,182,212,0.3)}
+.action-btn.sweep:hover{border-color:var(--cyan);background:rgba(6,182,212,0.08)}
+.action-btn.danger{border-color:rgba(239,68,68,0.2)}
+.action-btn.danger:hover{border-color:var(--red);background:rgba(239,68,68,0.08)}
+.action-result{font-size:0.72em;padding:6px 10px;border-radius:6px;margin-top:6px;display:none}
+.action-result.ok{display:block;background:var(--green-dim);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+.action-result.err{display:block;background:var(--red-dim);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+.action-result.info{display:block;background:rgba(59,130,246,0.08);color:var(--accent);border:1px solid rgba(59,130,246,0.2)}
+.sweep-progress{font-size:0.72em;color:var(--muted);padding:4px 0}
+
 /* ─── Footer ─── */
 .footer{
   text-align:center;padding:12px;font-size:0.68em;color:var(--muted);
@@ -598,7 +814,7 @@ tr:hover td{background:rgba(99,102,241,0.04)}
       <div class="logo">FCB</div>
       <div>
         <div class="header-title">FCB Command Centre</div>
-        <div class="header-subtitle">Guardian v3 Trail &middot; Bybit Mainnet &middot; 10x Leverage</div>
+        <div class="header-subtitle">Fixed 1.5R TP &middot; Bybit Mainnet &middot; 10x Leverage</div>
       </div>
     </div>
     <div class="header-right">
@@ -786,6 +1002,40 @@ tr:hover td{background:rgba(99,102,241,0.04)}
       </div>
     </div>
 
+    <!-- Actions Panel -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Actions</h2></div>
+      <div class="panel-body" style="display:flex;flex-direction:column;gap:8px">
+        <button class="action-btn sweep" id="btn-sweep" onclick="doSweep()">
+          <span class="btn-icon">&#x1F50D;</span>
+          <span class="btn-label">Sweep New Pairs</span>
+          <span class="btn-spinner"></span>
+        </button>
+        <div id="sweep-result" class="action-result"></div>
+        <div id="sweep-progress" class="sweep-progress" style="display:none"></div>
+
+        <button class="action-btn" id="btn-equity" onclick="doForceEquity()">
+          <span class="btn-icon">&#x1F4B0;</span>
+          <span class="btn-label">Refresh Equity</span>
+          <span class="btn-spinner"></span>
+        </button>
+        <div id="equity-result" class="action-result"></div>
+
+        <button class="action-btn danger" id="btn-close-all" onclick="doCloseAll()">
+          <span class="btn-icon">&#x1F6A8;</span>
+          <span class="btn-label">Close All Positions</span>
+          <span class="btn-spinner"></span>
+        </button>
+        <div id="close-result" class="action-result"></div>
+
+        <button class="action-btn" id="btn-export" onclick="doExport()">
+          <span class="btn-icon">&#x1F4E5;</span>
+          <span class="btn-label">Export Trade Log</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </div>
+    </div>
+
     <!-- Quick Links -->
     <div class="panel animate-in">
       <div class="panel-header"><h2>Quick Links</h2></div>
@@ -801,7 +1051,7 @@ tr:hover td{background:rgba(99,102,241,0.04)}
 </div><!-- /main-layout -->
 
 <div class="footer">
-  FCB Command Centre v3 &middot; Guardian v3 Trail &middot; Auto-refresh 30s
+  FCB Command Centre v3 &middot; Fixed 1.5R TP &middot; Auto-refresh 30s
 </div>
 
 <script>
@@ -900,19 +1150,27 @@ toggle.addEventListener('change',async function(){
     this.checked=!this.checked;
   }
 });
-function updateBotStatus(running){
+function updateBotStatus(running, phase){
   botRunning=running;
   const badge=$('status-badge');
   const dot=$('pulse-dot');
   const text=$('status-text');
-  if(running){
-    badge.className='status-badge running';
-    dot.className='pulse-dot live';
-    text.textContent='RUNNING';
-  }else{
+  if(!running){
     badge.className='status-badge stopped';
     dot.className='pulse-dot dead';
     text.textContent='STOPPED';
+  }else if(phase==='SLEEPING'||phase==='IDLE'||phase==='WAITING'){
+    badge.className='status-badge sleeping';
+    dot.className='pulse-dot sleeping';
+    text.textContent='SLEEPING';
+  }else if(phase==='SCANNING'||phase==='CAPTURING'||phase==='MONITORING'){
+    badge.className='status-badge active';
+    dot.className='pulse-dot live';
+    text.textContent='ACTIVE';
+  }else{
+    badge.className='status-badge running';
+    dot.className='pulse-dot live';
+    text.textContent='RUNNING';
   }
   toggle.checked=running;
 }
@@ -1085,7 +1343,12 @@ function updateActivity(act){
 /* ─── Main Update ─── */
 function update(data){
   $('lastUpdate').textContent=new Date().toLocaleTimeString();
-  if(data.bot_status){updateBotStatus(data.bot_status==='running')}
+  const actPhase=(data.activity&&data.activity.phase)||'';
+  const isStale=data.activity&&data.activity.stale;
+  if(data.bot_status){
+    const running=data.bot_status==='running';
+    updateBotStatus(isStale?false:running, actPhase);
+  }
   updateActivity(data.activity);
 
   // Metrics
@@ -1216,6 +1479,109 @@ async function refresh(){
 }
 refresh();
 refreshTimer=setInterval(refresh,30000);
+
+/* ─── Action Buttons ─── */
+let sweepPoll=null;
+
+async function doSweep(){
+  const btn=$('btn-sweep');
+  const res=$('sweep-result');
+  const prog=$('sweep-progress');
+  btn.classList.add('loading');btn.disabled=true;
+  res.className='action-result';res.style.display='none';
+  prog.style.display='block';prog.textContent='Starting pair discovery scan...';
+  try{
+    const r=await fetch('/api/sweep',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){
+      prog.textContent='Scanning Bybit pairs... this takes 3-8 minutes';
+      sweepPoll=setInterval(async()=>{
+        try{
+          const sr=await fetch('/api/sweep/status');
+          const sd=await sr.json();
+          if(sd.status==='running'){
+            prog.textContent='Scanning... '+sd.elapsed+'s elapsed';
+          }else if(sd.status==='done'){
+            clearInterval(sweepPoll);sweepPoll=null;
+            btn.classList.remove('loading');btn.disabled=false;
+            prog.style.display='none';
+            const n=sd.passed||0;
+            res.textContent='Found '+n+' FCB-viable pair combos. Results saved to results/ folder.';
+            res.className='action-result ok';
+          }else if(sd.status==='error'){
+            clearInterval(sweepPoll);sweepPoll=null;
+            btn.classList.remove('loading');btn.disabled=false;
+            prog.style.display='none';
+            res.textContent='Scan error: '+(sd.error||'unknown');
+            res.className='action-result err';
+          }
+        }catch(e){console.error(e)}
+      },5000);
+    }else{
+      prog.style.display='none';
+      res.textContent='Failed: '+(d.error||'unknown');
+      res.className='action-result err';
+      btn.classList.remove('loading');btn.disabled=false;
+    }
+  }catch(e){
+    prog.style.display='none';
+    res.textContent='Request failed: '+e;
+    res.className='action-result err';
+    btn.classList.remove('loading');btn.disabled=false;
+  }
+}
+
+async function doForceEquity(){
+  const btn=$('btn-equity');
+  const res=$('equity-result');
+  btn.classList.add('loading');btn.disabled=true;
+  res.className='action-result';res.style.display='none';
+  try{
+    const r=await fetch('/api/force-equity',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){
+      res.textContent='Equity: $'+Number(d.equity).toFixed(2)+' USDT';
+      res.className='action-result ok';
+      $('m-eq').textContent='$'+Number(d.equity).toFixed(2);
+    }else{
+      res.textContent='Failed: '+(d.error||'unknown');
+      res.className='action-result err';
+    }
+  }catch(e){
+    res.textContent='Request failed: '+e;
+    res.className='action-result err';
+  }finally{
+    btn.classList.remove('loading');btn.disabled=false;
+  }
+}
+
+async function doCloseAll(){
+  if(!confirm('CLOSE ALL POSITIONS?\\n\\nThis will market-close every open position on Bybit immediately.\\n\\nAre you sure?'))return;
+  const btn=$('btn-close-all');
+  const res=$('close-result');
+  btn.classList.add('loading');btn.disabled=true;
+  res.className='action-result';res.style.display='none';
+  try{
+    const r=await fetch('/api/close-all',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){
+      res.textContent='Closed '+d.closed+' position(s). '+d.detail;
+      res.className='action-result ok';
+    }else{
+      res.textContent='Failed: '+(d.error||'unknown');
+      res.className='action-result err';
+    }
+  }catch(e){
+    res.textContent='Request failed: '+e;
+    res.className='action-result err';
+  }finally{
+    btn.classList.remove('loading');btn.disabled=false;
+  }
+}
+
+function doExport(){
+  window.open('/api/events','_blank');
+}
 </script>
 </body>
 </html>"""
@@ -1279,6 +1645,9 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
         elif path == "/api/health":
             self._send_json({"status": "ok", "ts": datetime.now(timezone.utc).isoformat()})
 
+        elif path == "/api/sweep/status":
+            self._send_json(_get_sweep_status())
+
         else:
             self.send_error(404)
 
@@ -1292,6 +1661,18 @@ class DashboardHandler(http.server.BaseHTTPRequestHandler):
 
         elif path == "/api/bot/stop":
             result = _write_bot_command("stop")
+            self._send_json(result)
+
+        elif path == "/api/sweep":
+            result = _start_sweep()
+            self._send_json(result)
+
+        elif path == "/api/force-equity":
+            result = _force_equity_check()
+            self._send_json(result)
+
+        elif path == "/api/close-all":
+            result = _close_all_positions()
             self._send_json(result)
 
         else:
