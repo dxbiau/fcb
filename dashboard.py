@@ -18,6 +18,7 @@ Memory footprint: ~15MB. No external dependencies beyond Python stdlib.
 import json
 import os
 import sys
+import csv
 import http.server
 import socketserver
 import urllib.parse
@@ -29,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).parent.resolve()))
 
 PORT = int(os.environ.get("DASHBOARD_PORT", 8080))
 TRADE_JSONL = os.path.join("live", "logs", "trades.jsonl")
+TRADE_CSV = os.path.join("live", "trades.csv")
 STATE_FILE = os.path.join("live", "state.json")
 CONTROL_FILE = os.path.join("live", "logs", "bot_control.json")
 ACTIVITY_FILE = os.path.join("live", "logs", "bot_activity.json")
@@ -213,6 +215,12 @@ def _compute_stats(trades: list, state: dict) -> dict:
     # Bot activity (what the bot is doing right now)
     stats["activity"] = _read_activity()
 
+    # Pair list from config
+    stats["pair_list"] = _read_pair_list()
+
+    # Full CSV trade log (last 100 rows)
+    stats["csv_log"] = _read_trade_csv()
+
     return stats
 
 
@@ -292,6 +300,37 @@ def _read_activity() -> dict:
         return {"phase": "ERROR", "detail": "Could not read activity", "ts": ""}
 
 
+def _read_pair_list() -> dict:
+    """Read the configured pair list from live/config.py.
+    
+    Returns structured data: {session: [{pair, class}, ...]}
+    """
+    try:
+        from live.config import PAIRS
+        result = {}
+        for session, pair_list in PAIRS.items():
+            result[session] = [{"pair": p, "cls": c} for p, c in pair_list]
+        return result
+    except Exception:
+        return {}
+
+
+def _read_trade_csv(limit: int = 100) -> list:
+    """Read the last N rows from trades.csv for the full trade log."""
+    if not os.path.exists(TRADE_CSV):
+        return []
+    try:
+        rows = []
+        with open(TRADE_CSV, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rows.append(row)
+        # Return last `limit` rows (most recent)
+        return rows[-limit:]
+    except Exception:
+        return []
+
+
 # ═══════════════════════════════════════════════════════════
 #  HTML DASHBOARD (single-page, no dependencies)
 # ═══════════════════════════════════════════════════════════
@@ -319,40 +358,58 @@ body{font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;backgroun
 .header{
   background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%);
   border-bottom:1px solid var(--border);
-  padding:20px 24px;position:relative;overflow:hidden;
+  padding:16px 24px;position:relative;overflow:hidden;
 }
 .header::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
   background:radial-gradient(ellipse at 30% 50%,rgba(99,102,241,0.08) 0%,transparent 70%);
   pointer-events:none;
 }
-.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
-.header-left{display:flex;align-items:center;gap:16px}
+.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
+.header-left{display:flex;align-items:center;gap:14px}
 .logo{
-  width:40px;height:40px;border-radius:10px;
+  width:36px;height:36px;border-radius:8px;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:14px;color:#fff;letter-spacing:-0.5px;
+  font-weight:900;font-size:13px;color:#fff;letter-spacing:-0.5px;
 }
-.header-title{font-size:1.5em;font-weight:800;
+.header-title{font-size:1.3em;font-weight:800;
   background:linear-gradient(135deg,#fff 0%,#a5b4fc 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;letter-spacing:-0.5px;
 }
-.header-subtitle{color:var(--muted);font-size:0.8em;margin-top:2px}
-.header-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.header-subtitle{color:var(--muted);font-size:0.75em;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+
+/* ─── Next Session Hero Timer ─── */
+.next-session-hero{
+  text-align:center;padding:14px 24px;
+  background:linear-gradient(180deg,rgba(99,102,241,0.06),transparent);
+  border-bottom:1px solid var(--border);
+}
+.next-session-label{font-size:0.7em;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.next-session-name{font-size:0.9em;font-weight:700;color:var(--accent);margin-bottom:2px}
+.next-session-timer{
+  font-size:2.4em;font-weight:900;font-variant-numeric:tabular-nums;
+  background:linear-gradient(135deg,var(--accent),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;letter-spacing:1px;
+}
+.next-session-timer.active-now{
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 
 /* ─── Status Indicator ─── */
 .status-badge{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 16px;border-radius:20px;font-size:0.85em;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;font-size:0.8em;font-weight:600;
   border:1px solid;transition:all 0.3s ease;
 }
 .status-badge.running{background:var(--green-dim);border-color:rgba(16,185,129,0.3);color:var(--green)}
 .status-badge.stopped{background:var(--red-dim);border-color:rgba(239,68,68,0.3);color:var(--red)}
-.pulse-dot{
-  width:8px;height:8px;border-radius:50%;position:relative;
-}
+.pulse-dot{width:8px;height:8px;border-radius:50%;position:relative}
 .pulse-dot.live{background:var(--green)}
 .pulse-dot.live::after{
   content:'';position:absolute;top:-3px;left:-3px;width:14px;height:14px;
@@ -363,144 +420,49 @@ body{font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;backgroun
 @keyframes pulse{0%{opacity:0.5;transform:scale(1)}100%{opacity:0;transform:scale(2.2)}}
 
 /* ─── Toggle Switch ─── */
-.toggle-container{display:flex;align-items:center;gap:10px}
-.toggle-label{font-size:0.85em;font-weight:600;color:var(--muted)}
-.toggle{
-  position:relative;width:56px;height:28px;cursor:pointer;
-}
+.toggle-container{display:flex;align-items:center;gap:8px}
+.toggle-label{font-size:0.8em;font-weight:600;color:var(--muted)}
+.toggle{position:relative;width:48px;height:24px;cursor:pointer}
 .toggle input{opacity:0;width:0;height:0}
 .toggle .slider{
   position:absolute;top:0;left:0;right:0;bottom:0;
-  background:#374151;border-radius:28px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  background:#374151;border-radius:24px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 .toggle .slider::before{
-  content:'';position:absolute;height:22px;width:22px;left:3px;bottom:3px;
+  content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;
   background:#fff;border-radius:50%;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
   box-shadow:0 2px 4px rgba(0,0,0,0.3);
 }
 .toggle input:checked+.slider{background:var(--green)}
-.toggle input:checked+.slider::before{transform:translateX(28px)}
+.toggle input:checked+.slider::before{transform:translateX(24px)}
 
-/* ─── Session Countdown ─── */
-.countdown-bar{
-  display:flex;gap:8px;flex-wrap:wrap;
-}
+/* ─── Session Countdown Chips ─── */
+.countdown-bar{display:flex;gap:6px;flex-wrap:wrap}
 .session-chip{
-  display:flex;align-items:center;gap:8px;
-  padding:6px 14px;border-radius:8px;font-size:0.8em;
+  display:flex;align-items:center;gap:6px;
+  padding:5px 10px;border-radius:6px;font-size:0.75em;
   background:var(--surface);border:1px solid var(--border);
   transition:all 0.3s ease;
 }
-.session-chip.active{
-  border-color:var(--accent);background:rgba(59,130,246,0.1);
-  box-shadow:0 0 12px rgba(59,130,246,0.1);
-}
+.session-chip.active{border-color:var(--accent);background:rgba(59,130,246,0.1);box-shadow:0 0 10px rgba(59,130,246,0.1)}
 .session-chip .name{font-weight:700;color:var(--muted)}
 .session-chip.active .name{color:var(--accent)}
-.session-chip .timer{font-variant-numeric:tabular-nums;font-weight:600;color:var(--text);min-width:55px}
+.session-chip .timer{font-variant-numeric:tabular-nums;font-weight:600;color:var(--text);min-width:50px}
 .session-chip.active .timer{color:var(--accent)}
 
-/* ─── Main Content ─── */
-.container{max-width:1400px;margin:0 auto;padding:20px 24px}
-
-/* ─── Metrics Grid ─── */
-.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px}
-.metric-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:16px;position:relative;overflow:hidden;
-  transition:all 0.25s ease;
-}
-.metric-card:hover{
-  border-color:rgba(99,102,241,0.3);transform:translateY(-2px);
-  box-shadow:var(--glow);
-}
-.metric-card .label{font-size:0.7em;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-weight:600;margin-bottom:6px}
-.metric-card .value{font-size:1.6em;font-weight:800;letter-spacing:-0.5px}
-.metric-card .sub{font-size:0.75em;color:var(--muted);margin-top:4px}
-.metric-card::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.metric-card:hover::after{opacity:1}
-
-/* ─── Section Panels ─── */
-.panel{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  margin-bottom:16px;overflow:hidden;
-}
-.panel-header{
-  padding:14px 18px;border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  background:linear-gradient(180deg,var(--surface2),var(--surface));
-}
-.panel-header h2{font-size:0.9em;font-weight:700;color:var(--text);letter-spacing:-0.2px}
-.panel-header .badge{
-  font-size:0.7em;padding:3px 8px;border-radius:6px;font-weight:600;
-  background:rgba(99,102,241,0.15);color:var(--accent2);
-}
-.panel-body{padding:16px 18px}
-
-/* ─── Tables ─── */
-table{width:100%;border-collapse:collapse;font-size:0.82em}
-th{text-align:left;color:var(--muted);padding:8px 10px;font-weight:600;font-size:0.85em;text-transform:uppercase;letter-spacing:0.3px;border-bottom:1px solid var(--border)}
-td{padding:8px 10px;border-bottom:1px solid rgba(30,41,59,0.5);transition:background 0.15s}
-tr:hover td{background:rgba(99,102,241,0.04)}
-
-/* ─── Colors ─── */
-.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--accent)}.cyan{color:var(--cyan)}.muted{color:var(--muted)}
-
-/* ─── Tags ─── */
-.tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:0.75em;font-weight:600}
-.tag.win{background:var(--green-dim);color:var(--green)}
-.tag.loss{background:var(--red-dim);color:var(--red)}
-.tag.long{background:rgba(6,182,212,0.15);color:var(--cyan)}
-.tag.short{background:rgba(245,158,11,0.15);color:var(--yellow)}
-
-/* ─── Bar Chart ─── */
-.bar-container{display:flex;align-items:center;gap:6px}
-.bar{height:6px;border-radius:3px;min-width:2px;transition:width 0.5s ease}
-.bar.pos{background:var(--green)}.bar.neg{background:var(--red)}
-
-/* ─── Equity Chart ─── */
-.eq-chart{position:relative;height:160px}
-.eq-chart canvas{width:100%;height:100%}
-
-/* ─── Grid Layouts ─── */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:800px){.grid-2{grid-template-columns:1fr}}
-
-/* ─── Footer ─── */
-.footer{
-  text-align:center;padding:16px;font-size:0.72em;color:var(--muted);
-  border-top:1px solid var(--border);margin-top:8px;
-}
-.footer a{color:var(--accent);text-decoration:none}
-
-/* ─── Pending Badge ─── */
-.pending-badge{background:var(--yellow);color:#000;padding:2px 8px;border-radius:12px;font-weight:700;font-size:0.8em}
-
-/* ─── Animations ─── */
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.animate-in{animation:fadeIn 0.4s ease forwards}
-
-/* ─── Refresh indicator ─── */
-.refresh-ring{
-  width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);
-  border-radius:50%;display:none;
-}
-.refresh-ring.active{display:inline-block;animation:spin 0.8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+/* ─── Main Layout ─── */
+.main-layout{display:grid;grid-template-columns:1fr 280px;gap:16px;max-width:1600px;margin:0 auto;padding:16px 20px}
+@media(max-width:1100px){.main-layout{grid-template-columns:1fr}}
 
 /* ─── Activity Status Bar ─── */
 .activity-bar{
-  display:flex;align-items:center;gap:16px;padding:14px 18px;
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  margin-bottom:16px;flex-wrap:wrap;
+  margin-bottom:12px;flex-wrap:wrap;
 }
 .activity-phase{
-  display:flex;align-items:center;gap:8px;
-  padding:4px 12px;border-radius:6px;font-weight:700;font-size:0.85em;
+  display:flex;align-items:center;gap:6px;
+  padding:3px 10px;border-radius:5px;font-weight:700;font-size:0.8em;
   text-transform:uppercase;letter-spacing:0.5px;
 }
 .activity-phase.CAPTURING,.activity-phase.SCANNING{background:rgba(59,130,246,0.15);color:var(--accent)}
@@ -508,10 +470,123 @@ tr:hover td{background:rgba(99,102,241,0.04)}
 .activity-phase.SLEEPING,.activity-phase.IDLE,.activity-phase.WAITING{background:rgba(100,116,139,0.15);color:var(--muted)}
 .activity-phase.STARTING,.activity-phase.READY{background:rgba(16,185,129,0.15);color:var(--green)}
 .activity-phase.UNKNOWN,.activity-phase.ERROR{background:var(--red-dim);color:var(--red)}
-.activity-detail{color:var(--text);font-size:0.85em}
-.activity-meta{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:0.75em;color:var(--muted)}
+.activity-phase.OFFLINE{background:rgba(100,116,139,0.1);color:var(--muted)}
+.activity-detail{color:var(--text);font-size:0.8em}
+.activity-meta{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:0.72em;color:var(--muted)}
 .activity-meta .stale{color:var(--red)}
-.uptime-badge{font-size:0.75em;color:var(--muted)}
+
+/* ─── Metrics Grid ─── */
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:14px}
+.metric-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:12px 14px;position:relative;overflow:hidden;transition:all 0.25s ease;
+}
+.metric-card:hover{border-color:rgba(99,102,241,0.3);transform:translateY(-1px);box-shadow:var(--glow)}
+.metric-card .label{font-size:0.65em;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.metric-card .value{font-size:1.4em;font-weight:800;letter-spacing:-0.5px}
+.metric-card .sub{font-size:0.72em;color:var(--muted);margin-top:3px}
+.metric-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity 0.3s;
+}
+.metric-card:hover::after{opacity:1}
+
+/* ─── Section Panels ─── */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.panel-header{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+}
+.panel-header h2{font-size:0.82em;font-weight:700;color:var(--text);letter-spacing:-0.2px}
+.panel-header .badge{font-size:0.65em;padding:2px 7px;border-radius:5px;font-weight:600;background:rgba(99,102,241,0.15);color:var(--accent2)}
+.panel-header .badge.red{background:var(--red-dim);color:var(--red)}
+.panel-header .badge.green{background:var(--green-dim);color:var(--green)}
+.panel-header .badge.yellow{background:var(--yellow-dim);color:var(--yellow)}
+.panel-body{padding:12px 14px}
+
+/* ─── Tables ─── */
+table{width:100%;border-collapse:collapse;font-size:0.78em}
+th{text-align:left;color:var(--muted);padding:6px 8px;font-weight:600;font-size:0.8em;text-transform:uppercase;letter-spacing:0.3px;border-bottom:1px solid var(--border)}
+td{padding:6px 8px;border-bottom:1px solid rgba(30,41,59,0.5);transition:background 0.15s}
+tr:hover td{background:rgba(99,102,241,0.04)}
+
+/* ─── Colors ─── */
+.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--accent)}.cyan{color:var(--cyan)}.muted{color:var(--muted)}
+
+/* ─── Tags ─── */
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:0.72em;font-weight:600}
+.tag.win{background:var(--green-dim);color:var(--green)}
+.tag.loss{background:var(--red-dim);color:var(--red)}
+.tag.long{background:rgba(6,182,212,0.15);color:var(--cyan)}
+.tag.short{background:rgba(245,158,11,0.15);color:var(--yellow)}
+.tag.bot{background:rgba(59,130,246,0.15);color:var(--accent)}
+.tag.ext{background:rgba(100,116,139,0.15);color:var(--muted)}
+.tag.classA{background:var(--green-dim);color:var(--green)}
+.tag.classB{background:var(--yellow-dim);color:var(--yellow)}
+.tag.entry{background:rgba(6,182,212,0.12);color:var(--cyan)}
+.tag.exit{background:rgba(245,158,11,0.12);color:var(--yellow)}
+
+/* ─── Bar Chart ─── */
+.bar-container{display:flex;align-items:center;gap:5px}
+.bar{height:5px;border-radius:3px;min-width:2px;transition:width 0.5s ease}
+.bar.pos{background:var(--green)}.bar.neg{background:var(--red)}
+
+/* ─── Equity Chart ─── */
+.eq-chart{position:relative;height:140px}
+.eq-chart canvas{width:100%;height:100%}
+
+/* ─── Grid Layouts ─── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:800px){.grid-2{grid-template-columns:1fr}}
+
+/* ─── Right Sidebar ─── */
+.sidebar{display:flex;flex-direction:column;gap:12px}
+.sidebar .panel{margin-bottom:0}
+.pair-list{max-height:320px;overflow-y:auto}
+.pair-list::-webkit-scrollbar{width:4px}
+.pair-list::-webkit-scrollbar-track{background:transparent}
+.pair-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.pair-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:4px 0;border-bottom:1px solid rgba(30,41,59,0.3);font-size:0.82em;
+}
+.pair-item:last-child{border-bottom:none}
+.pair-item .pair-name{font-weight:600;color:var(--text)}
+.session-group-label{
+  font-size:0.7em;text-transform:uppercase;letter-spacing:0.8px;
+  color:var(--muted);font-weight:700;padding:8px 0 4px;margin-top:4px;
+  border-bottom:1px solid var(--border);
+}
+.session-group-label:first-child{margin-top:0}
+
+/* ─── CSV Log Table ─── */
+.csv-log-wrap{max-height:400px;overflow:auto}
+.csv-log-wrap::-webkit-scrollbar{width:4px;height:4px}
+.csv-log-wrap::-webkit-scrollbar-track{background:transparent}
+.csv-log-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.csv-log-wrap table{min-width:900px}
+
+/* ─── Footer ─── */
+.footer{
+  text-align:center;padding:12px;font-size:0.68em;color:var(--muted);
+  border-top:1px solid var(--border);margin-top:4px;
+}
+.footer a{color:var(--accent);text-decoration:none}
+
+/* ─── Animations ─── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeIn 0.35s ease forwards}
+
+/* ─── Refresh indicator ─── */
+.refresh-ring{width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;display:none}
+.refresh-ring.active{display:inline-block;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ─── Position source indicator ─── */
+.src-indicator{display:inline-flex;align-items:center;gap:4px;font-size:0.7em;font-weight:600}
+.src-indicator.bot-src{color:var(--accent)}
+.src-indicator.ext-src{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -544,162 +619,269 @@ tr:hover td{background:rgba(99,102,241,0.04)}
         </label>
       </div>
       <div class="refresh-ring" id="refresh-ring"></div>
-      <span style="font-size:0.72em;color:var(--muted)" id="lastUpdate">--:--:--</span>
+      <span style="font-size:0.68em;color:var(--muted)" id="lastUpdate">--:--:--</span>
     </div>
   </div>
 </div>
 
-<!-- ─── MAIN ─── -->
-<div class="container">
-
-  <!-- Activity Status Bar -->
-  <div class="activity-bar animate-in" id="activity-bar">
-    <div class="activity-phase UNKNOWN" id="act-phase">LOADING</div>
-    <div class="activity-detail" id="act-detail">Connecting to bot...</div>
-    <div class="activity-meta">
-      <span id="act-session"></span>
-      <span id="act-positions"></span>
-      <span id="act-age"></span>
-      <span class="uptime-badge" id="act-uptime"></span>
-    </div>
-  </div>
-
-  <!-- Metrics -->
-  <div class="metrics-grid" id="metrics">
-    <div class="metric-card animate-in"><div class="label">Total Trades</div><div class="value" id="m-trades">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Win Rate</div><div class="value" id="m-wr">-</div><div class="sub" id="m-wl">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Expectancy</div><div class="value" id="m-exp">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Profit Factor</div><div class="value" id="m-pf">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Total P&amp;L (R)</div><div class="value" id="m-pnlr">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Total P&amp;L ($)</div><div class="value" id="m-pnl">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Equity</div><div class="value blue" id="m-eq">-</div></div>
-    <div class="metric-card animate-in"><div class="label">Open Positions</div><div class="value yellow" id="m-pend">-</div></div>
-  </div>
-
-  <!-- Expected vs Actual -->
-  <div class="panel animate-in">
-    <div class="panel-header"><h2>Performance vs Backtest Baseline</h2><span class="badge">12,355 TRADES</span></div>
-    <div class="panel-body">
-      <table>
-        <tr><th>Metric</th><th>Live</th><th>Expected</th><th>Delta</th></tr>
-        <tr><td>Win Rate</td><td id="cmp-wr-a">-</td><td id="cmp-wr-e">-</td><td id="cmp-wr-d">-</td></tr>
-        <tr><td>Expectancy (R)</td><td id="cmp-exp-a">-</td><td id="cmp-exp-e">-</td><td id="cmp-exp-d">-</td></tr>
-        <tr><td>Profit Factor</td><td id="cmp-pf-a">-</td><td id="cmp-pf-e">-</td><td id="cmp-pf-d">-</td></tr>
-        <tr><td>Avg Win (R)</td><td id="cmp-aw-a">-</td><td id="cmp-aw-e">-</td><td id="cmp-aw-d">-</td></tr>
-        <tr><td>Avg Loss (R)</td><td id="cmp-al-a">-</td><td id="cmp-al-e">-</td><td id="cmp-al-d">-</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- Equity Curve -->
-  <div class="panel animate-in">
-    <div class="panel-header"><h2>Equity Curve</h2><span class="badge" id="eq-range">-</span></div>
-    <div class="panel-body">
-      <div class="eq-chart"><canvas id="eqChart" height="160"></canvas></div>
-    </div>
-  </div>
-
-  <!-- Session + Trail -->
-  <div class="grid-2">
-    <div class="panel animate-in">
-      <div class="panel-header"><h2>By Session</h2></div>
-      <div class="panel-body">
-        <table>
-          <tr><th>Session</th><th>Trades</th><th>WR%</th><th>P&amp;L (R)</th><th>Exp (R)</th></tr>
-          <tbody id="ses-table"></tbody>
-        </table>
-      </div>
-    </div>
-    <div class="panel animate-in">
-      <div class="panel-header"><h2>Trail Performance</h2><span class="badge">GUARDIAN v3</span></div>
-      <div class="panel-body">
-        <table>
-          <tr><th>Metric</th><th>Value</th></tr>
-          <tbody id="trail-table"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- By Pair -->
-  <div class="panel animate-in">
-    <div class="panel-header"><h2>By Pair</h2><span class="badge" id="pair-count">-</span></div>
-    <div class="panel-body">
-      <table>
-        <tr><th>Pair</th><th>Trades</th><th>WR%</th><th>P&amp;L (R)</th><th></th></tr>
-        <tbody id="pair-table"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Recent Trades -->
-  <div class="panel animate-in">
-    <div class="panel-header"><h2>Recent Trades</h2><span class="badge" id="trade-count">LAST 50</span></div>
-    <div class="panel-body" style="overflow-x:auto">
-      <table>
-        <tr><th>Time</th><th>Pair</th><th>Dir</th><th>Session</th><th>P&amp;L (R)</th><th>Peak</th><th>R Left</th><th>Duration</th><th>Exit</th></tr>
-        <tbody id="trade-table"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Open Positions -->
-  <div class="panel animate-in" id="pending-section" style="display:none">
-    <div class="panel-header"><h2>Open Positions</h2><span class="badge red" id="open-count">-</span></div>
-    <div class="panel-body">
-      <table>
-        <tr><th>Pair</th><th>Dir</th><th>Entry</th><th>SL</th><th>Session</th><th>Opened</th></tr>
-        <tbody id="pending-table"></tbody>
-      </table>
-    </div>
-  </div>
-
+<!-- ─── NEXT SESSION HERO TIMER ─── -->
+<div class="next-session-hero">
+  <div class="next-session-label">Next Trading Session</div>
+  <div class="next-session-name" id="next-ses-name">--</div>
+  <div class="next-session-timer" id="next-ses-timer">--:--:--</div>
 </div>
+
+<!-- ─── MAIN LAYOUT ─── -->
+<div class="main-layout">
+
+  <!-- LEFT COLUMN (main content) -->
+  <div class="main-col">
+
+    <!-- Activity Status Bar -->
+    <div class="activity-bar animate-in" id="activity-bar">
+      <div class="activity-phase OFFLINE" id="act-phase">OFFLINE</div>
+      <div class="activity-detail" id="act-detail">Waiting for bot data...</div>
+      <div class="activity-meta">
+        <span id="act-session"></span>
+        <span id="act-positions"></span>
+        <span id="act-age"></span>
+        <span id="act-uptime" style="font-size:0.9em"></span>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics-grid" id="metrics">
+      <div class="metric-card animate-in"><div class="label">Total Trades</div><div class="value" id="m-trades">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Win Rate</div><div class="value" id="m-wr">-</div><div class="sub" id="m-wl">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Expectancy</div><div class="value" id="m-exp">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Profit Factor</div><div class="value" id="m-pf">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Total P&amp;L (R)</div><div class="value" id="m-pnlr">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Total P&amp;L ($)</div><div class="value" id="m-pnl">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Equity</div><div class="value blue" id="m-eq">-</div></div>
+      <div class="metric-card animate-in"><div class="label">Open Positions</div><div class="value yellow" id="m-pend">-</div></div>
+    </div>
+
+    <!-- Open Positions (always visible) -->
+    <div class="panel animate-in" id="positions-panel">
+      <div class="panel-header">
+        <h2>Open Positions</h2>
+        <span class="badge" id="open-count">0 OPEN</span>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr><th>Pair</th><th>Dir</th><th>Entry</th><th>SL</th><th>Session</th><th>Source</th><th>Opened</th></tr>
+          <tbody id="positions-table">
+            <tr><td colspan="7" class="muted" style="text-align:center;padding:16px">No open positions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Full Trade Log (CSV) -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Trade Log</h2><span class="badge" id="csv-log-count">-</span></div>
+      <div class="panel-body csv-log-wrap">
+        <table>
+          <tr><th>Time (UTC)</th><th>Pair</th><th>Session</th><th>Dir</th><th>Action</th><th>Price</th><th>Qty</th><th>SL</th><th>TP</th><th>Risk/U</th><th>Fee (R)</th><th>Eq Before</th><th>Eq After</th><th>Notes</th></tr>
+          <tbody id="csv-log-table">
+            <tr><td colspan="14" class="muted" style="text-align:center;padding:16px">No trade log data</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Equity Curve -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Equity Curve</h2><span class="badge" id="eq-range">-</span></div>
+      <div class="panel-body">
+        <div class="eq-chart"><canvas id="eqChart" height="140"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Performance vs Backtest -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Performance vs Backtest Baseline</h2><span class="badge">12,355 TRADES</span></div>
+      <div class="panel-body">
+        <table>
+          <tr><th>Metric</th><th>Live</th><th>Expected</th><th>Delta</th></tr>
+          <tr><td>Win Rate</td><td id="cmp-wr-a">-</td><td id="cmp-wr-e">-</td><td id="cmp-wr-d">-</td></tr>
+          <tr><td>Expectancy (R)</td><td id="cmp-exp-a">-</td><td id="cmp-exp-e">-</td><td id="cmp-exp-d">-</td></tr>
+          <tr><td>Profit Factor</td><td id="cmp-pf-a">-</td><td id="cmp-pf-e">-</td><td id="cmp-pf-d">-</td></tr>
+          <tr><td>Avg Win (R)</td><td id="cmp-aw-a">-</td><td id="cmp-aw-e">-</td><td id="cmp-aw-d">-</td></tr>
+          <tr><td>Avg Loss (R)</td><td id="cmp-al-a">-</td><td id="cmp-al-e">-</td><td id="cmp-al-d">-</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Session + Trail -->
+    <div class="grid-2">
+      <div class="panel animate-in">
+        <div class="panel-header"><h2>By Session</h2></div>
+        <div class="panel-body">
+          <table>
+            <tr><th>Session</th><th>Trades</th><th>WR%</th><th>P&amp;L (R)</th><th>Exp (R)</th></tr>
+            <tbody id="ses-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel animate-in">
+        <div class="panel-header"><h2>Trail Performance</h2><span class="badge">GUARDIAN v3</span></div>
+        <div class="panel-body">
+          <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tbody id="trail-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- By Pair -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>By Pair</h2><span class="badge" id="pair-count">-</span></div>
+      <div class="panel-body">
+        <table>
+          <tr><th>Pair</th><th>Trades</th><th>WR%</th><th>P&amp;L (R)</th><th></th></tr>
+          <tbody id="pair-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Recent Trades (JSONL matched) -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Recent Trades</h2><span class="badge" id="trade-count">LAST 50</span></div>
+      <div class="panel-body" style="overflow-x:auto">
+        <table>
+          <tr><th>Time</th><th>Pair</th><th>Dir</th><th>Session</th><th>P&amp;L (R)</th><th>Peak</th><th>R Left</th><th>Duration</th><th>Exit</th></tr>
+          <tbody id="trade-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- Configured Pairs by Class -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Listed Pairs</h2><span class="badge" id="total-pairs-badge">-</span></div>
+      <div class="panel-body pair-list" id="pair-list-panel">
+        <div class="muted" style="text-align:center;padding:12px;font-size:0.82em">Loading pairs...</div>
+      </div>
+    </div>
+
+    <!-- Session Schedule -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Sessions (UTC)</h2></div>
+      <div class="panel-body" style="font-size:0.82em">
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(30,41,59,0.3)">
+          <span style="font-weight:600">Asia</span><span class="muted">00:00 &ndash; 08:00</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(30,41,59,0.3)">
+          <span style="font-weight:600">London</span><span class="muted">08:00 &ndash; 16:00</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0">
+          <span style="font-weight:600">New York</span><span class="muted">16:00 &ndash; 00:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="panel animate-in">
+      <div class="panel-header"><h2>Quick Links</h2></div>
+      <div class="panel-body" style="font-size:0.82em;display:flex;flex-direction:column;gap:6px">
+        <a href="/api/stats" target="_blank" style="color:var(--accent);text-decoration:none">Stats API (JSON)</a>
+        <a href="/api/events" target="_blank" style="color:var(--accent);text-decoration:none">Raw Events (JSONL)</a>
+        <a href="/api/health" target="_blank" style="color:var(--accent);text-decoration:none">Health Check</a>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /main-layout -->
 
 <div class="footer">
-  FCB Command Centre &middot; Data: trades.jsonl &middot; Auto-refresh 30s &middot; <a href="/api/stats" target="_blank">API</a> &middot; <a href="/api/events" target="_blank">Raw Events</a>
+  FCB Command Centre v3 &middot; Guardian v3 Trail &middot; Auto-refresh 30s
 </div>
 
 <script>
 /* ─── Helpers ─── */
 const $=id=>document.getElementById(id);
-function fmt(v,d=2){return v!=null?Number(v).toFixed(d):'-'}
+function fmt(v,d=2){return v!=null&&v!==''?Number(v).toFixed(d):'-'}
 function pnlClass(v){return v>0?'green':v<0?'red':'muted'}
 function delta(a,e){let d=a-e;return '<span class="'+pnlClass(d)+'">'+(d>=0?'+':'')+fmt(d,3)+'</span>'}
 
-/* ─── Session Countdown ─── */
+/* ─── Session Definitions ─── */
 const SESSIONS=[
-  {id:'asia',name:'Asia',h:0,m:0},
-  {id:'london',name:'London',h:8,m:0},
-  {id:'ny',name:'New York',h:13,m:30},
+  {id:'asia',name:'Asia',h:0},
+  {id:'london',name:'London',h:8},
+  {id:'ny',name:'New York',h:16},
 ];
+
+/* ─── Session Countdowns + Next Session Hero ─── */
 function updateCountdowns(){
   const now=new Date();
   const utcH=now.getUTCHours(),utcM=now.getUTCMinutes(),utcS=now.getUTCSeconds();
-  const nowMins=utcH*60+utcM;
-  let nextIdx=-1,nextSecs=Infinity;
+  const nowTotal=utcH*3600+utcM*60+utcS;
+
+  let nextName='',nextSecs=Infinity,currentSession='';
+
   SESSIONS.forEach((s,i)=>{
-    const sMins=s.h*60+s.m;
-    let diff=sMins-nowMins;
-    if(diff<0)diff+=1440;
-    if(diff===0&&utcS>0)diff=1440;
-    const secs=diff*60-utcS;
+    const startSec=s.h*3600;
+    const nextI=(i+1)%SESSIONS.length;
+    const endSec=nextI===0?24*3600:SESSIONS[nextI].h*3600;
+
+    // Time until this session starts
+    let diff=startSec-nowTotal;
+    if(diff<=0)diff+=86400;
+    if(diff===86400)diff=86400; // exactly on the mark
+
     const el=$('timer-'+s.id);
     const chip=$('ses-'+s.id);
-    const hh=Math.floor(secs/3600);
-    const mm=Math.floor((secs%3600)/60);
-    const ss=secs%60;
+    const hh=Math.floor(diff/3600);
+    const mm=Math.floor((diff%3600)/60);
+    const ss=diff%60;
     el.textContent=(hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm+':'+(ss<10?'0':'')+ss;
     chip.classList.remove('active');
-    if(secs<nextSecs){nextSecs=secs;nextIdx=i}
-    // If session started within last 30 min, highlight as active
-    let elapsed=nowMins-sMins;
-    if(elapsed<0)elapsed+=1440;
-    if(elapsed<=30){
+
+    // Check if currently in this session
+    if(nowTotal>=startSec&&nowTotal<endSec){
+      currentSession=s.name;
       chip.classList.add('active');
     }
+
+    // Find next session
+    if(diff<nextSecs&&diff>0){
+      nextSecs=diff;
+      nextName=s.name;
+    }
   });
-  if(nextIdx>=0)$('ses-'+SESSIONS[nextIdx].id).classList.add('active');
+
+  // Hero timer
+  const heroName=$('next-ses-name');
+  const heroTimer=$('next-ses-timer');
+  if(currentSession){
+    // Currently in a session — show time until NEXT session
+    heroName.textContent=currentSession+' (ACTIVE)';
+    heroTimer.classList.add('active-now');
+    if(nextSecs<Infinity){
+      const hh=Math.floor(nextSecs/3600);
+      const mm=Math.floor((nextSecs%3600)/60);
+      const ss=nextSecs%60;
+      heroTimer.textContent='Next: '+(hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm+':'+(ss<10?'0':'')+ss;
+    }
+  }else{
+    heroName.textContent=nextName||'--';
+    heroTimer.classList.remove('active-now');
+    if(nextSecs<Infinity){
+      const hh=Math.floor(nextSecs/3600);
+      const mm=Math.floor((nextSecs%3600)/60);
+      const ss=nextSecs%60;
+      heroTimer.textContent=(hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm+':'+(ss<10?'0':'')+ss;
+    }else{
+      heroTimer.textContent='--:--:--';
+    }
+  }
 }
 setInterval(updateCountdowns,1000);
 updateCountdowns();
@@ -741,106 +923,171 @@ function drawEquityCurve(curve){
   const ctx=canvas.getContext('2d');
   const dpr=window.devicePixelRatio||1;
   const rect=canvas.parentElement.getBoundingClientRect();
-  canvas.width=rect.width*dpr;canvas.height=160*dpr;
-  canvas.style.width=rect.width+'px';canvas.style.height='160px';
+  canvas.width=rect.width*dpr;canvas.height=140*dpr;
+  canvas.style.width=rect.width+'px';canvas.style.height='140px';
   ctx.scale(dpr,dpr);
-  const W=rect.width,H=160;
+  const W=rect.width,H=140;
   if(!curve||curve.length<2){
-    ctx.fillStyle='#64748b';ctx.font='13px Inter,sans-serif';
+    ctx.fillStyle='#64748b';ctx.font='12px Inter,sans-serif';
     ctx.textAlign='center';ctx.fillText('Waiting for trade data...',W/2,H/2);
     return;
   }
   const eqs=curve.map(c=>c.eq);
   const mn=Math.min(...eqs),mx=Math.max(...eqs);
-  const pad=12,range=mx-mn||1;
-  // Grid lines
+  const pad=10,range=mx-mn||1;
   ctx.strokeStyle='rgba(30,41,59,0.6)';ctx.lineWidth=0.5;
-  for(let i=0;i<5;i++){
-    const y=pad+(i/4)*(H-2*pad);
-    ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(W-pad,y);ctx.stroke();
-  }
-  // Gradient fill
+  for(let i=0;i<5;i++){const y=pad+(i/4)*(H-2*pad);ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(W-pad,y);ctx.stroke()}
   const grad=ctx.createLinearGradient(0,0,0,H);
   grad.addColorStop(0,'rgba(59,130,246,0.15)');grad.addColorStop(1,'rgba(59,130,246,0)');
   ctx.fillStyle=grad;ctx.beginPath();
-  curve.forEach((c,i)=>{
-    const x=pad+(i/(curve.length-1))*(W-2*pad);
-    const y=H-pad-((c.eq-mn)/range)*(H-2*pad);
-    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-  });
+  curve.forEach((c,i)=>{const x=pad+(i/(curve.length-1))*(W-2*pad);const y=H-pad-((c.eq-mn)/range)*(H-2*pad);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});
   const lastX=pad+((curve.length-1)/(curve.length-1))*(W-2*pad);
   ctx.lineTo(lastX,H-pad);ctx.lineTo(pad,H-pad);ctx.closePath();ctx.fill();
-  // Line
   ctx.strokeStyle='#3b82f6';ctx.lineWidth=2;ctx.beginPath();
-  curve.forEach((c,i)=>{
-    const x=pad+(i/(curve.length-1))*(W-2*pad);
-    const y=H-pad-((c.eq-mn)/range)*(H-2*pad);
-    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-  });
+  curve.forEach((c,i)=>{const x=pad+(i/(curve.length-1))*(W-2*pad);const y=H-pad-((c.eq-mn)/range)*(H-2*pad);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});
   ctx.stroke();
-  // Dot on last point
   const ly=H-pad-((eqs[eqs.length-1]-mn)/range)*(H-2*pad);
   ctx.fillStyle='#3b82f6';ctx.beginPath();ctx.arc(lastX,ly,4,0,Math.PI*2);ctx.fill();
   ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(lastX,ly,2,0,Math.PI*2);ctx.fill();
-  // Labels
-  ctx.fillStyle='#64748b';ctx.font='11px Inter,sans-serif';ctx.textAlign='left';
+  ctx.fillStyle='#64748b';ctx.font='10px Inter,sans-serif';ctx.textAlign='left';
   ctx.fillText('$'+fmt(mn,0),pad,H-2);
-  ctx.textAlign='right';ctx.fillText('$'+fmt(mx,0),W-pad,14);
-  // Range badge
-  $('eq-range').textContent='$'+fmt(mn,0)+' → $'+fmt(mx,0);
+  ctx.textAlign='right';ctx.fillText('$'+fmt(mx,0),W-pad,12);
+  $('eq-range').textContent='$'+fmt(mn,0)+' \\u2192 $'+fmt(mx,0);
 }
 
-/* ─── Render Pending ─── */
-function renderPending(pending){
-  const sec=$('pending-section');
-  const tb=$('pending-table');
-  if(!pending||pending.length===0){sec.style.display='none';return}
-  sec.style.display='block';
-  $('open-count').textContent=pending.length+' OPEN';
-  tb.innerHTML=pending.map(p=>'<tr>'+
-    '<td><b>'+((p.symbol||'').replace('/USDT:USDT',''))+'</b></td>'+
-    '<td><span class="tag '+(p.direction==='long'?'long':'short')+'">'+(p.direction||'')+'</span></td>'+
-    '<td>'+fmt(p.entry_price,6)+'</td>'+
-    '<td>'+fmt(p.sl,6)+'</td>'+
-    '<td>'+(p.session||'')+'</td>'+
-    '<td style="font-size:0.75em">'+(p.entry_time||'')+'</td>'+
-  '</tr>').join('');
+/* ─── Render Open Positions ─── */
+function renderPositions(pending){
+  const tb=$('positions-table');
+  const badge=$('open-count');
+  if(!pending||pending.length===0){
+    badge.textContent='0 OPEN';
+    badge.className='badge';
+    tb.innerHTML='<tr><td colspan="7" class="muted" style="text-align:center;padding:16px">No open positions</td></tr>';
+    return;
+  }
+  badge.textContent=pending.length+' OPEN';
+  badge.className='badge yellow';
+  tb.innerHTML=pending.map(p=>{
+    const sym=(p.symbol||'').replace('/USDT:USDT','');
+    const isBot=p.session||p.entry_time; // bot-managed if it has session/entry_time data
+    const srcTag=isBot?'<span class="tag bot">BOT</span>':'<span class="tag ext">EXTERNAL</span>';
+    return '<tr>'+
+      '<td><b>'+sym+'</b></td>'+
+      '<td><span class="tag '+(p.direction==='long'?'long':'short')+'">'+(p.direction||'?')+'</span></td>'+
+      '<td>'+fmt(p.entry_price,4)+'</td>'+
+      '<td>'+fmt(p.sl,4)+'</td>'+
+      '<td>'+(p.session||'-')+'</td>'+
+      '<td>'+srcTag+'</td>'+
+      '<td style="font-size:0.72em">'+(p.entry_time?p.entry_time.slice(11,19):'-')+'</td>'+
+    '</tr>';
+  }).join('');
 }
 
-/* ─── Main Update ─── */
+/* ─── Render CSV Trade Log ─── */
+function renderCsvLog(rows){
+  const tb=$('csv-log-table');
+  const badge=$('csv-log-count');
+  if(!rows||rows.length===0){
+    badge.textContent='NO DATA';
+    tb.innerHTML='<tr><td colspan="14" class="muted" style="text-align:center;padding:16px">No trade log data</td></tr>';
+    return;
+  }
+  badge.textContent=rows.length+' ROWS';
+  // Reverse for most recent first
+  const rev=rows.slice().reverse();
+  tb.innerHTML=rev.map(r=>{
+    const isEntry=(r.action||'').toUpperCase()==='ENTRY';
+    const actionTag=isEntry?'<span class="tag entry">ENTRY</span>':'<span class="tag exit">EXIT</span>';
+    const dirTag=r.direction==='long'?'<span class="tag long">L</span>':'<span class="tag short">S</span>';
+    const sym=(r.symbol||'').replace('/USDT:USDT','');
+    const ts=(r.timestamp_utc||'').replace('T',' ').slice(0,19);
+    const eqBefore=r.equity_before?'$'+fmt(r.equity_before,2):'';
+    const eqAfter=r.equity_after?'$'+fmt(r.equity_after,2):'';
+    return '<tr>'+
+      '<td style="font-size:0.72em;white-space:nowrap">'+ts+'</td>'+
+      '<td><b>'+sym+'</b></td>'+
+      '<td>'+(r.session||'')+'</td>'+
+      '<td>'+dirTag+'</td>'+
+      '<td>'+actionTag+'</td>'+
+      '<td>'+fmt(r.price,4)+'</td>'+
+      '<td>'+fmt(r.qty,4)+'</td>'+
+      '<td>'+fmt(r.sl,4)+'</td>'+
+      '<td>'+fmt(r.tp,4)+'</td>'+
+      '<td>'+fmt(r.risk_per_unit,6)+'</td>'+
+      '<td class="'+(Number(r.fee_r)<0?'red':'muted')+'">'+fmt(r.fee_r,4)+'</td>'+
+      '<td>'+eqBefore+'</td>'+
+      '<td>'+eqAfter+'</td>'+
+      '<td style="font-size:0.72em;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+(r.notes||'')+'">'+(r.notes||'')+'</td>'+
+    '</tr>';
+  }).join('');
+}
+
+/* ─── Render Pair List (sidebar) ─── */
+function renderPairList(pairList){
+  const panel=$('pair-list-panel');
+  const badge=$('total-pairs-badge');
+  if(!pairList||Object.keys(pairList).length===0){
+    panel.innerHTML='<div class="muted" style="text-align:center;padding:12px;font-size:0.82em">No pair data</div>';
+    badge.textContent='-';
+    return;
+  }
+  let totalPairs=0;
+  let html='';
+  const sessionOrder=['asia','london','ny'];
+  const sessionLabels={asia:'Asia (00-08 UTC)',london:'London (08-16 UTC)',ny:'New York (16-00 UTC)'};
+  sessionOrder.forEach(ses=>{
+    const pairs=pairList[ses];
+    if(!pairs||pairs.length===0)return;
+    totalPairs+=pairs.length;
+    html+='<div class="session-group-label">'+sessionLabels[ses]+' &mdash; '+pairs.length+' pairs</div>';
+    // Sort: Class A first, then B
+    const sorted=pairs.slice().sort((a,b)=>{if(a.cls===b.cls)return a.pair.localeCompare(b.pair);return a.cls==='A'?-1:1});
+    sorted.forEach(p=>{
+      const sym=p.pair.replace('/USDT:USDT','');
+      const clsTag=p.cls==='A'?'<span class="tag classA">A</span>':'<span class="tag classB">B</span>';
+      html+='<div class="pair-item"><span class="pair-name">'+sym+'</span>'+clsTag+'</div>';
+    });
+  });
+  panel.innerHTML=html;
+  badge.textContent=totalPairs+' PAIRS';
+}
+
+/* ─── Activity Bar ─── */
 function updateActivity(act){
   if(!act)return;
   const phaseEl=$('act-phase');
   const detailEl=$('act-detail');
-  phaseEl.textContent=act.phase||'UNKNOWN';
-  phaseEl.className='activity-phase '+(act.phase||'UNKNOWN');
-  detailEl.textContent=act.detail||'';
-  // Session
+  const phase=act.phase||'OFFLINE';
+  phaseEl.textContent=phase;
+  phaseEl.className='activity-phase '+phase;
+  detailEl.textContent=act.detail||'Waiting for bot data...';
   const sesEl=$('act-session');
-  if(act.session){sesEl.textContent='Session: '+act.session.toUpperCase()}else if(act.next_session){sesEl.textContent='Next: '+act.next_session}else{sesEl.textContent=''}
-  // Positions
+  if(act.session){sesEl.textContent='Session: '+act.session.toUpperCase()}
+  else if(act.next_session){sesEl.textContent='Next: '+act.next_session}
+  else{sesEl.textContent=''}
   const posEl=$('act-positions');
-  if(act.positions>0){posEl.textContent=act.positions+' position(s)';posEl.style.color='var(--yellow)'}else{posEl.textContent='No positions';posEl.style.color='var(--muted)'}
-  // Age/staleness
+  if(act.positions>0){posEl.textContent=act.positions+' pos';posEl.style.color='var(--yellow)'}
+  else{posEl.textContent='';posEl.style.color='var(--muted)'}
   const ageEl=$('act-age');
   if(act.age_secs!=null&&act.age_secs>=0){
-    if(act.stale){ageEl.innerHTML='<span class="stale">Last update '+Math.floor(act.age_secs/60)+'m ago \u2014 BOT MAY BE DOWN</span>'}else if(act.age_secs<60){ageEl.textContent='Updated '+act.age_secs+'s ago'}else{ageEl.textContent='Updated '+Math.floor(act.age_secs/60)+'m ago'}
+    if(act.stale){ageEl.innerHTML='<span class="stale">'+Math.floor(act.age_secs/60)+'m ago \\u2014 STALE</span>'}
+    else if(act.age_secs<60){ageEl.textContent=act.age_secs+'s ago'}
+    else{ageEl.textContent=Math.floor(act.age_secs/60)+'m ago'}
   }else{ageEl.textContent=''}
-  // Uptime
   const upEl=$('act-uptime');
   if(act.uptime_since){
-    try{const start=new Date(act.uptime_since);const now=new Date();const diff=Math.floor((now-start)/1000);const h=Math.floor(diff/3600);const m=Math.floor((diff%3600)/60);upEl.textContent='Uptime: '+(h>0?h+'h ':'')+m+'m'}catch(e){upEl.textContent=''}
+    try{const start=new Date(act.uptime_since);const now=new Date();const diff=Math.floor((now-start)/1000);
+    const h=Math.floor(diff/3600);const m=Math.floor((diff%3600)/60);
+    upEl.textContent='Up '+(h>0?h+'h ':'')+m+'m'}catch(e){upEl.textContent=''}
   }else{upEl.textContent=''}
 }
 
+/* ─── Main Update ─── */
 function update(data){
   $('lastUpdate').textContent=new Date().toLocaleTimeString();
-  // Bot status from control file
-  if(data.bot_status){
-    updateBotStatus(data.bot_status==='running');
-  }
-  // Activity status
+  if(data.bot_status){updateBotStatus(data.bot_status==='running')}
   updateActivity(data.activity);
+
   // Metrics
   $('m-trades').textContent=data.total_trades||0;
   const wrEl=$('m-wr');
@@ -904,7 +1151,7 @@ function update(data){
     trTb.innerHTML='<tr><td colspan="2" class="muted">No trailed trades yet</td></tr>';
   }
 
-  // Pairs
+  // Pairs performance
   const pairTb=$('pair-table');
   const pairs=Object.entries(data.by_pair||{});
   $('pair-count').textContent=pairs.length+' PAIRS';
@@ -920,14 +1167,14 @@ function update(data){
     '</tr>';
   }).join('');
 
-  // Trades
+  // Recent trades (JSONL matched)
   const tradeTb=$('trade-table');
   const trades=(data.trades||[]).slice().reverse();
   $('trade-count').textContent='LAST '+trades.length;
   tradeTb.innerHTML=trades.map(t=>{
     const dur=t.duration_secs>0?(t.duration_secs/60).toFixed(0)+'m':'?';
     return '<tr>'+
-      '<td style="font-size:0.75em">'+(t.exit_time?.slice(11,19)||'')+'</td>'+
+      '<td style="font-size:0.72em">'+(t.exit_time?.slice(11,19)||'')+'</td>'+
       '<td><b>'+(t.symbol?.replace('/USDT:USDT','')||'')+'</b></td>'+
       '<td><span class="tag '+(t.direction==='long'?'long':'short')+'">'+(t.direction||'')+'</span></td>'+
       '<td>'+(t.session||'')+'</td>'+
@@ -942,8 +1189,14 @@ function update(data){
   // Equity curve
   drawEquityCurve(data.equity_curve);
 
-  // Pending
-  renderPending(data.pending);
+  // Open positions
+  renderPositions(data.pending);
+
+  // CSV trade log
+  renderCsvLog(data.csv_log);
+
+  // Pair list sidebar
+  renderPairList(data.pair_list);
 }
 
 /* ─── Refresh Logic ─── */
