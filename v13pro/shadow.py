@@ -75,6 +75,7 @@ class ShadowTrader:
         self._regime = None   # RegimeDetector (set via set_regime_detector)
         self._directional = None  # DirectionalIntelligence (set via set_directional)
         self._edge_radar = None   # EdgeRadar (set via set_edge_radar)
+        self._micro_tf = None     # MicroTFIntelligence (set via set_micro_tf)
 
     def set_thesis_logger(self, thesis):
         """Wire in thesis logger to receive all shadow outcomes."""
@@ -91,6 +92,10 @@ class ShadowTrader:
     def set_edge_radar(self, edge_radar):
         """Wire in edge radar for incremental shadow outcome updates."""
         self._edge_radar = edge_radar
+
+    def set_micro_tf(self, micro_tf):
+        """Wire in micro-TF intelligence for 3m/5m outcome tracking."""
+        self._micro_tf = micro_tf
 
     async def start(self):
         """Start the shadow tracking loop."""
@@ -499,6 +504,20 @@ class ShadowTrader:
                     tf=item.get("tf", ""),
                     side=item.get("side", ""),
                     sentiment_score=sent.get("score", 0.0),
+                )
+            except Exception:
+                pass
+
+        # Feed micro-TF intelligence (3m/5m outcome tracking for cross-TF validation)
+        if self._micro_tf:
+            try:
+                self._micro_tf.record_outcome(
+                    strategy=item.get("strategy", ""),
+                    tf=item.get("tf", ""),
+                    pnl_r=pnl_r,
+                    peak_r=item.get("peak_r", 0),
+                    side=item.get("side", ""),
+                    symbol=item.get("symbol", ""),
                 )
             except Exception:
                 pass

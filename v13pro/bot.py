@@ -55,6 +55,9 @@ from v13pro.burst_engine import BurstEngine
 from v13pro.burst_optimizer import BurstOptimizer
 from v13pro.directional import DirectionalIntelligence
 from v13pro.edge_radar import EdgeRadar
+from v13pro.micro_tf import MicroTFIntelligence, MICRO_TFS
+from v13pro.momentum import MomentumAlignment
+from v13pro.session_lifecycle import SessionTracker
 from v13pro import preflight
 
 
@@ -88,6 +91,9 @@ class FCBBot:
         self._burst_optim = None  # BurstOptimizer (Phase 2A)
         self._directional = None  # DirectionalIntelligence
         self._edge_radar = None   # EdgeRadar (full shadow exploitation)
+        self._micro_tf = None     # MicroTFIntelligence (3m/5m cross-TF validation)
+        self._alignment = None    # MomentumAlignment (BTC/ETH/SOL trend alignment)
+        self._session_lc = None   # SessionTracker (intra-session lifecycle)
         self._watchdog = None     # Watchdog
         self._scan_count = 0
         self._signal_count = 0
@@ -236,6 +242,29 @@ class FCBBot:
         # Wire edge radar into shadow for incremental updates
         if self._shadow:
             self._shadow.set_edge_radar(self._edge_radar)
+
+        # Init Micro-TF Intelligence (3m/5m shadow → cross-TF validation)
+        self._micro_tf = MicroTFIntelligence()
+        log.info("Micro-TF intelligence ready (3m/5m shadow cross-validation)")
+        # Wire micro TF into shadow for incremental updates
+        if self._shadow:
+            self._shadow.set_micro_tf(self._micro_tf)
+
+        # Init Momentum Alignment Detector (BTC/ETH/SOL unanimous trend)
+        self._alignment = MomentumAlignment(
+            sentiment_gauge=self._sentiment,
+            micro_tf=self._micro_tf)
+        # Pre-warm alignment from existing sentiment cache
+        try:
+            sent = await self._sentiment.get_sentiment()
+            self._alignment.update(sent)
+            self._alignment.log_status()
+        except Exception:
+            log.info("Momentum alignment ready (will warm on first sentiment)")
+
+        # Init Session Lifecycle Tracker (intra-session risk modulation)
+        self._session_lc = SessionTracker()
+        self._session_lc.log_status()
 
         # Init lifecycle tracker (per-pair expansion/compression/drift scoring)
         self._lifecycle = LifecycleTracker()
@@ -749,13 +778,49 @@ class FCBBot:
             except Exception as e:
                 log.warning(f"Shadow record error: {e}")
 
+        # Record micro signal freshness for cross-TF validation
+        if self._micro_tf and tf in MICRO_TFS:
+            self._micro_tf.record_signal(
+                strategy=strat, tf=tf, side=sig.side, symbol=symbol)
+
         if not passed:
+            return
+
+        # ── Session lifecycle stop signal ──
+        # If session is fatigued/stopped (massive giveback), block new entries
+        if self._session_lc and self._session_lc.should_stop_trading():
+            log.info(f"  Skip {symbol}: session STOPPED (giveback too large)")
+            return
+
+        # ── Alignment side filter ──
+        # During BULL alignment, only allow longs (maximize edge direction)
+        if self._alignment and not self._alignment.side_filter(sig.side):
+            log.info(f"  Skip {symbol}: alignment direction={self._alignment.direction} "
+                     f"blocks {sig.side}")
             return
 
         # ── Live combo gate ──
         # All signals are already shadow-tracked above.
         # Only combos in LIVE_COMBOS proceed to real order placement.
-        if cfg.LIVE_COMBOS:
+        # Micro TFs (3m/5m) are ALWAYS shadow-only — they feed cross-TF validation.
+        if tf in MICRO_TFS:
+            log.debug(f"  Micro shadow: {symbol} [{strat}/{tf}] "
+                      f"conv={conviction:.0f}{grade} — micro TF (shadow-only)")
+            return
+
+        # ── Alignment-conditional combo promotion ──
+        # EMA_RIB/15m and DONCHIAN/1h are shadow-only normally but
+        # promote to live during sustained alignment (proven Feb 25 edge)
+        _alignment_promoted = False
+        if self._alignment:
+            base_strat_chk = strat.split("(")[0] if "(" in strat else strat
+            if self._alignment.is_combo_promoted(base_strat_chk, tf):
+                _alignment_promoted = True
+                log.info(f"  {symbol}: ALIGNMENT PROMOTED {strat}/{tf} → live "
+                         f"(alignment={self._alignment.state} "
+                         f"dir={self._alignment.direction})")
+
+        if cfg.LIVE_COMBOS and not _alignment_promoted:
             base_strat = strat.split("(")[0] if "(" in strat else strat
             tf_norm = tf.lower()
             if (base_strat, tf_norm) not in cfg.LIVE_COMBOS and (base_strat, tf.upper()) not in cfg.LIVE_COMBOS:
@@ -880,7 +945,26 @@ class FCBBot:
         # Calculate position sizing (conviction-adjusted + quality-scored)
         risk_pct = cfg.get_risk_pct(equity)
         dd_mult = cfg.get_drawdown_multiplier(equity, peak)
-        conv_mult = self._adaptive.conviction_multiplier(grade) if self._adaptive else cfg.CONVICTION_MULTIPLIER.get(grade, 1.0)
+
+        # ── Alignment-aware conviction ──
+        # During ALIGNED: use CONFIG conviction values (A+=1.50, A=1.15)
+        # not adaptive-crushed values (A+ was 1.09, A was 0.93)
+        if self._alignment and self._alignment.should_use_config_conviction():
+            conv_mult = cfg.CONVICTION_MULTIPLIER.get(grade, 1.0)
+            log.info(f"  {symbol}: alignment conviction override → "
+                     f"{grade}={conv_mult:.2f}x (config values)")
+        else:
+            conv_mult = self._adaptive.conviction_multiplier(grade) if self._adaptive else cfg.CONVICTION_MULTIPLIER.get(grade, 1.0)
+
+        # ── Alignment DD floor override ──
+        # During ALIGNED: prevent DD throttle from crushing position sizes
+        # (breaks the self-reinforcing recovery trap)
+        if self._alignment:
+            dd_floor = self._alignment.dd_floor()
+            if dd_floor is not None and dd_mult < dd_floor:
+                log.info(f"  {symbol}: alignment DD floor {dd_floor:.2f} "
+                         f"(was {dd_mult:.2f})")
+                dd_mult = dd_floor
         # Hunter signals use half risk
         hunter_mult = cfg.HUNTER_RISK_MULT if is_hunter else 1.0
         # Loss streak risk reduction (repeat losers get smaller size)
@@ -966,6 +1050,26 @@ class FCBBot:
             if burst_lev_mult != 1.0:
                 log.info(f"  {symbol}: burst leverage x{burst_lev_mult:.2f}")
 
+        # Cross-TF validation: micro (3m/5m) shadow validates macro signals
+        cross_tf_mult = 1.0
+        cross_tf_conv_boost = 0
+        if self._micro_tf:
+            cross_tf_mult = self._micro_tf.cross_tf_multiplier(
+                strat, tf, sig.side)
+            cross_tf_conv_boost = self._micro_tf.cross_tf_conviction_boost(
+                strat, tf, sig.side)
+            if cross_tf_conv_boost > 0:
+                conviction += cross_tf_conv_boost
+                log.info(f"  {symbol}: micro-TF cross-validated! "
+                         f"conv+{cross_tf_conv_boost} -> {conviction:.0f}")
+            # Market barometer from micro TFs
+            baro = self._micro_tf.market_barometer()
+            if baro.get('mult', 1.0) != 1.0:
+                cross_tf_mult *= baro['mult']
+            if abs(cross_tf_mult - 1.0) > 0.05:
+                log.info(f"  {symbol}: micro-TF risk x{cross_tf_mult:.2f} "
+                         f"(barometer={baro.get('label','?')})")
+
         # Edge Radar: combo heat + market heat + sentiment edge + hot seat
         edge_combo_mult = 1.0
         edge_market_mult = 1.0
@@ -1000,12 +1104,44 @@ class FCBBot:
                     f"{', HOT_SEAT' if _hot else ''}]"
                 )
 
+        # Momentum Alignment: BTC/ETH/SOL unanimous trend detection
+        alignment_mult = 1.0
+        bb_priority = None
+        if self._alignment:
+            alignment_mult = self._alignment.risk_multiplier()
+            if abs(alignment_mult - 1.0) > 0.05:
+                log.info(f"  {symbol}: alignment={self._alignment.state} "
+                         f"dir={self._alignment.direction} "
+                         f"risk x{alignment_mult:.2f}"
+                         f"{' SUSTAINED' if self._alignment.is_aligned else ''}")
+            # BB_BREAK/1h priority during alignment: wider trail + extra risk
+            bb_priority = self._alignment.bb_break_priority(strat, tf)
+            if bb_priority:
+                alignment_mult *= bb_priority["risk_mult"]
+                log.info(f"  {symbol}: BB_BREAK/1h PRIORITY during alignment! "
+                         f"risk x{bb_priority['risk_mult']:.2f} "
+                         f"trail={bb_priority['trail_activation_r']:.1f}R/"
+                         f"{bb_priority['trail_distance_r']:.2f}R")
+
+        # Session Lifecycle: intra-session risk modulation
+        session_lc_mult = 1.0
+        if self._session_lc:
+            session_lc_mult = self._session_lc.risk_multiplier()
+            if abs(session_lc_mult - 1.0) > 0.05:
+                log.info(f"  {symbol}: session={self._session_lc.phase} "
+                         f"risk x{session_lc_mult:.2f}"
+                         f"{' MOMENTUM' if self._session_lc.summary().get('momentum') else ''}"
+                         f"{' HOT' if self._session_lc.summary().get('hot') else ''}"
+                         f"{' FATIGUED' if self._session_lc.summary().get('fatigued') else ''}")
+
         effective_risk = (risk_pct * dd_mult * conv_mult * hunter_mult
                          * streak_mult * quality_mult * regime_mult
                          * lifecycle_risk_mult * cross_sect_mult * calibrator_mult
                          * burst_risk_mult * directional_mult
                          * edge_combo_mult * edge_market_mult
-                         * edge_sent_mult * edge_hot_mult)
+                         * edge_sent_mult * edge_hot_mult
+                         * cross_tf_mult
+                         * alignment_mult * session_lc_mult)
         dollar_risk = equity * effective_risk
         leverage = int(cfg.get_leverage(equity) * burst_lev_mult)
 
@@ -1047,6 +1183,33 @@ class FCBBot:
                 tp_r = max(1.0, min(6.0, tp_r))  # burst allows up to 6R
                 log.info(f"  {symbol}: burst TP {old_tp:.2f}R → {tp_r:.2f}R "
                          f"(x{burst_tp_mult:.2f} [{self._burst.burst_state}])")
+
+        # Session lifecycle TP modulation (EARLY → wider, LATE → tighter)
+        if self._session_lc and exit_params.get("type") != "trail":
+            slc_tp_mult = self._session_lc.tp_multiplier()
+            if abs(slc_tp_mult - 1.0) > 0.01:
+                old_tp = tp_r
+                tp_r = round(tp_r * slc_tp_mult, 2)
+                tp_r = max(1.0, min(5.0, tp_r))
+                log.info(f"  {symbol}: session TP {old_tp:.2f}R → {tp_r:.2f}R "
+                         f"(x{slc_tp_mult:.2f} [{self._session_lc.phase}])")
+
+        # BB_BREAK/1h priority: override trail params during alignment
+        # (wider activation + distance to let 1h runners breathe)
+        if bb_priority:
+            exit_params = dict(exit_params)  # copy to avoid mutating shared dict
+            exit_params["type"] = "trail"
+            exit_params["trail_activation_r"] = bb_priority["trail_activation_r"]
+            exit_params["trail_distance_r"] = bb_priority["trail_distance_r"]
+            tp_r = cfg.EXCHANGE_TP_R  # safety net — guardian handles real exit
+            log.info(f"  {symbol}: BB_BREAK/1h aligned trail override "
+                     f"activation={bb_priority['trail_activation_r']:.1f}R "
+                     f"distance={bb_priority['trail_distance_r']:.2f}R")
+
+        # ── Minimum 2R target enforcement ──
+        # Philosophy: risk small, target 2R minimum for easy captures, trail for more
+        if exit_params.get("type") != "trail" and tp_r < 2.0:
+            tp_r = 2.0
 
         # ── Minimum dollar reward gate ──
         # Don't risk money for tiny payoffs — that's gambling
@@ -1419,6 +1582,10 @@ class FCBBot:
         if self._burst:
             self._burst.record_outcome(symbol, strat, tf, pnl_r, passed=True)
 
+        # Session lifecycle: track intra-session trade outcomes
+        if self._session_lc:
+            self._session_lc.record_trade(pnl_r, strategy=strat, symbol=symbol)
+
         # Thesis logger: record live trade outcome
         if self._thesis:
             self._thesis.record_outcome({
@@ -1678,6 +1845,18 @@ class FCBBot:
         if self._edge_radar:
             self._edge_radar.maybe_refresh()
 
+        # Refresh micro-TF intelligence (3m/5m market barometer)
+        # (auto-refreshes on access, no explicit refresh needed)
+
+        # Refresh momentum alignment (reads sentiment cache, ~30s refresh)
+        if self._alignment and self._sentiment:
+            try:
+                sent = self._sentiment.get_cached()
+                if sent:
+                    self._alignment.update(sent)
+            except Exception:
+                pass
+
         # Refresh burst engine + feed equity for drawdown tracking
         if self._burst:
             self._burst.update_equity(eq, peak)
@@ -1769,6 +1948,9 @@ class FCBBot:
             burst=self._burst.summary() if self._burst else {},
             burst_optim=self._burst_optim.summary() if self._burst_optim else {},
             edge_radar=self._edge_radar.summary() if self._edge_radar else {},
+            micro_tf=self._micro_tf.summary() if self._micro_tf else {},
+            alignment=self._alignment.summary() if self._alignment else {},
+            session_lc=self._session_lc.summary() if self._session_lc else {},
         )
 
         # Daily summary check (once per day at midnight UTC)

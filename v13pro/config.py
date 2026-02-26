@@ -95,6 +95,11 @@ LIVE_COMBOS = {
 # → These still shadow-track every signal. When their rolling ExpR
 #   turns positive, they auto-promote to LIVE_COMBOS.
 
+# Micro-TF shadow intelligence (3m/5m cross-TF validation)
+# These TFs are shadow-only — never place live orders.
+# Their outcomes feed cross-TF validation for 15m/1h signals.
+MICRO_TFS = {"3m", "5m"}
+
 # Shadow promotion: auto-promote combos from shadow to live
 SHADOW_PROMOTE_MIN_TRADES = 30     # need ≥30 shadow outcomes to evaluate
 SHADOW_PROMOTE_MIN_EXPR = 0.05     # need ExpR ≥ +0.05 to promote
@@ -222,10 +227,10 @@ GROWTH_PHASES = [
 
 DRAWDOWN_THROTTLE = [
     (5,   1.00),
-    (10,  0.75),
-    (15,  0.50),
-    (20,  0.25),
-    (30,  0.10),
+    (10,  0.85),   # was 0.75 — softer to allow recovery
+    (15,  0.65),   # was 0.50 — at 14.9% DD, positions were dust
+    (20,  0.40),   # was 0.25 — significant but not crippling
+    (30,  0.15),   # was 0.10 — survival mode
 ]
 
 MAX_CONCURRENT_CURVE = [

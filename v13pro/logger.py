@@ -154,7 +154,8 @@ def dashboard(*, equity=0, peak_equity=0, target_equity=5000,
               open_positions=None, total_wins=0, total_losses=0,
               sentiment=None, orderflow=None, shadow=None, regime=None,
               lifecycle=None, cross_sectional=None, calibrator=None,
-              burst=None, burst_optim=None, edge_radar=None):
+              burst=None, burst_optim=None, edge_radar=None,
+              micro_tf=None, alignment=None, session_lc=None):
     """Rich colored dashboard display — preflight-style layout."""
 
     W = 58
@@ -436,6 +437,121 @@ def dashboard(*, equity=0, peak_equity=0, target_equity=5000,
             _p(f"     {C.BGREEN}HOT{C.RESET}: {', '.join(er_hot_c[:5])}")
         if er_cold_c:
             _p(f"     {C.BRED}COLD{C.RESET}: {', '.join(er_cold_c[:5])}")
+        _p(f"  {C.DIM}{'─' * (W - 4)}{C.RESET}")
+
+    # ── MICRO-TF INTELLIGENCE BLOCK ──
+    if micro_tf and micro_tf.get("total_recorded", 0) > 0:
+        mt_baro = micro_tf.get("barometer", {})
+        mt_label = mt_baro.get("label", "?")
+        mt_wr = mt_baro.get("wr", 0)
+        mt_n = mt_baro.get("n", 0)
+        mt_hot = micro_tf.get("hot_strategies", [])
+        mt_cold = micro_tf.get("cold_strategies", [])
+        mt_warm = micro_tf.get("warm_strategies", [])
+        mt_total = micro_tf.get("total_recorded", 0)
+        mt_wins = micro_tf.get("total_wins", 0)
+        mt_losses = micro_tf.get("total_losses", 0)
+
+        if mt_label == "HOT":
+            baro_c, baro_icon = C.BGREEN, "🔥"
+        elif mt_label == "COLD":
+            baro_c, baro_icon = C.BRED, "❄️"
+        elif mt_label == "BUILDING":
+            baro_c, baro_icon = C.DIM, "🔨"
+        else:
+            baro_c, baro_icon = C.BYELLOW, "📊"
+
+        _p(f"  {C.BOLD}{baro_icon} MICRO-TF INTELLIGENCE (3m/5m){C.RESET}")
+        _p(f"     Barometer  {baro_c}{C.BOLD}{mt_label}{C.RESET}"
+           f"  WR={mt_wr*100:.0f}%  N={mt_n}")
+        _p(f"     Outcomes   {mt_total} ({mt_wins}W / {mt_losses}L)")
+        if mt_hot:
+            _p(f"     {C.BGREEN}HOT{C.RESET}: {', '.join(mt_hot[:5])}")
+        if mt_warm:
+            _p(f"     {C.BYELLOW}WARM{C.RESET}: {', '.join(mt_warm[:5])}")
+        if mt_cold:
+            _p(f"     {C.BRED}COLD{C.RESET}: {', '.join(mt_cold[:5])}")
+        _p(f"  {C.DIM}{'─' * (W - 4)}{C.RESET}")
+
+    # ── MOMENTUM ALIGNMENT BLOCK ──
+    if alignment:
+        a_state = alignment.get("state", "?")
+        a_score = alignment.get("score", 0)
+        a_dir = alignment.get("direction", "?")
+        a_sust = alignment.get("sustained", False)
+        a_mult = alignment.get("risk_mult", 1.0)
+        a_micro = alignment.get("micro_synergy", "N/A")
+        a_dd = alignment.get("dd_floor")
+        a_conv = alignment.get("use_config_conviction", False)
+        a_promo = alignment.get("promoted_combos", [])
+
+        if a_state == "ALIGNED":
+            ac, a_icon = (C.BGREEN, "🎯") if a_sust else (C.BYELLOW, "⏳")
+        elif a_state == "CONFLICTED":
+            ac, a_icon = C.BRED, "⚠️"
+        else:
+            ac, a_icon = C.BYELLOW, "📐"
+
+        _p(f"  {C.BOLD}{a_icon} MOMENTUM ALIGNMENT{C.RESET}")
+        _p(f"     State      {ac}{C.BOLD}{a_state}{C.RESET}"
+           f"{'  SUSTAINED' if a_sust else ''}"
+           f"  score={a_score:.2f}  dir={a_dir}")
+        _p(f"     Risk       x{a_mult:.2f}  micro={a_micro}"
+           f"{'  DD_FLOOR=' + str(a_dd) if a_dd else ''}")
+        coins = alignment.get("coins", {})
+        if coins:
+            parts = []
+            for cn, cd in coins.items():
+                s_icon = "↑" if cd.get("structure") == "hh_hl" else ("↓" if cd.get("structure") == "ll_lh" else "→")
+                parts.append(f"{cn}{s_icon}")
+            _p(f"     Coins      {' '.join(parts)}"
+               f"{'  CONFIG_CONV' if a_conv else ''}")
+        if a_promo:
+            _p(f"     {C.BGREEN}PROMOTED{C.RESET}: {', '.join(f'{s}/{t}' for s,t in a_promo)}")
+        _p(f"  {C.DIM}{'─' * (W - 4)}{C.RESET}")
+
+    # ── SESSION LIFECYCLE BLOCK ──
+    if session_lc:
+        sl_session = session_lc.get("session", "?")
+        sl_phase = session_lc.get("phase", "?")
+        sl_trades = session_lc.get("trades", 0)
+        sl_wins = session_lc.get("wins", 0)
+        sl_losses = session_lc.get("losses", 0)
+        sl_pnl = session_lc.get("pnl_r", 0)
+        sl_peak = session_lc.get("peak_pnl_r", 0)
+        sl_giveback = session_lc.get("giveback_r", 0)
+        sl_mult = session_lc.get("risk_mult", 1.0)
+        sl_tp = session_lc.get("tp_mult", 1.0)
+        sl_momentum = session_lc.get("momentum", False)
+        sl_hot = session_lc.get("hot", False)
+        sl_fatigued = session_lc.get("fatigued", False)
+        sl_stopped = session_lc.get("stopped", False)
+
+        if sl_phase == "EARLY":
+            slc = C.BGREEN
+        elif sl_phase == "PEAK":
+            slc = C.BCYAN
+        else:
+            slc = C.BYELLOW
+
+        flags = ""
+        if sl_momentum: flags += f" {C.BGREEN}MOMENTUM{C.RESET}"
+        if sl_hot: flags += f" {C.BGREEN}HOT!{C.RESET}"
+        if sl_fatigued: flags += f" {C.BRED}FATIGUED{C.RESET}"
+        if sl_stopped: flags += f" {C.BRED}STOPPED{C.RESET}"
+
+        sl_pnlc = C.BGREEN if sl_pnl >= 0 else C.BRED
+
+        _p(f"  {C.BOLD}⏱️  SESSION LIFECYCLE{C.RESET}")
+        _p(f"     {sl_session.upper()} {slc}{C.BOLD}{sl_phase}{C.RESET}"
+           f"  {sl_wins}W/{sl_losses}L"
+           f"  pnl={sl_pnlc}{sl_pnl:+.2f}R{C.RESET}"
+           f"  peak={sl_peak:+.2f}R{flags}")
+        if sl_giveback > 0.1:
+            _p(f"     Giveback   {C.BYELLOW}{sl_giveback:.2f}R{C.RESET}"
+               f"  risk×{sl_mult:.2f}  tp×{sl_tp:.2f}")
+        else:
+            _p(f"     Risk       x{sl_mult:.2f}  TP×{sl_tp:.2f}")
         _p(f"  {C.DIM}{'─' * (W - 4)}{C.RESET}")
 
     # ── LIFECYCLE / CALIBRATOR / CROSS-SECTIONAL ──
