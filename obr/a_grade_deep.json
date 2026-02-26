@@ -1,0 +1,662 @@
+[
+  {
+    "pair": "GRT/USDT:USDT",
+    "vol": 2239910.4843,
+    "grade": "A",
+    "gscore": 70,
+    "bt": {
+      "trades": 19,
+      "wins": 10,
+      "wr": 52.63157894736842,
+      "total_r": 10.24,
+      "max_dd": 5.6,
+      "pf": 2.09,
+      "tp_r": 2.0,
+      "last_5": [
+        -1.04,
+        1.96,
+        -1.04,
+        -1.04,
+        1.96
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.02887
+  },
+  {
+    "pair": "JUP/USDT:USDT",
+    "vol": 5663220.266,
+    "grade": "B",
+    "gscore": 65,
+    "bt": {
+      "trades": 31,
+      "wins": 17,
+      "wr": 54.83870967741935,
+      "total_r": 10.74,
+      "max_dd": 7.3,
+      "pf": 1.76,
+      "tp_r": 1.5,
+      "last_5": [
+        1.46,
+        -1.04,
+        -1.04,
+        -1.04,
+        -0.563
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.1589
+  },
+  {
+    "pair": "ORCA/USDT:USDT",
+    "vol": 20476648.8508,
+    "grade": "B",
+    "gscore": 60,
+    "bt": {
+      "trades": 20,
+      "wins": 10,
+      "wr": 50.0,
+      "total_r": 2.97,
+      "max_dd": 5.6,
+      "pf": 1.29,
+      "tp_r": 1.5,
+      "last_5": [
+        1.46,
+        -1.04,
+        -1.04,
+        -1.04,
+        0.234
+      ]
+    },
+    "sig_status": "AWAITING_CONFIRM",
+    "sig_dir": "SHORT",
+    "sig_detail": {
+      "entry_est": 1.0938,
+      "sl": 1.0944,
+      "rpu": 0.0005999999999999339,
+      "risk_%": 0.054854635216669764
+    },
+    "prox": 4,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "L<prevL",
+      "C>prevH"
+    ],
+    "price": 1.0938
+  },
+  {
+    "pair": "ICP/USDT:USDT",
+    "vol": 15191050.5046,
+    "grade": "B",
+    "gscore": 55,
+    "bt": {
+      "trades": 11,
+      "wins": 6,
+      "wr": 54.54545454545454,
+      "total_r": 3.56,
+      "max_dd": 4.0,
+      "pf": 1.68,
+      "tp_r": 1.5,
+      "last_5": [
+        1.46,
+        1.46,
+        -1.04,
+        1.46,
+        -1.04
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "C>prevH"
+    ],
+    "price": 2.254
+  },
+  {
+    "pair": "HNT/USDT:USDT",
+    "vol": 2370548.9473,
+    "grade": "B",
+    "gscore": 55,
+    "bt": {
+      "trades": 24,
+      "wins": 10,
+      "wr": 41.66666666666667,
+      "total_r": 15.04,
+      "max_dd": 6.6,
+      "pf": 2.03,
+      "tp_r": 3.0,
+      "last_5": [
+        -1.04,
+        -1.04,
+        -1.04,
+        2.96,
+        2.96
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "C>prevH"
+    ],
+    "price": 1.5027
+  },
+  {
+    "pair": "DOGE/USDT:USDT",
+    "vol": 141015308.5766,
+    "grade": "B",
+    "gscore": 50,
+    "bt": {
+      "trades": 21,
+      "wins": 8,
+      "wr": 38.095238095238095,
+      "total_r": 10.16,
+      "max_dd": 7.9,
+      "pf": 1.75,
+      "tp_r": 3.0,
+      "last_5": [
+        2.96,
+        2.96,
+        2.96,
+        -1.04,
+        -1.04
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "C>prevH"
+    ],
+    "price": 0.10036
+  },
+  {
+    "pair": "THETA/USDT:USDT",
+    "vol": 2442130.217,
+    "grade": "B",
+    "gscore": 50,
+    "bt": {
+      "trades": 34,
+      "wins": 13,
+      "wr": 38.23529411764706,
+      "total_r": 13.99,
+      "max_dd": 9.5,
+      "pf": 1.64,
+      "tp_r": 3.0,
+      "last_5": [
+        -1.04,
+        2.96,
+        2.96,
+        -1.04,
+        0.313
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.20924
+  },
+  {
+    "pair": "MERL/USDT:USDT",
+    "vol": 2399317.9913,
+    "grade": "B",
+    "gscore": 50,
+    "bt": {
+      "trades": 26,
+      "wins": 10,
+      "wr": 38.46153846153847,
+      "total_r": 12.96,
+      "max_dd": 8.3,
+      "pf": 1.78,
+      "tp_r": 3.0,
+      "last_5": [
+        2.96,
+        -1.04,
+        2.96,
+        -1.04,
+        -1.04
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.05252
+  },
+  {
+    "pair": "FIDA/USDT:USDT",
+    "vol": 2093583.8726,
+    "grade": "B",
+    "gscore": 50,
+    "bt": {
+      "trades": 28,
+      "wins": 10,
+      "wr": 35.714285714285715,
+      "total_r": 10.88,
+      "max_dd": 7.9,
+      "pf": 1.58,
+      "tp_r": 3.0,
+      "last_5": [
+        -1.04,
+        -1.04,
+        2.96,
+        -1.04,
+        2.96
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.01811
+  },
+  {
+    "pair": "BNB/USDT:USDT",
+    "vol": 52508219.21,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 29,
+      "wins": 13,
+      "wr": 44.827586206896555,
+      "total_r": 8.84,
+      "max_dd": 7.0,
+      "pf": 1.53,
+      "tp_r": 2.0,
+      "last_5": [
+        -1.04,
+        1.96,
+        -1.04,
+        -1.04,
+        -1.04
+      ]
+    },
+    "sig_status": "UNCONFIRMED",
+    "sig_dir": "SHORT",
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "C>prevH"
+    ],
+    "price": 629.5
+  },
+  {
+    "pair": "HBAR/USDT:USDT",
+    "vol": 21539438.1715,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 32,
+      "wins": 16,
+      "wr": 50.0,
+      "total_r": 13.0,
+      "max_dd": 10.3,
+      "pf": 1.78,
+      "tp_r": 2.0,
+      "last_5": [
+        -1.04,
+        1.96,
+        1.96,
+        1.96,
+        0.236
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 1,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish"
+    ],
+    "price": 0.09995
+  },
+  {
+    "pair": "0G/USDT:USDT",
+    "vol": 21239138.7291,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 22,
+      "wins": 8,
+      "wr": 36.36363636363637,
+      "total_r": 9.12,
+      "max_dd": 9.7,
+      "pf": 1.63,
+      "tp_r": 3.0,
+      "last_5": [
+        -1.04,
+        -1.04,
+        -1.04,
+        2.96,
+        2.96
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.683
+  },
+  {
+    "pair": "ONDO/USDT:USDT",
+    "vol": 12591014.599,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 18,
+      "wins": 8,
+      "wr": 44.44444444444444,
+      "total_r": 5.28,
+      "max_dd": 8.6,
+      "pf": 1.51,
+      "tp_r": 2.0,
+      "last_5": [
+        1.96,
+        1.96,
+        -1.04,
+        1.96,
+        -1.04
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.2715
+  },
+  {
+    "pair": "MORPHO/USDT:USDT",
+    "vol": 7087658.2521,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 16,
+      "wins": 6,
+      "wr": 37.5,
+      "total_r": 7.36,
+      "max_dd": 5.5,
+      "pf": 1.71,
+      "tp_r": 3.0,
+      "last_5": [
+        -1.04,
+        -1.04,
+        2.96,
+        -1.04,
+        -1.04
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "C>prevH"
+    ],
+    "price": 1.5806
+  },
+  {
+    "pair": "AERO/USDT:USDT",
+    "vol": 4494811.8505,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 26,
+      "wins": 12,
+      "wr": 46.15384615384615,
+      "total_r": 2.02,
+      "max_dd": 10.1,
+      "pf": 1.14,
+      "tp_r": 1.5,
+      "last_5": [
+        1.46,
+        1.46,
+        -1.04,
+        -1.04,
+        0.516
+      ]
+    },
+    "sig_status": "AWAITING_CONFIRM",
+    "sig_dir": "LONG",
+    "sig_detail": {},
+    "prox": 4,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "H>prevH",
+      "L<prevL",
+      "C<prevL"
+    ],
+    "price": 0.3261
+  },
+  {
+    "pair": "C98/USDT:USDT",
+    "vol": 2142027.0159,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 38,
+      "wins": 20,
+      "wr": 52.63157894736842,
+      "total_r": 10.48,
+      "max_dd": 6.0,
+      "pf": 1.56,
+      "tp_r": 1.5,
+      "last_5": [
+        1.46,
+        -1.04,
+        -1.04,
+        1.46,
+        1.46
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 1,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish"
+    ],
+    "price": 0.027234
+  },
+  {
+    "pair": "RESOLV/USDT:USDT",
+    "vol": 2065063.8409,
+    "grade": "C",
+    "gscore": 45,
+    "bt": {
+      "trades": 15,
+      "wins": 8,
+      "wr": 53.333333333333336,
+      "total_r": 3.11,
+      "max_dd": 5.2,
+      "pf": 1.43,
+      "tp_r": 1.5,
+      "last_5": [
+        1.46,
+        -1.04,
+        1.46,
+        1.46,
+        0.17
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 3,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH",
+      "C>prevH"
+    ],
+    "price": 0.06553
+  },
+  {
+    "pair": "SPACE/USDT:USDT",
+    "vol": 9749386.251,
+    "grade": "C",
+    "gscore": 40,
+    "bt": {
+      "trades": 19,
+      "wins": 8,
+      "wr": 42.10526315789473,
+      "total_r": 12.24,
+      "max_dd": 9.5,
+      "pf": 2.07,
+      "tp_r": 3.0,
+      "last_5": [
+        2.96,
+        2.96,
+        -1.04,
+        2.96,
+        2.96
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 2,
+    "prox_dir": "short",
+    "prox_met": [
+      "bullish",
+      "H>prevH"
+    ],
+    "price": 0.010021
+  },
+  {
+    "pair": "AWE/USDT:USDT",
+    "vol": 7640168.6398,
+    "grade": "C",
+    "gscore": 40,
+    "bt": {
+      "trades": 24,
+      "wins": 11,
+      "wr": 45.83333333333333,
+      "total_r": 13.54,
+      "max_dd": 5.7,
+      "pf": 2.0,
+      "tp_r": 2.5,
+      "last_5": [
+        -1.04,
+        2.46,
+        2.46,
+        -1.04,
+        -1.04
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 2,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "H>prevH"
+    ],
+    "price": 0.0577
+  },
+  {
+    "pair": "TIA/USDT:USDT",
+    "vol": 5743364.7575,
+    "grade": "C",
+    "gscore": 40,
+    "bt": {
+      "trades": 17,
+      "wins": 8,
+      "wr": 47.05882352941176,
+      "total_r": 14.32,
+      "max_dd": 6.6,
+      "pf": 2.53,
+      "tp_r": 3.0,
+      "last_5": [
+        -1.04,
+        -1.04,
+        -1.04,
+        2.96,
+        2.96
+      ]
+    },
+    "sig_status": "quiet",
+    "sig_dir": null,
+    "sig_detail": {},
+    "prox": 2,
+    "prox_dir": "long",
+    "prox_met": [
+      "bearish",
+      "H>prevH"
+    ],
+    "price": 0.3454
+  }
+]

@@ -95,6 +95,9 @@ def log_entry(
     consec_wins: int = 0, consec_losses: int = 0,
     live_wins: int = 0, live_losses: int = 0,
     day_of_week: int = -1,
+    # ── Learning agent context ──
+    btc_price: float = 0.0, btc_change_pct: float = 0.0,
+    sim_breakouts: int = 0, mins_into_session: int = 0,
 ):
     """Log trade entry with complete first-candle and market context."""
     d = {
@@ -144,6 +147,11 @@ def log_entry(
         # Temporal
         "dow": day_of_week,
         "oid": order_id,
+        # Learning agent context
+        "btc_px": round(btc_price, 2),
+        "btc_chg": round(btc_change_pct, 4),
+        "sim_bo": sim_breakouts,
+        "sess_min": mins_into_session,
     }
     _emit(d)
 

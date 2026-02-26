@@ -1,0 +1,66 @@
+{"ts": "2026-02-21 12:17:04", "category": "BOT_STARTED", "detail": "PID=7776, restart_count=1"}
+{"ts": "2026-02-21 12:17:07", "category": "BOT_CRASHED", "detail": "exit_code=1", "duration": "3s", "crash_count": "1"}
+{"ts": "2026-02-21 12:17:13", "category": "BACKOFF", "detail": "wait=30s", "crash_count": "1"}
+{"ts": "2026-02-21 12:17:43", "category": "BOT_STARTED", "detail": "PID=9516, restart_count=2"}
+{"ts": "2026-02-21 12:17:46", "category": "BOT_CRASHED", "detail": "exit_code=1", "duration": "3s", "crash_count": "2"}
+{"ts": "2026-02-21 12:17:54", "category": "BACKOFF", "detail": "wait=60s", "crash_count": "2"}
+{"ts": "2026-02-21 12:19:03", "category": "BOT_STARTED", "detail": "PID=8884, restart_count=1"}
+{"ts": "2026-02-21 12:26:51", "category": "BOT_STARTED", "detail": "PID=11492, restart_count=1"}
+{"ts": "2026-02-21 12:31:12", "category": "BOT_STARTED", "detail": "PID=18140, restart_count=1"}
+{"ts": "2026-02-21 12:44:36", "category": "BOT_STARTED", "detail": "PID=14200, restart_count=1"}
+{"ts": "2026-02-21 12:50:56", "category": "BOT_STARTED", "detail": "PID=16592, restart_count=1"}
+{"ts": "2026-02-21 21:43:00", "category": "BOT_STARTED", "detail": "PID=14608, restart_count=1"}
+{"ts": "2026-02-21 22:10:37", "category": "BOT_STARTED", "detail": "PID=17052, restart_count=1"}
+{"ts": "2026-02-21 22:24:45", "category": "BOT_STARTED", "detail": "PID=2480, restart_count=1"}
+{"ts": "2026-02-21 22:38:05", "category": "BOT_STARTED", "detail": "PID=11280, restart_count=1"}
+{"ts": "2026-02-21 22:57:41", "category": "BOT_STARTED", "detail": "PID=21356, restart_count=1"}
+{"ts": "2026-02-21 23:10:53", "category": "BOT_STARTED", "detail": "PID=18712, restart_count=1"}
+{"ts": "2026-02-21 23:33:13", "category": "BOT_STARTED", "detail": "PID=7708, restart_count=1"}
+{"ts": "2026-02-21 23:47:20", "category": "BOT_STARTED", "detail": "PID=8884, restart_count=1"}
+{"ts": "2026-02-21 23:49:11", "category": "BOT_STARTED", "detail": "PID=15200, restart_count=1"}
+{"ts": "2026-02-21 23:50:14", "category": "BOT_CRASHED", "detail": "exit_code=1", "duration": "63s", "crash_count": "1"}
+{"ts": "2026-02-21 23:50:20", "category": "BACKOFF", "detail": "wait=30s", "crash_count": "1"}
+{"ts": "2026-02-21 23:50:20", "category": "SUPERVISOR_STOPPED", "detail": "uptime=0.0h, restarts=1"}
+{"ts": "2026-02-21 23:51:11", "category": "BOT_STARTED", "detail": "PID=11928, restart_count=1"}
+{"ts": "2026-02-21 23:52:50", "category": "BOT_CRASHED", "detail": "exit_code=1", "duration": "99s", "crash_count": "1"}
+{"ts": "2026-02-21 23:52:56", "category": "BACKOFF", "detail": "wait=30s", "crash_count": "1"}
+{"ts": "2026-02-21 23:52:56", "category": "SUPERVISOR_STOPPED", "detail": "uptime=0.0h, restarts=1"}
+{"ts": "2026-02-21 23:53:17", "category": "BOT_STARTED", "detail": "PID=20192, restart_count=1"}
+{"ts": "2026-02-21 23:56:23", "category": "BOT_CRASHED", "detail": "exit_code=1", "duration": "186s", "crash_count": "1"}
+{"ts": "2026-02-21 23:56:28", "category": "BACKOFF", "detail": "wait=10s", "crash_count": "0"}
+{"ts": "2026-02-21 23:56:28", "category": "SUPERVISOR_STOPPED", "detail": "uptime=0.1h, restarts=1"}
+{"ts": "2026-02-21 23:56:55", "category": "BOT_STARTED", "detail": "PID=20816, restart_count=1"}
+{"ts": "2026-02-22 00:06:55", "category": "HEARTBEAT_STALE", "detail": "age=600s, runtime=600s"}
+{"ts": "2026-02-22 00:07:56", "category": "HEARTBEAT_STALE", "detail": "age=660s, runtime=660s"}
+{"ts": "2026-02-22 00:08:56", "category": "HEARTBEAT_STALE", "detail": "age=720s, runtime=720s"}
+{"ts": "2026-02-22 00:09:56", "category": "HEARTBEAT_STALE", "detail": "age=780s, runtime=780s"}
+{"ts": "2026-02-22 00:10:56", "category": "HEARTBEAT_STALE", "detail": "age=840s, runtime=840s"}
+{"ts": "2026-02-22 00:11:56", "category": "HEARTBEAT_STALE", "detail": "age=900s, runtime=900s"}
+{"ts": "2026-02-22 00:12:56", "category": "HEARTBEAT_STALE", "detail": "age=960s, runtime=960s"}
+{"ts": "2026-02-22 00:13:56", "category": "HEARTBEAT_STALE", "detail": "age=1020s, runtime=1020s"}
+{"ts": "2026-02-22 00:14:56", "category": "HEARTBEAT_STALE", "detail": "age=1080s, runtime=1080s"}
+{"ts": "2026-02-22 00:15:56", "category": "HEARTBEAT_STALE", "detail": "age=1140s, runtime=1140s"}
+{"ts": "2026-02-22 00:16:56", "category": "HEARTBEAT_STALE", "detail": "age=1200s, runtime=1200s"}
+{"ts": "2026-02-22 00:16:56", "category": "FORCE_RESTART", "detail": "heartbeat_timeout", "age": "1200s"}
+{"ts": "2026-02-22 00:16:56", "category": "BOT_CRASHED", "detail": "exit_code=1", "duration": "1200s", "crash_count": "1"}
+{"ts": "2026-02-22 00:17:02", "category": "RESTART_WITH_POSITIONS", "detail": "exchange=3, state=3"}
+{"ts": "2026-02-22 00:17:02", "category": "BACKOFF", "detail": "wait=10s", "crash_count": "0"}
+{"ts": "2026-02-22 00:17:12", "category": "BOT_STARTED", "detail": "PID=9052, restart_count=2"}
+{"ts": "2026-02-22 00:54:15", "category": "BOT_STARTED", "detail": "PID=19176, restart_count=1"}
+{"ts": "2026-02-22 04:06:29", "category": "BOT_STARTED", "detail": "PID=14420, restart_count=1"}
+{"ts": "2026-02-22 04:07:44", "category": "BOT_STARTED", "detail": "PID=13384, restart_count=1"}
+{"ts": "2026-02-22 04:17:44", "category": "HEARTBEAT_STALE", "detail": "age=600s, runtime=600s"}
+{"ts": "2026-02-22 04:17:57", "category": "BOT_STARTED", "detail": "PID=18520, restart_count=1"}
+{"ts": "2026-02-22 04:23:28", "category": "BOT_STARTED", "detail": "PID=18804, restart_count=1"}
+{"ts": "2026-02-22 10:11:59", "category": "BOT_STARTED", "detail": "PID=14272, restart_count=1"}
+{"ts": "2026-02-22 10:13:42", "category": "BOT_STARTED", "detail": "PID=15376, restart_count=1"}
+{"ts": "2026-02-22 10:27:54", "category": "BOT_STARTED", "detail": "PID=14480, restart_count=1"}
+{"ts": "2026-02-22 10:37:28", "category": "BOT_STARTED", "detail": "PID=9408, restart_count=1"}
+{"ts": "2026-02-22 11:23:44", "category": "BOT_STARTED", "detail": "PID=13288, restart_count=1"}
+{"ts": "2026-02-22 13:05:30", "category": "BOT_STARTED", "detail": "PID=3740, restart_count=1"}
+{"ts": "2026-02-22 13:11:10", "category": "BOT_STARTED", "detail": "PID=16508, restart_count=1"}
+{"ts": "2026-02-22 13:36:42", "category": "BOT_STARTED", "detail": "PID=20944, restart_count=1"}
+{"ts": "2026-02-22 13:47:47", "category": "BOT_STARTED", "detail": "PID=19288, restart_count=1"}
+{"ts": "2026-02-22 13:49:05", "category": "BOT_STARTED", "detail": "PID=14736, restart_count=1"}
+{"ts": "2026-02-22 14:29:23", "category": "BOT_STARTED", "detail": "PID=17952, restart_count=1"}
+{"ts": "2026-02-22 14:55:17", "category": "BOT_STARTED", "detail": "PID=15512, restart_count=1"}

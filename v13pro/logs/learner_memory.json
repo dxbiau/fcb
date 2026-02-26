@@ -1,0 +1,2334 @@
+{
+  "feature_trackers": {
+    "direction": {
+      "long": {
+        "a": 47.0,
+        "b": 59.0
+      },
+      "short": {
+        "a": 17.0,
+        "b": 29.0
+      }
+    },
+    "strategy": {
+      "EMA_RIB": {
+        "a": 24.0,
+        "b": 31.0
+      },
+      "PIN_BAR": {
+        "a": 2.0,
+        "b": 4.0
+      },
+      "TR_PULL": {
+        "a": 14.0,
+        "b": 26.0
+      },
+      "BB_FADE": {
+        "a": 10.0,
+        "b": 14.0
+      },
+      "BB_BREAK": {
+        "a": 8.0,
+        "b": 7.0
+      },
+      "ENGULF": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "RSI_FADE": {
+        "a": 2.0,
+        "b": 2.0
+      },
+      "MTF_RSI": {
+        "a": 2.0,
+        "b": 4.0
+      },
+      "IB_BREAK": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "DONCHIAN": {
+        "a": 6.0,
+        "b": 3.0
+      },
+      "MOM_SURGE": {
+        "a": 3.0,
+        "b": 2.0
+      }
+    },
+    "timeframe": {
+      "15m": {
+        "a": 52.0,
+        "b": 66.0
+      },
+      "1h": {
+        "a": 10.0,
+        "b": 21.0
+      },
+      "30m": {
+        "a": 3.0,
+        "b": 2.0
+      }
+    },
+    "body_ratio": {
+      "large": {
+        "a": 17.0,
+        "b": 19.0
+      },
+      "tiny": {
+        "a": 9.0,
+        "b": 17.0
+      },
+      "small": {
+        "a": 8.0,
+        "b": 25.0
+      },
+      "medium": {
+        "a": 17.0,
+        "b": 13.0
+      },
+      "huge": {
+        "a": 16.0,
+        "b": 17.0
+      }
+    },
+    "volume": {
+      "avg": {
+        "a": 9.0,
+        "b": 14.0
+      },
+      "low": {
+        "a": 40.0,
+        "b": 62.0
+      },
+      "high": {
+        "a": 7.0,
+        "b": 5.0
+      },
+      "spike": {
+        "a": 10.0,
+        "b": 9.0
+      }
+    },
+    "trend": {
+      "down": {
+        "a": 27.0,
+        "b": 33.0
+      },
+      "up": {
+        "a": 35.0,
+        "b": 48.0
+      },
+      "flat": {
+        "a": 3.0,
+        "b": 8.0
+      }
+    },
+    "volatility": {
+      "low_vol": {
+        "a": 25.0,
+        "b": 34.0
+      },
+      "high_vol": {
+        "a": 17.0,
+        "b": 16.0
+      },
+      "med_vol": {
+        "a": 23.0,
+        "b": 39.0
+      }
+    },
+    "rr_tier": {
+      "tight_sl": {
+        "a": 28.0,
+        "b": 32.0
+      },
+      "med_sl": {
+        "a": 18.0,
+        "b": 31.0
+      },
+      "wide_sl": {
+        "a": 19.0,
+        "b": 26.0
+      }
+    },
+    "price_magnitude": {
+      "hundreds": {
+        "a": 6.0,
+        "b": 16.0
+      },
+      "thousands": {
+        "a": 13.0,
+        "b": 22.0
+      },
+      "tens": {
+        "a": 30.0,
+        "b": 26.0
+      },
+      "sub_dollar": {
+        "a": 17.0,
+        "b": 26.0
+      }
+    },
+    "session": {
+      "london": {
+        "a": 12.0,
+        "b": 4.0
+      },
+      "late": {
+        "a": 8.0,
+        "b": 22.0
+      },
+      "asia": {
+        "a": 18.0,
+        "b": 40.0
+      },
+      "overlap": {
+        "a": 21.0,
+        "b": 16.0
+      },
+      "ny": {
+        "a": 8.0,
+        "b": 9.0
+      }
+    },
+    "hour_block": {
+      "h08_11": {
+        "a": 6.0,
+        "b": 3.0
+      },
+      "h20_23": {
+        "a": 9.0,
+        "b": 23.0
+      },
+      "h00_03": {
+        "a": 15.0,
+        "b": 33.0
+      },
+      "h12_15": {
+        "a": 20.0,
+        "b": 16.0
+      },
+      "h16_19": {
+        "a": 14.0,
+        "b": 9.0
+      },
+      "h04_07": {
+        "a": 4.0,
+        "b": 8.0
+      }
+    },
+    "day": {
+      "mon": {
+        "a": 3.0,
+        "b": 5.0
+      },
+      "tue": {
+        "a": 29.0,
+        "b": 46.0
+      },
+      "wed": {
+        "a": 28.0,
+        "b": 24.0
+      },
+      "thu": {
+        "a": 6.0,
+        "b": 15.0
+      }
+    },
+    "equity_phase": {
+      "unknown": {
+        "a": 2.0,
+        "b": 1.0
+      },
+      "Phase 2": {
+        "a": 62.0,
+        "b": 87.0
+      }
+    },
+    "drawdown_zone": {
+      "normal": {
+        "a": 63.0,
+        "b": 87.0
+      }
+    },
+    "trend_x_dir": {
+      "down_long": {
+        "a": 18.0,
+        "b": 22.0
+      },
+      "up_long": {
+        "a": 29.0,
+        "b": 35.0
+      },
+      "flat_short": {
+        "a": 2.0,
+        "b": 5.0
+      },
+      "up_short": {
+        "a": 7.0,
+        "b": 14.0
+      },
+      "down_short": {
+        "a": 10.0,
+        "b": 12.0
+      },
+      "flat_long": {
+        "a": 2.0,
+        "b": 4.0
+      }
+    },
+    "session_x_dir": {
+      "london_long": {
+        "a": 12.0,
+        "b": 4.0
+      },
+      "late_long": {
+        "a": 6.0,
+        "b": 14.0
+      },
+      "late_short": {
+        "a": 3.0,
+        "b": 9.0
+      },
+      "asia_short": {
+        "a": 10.0,
+        "b": 12.0
+      },
+      "asia_long": {
+        "a": 9.0,
+        "b": 29.0
+      },
+      "overlap_long": {
+        "a": 16.0,
+        "b": 11.0
+      },
+      "overlap_short": {
+        "a": 6.0,
+        "b": 6.0
+      },
+      "ny_short": {
+        "a": 1.0,
+        "b": 5.0
+      },
+      "ny_long": {
+        "a": 8.0,
+        "b": 5.0
+      }
+    },
+    "strat_x_tf": {
+      "EMA_RIB_15m": {
+        "a": 22.0,
+        "b": 24.0
+      },
+      "PIN_BAR_15m": {
+        "a": 2.0,
+        "b": 3.0
+      },
+      "TR_PULL_15m": {
+        "a": 11.0,
+        "b": 22.0
+      },
+      "EMA_RIB_1h": {
+        "a": 3.0,
+        "b": 8.0
+      },
+      "TR_PULL_1h": {
+        "a": 4.0,
+        "b": 5.0
+      },
+      "BB_FADE_15m": {
+        "a": 10.0,
+        "b": 13.0
+      },
+      "BB_BREAK_15m": {
+        "a": 4.0,
+        "b": 5.0
+      },
+      "ENGULF_1h": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "RSI_FADE_15m": {
+        "a": 2.0,
+        "b": 2.0
+      },
+      "MTF_RSI_1h": {
+        "a": 1.0,
+        "b": 3.0
+      },
+      "BB_BREAK_1h": {
+        "a": 5.0,
+        "b": 3.0
+      },
+      "MTF_RSI_15m": {
+        "a": 2.0,
+        "b": 2.0
+      },
+      "BB_FADE_1h": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "IB_BREAK_1h": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "DONCHIAN_15m": {
+        "a": 6.0,
+        "b": 2.0
+      },
+      "PIN_BAR_1h": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "MOM_SURGE_30m": {
+        "a": 3.0,
+        "b": 2.0
+      },
+      "DONCHIAN_1h": {
+        "a": 1.0,
+        "b": 2.0
+      }
+    },
+    "grade": {
+      "A": {
+        "a": 34.0,
+        "b": 49.0
+      },
+      "B": {
+        "a": 4.0,
+        "b": 10.0
+      },
+      "A+": {
+        "a": 25.0,
+        "b": 25.0
+      },
+      "C": {
+        "a": 3.0,
+        "b": 6.0
+      }
+    }
+  },
+  "pair_dna": {
+    "BTC/USDT:USDT": {
+      "symbol": "BTC/USDT:USDT",
+      "tracker": {
+        "a": 6.0,
+        "b": 10.0
+      },
+      "total_r": -0.8538,
+      "streak": -8,
+      "best_r": 2.1044,
+      "worst_r": -1.4317,
+      "last_trade": "2026-02-24T23:25:59.422230+00:00",
+      "affinity": {
+        "direction": {
+          "long": 3,
+          "short": 2
+        },
+        "strategy": {
+          "EMA_RIB": 2,
+          "TR_PULL": 1,
+          "BB_FADE": 2
+        },
+        "timeframe": {
+          "15m": 4,
+          "1h": 1
+        },
+        "body_ratio": {
+          "large": 1,
+          "small": 1,
+          "medium": 1,
+          "tiny": 1,
+          "huge": 1
+        },
+        "volume": {
+          "avg": 1,
+          "low": 2,
+          "spike": 2
+        },
+        "trend": {
+          "down": 4,
+          "up": 1
+        },
+        "volatility": {
+          "low_vol": 4,
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "tight_sl": 4,
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "hundreds": 1,
+          "thousands": 4
+        },
+        "session": {
+          "london": 1,
+          "asia": 2,
+          "overlap": 2
+        },
+        "hour_block": {
+          "h08_11": 1,
+          "h00_03": 2,
+          "h12_15": 2
+        },
+        "day": {
+          "mon": 1,
+          "tue": 4
+        },
+        "equity_phase": {
+          "unknown": 1,
+          "Phase 2": 4
+        },
+        "drawdown_zone": {
+          "normal": 5
+        },
+        "trend_x_dir": {
+          "down_long": 3,
+          "up_short": 1,
+          "down_short": 1
+        },
+        "session_x_dir": {
+          "london_long": 1,
+          "asia_short": 2,
+          "overlap_long": 2
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 1,
+          "TR_PULL_15m": 1,
+          "EMA_RIB_1h": 1,
+          "BB_FADE_15m": 2
+        },
+        "grade": {
+          "A": 4,
+          "A+": 1
+        }
+      }
+    },
+    "XAUT/USDT:USDT": {
+      "symbol": "XAUT/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 5.0
+      },
+      "total_r": -2.5276,
+      "streak": -4,
+      "best_r": 0.0,
+      "worst_r": -1.04,
+      "last_trade": "2026-02-26T08:29:46.308655+00:00",
+      "affinity": {}
+    },
+    "HYPE/USDT:USDT": {
+      "symbol": "HYPE/USDT:USDT",
+      "tracker": {
+        "a": 9.0,
+        "b": 9.0
+      },
+      "total_r": 3.2378,
+      "streak": 2,
+      "best_r": 1.6818,
+      "worst_r": -1.1078,
+      "last_trade": "2026-02-26T09:45:55.762678+00:00",
+      "affinity": {
+        "direction": {
+          "short": 2,
+          "long": 6
+        },
+        "strategy": {
+          "BB_FADE": 2,
+          "EMA_RIB": 4,
+          "TR_PULL": 1,
+          "DONCHIAN": 1
+        },
+        "timeframe": {
+          "15m": 8
+        },
+        "body_ratio": {
+          "huge": 2,
+          "large": 2,
+          "medium": 3,
+          "tiny": 1
+        },
+        "volume": {
+          "low": 7,
+          "avg": 1
+        },
+        "trend": {
+          "up": 8
+        },
+        "volatility": {
+          "low_vol": 6,
+          "med_vol": 2
+        },
+        "rr_tier": {
+          "tight_sl": 7,
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "tens": 8
+        },
+        "session": {
+          "overlap": 3,
+          "ny": 1,
+          "late": 1,
+          "london": 3
+        },
+        "hour_block": {
+          "h12_15": 3,
+          "h16_19": 2,
+          "h20_23": 1,
+          "h08_11": 2
+        },
+        "day": {
+          "tue": 4,
+          "wed": 2,
+          "thu": 2
+        },
+        "equity_phase": {
+          "Phase 2": 8
+        },
+        "drawdown_zone": {
+          "normal": 8
+        },
+        "trend_x_dir": {
+          "up_short": 2,
+          "up_long": 6
+        },
+        "session_x_dir": {
+          "overlap_short": 1,
+          "overlap_long": 2,
+          "ny_long": 1,
+          "late_short": 1,
+          "london_long": 3
+        },
+        "strat_x_tf": {
+          "BB_FADE_15m": 2,
+          "EMA_RIB_15m": 4,
+          "TR_PULL_15m": 1,
+          "DONCHIAN_15m": 1
+        },
+        "grade": {
+          "A": 5,
+          "A+": 3
+        }
+      }
+    },
+    "PIPPIN/USDT:USDT": {
+      "symbol": "PIPPIN/USDT:USDT",
+      "tracker": {
+        "a": 5.0,
+        "b": 5.0
+      },
+      "total_r": 3.1125,
+      "streak": -2,
+      "best_r": 1.6882,
+      "worst_r": -1.8686,
+      "last_trade": "2026-02-26T01:28:24.908352+00:00",
+      "affinity": {
+        "direction": {
+          "long": 4
+        },
+        "strategy": {
+          "EMA_RIB": 2,
+          "PIN_BAR": 1,
+          "TR_PULL": 1
+        },
+        "timeframe": {
+          "15m": 4
+        },
+        "body_ratio": {
+          "medium": 3,
+          "tiny": 1
+        },
+        "volume": {
+          "low": 4
+        },
+        "trend": {
+          "up": 1,
+          "down": 3
+        },
+        "volatility": {
+          "high_vol": 3,
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "wide_sl": 4
+        },
+        "price_magnitude": {
+          "sub_dollar": 4
+        },
+        "session": {
+          "ny": 1,
+          "late": 2,
+          "asia": 1
+        },
+        "hour_block": {
+          "h16_19": 1,
+          "h20_23": 2,
+          "h00_03": 1
+        },
+        "day": {
+          "tue": 3,
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 4
+        },
+        "drawdown_zone": {
+          "normal": 4
+        },
+        "trend_x_dir": {
+          "up_long": 1,
+          "down_long": 3
+        },
+        "session_x_dir": {
+          "ny_long": 1,
+          "late_long": 2,
+          "asia_long": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 2,
+          "PIN_BAR_15m": 1,
+          "TR_PULL_15m": 1
+        },
+        "grade": {
+          "A": 3,
+          "B": 1
+        }
+      }
+    },
+    "AGLD/USDT:USDT": {
+      "symbol": "AGLD/USDT:USDT",
+      "tracker": {
+        "a": 3.0,
+        "b": 1.0
+      },
+      "total_r": 0.0249,
+      "streak": 2,
+      "best_r": 0.024,
+      "worst_r": 0.0,
+      "last_trade": "2026-02-24T01:16:21.632846+00:00",
+      "affinity": {
+        "direction": {
+          "long": 1,
+          "short": 1
+        },
+        "strategy": {
+          "TR_PULL": 2
+        },
+        "timeframe": {
+          "1h": 1,
+          "15m": 1
+        },
+        "body_ratio": {
+          "medium": 1,
+          "large": 1
+        },
+        "volume": {
+          "low": 2
+        },
+        "trend": {
+          "down": 1,
+          "up": 1
+        },
+        "volatility": {
+          "high_vol": 2
+        },
+        "rr_tier": {
+          "wide_sl": 2
+        },
+        "price_magnitude": {
+          "sub_dollar": 2
+        },
+        "session": {
+          "late": 1,
+          "asia": 1
+        },
+        "hour_block": {
+          "h20_23": 1,
+          "h00_03": 1
+        },
+        "day": {
+          "mon": 1,
+          "tue": 1
+        },
+        "equity_phase": {
+          "Phase 2": 2
+        },
+        "drawdown_zone": {
+          "normal": 2
+        },
+        "trend_x_dir": {
+          "down_long": 1,
+          "up_short": 1
+        },
+        "session_x_dir": {
+          "late_long": 1,
+          "asia_short": 1
+        },
+        "strat_x_tf": {
+          "TR_PULL_1h": 1,
+          "TR_PULL_15m": 1
+        },
+        "grade": {
+          "B": 1,
+          "A": 1
+        }
+      }
+    },
+    "ETH/USDT:USDT": {
+      "symbol": "ETH/USDT:USDT",
+      "tracker": {
+        "a": 9.0,
+        "b": 9.0
+      },
+      "total_r": 1.891,
+      "streak": 1,
+      "best_r": 2.5606,
+      "worst_r": -1.4879,
+      "last_trade": "2026-02-26T12:28:10.313758+00:00",
+      "affinity": {
+        "direction": {
+          "short": 2,
+          "long": 6
+        },
+        "strategy": {
+          "TR_PULL": 2,
+          "BB_BREAK": 2,
+          "MTF_RSI": 1,
+          "EMA_RIB": 2,
+          "DONCHIAN": 1
+        },
+        "timeframe": {
+          "15m": 7,
+          "1h": 1
+        },
+        "body_ratio": {
+          "tiny": 1,
+          "small": 2,
+          "huge": 3,
+          "large": 1,
+          "medium": 1
+        },
+        "volume": {
+          "spike": 2,
+          "low": 3,
+          "high": 2,
+          "avg": 1
+        },
+        "trend": {
+          "flat": 2,
+          "down": 1,
+          "up": 5
+        },
+        "volatility": {
+          "low_vol": 6,
+          "med_vol": 2
+        },
+        "rr_tier": {
+          "tight_sl": 7,
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "thousands": 8
+        },
+        "session": {
+          "overlap": 5,
+          "london": 2,
+          "ny": 1
+        },
+        "hour_block": {
+          "h12_15": 5,
+          "h16_19": 3
+        },
+        "day": {
+          "tue": 3,
+          "wed": 4,
+          "thu": 1
+        },
+        "equity_phase": {
+          "Phase 2": 8
+        },
+        "drawdown_zone": {
+          "normal": 8
+        },
+        "trend_x_dir": {
+          "flat_short": 1,
+          "down_long": 1,
+          "up_short": 1,
+          "up_long": 4,
+          "flat_long": 1
+        },
+        "session_x_dir": {
+          "overlap_short": 2,
+          "overlap_long": 3,
+          "london_long": 2,
+          "ny_long": 1
+        },
+        "strat_x_tf": {
+          "TR_PULL_15m": 2,
+          "BB_BREAK_15m": 1,
+          "MTF_RSI_15m": 1,
+          "EMA_RIB_15m": 2,
+          "DONCHIAN_15m": 1,
+          "BB_BREAK_1h": 1
+        },
+        "grade": {
+          "A+": 5,
+          "A": 3
+        }
+      }
+    },
+    "ESP/USDT:USDT": {
+      "symbol": "ESP/USDT:USDT",
+      "tracker": {
+        "a": 3.0,
+        "b": 3.0
+      },
+      "total_r": 2.8441,
+      "streak": -1,
+      "best_r": 2.086,
+      "worst_r": -0.5702,
+      "last_trade": "2026-02-26T01:34:53.760142+00:00",
+      "affinity": {
+        "direction": {
+          "long": 2
+        },
+        "strategy": {
+          "BB_FADE": 2
+        },
+        "timeframe": {
+          "15m": 2
+        },
+        "body_ratio": {
+          "small": 1,
+          "tiny": 1
+        },
+        "volume": {
+          "avg": 1,
+          "low": 1
+        },
+        "trend": {
+          "down": 2
+        },
+        "volatility": {
+          "high_vol": 2
+        },
+        "rr_tier": {
+          "wide_sl": 2
+        },
+        "price_magnitude": {
+          "sub_dollar": 2
+        },
+        "session": {
+          "asia": 1,
+          "overlap": 1
+        },
+        "hour_block": {
+          "h00_03": 1,
+          "h16_19": 1
+        },
+        "day": {
+          "tue": 2
+        },
+        "equity_phase": {
+          "Phase 2": 2
+        },
+        "drawdown_zone": {
+          "normal": 2
+        },
+        "trend_x_dir": {
+          "down_long": 2
+        },
+        "session_x_dir": {
+          "asia_long": 1,
+          "overlap_long": 1
+        },
+        "strat_x_tf": {
+          "BB_FADE_15m": 2
+        },
+        "grade": {
+          "B": 1,
+          "A": 1
+        }
+      }
+    },
+    "FARTCOIN/USDT:USDT": {
+      "symbol": "FARTCOIN/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 3.0
+      },
+      "total_r": 0.795,
+      "streak": -2,
+      "best_r": 1.8763,
+      "worst_r": -1.0657,
+      "last_trade": "2026-02-24T15:16:29.622365+00:00",
+      "affinity": {
+        "direction": {
+          "short": 1
+        },
+        "strategy": {
+          "EMA_RIB": 1
+        },
+        "timeframe": {
+          "15m": 1
+        },
+        "body_ratio": {
+          "medium": 1
+        },
+        "volume": {
+          "low": 1
+        },
+        "trend": {
+          "down": 1
+        },
+        "volatility": {
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "sub_dollar": 1
+        },
+        "session": {
+          "asia": 1
+        },
+        "hour_block": {
+          "h00_03": 1
+        },
+        "day": {
+          "tue": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "down_short": 1
+        },
+        "session_x_dir": {
+          "asia_short": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 1
+        },
+        "grade": {
+          "A": 1
+        }
+      }
+    },
+    "SOL/USDT:USDT": {
+      "symbol": "SOL/USDT:USDT",
+      "tracker": {
+        "a": 7.0,
+        "b": 8.0
+      },
+      "total_r": -1.6522,
+      "streak": 1,
+      "best_r": 1.8976,
+      "worst_r": -1.2269,
+      "last_trade": "2026-02-26T04:44:08.711386+00:00",
+      "affinity": {
+        "direction": {
+          "short": 1,
+          "long": 5
+        },
+        "strategy": {
+          "EMA_RIB": 3,
+          "BB_BREAK": 1,
+          "BB_FADE": 1,
+          "TR_PULL": 1
+        },
+        "timeframe": {
+          "15m": 5,
+          "1h": 1
+        },
+        "body_ratio": {
+          "medium": 1,
+          "small": 1,
+          "large": 2,
+          "huge": 2
+        },
+        "volume": {
+          "low": 4,
+          "high": 1,
+          "avg": 1
+        },
+        "trend": {
+          "down": 3,
+          "up": 3
+        },
+        "volatility": {
+          "low_vol": 2,
+          "med_vol": 4
+        },
+        "rr_tier": {
+          "tight_sl": 3,
+          "med_sl": 3
+        },
+        "price_magnitude": {
+          "tens": 6
+        },
+        "session": {
+          "asia": 2,
+          "london": 1,
+          "overlap": 1,
+          "ny": 1,
+          "late": 1
+        },
+        "hour_block": {
+          "h00_03": 2,
+          "h12_15": 1,
+          "h16_19": 2,
+          "h20_23": 1
+        },
+        "day": {
+          "tue": 1,
+          "wed": 4,
+          "thu": 1
+        },
+        "equity_phase": {
+          "Phase 2": 6
+        },
+        "drawdown_zone": {
+          "normal": 6
+        },
+        "trend_x_dir": {
+          "down_short": 1,
+          "up_long": 3,
+          "down_long": 2
+        },
+        "session_x_dir": {
+          "asia_short": 1,
+          "london_long": 1,
+          "overlap_long": 1,
+          "ny_long": 1,
+          "late_long": 1,
+          "asia_long": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 3,
+          "BB_BREAK_1h": 1,
+          "BB_FADE_15m": 1,
+          "TR_PULL_15m": 1
+        },
+        "grade": {
+          "A": 2,
+          "A+": 4
+        }
+      }
+    },
+    "BCH/USDT:USDT": {
+      "symbol": "BCH/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 4.0
+      },
+      "total_r": -0.8482,
+      "streak": 1,
+      "best_r": 0.4801,
+      "worst_r": -1.0575,
+      "last_trade": "2026-02-26T09:14:55.544703+00:00",
+      "affinity": {
+        "direction": {
+          "long": 1
+        },
+        "strategy": {
+          "BB_FADE": 1
+        },
+        "timeframe": {
+          "15m": 1
+        },
+        "body_ratio": {
+          "huge": 1
+        },
+        "volume": {
+          "low": 1
+        },
+        "trend": {
+          "down": 1
+        },
+        "volatility": {
+          "low_vol": 1
+        },
+        "rr_tier": {
+          "tight_sl": 1
+        },
+        "price_magnitude": {
+          "hundreds": 1
+        },
+        "session": {
+          "london": 1
+        },
+        "hour_block": {
+          "h08_11": 1
+        },
+        "day": {
+          "thu": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "down_long": 1
+        },
+        "session_x_dir": {
+          "london_long": 1
+        },
+        "strat_x_tf": {
+          "BB_FADE_15m": 1
+        },
+        "grade": {
+          "A+": 1
+        }
+      }
+    },
+    "BNB/USDT:USDT": {
+      "symbol": "BNB/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 6.0
+      },
+      "total_r": -5.4405,
+      "streak": -5,
+      "best_r": 0.0,
+      "worst_r": -1.4108,
+      "last_trade": "2026-02-25T23:30:15.103055+00:00",
+      "affinity": {}
+    },
+    "XRP/USDT:USDT": {
+      "symbol": "XRP/USDT:USDT",
+      "tracker": {
+        "a": 5.0,
+        "b": 3.0
+      },
+      "total_r": 0.0508,
+      "streak": 2,
+      "best_r": 0.859,
+      "worst_r": -0.8689,
+      "last_trade": "2026-02-25T15:02:13.232327+00:00",
+      "affinity": {
+        "direction": {
+          "short": 2,
+          "long": 2
+        },
+        "strategy": {
+          "TR_PULL": 1,
+          "EMA_RIB": 3
+        },
+        "timeframe": {
+          "1h": 2,
+          "15m": 2
+        },
+        "body_ratio": {
+          "tiny": 1,
+          "huge": 1,
+          "medium": 1,
+          "large": 1
+        },
+        "volume": {
+          "high": 2,
+          "low": 1,
+          "avg": 1
+        },
+        "trend": {
+          "down": 2,
+          "up": 2
+        },
+        "volatility": {
+          "med_vol": 2,
+          "low_vol": 2
+        },
+        "rr_tier": {
+          "med_sl": 2,
+          "tight_sl": 2
+        },
+        "price_magnitude": {
+          "tens": 4
+        },
+        "session": {
+          "asia": 2,
+          "london": 1,
+          "overlap": 1
+        },
+        "hour_block": {
+          "h00_03": 2,
+          "h12_15": 2
+        },
+        "day": {
+          "tue": 2,
+          "wed": 2
+        },
+        "equity_phase": {
+          "Phase 2": 4
+        },
+        "drawdown_zone": {
+          "normal": 4
+        },
+        "trend_x_dir": {
+          "down_short": 2,
+          "up_long": 2
+        },
+        "session_x_dir": {
+          "asia_short": 2,
+          "london_long": 1,
+          "overlap_long": 1
+        },
+        "strat_x_tf": {
+          "TR_PULL_1h": 1,
+          "EMA_RIB_1h": 1,
+          "EMA_RIB_15m": 2
+        },
+        "grade": {
+          "A": 2,
+          "A+": 2
+        }
+      }
+    },
+    "TRIA/USDT:USDT": {
+      "symbol": "TRIA/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -1.0956,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0956,
+      "last_trade": "2026-02-24T02:03:44.458499+00:00",
+      "affinity": {}
+    },
+    "RAVE/USDT:USDT": {
+      "symbol": "RAVE/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -0.6851,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -0.6851,
+      "last_trade": "2026-02-24T02:07:07.909563+00:00",
+      "affinity": {}
+    },
+    "RIVER/USDT:USDT": {
+      "symbol": "RIVER/USDT:USDT",
+      "tracker": {
+        "a": 4.0,
+        "b": 4.0
+      },
+      "total_r": -0.5999,
+      "streak": -1,
+      "best_r": 1.2103,
+      "worst_r": -1.1177,
+      "last_trade": "2026-02-25T04:22:46.962912+00:00",
+      "affinity": {
+        "direction": {
+          "short": 2,
+          "long": 1
+        },
+        "strategy": {
+          "DONCHIAN": 1,
+          "BB_FADE": 1,
+          "EMA_RIB": 1
+        },
+        "timeframe": {
+          "15m": 3
+        },
+        "body_ratio": {
+          "huge": 2,
+          "large": 1
+        },
+        "volume": {
+          "avg": 1,
+          "low": 2
+        },
+        "trend": {
+          "down": 3
+        },
+        "volatility": {
+          "high_vol": 3
+        },
+        "rr_tier": {
+          "wide_sl": 3
+        },
+        "price_magnitude": {
+          "tens": 3
+        },
+        "session": {
+          "late": 2,
+          "asia": 1
+        },
+        "hour_block": {
+          "h20_23": 2,
+          "h00_03": 1
+        },
+        "day": {
+          "tue": 2,
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 3
+        },
+        "drawdown_zone": {
+          "normal": 3
+        },
+        "trend_x_dir": {
+          "down_short": 2,
+          "down_long": 1
+        },
+        "session_x_dir": {
+          "late_short": 1,
+          "late_long": 1,
+          "asia_short": 1
+        },
+        "strat_x_tf": {
+          "DONCHIAN_15m": 1,
+          "BB_FADE_15m": 1,
+          "EMA_RIB_15m": 1
+        },
+        "grade": {
+          "A": 2,
+          "A+": 1
+        }
+      }
+    },
+    "LA/USDT:USDT": {
+      "symbol": "LA/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 4.0
+      },
+      "total_r": -2.4808,
+      "streak": -3,
+      "best_r": 0.0,
+      "worst_r": -1.033,
+      "last_trade": "2026-02-25T09:43:39.099988+00:00",
+      "affinity": {}
+    },
+    "WLFI/USDT:USDT": {
+      "symbol": "WLFI/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 1.0
+      },
+      "total_r": 1.149,
+      "streak": 1,
+      "best_r": 1.149,
+      "worst_r": 0.0,
+      "last_trade": "2026-02-24T03:16:30.624218+00:00",
+      "affinity": {
+        "direction": {
+          "short": 1
+        },
+        "strategy": {
+          "EMA_RIB": 1
+        },
+        "timeframe": {
+          "15m": 1
+        },
+        "body_ratio": {
+          "large": 1
+        },
+        "volume": {
+          "low": 1
+        },
+        "trend": {
+          "down": 1
+        },
+        "volatility": {
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "sub_dollar": 1
+        },
+        "session": {
+          "asia": 1
+        },
+        "hour_block": {
+          "h00_03": 1
+        },
+        "day": {
+          "tue": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "down_short": 1
+        },
+        "session_x_dir": {
+          "asia_short": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 1
+        },
+        "grade": {
+          "A": 1
+        }
+      }
+    },
+    "WHITEWHALE/USDT:USDT": {
+      "symbol": "WHITEWHALE/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -0.1276,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -0.1276,
+      "last_trade": "2026-02-24T14:00:06.381225+00:00",
+      "affinity": {}
+    },
+    "POWER/USDT:USDT": {
+      "symbol": "POWER/USDT:USDT",
+      "tracker": {
+        "a": 4.0,
+        "b": 2.0
+      },
+      "total_r": 0.7521,
+      "streak": 1,
+      "best_r": 0.4928,
+      "worst_r": -0.2387,
+      "last_trade": "2026-02-25T13:15:57.380839+00:00",
+      "affinity": {
+        "direction": {
+          "long": 2,
+          "short": 1
+        },
+        "strategy": {
+          "TR_PULL": 2,
+          "BB_BREAK": 1
+        },
+        "timeframe": {
+          "1h": 1,
+          "15m": 2
+        },
+        "body_ratio": {
+          "medium": 2,
+          "tiny": 1
+        },
+        "volume": {
+          "low": 2,
+          "spike": 1
+        },
+        "trend": {
+          "down": 2,
+          "up": 1
+        },
+        "volatility": {
+          "high_vol": 3
+        },
+        "rr_tier": {
+          "wide_sl": 3
+        },
+        "price_magnitude": {
+          "sub_dollar": 3
+        },
+        "session": {
+          "overlap": 3
+        },
+        "hour_block": {
+          "h12_15": 2,
+          "h16_19": 1
+        },
+        "day": {
+          "tue": 2,
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 3
+        },
+        "drawdown_zone": {
+          "normal": 3
+        },
+        "trend_x_dir": {
+          "down_long": 1,
+          "down_short": 1,
+          "up_long": 1
+        },
+        "session_x_dir": {
+          "overlap_long": 2,
+          "overlap_short": 1
+        },
+        "strat_x_tf": {
+          "TR_PULL_1h": 1,
+          "TR_PULL_15m": 1,
+          "BB_BREAK_15m": 1
+        },
+        "grade": {
+          "A": 1,
+          "C": 1,
+          "A+": 1
+        }
+      }
+    },
+    "ENSO/USDT:USDT": {
+      "symbol": "ENSO/USDT:USDT",
+      "tracker": {
+        "a": 4.0,
+        "b": 2.0
+      },
+      "total_r": 0.7842,
+      "streak": 3,
+      "best_r": 1.6482,
+      "worst_r": -0.9992,
+      "last_trade": "2026-02-25T09:43:36.989322+00:00",
+      "affinity": {
+        "direction": {
+          "long": 3
+        },
+        "strategy": {
+          "EMA_RIB": 2,
+          "TR_PULL": 1
+        },
+        "timeframe": {
+          "15m": 3
+        },
+        "body_ratio": {
+          "large": 1,
+          "huge": 2
+        },
+        "volume": {
+          "low": 3
+        },
+        "trend": {
+          "up": 2,
+          "down": 1
+        },
+        "volatility": {
+          "high_vol": 3
+        },
+        "rr_tier": {
+          "wide_sl": 3
+        },
+        "price_magnitude": {
+          "tens": 3
+        },
+        "session": {
+          "asia": 2,
+          "london": 1
+        },
+        "hour_block": {
+          "h04_07": 2,
+          "h08_11": 1
+        },
+        "day": {
+          "wed": 3
+        },
+        "equity_phase": {
+          "Phase 2": 3
+        },
+        "drawdown_zone": {
+          "normal": 3
+        },
+        "trend_x_dir": {
+          "up_long": 2,
+          "down_long": 1
+        },
+        "session_x_dir": {
+          "asia_long": 2,
+          "london_long": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 2,
+          "TR_PULL_15m": 1
+        },
+        "grade": {
+          "A": 1,
+          "A+": 2
+        }
+      }
+    },
+    "VIRTUAL/USDT:USDT": {
+      "symbol": "VIRTUAL/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 1.0
+      },
+      "total_r": 0.6965,
+      "streak": 1,
+      "best_r": 0.6965,
+      "worst_r": 0.0,
+      "last_trade": "2026-02-24T16:30:11.216822+00:00",
+      "affinity": {
+        "direction": {
+          "short": 1
+        },
+        "strategy": {
+          "RSI_FADE": 1
+        },
+        "timeframe": {
+          "15m": 1
+        },
+        "body_ratio": {
+          "small": 1
+        },
+        "volume": {
+          "low": 1
+        },
+        "trend": {
+          "up": 1
+        },
+        "volatility": {
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "sub_dollar": 1
+        },
+        "session": {
+          "overlap": 1
+        },
+        "hour_block": {
+          "h16_19": 1
+        },
+        "day": {
+          "tue": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "up_short": 1
+        },
+        "session_x_dir": {
+          "overlap_short": 1
+        },
+        "strat_x_tf": {
+          "RSI_FADE_15m": 1
+        },
+        "grade": {
+          "C": 1
+        }
+      }
+    },
+    "SAND/USDT:USDT": {
+      "symbol": "SAND/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -1.04,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.04,
+      "last_trade": "2026-02-24T18:00:14.474643+00:00",
+      "affinity": {}
+    },
+    "SUI/USDT:USDT": {
+      "symbol": "SUI/USDT:USDT",
+      "tracker": {
+        "a": 3.0,
+        "b": 3.0
+      },
+      "total_r": 0.2355,
+      "streak": 1,
+      "best_r": 1.9862,
+      "worst_r": -1.5371,
+      "last_trade": "2026-02-25T20:35:12.559313+00:00",
+      "affinity": {
+        "direction": {
+          "long": 2
+        },
+        "strategy": {
+          "EMA_RIB": 1,
+          "DONCHIAN": 1
+        },
+        "timeframe": {
+          "15m": 2
+        },
+        "body_ratio": {
+          "large": 1,
+          "small": 1
+        },
+        "volume": {
+          "low": 1,
+          "avg": 1
+        },
+        "trend": {
+          "up": 2
+        },
+        "volatility": {
+          "low_vol": 1,
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "tight_sl": 1,
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "sub_dollar": 1,
+          "tens": 1
+        },
+        "session": {
+          "ny": 2
+        },
+        "hour_block": {
+          "h16_19": 1,
+          "h20_23": 1
+        },
+        "day": {
+          "tue": 1,
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 2
+        },
+        "drawdown_zone": {
+          "normal": 2
+        },
+        "trend_x_dir": {
+          "up_long": 2
+        },
+        "session_x_dir": {
+          "ny_long": 2
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 1,
+          "DONCHIAN_15m": 1
+        },
+        "grade": {
+          "A": 2
+        }
+      }
+    },
+    "ZEC/USDT:USDT": {
+      "symbol": "ZEC/USDT:USDT",
+      "tracker": {
+        "a": 3.0,
+        "b": 5.0
+      },
+      "total_r": -1.5211,
+      "streak": -2,
+      "best_r": 0.7551,
+      "worst_r": -1.04,
+      "last_trade": "2026-02-26T06:15:08.656272+00:00",
+      "affinity": {
+        "direction": {
+          "long": 2
+        },
+        "strategy": {
+          "TR_PULL": 1,
+          "DONCHIAN": 1
+        },
+        "timeframe": {
+          "15m": 2
+        },
+        "body_ratio": {
+          "large": 1,
+          "tiny": 1
+        },
+        "volume": {
+          "low": 2
+        },
+        "trend": {
+          "down": 1,
+          "up": 1
+        },
+        "volatility": {
+          "med_vol": 2
+        },
+        "rr_tier": {
+          "med_sl": 2
+        },
+        "price_magnitude": {
+          "hundreds": 2
+        },
+        "session": {
+          "asia": 1,
+          "ny": 1
+        },
+        "hour_block": {
+          "h04_07": 1,
+          "h16_19": 1
+        },
+        "day": {
+          "wed": 2
+        },
+        "equity_phase": {
+          "Phase 2": 2
+        },
+        "drawdown_zone": {
+          "normal": 2
+        },
+        "trend_x_dir": {
+          "down_long": 1,
+          "up_long": 1
+        },
+        "session_x_dir": {
+          "asia_long": 1,
+          "ny_long": 1
+        },
+        "strat_x_tf": {
+          "TR_PULL_15m": 1,
+          "DONCHIAN_15m": 1
+        },
+        "grade": {
+          "A": 2
+        }
+      }
+    },
+    "AVAX/USDT:USDT": {
+      "symbol": "AVAX/USDT:USDT",
+      "tracker": {
+        "a": 3.0,
+        "b": 3.0
+      },
+      "total_r": -0.1385,
+      "streak": -1,
+      "best_r": 1.067,
+      "worst_r": -1.04,
+      "last_trade": "2026-02-26T05:16:54.771812+00:00",
+      "affinity": {
+        "direction": {
+          "long": 2
+        },
+        "strategy": {
+          "BB_BREAK": 2
+        },
+        "timeframe": {
+          "15m": 1,
+          "1h": 1
+        },
+        "body_ratio": {
+          "large": 1,
+          "medium": 1
+        },
+        "volume": {
+          "spike": 2
+        },
+        "trend": {
+          "up": 2
+        },
+        "volatility": {
+          "low_vol": 1,
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "tight_sl": 1,
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "tens": 2
+        },
+        "session": {
+          "london": 1,
+          "overlap": 1
+        },
+        "hour_block": {
+          "h12_15": 2
+        },
+        "day": {
+          "wed": 2
+        },
+        "equity_phase": {
+          "Phase 2": 2
+        },
+        "drawdown_zone": {
+          "normal": 2
+        },
+        "trend_x_dir": {
+          "up_long": 2
+        },
+        "session_x_dir": {
+          "london_long": 1,
+          "overlap_long": 1
+        },
+        "strat_x_tf": {
+          "BB_BREAK_15m": 1,
+          "BB_BREAK_1h": 1
+        },
+        "grade": {
+          "A+": 2
+        }
+      }
+    },
+    "GPS/USDT:USDT": {
+      "symbol": "GPS/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 3.0
+      },
+      "total_r": -1.3972,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -1.0872,
+      "last_trade": "2026-02-25T01:17:08.432523+00:00",
+      "affinity": {}
+    },
+    "KITE/USDT:USDT": {
+      "symbol": "KITE/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 3.0
+      },
+      "total_r": -0.4375,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -0.236,
+      "last_trade": "2026-02-25T04:28:31.180416+00:00",
+      "affinity": {}
+    },
+    "STEEM/USDT:USDT": {
+      "symbol": "STEEM/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -1.04,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.04,
+      "last_trade": "2026-02-25T00:28:50.396137+00:00",
+      "affinity": {}
+    },
+    "AAVE/USDT:USDT": {
+      "symbol": "AAVE/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -1.3354,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.3354,
+      "last_trade": "2026-02-25T01:12:43.832126+00:00",
+      "affinity": {}
+    },
+    "LINK/USDT:USDT": {
+      "symbol": "LINK/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 1.0
+      },
+      "total_r": 0.0072,
+      "streak": 1,
+      "best_r": 0.0072,
+      "worst_r": 0.0,
+      "last_trade": "2026-02-25T01:30:17.497079+00:00",
+      "affinity": {
+        "direction": {
+          "long": 1
+        },
+        "strategy": {
+          "MOM_SURGE": 1
+        },
+        "timeframe": {
+          "30m": 1
+        },
+        "body_ratio": {
+          "large": 1
+        },
+        "volume": {
+          "spike": 1
+        },
+        "trend": {
+          "up": 1
+        },
+        "volatility": {
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "tens": 1
+        },
+        "session": {
+          "asia": 1
+        },
+        "hour_block": {
+          "h00_03": 1
+        },
+        "day": {
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "up_long": 1
+        },
+        "session_x_dir": {
+          "asia_long": 1
+        },
+        "strat_x_tf": {
+          "MOM_SURGE_30m": 1
+        },
+        "grade": {
+          "A+": 1
+        }
+      }
+    },
+    "BREV/USDT:USDT": {
+      "symbol": "BREV/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 1.0
+      },
+      "total_r": 0.246,
+      "streak": 1,
+      "best_r": 0.246,
+      "worst_r": 0.0,
+      "last_trade": "2026-02-25T01:30:19.454733+00:00",
+      "affinity": {
+        "direction": {
+          "long": 1
+        },
+        "strategy": {
+          "MOM_SURGE": 1
+        },
+        "timeframe": {
+          "30m": 1
+        },
+        "body_ratio": {
+          "huge": 1
+        },
+        "volume": {
+          "high": 1
+        },
+        "trend": {
+          "up": 1
+        },
+        "volatility": {
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "med_sl": 1
+        },
+        "price_magnitude": {
+          "sub_dollar": 1
+        },
+        "session": {
+          "asia": 1
+        },
+        "hour_block": {
+          "h00_03": 1
+        },
+        "day": {
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "up_long": 1
+        },
+        "session_x_dir": {
+          "asia_long": 1
+        },
+        "strat_x_tf": {
+          "MOM_SURGE_30m": 1
+        },
+        "grade": {
+          "A": 1
+        }
+      }
+    },
+    "TAO/USDT:USDT": {
+      "symbol": "TAO/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 3.0
+      },
+      "total_r": -1.1129,
+      "streak": 1,
+      "best_r": 0.7349,
+      "worst_r": -1.1177,
+      "last_trade": "2026-02-25T13:51:09.969677+00:00",
+      "affinity": {
+        "direction": {
+          "long": 1
+        },
+        "strategy": {
+          "EMA_RIB": 1
+        },
+        "timeframe": {
+          "15m": 1
+        },
+        "body_ratio": {
+          "medium": 1
+        },
+        "volume": {
+          "low": 1
+        },
+        "trend": {
+          "up": 1
+        },
+        "volatility": {
+          "low_vol": 1
+        },
+        "rr_tier": {
+          "tight_sl": 1
+        },
+        "price_magnitude": {
+          "hundreds": 1
+        },
+        "session": {
+          "overlap": 1
+        },
+        "hour_block": {
+          "h12_15": 1
+        },
+        "day": {
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "up_long": 1
+        },
+        "session_x_dir": {
+          "overlap_long": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 1
+        },
+        "grade": {
+          "A": 1
+        }
+      }
+    },
+    "WIF/USDT:USDT": {
+      "symbol": "WIF/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -1.0804,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0804,
+      "last_trade": "2026-02-25T01:51:23.024028+00:00",
+      "affinity": {}
+    },
+    "UNI/USDT:USDT": {
+      "symbol": "UNI/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 2.0
+      },
+      "total_r": 0.2035,
+      "streak": -1,
+      "best_r": 0.8676,
+      "worst_r": -0.6641,
+      "last_trade": "2026-02-26T01:45:13.229328+00:00",
+      "affinity": {
+        "direction": {
+          "long": 1
+        },
+        "strategy": {
+          "BB_BREAK": 1
+        },
+        "timeframe": {
+          "1h": 1
+        },
+        "body_ratio": {
+          "large": 1
+        },
+        "volume": {
+          "spike": 1
+        },
+        "trend": {
+          "up": 1
+        },
+        "volatility": {
+          "med_vol": 1
+        },
+        "rr_tier": {
+          "wide_sl": 1
+        },
+        "price_magnitude": {
+          "tens": 1
+        },
+        "session": {
+          "overlap": 1
+        },
+        "hour_block": {
+          "h12_15": 1
+        },
+        "day": {
+          "wed": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "up_long": 1
+        },
+        "session_x_dir": {
+          "overlap_long": 1
+        },
+        "strat_x_tf": {
+          "BB_BREAK_1h": 1
+        },
+        "grade": {
+          "A+": 1
+        }
+      }
+    },
+    "NEAR/USDT:USDT": {
+      "symbol": "NEAR/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -0.9626,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -0.9626,
+      "last_trade": "2026-02-26T02:37:57.833432+00:00",
+      "affinity": {}
+    },
+    "BARD/USDT:USDT": {
+      "symbol": "BARD/USDT:USDT",
+      "tracker": {
+        "a": 1.0,
+        "b": 2.0
+      },
+      "total_r": -0.9616,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -0.9616,
+      "last_trade": "2026-02-26T10:06:50.713335+00:00",
+      "affinity": {}
+    }
+  },
+  "total_updates": 148,
+  "created": "2026-02-23T10:31:23.113375+00:00",
+  "last_update": "2026-02-26T12:28:10.313805+00:00"
+}

@@ -1,0 +1,1028 @@
+{
+  "date": "2026-02-22",
+  "equity": 100.00002651,
+  "peak_equity": 1445.19890666,
+  "day_start_equity": 100.00002651,
+  "total_trades": 73,
+  "total_wins": 19,
+  "total_losses": 54,
+  "total_pnl_r": -112.996532983545,
+  "total_pnl_usd": -102.16476909802284,
+  "entries_today": 73,
+  "wins_today": 19,
+  "losses_today": 54,
+  "pnl_today_r": -112.996532983545,
+  "pnl_today_usd": -102.16476909802284,
+  "session_traded": {},
+  "daily_counts": {
+    "LIT/USDT:USDT": 1,
+    "IO/USDT:USDT": 2,
+    "ATOM/USDT:USDT": 1,
+    "CYBER/USDT:USDT": 1,
+    "AZTEC/USDT:USDT": 3,
+    "JTO/USDT:USDT": 1,
+    "ACU/USDT:USDT": 1,
+    "ME/USDT:USDT": 1,
+    "HMSTR/USDT:USDT": 3,
+    "KITE/USDT:USDT": 3,
+    "C98/USDT:USDT": 3,
+    "ENS/USDT:USDT": 2,
+    "ICP/USDT:USDT": 1,
+    "SNX/USDT:USDT": 2,
+    "INJ/USDT:USDT": 3,
+    "DYDX/USDT:USDT": 2,
+    "KAS/USDT:USDT": 1,
+    "CLO/USDT:USDT": 2,
+    "ARC/USDT:USDT": 1,
+    "BIO/USDT:USDT": 2,
+    "ENSO/USDT:USDT": 5,
+    "ENA/USDT:USDT": 1,
+    "BERA/USDT:USDT": 2,
+    "FARTCOIN/USDT:USDT": 2,
+    "GALA/USDT:USDT": 1,
+    "LINK/USDT:USDT": 1,
+    "AXS/USDT:USDT": 1,
+    "JUP/USDT:USDT": 1,
+    "AERO/USDT:USDT": 1,
+    "ESP/USDT:USDT": 3,
+    "AGLD/USDT:USDT": 2,
+    "AAVE/USDT:USDT": 1,
+    "EUL/USDT:USDT": 1,
+    "HANA/USDT:USDT": 1,
+    "DOGE/USDT:USDT": 1,
+    "FLOW/USDT:USDT": 2,
+    "BTR/USDT:USDT": 3,
+    "BEAT/USDT:USDT": 1,
+    "BCH/USDT:USDT": 1,
+    "1000PEPE/USDT:USDT": 1,
+    "FIGHT/USDT:USDT": 1,
+    "LYN/USDT:USDT": 2,
+    "MNT/USDT:USDT": 1,
+    "HYPE/USDT:USDT": 1
+  },
+  "pending_entries": [],
+  "trade_history": [
+    {
+      "pair": "IO/USDT:USDT",
+      "pnl_r": 0.1855,
+      "pnl_usd": 0.2,
+      "exit_reason": "trail",
+      "time": "2026-02-22T00:12:26.588678+00:00",
+      "direction": "short",
+      "entry_price": 0.12164,
+      "stop_loss": 0.12233
+    },
+    {
+      "pair": "AZTEC/USDT:USDT",
+      "pnl_r": -0.8597,
+      "pnl_usd": -1.95,
+      "exit_reason": "sl",
+      "time": "2026-02-22T00:12:28.382234+00:00",
+      "direction": "long",
+      "entry_price": 0.034314,
+      "stop_loss": 0.033912
+    },
+    {
+      "pair": "LIT/USDT:USDT",
+      "pnl_r": -1.1035,
+      "pnl_usd": -1.67,
+      "exit_reason": "sl",
+      "time": "2026-02-22T00:36:51.031630+00:00",
+      "direction": "long",
+      "entry_price": 1.5158,
+      "stop_loss": 1.504
+    },
+    {
+      "pair": "JTO/USDT:USDT",
+      "pnl_r": -1.6708,
+      "pnl_usd": -0.83,
+      "exit_reason": "sl",
+      "time": "2026-02-22T00:37:08.038324+00:00",
+      "direction": "long",
+      "entry_price": 0.3066,
+      "stop_loss": 0.3058
+    },
+    {
+      "pair": "CYBER/USDT:USDT",
+      "pnl_r": -1.0451,
+      "pnl_usd": -5.62,
+      "exit_reason": "sl",
+      "time": "2026-02-22T00:40:27.372363+00:00",
+      "direction": "short",
+      "entry_price": 0.6216,
+      "stop_loss": 0.648
+    },
+    {
+      "pair": "ACU/USDT:USDT",
+      "pnl_r": 0.353,
+      "pnl_usd": 0.4,
+      "exit_reason": "trail",
+      "time": "2026-02-22T00:44:02.844626+00:00",
+      "direction": "long",
+      "entry_price": 0.11209,
+      "stop_loss": 0.11143
+    },
+    {
+      "pair": "ME/USDT:USDT",
+      "pnl_r": 0.9743,
+      "pnl_usd": 0.3,
+      "exit_reason": "trail",
+      "time": "2026-02-22T00:46:06.625385+00:00",
+      "direction": "short",
+      "entry_price": 0.12625,
+      "stop_loss": 0.12647
+    },
+    {
+      "pair": "ATOM/USDT:USDT",
+      "pnl_r": -0.2742,
+      "pnl_usd": -0.22,
+      "exit_reason": "sl",
+      "time": "2026-02-22T00:47:09.072336+00:00",
+      "direction": "short",
+      "entry_price": 2.3037,
+      "stop_loss": 2.3133
+    },
+    {
+      "pair": "HMSTR/USDT:USDT",
+      "pnl_r": -1.04,
+      "pnl_usd": -0.42,
+      "exit_reason": "sl_during_restart",
+      "time": "2026-02-22T00:54:27.051430+00:00",
+      "direction": "long",
+      "entry_price": 0.0001746,
+      "stop_loss": 0.0001742
+    },
+    {
+      "pair": "KITE/USDT:USDT",
+      "pnl_r": -1.1908,
+      "pnl_usd": -1.88,
+      "exit_reason": "sl",
+      "time": "2026-02-22T01:01:44.148306+00:00",
+      "direction": "long",
+      "entry_price": 0.22511,
+      "stop_loss": 0.22311
+    },
+    {
+      "pair": "C98/USDT:USDT",
+      "pnl_r": -0.2312,
+      "pnl_usd": -0.12,
+      "exit_reason": "trail",
+      "time": "2026-02-22T01:24:35.000123+00:00",
+      "direction": "short",
+      "entry_price": 0.026384,
+      "stop_loss": 0.026462
+    },
+    {
+      "pair": "HMSTR/USDT:USDT",
+      "pnl_r": -0.7013,
+      "pnl_usd": -0.35,
+      "exit_reason": "sl",
+      "time": "2026-02-22T01:24:51.986836+00:00",
+      "direction": "short",
+      "entry_price": 0.0001743,
+      "stop_loss": 0.0001748
+    },
+    {
+      "pair": "ICP/USDT:USDT",
+      "pnl_r": -0.8466,
+      "pnl_usd": -0.27,
+      "exit_reason": "sl",
+      "time": "2026-02-22T01:44:08.359131+00:00",
+      "direction": "long",
+      "entry_price": 2.171,
+      "stop_loss": 2.167
+    },
+    {
+      "pair": "ENS/USDT:USDT",
+      "pnl_r": -1.5085,
+      "pnl_usd": -0.83,
+      "exit_reason": "sl",
+      "time": "2026-02-22T01:49:13.630597+00:00",
+      "direction": "short",
+      "entry_price": 6.633,
+      "stop_loss": 6.654
+    },
+    {
+      "pair": "INJ/USDT:USDT",
+      "pnl_r": 2.8565,
+      "pnl_usd": 1.05,
+      "exit_reason": "trail",
+      "time": "2026-02-22T02:06:32.573381+00:00",
+      "direction": "long",
+      "entry_price": 3.712,
+      "stop_loss": 3.704
+    },
+    {
+      "pair": "DYDX/USDT:USDT",
+      "pnl_r": -1.3841,
+      "pnl_usd": -0.87,
+      "exit_reason": "sl",
+      "time": "2026-02-22T02:19:30.190974+00:00",
+      "direction": "long",
+      "entry_price": 0.09888,
+      "stop_loss": 0.09852
+    },
+    {
+      "pair": "ENS/USDT:USDT",
+      "pnl_r": -1.0147,
+      "pnl_usd": -0.5,
+      "exit_reason": "sl",
+      "time": "2026-02-22T02:19:32.381119+00:00",
+      "direction": "long",
+      "entry_price": 6.661,
+      "stop_loss": 6.642
+    },
+    {
+      "pair": "KAS/USDT:USDT",
+      "pnl_r": -1.6112,
+      "pnl_usd": -0.81,
+      "exit_reason": "sl",
+      "time": "2026-02-22T02:23:52.781662+00:00",
+      "direction": "long",
+      "entry_price": 0.03097,
+      "stop_loss": 0.03088
+    },
+    {
+      "pair": "KITE/USDT:USDT",
+      "pnl_r": 1.3038,
+      "pnl_usd": 1.1,
+      "exit_reason": "trail",
+      "time": "2026-02-22T02:26:57.325781+00:00",
+      "direction": "short",
+      "entry_price": 0.22498,
+      "stop_loss": 0.2261
+    },
+    {
+      "pair": "CLO/USDT:USDT",
+      "pnl_r": -74.7113,
+      "pnl_usd": -38.06,
+      "exit_reason": "trail",
+      "time": "2026-02-22T02:41:25.729762+00:00",
+      "direction": "short",
+      "entry_price": 0.08724,
+      "stop_loss": 0.0875
+    },
+    {
+      "pair": "BIO/USDT:USDT",
+      "pnl_r": -1.1312,
+      "pnl_usd": -0.35,
+      "exit_reason": "sl",
+      "time": "2026-02-22T02:51:06.111329+00:00",
+      "direction": "short",
+      "entry_price": 0.02736,
+      "stop_loss": 0.02741
+    },
+    {
+      "pair": "SNX/USDT:USDT",
+      "pnl_r": -0.1249,
+      "pnl_usd": -0.27,
+      "exit_reason": "sl",
+      "time": "2026-02-22T02:51:53.434404+00:00",
+      "direction": "long",
+      "entry_price": 0.3972,
+      "stop_loss": 0.3921
+    },
+    {
+      "pair": "ENSO/USDT:USDT",
+      "pnl_r": -0.4884,
+      "pnl_usd": -0.15,
+      "exit_reason": "trail",
+      "time": "2026-02-22T02:56:14.431568+00:00",
+      "direction": "long",
+      "entry_price": 1.928,
+      "stop_loss": 1.9244
+    },
+    {
+      "pair": "ENA/USDT:USDT",
+      "pnl_r": -0.9701,
+      "pnl_usd": -0.49,
+      "exit_reason": "sl",
+      "time": "2026-02-22T02:57:47.227164+00:00",
+      "direction": "long",
+      "entry_price": 0.1048,
+      "stop_loss": 0.10449
+    },
+    {
+      "pair": "ARC/USDT:USDT",
+      "pnl_r": -0.1704,
+      "pnl_usd": -0.34,
+      "exit_reason": "sl",
+      "time": "2026-02-22T03:01:21.890612+00:00",
+      "direction": "short",
+      "entry_price": 0.07633,
+      "stop_loss": 0.07722
+    },
+    {
+      "pair": "GALA/USDT:USDT",
+      "pnl_r": -1.4195,
+      "pnl_usd": -0.62,
+      "exit_reason": "sl",
+      "time": "2026-02-22T03:07:59.077757+00:00",
+      "direction": "long",
+      "entry_price": 0.003818,
+      "stop_loss": 0.003808
+    },
+    {
+      "pair": "BERA/USDT:USDT",
+      "pnl_r": 1.1755,
+      "pnl_usd": 0.63,
+      "exit_reason": "trail",
+      "time": "2026-02-22T03:14:36.795728+00:00",
+      "direction": "long",
+      "entry_price": 0.5679,
+      "stop_loss": 0.5661
+    },
+    {
+      "pair": "FARTCOIN/USDT:USDT",
+      "pnl_r": -1.223,
+      "pnl_usd": -1.08,
+      "exit_reason": "sl",
+      "time": "2026-02-22T03:18:26.225857+00:00",
+      "direction": "long",
+      "entry_price": 0.18004,
+      "stop_loss": 0.17909
+    },
+    {
+      "pair": "LINK/USDT:USDT",
+      "pnl_r": 0.2979,
+      "pnl_usd": 0.1,
+      "exit_reason": "trail",
+      "time": "2026-02-22T03:30:17.731246+00:00",
+      "direction": "long",
+      "entry_price": 8.809,
+      "stop_loss": 8.792
+    },
+    {
+      "pair": "SNX/USDT:USDT",
+      "pnl_r": 0.8179,
+      "pnl_usd": 0.61,
+      "exit_reason": "trail",
+      "time": "2026-02-22T03:36:38.938099+00:00",
+      "direction": "long",
+      "entry_price": 0.3981,
+      "stop_loss": 0.3963
+    },
+    {
+      "pair": "AXS/USDT:USDT",
+      "pnl_r": -0.2359,
+      "pnl_usd": -0.13,
+      "exit_reason": "sl",
+      "time": "2026-02-22T03:39:27.628093+00:00",
+      "direction": "long",
+      "entry_price": 1.3295,
+      "stop_loss": 1.3253
+    },
+    {
+      "pair": "ENSO/USDT:USDT",
+      "pnl_r": 0.2884,
+      "pnl_usd": 0.09,
+      "exit_reason": "trail",
+      "time": "2026-02-22T03:47:46.349439+00:00",
+      "direction": "short",
+      "entry_price": 1.9106,
+      "stop_loss": 1.9138
+    },
+    {
+      "pair": "JUP/USDT:USDT",
+      "pnl_r": -2.0167,
+      "pnl_usd": -0.48,
+      "exit_reason": "sl",
+      "time": "2026-02-22T04:13:28.175500+00:00",
+      "direction": "short",
+      "entry_price": 0.15425,
+      "stop_loss": 0.15446
+    },
+    {
+      "pair": "BIO/USDT:USDT",
+      "pnl_r": -1.1221,
+      "pnl_usd": -1.17,
+      "exit_reason": "sl",
+      "time": "2026-02-22T04:16:02.507502+00:00",
+      "direction": "long",
+      "entry_price": 0.02694,
+      "stop_loss": 0.02678
+    },
+    {
+      "pair": "INJ/USDT:USDT",
+      "pnl_r": -1.4053,
+      "pnl_usd": -1.09,
+      "exit_reason": "sl",
+      "time": "2026-02-22T04:18:37.290733+00:00",
+      "direction": "short",
+      "entry_price": 3.645,
+      "stop_loss": 3.661
+    },
+    {
+      "pair": "ESP/USDT:USDT",
+      "pnl_r": -1.154,
+      "pnl_usd": -6.53,
+      "exit_reason": "sl",
+      "time": "2026-02-22T04:31:16.131766+00:00",
+      "direction": "short",
+      "entry_price": 0.07587,
+      "stop_loss": 0.07662
+    },
+    {
+      "pair": "AERO/USDT:USDT",
+      "pnl_r": -0.5429,
+      "pnl_usd": -0.36,
+      "exit_reason": "sl",
+      "time": "2026-02-22T04:36:06.046109+00:00",
+      "direction": "short",
+      "entry_price": 0.3202,
+      "stop_loss": 0.3214
+    },
+    {
+      "pair": "AGLD/USDT:USDT",
+      "pnl_r": -1.2298,
+      "pnl_usd": -6.74,
+      "exit_reason": "sl",
+      "time": "2026-02-22T05:07:46.280612+00:00",
+      "direction": "short",
+      "entry_price": 0.24313,
+      "stop_loss": 0.24544
+    },
+    {
+      "pair": "EUL/USDT:USDT",
+      "pnl_r": -2.3287,
+      "pnl_usd": -2.5,
+      "exit_reason": "sl",
+      "time": "2026-02-22T05:17:54.864600+00:00",
+      "direction": "long",
+      "entry_price": 0.978,
+      "stop_loss": 0.9758
+    },
+    {
+      "pair": "ESP/USDT:USDT",
+      "pnl_r": -0.9692,
+      "pnl_usd": -1.32,
+      "exit_reason": "sl",
+      "time": "2026-02-22T05:29:20.944325+00:00",
+      "direction": "long",
+      "entry_price": 0.07644,
+      "stop_loss": 0.07611
+    },
+    {
+      "pair": "AAVE/USDT:USDT",
+      "pnl_r": -1.2412,
+      "pnl_usd": -0.67,
+      "exit_reason": "sl",
+      "time": "2026-02-22T05:48:07.315904+00:00",
+      "direction": "long",
+      "entry_price": 119.32,
+      "stop_loss": 118.86
+    },
+    {
+      "pair": "C98/USDT:USDT",
+      "pnl_r": 0.6056,
+      "pnl_usd": 0.79,
+      "exit_reason": "trail",
+      "time": "2026-02-22T05:50:10.487233+00:00",
+      "direction": "short",
+      "entry_price": 0.026192,
+      "stop_loss": 0.026305
+    },
+    {
+      "pair": "AGLD/USDT:USDT",
+      "pnl_r": -0.1098,
+      "pnl_usd": -0.21,
+      "exit_reason": "sl",
+      "time": "2026-02-22T05:53:59.739542+00:00",
+      "direction": "short",
+      "entry_price": 0.24368,
+      "stop_loss": 0.24677
+    },
+    {
+      "pair": "IO/USDT:USDT",
+      "pnl_r": 0.2032,
+      "pnl_usd": 0.2,
+      "exit_reason": "tp",
+      "time": "2026-02-22T06:02:08.141132+00:00",
+      "direction": "long",
+      "entry_price": 0.11835,
+      "stop_loss": 0.11799
+    },
+    {
+      "pair": "HANA/USDT:USDT",
+      "pnl_r": 1.539,
+      "pnl_usd": 2.36,
+      "exit_reason": "trail",
+      "time": "2026-02-22T06:16:06.740263+00:00",
+      "direction": "long",
+      "entry_price": 0.035179,
+      "stop_loss": 0.034971
+    },
+    {
+      "pair": "DOGE/USDT:USDT",
+      "pnl_r": -0.5306,
+      "pnl_usd": -0.54,
+      "exit_reason": "sl",
+      "time": "2026-02-22T06:29:18.772343+00:00",
+      "direction": "long",
+      "entry_price": 0.09704,
+      "stop_loss": 0.09682
+    },
+    {
+      "pair": "CLO/USDT:USDT",
+      "pnl_r": -1.0603,
+      "pnl_usd": -0.8,
+      "exit_reason": "sl",
+      "time": "2026-02-22T06:30:21.403831+00:00",
+      "direction": "short",
+      "entry_price": 0.0851,
+      "stop_loss": 0.08554
+    },
+    {
+      "pair": "ENSO/USDT:USDT",
+      "pnl_r": -1.2019,
+      "pnl_usd": -2.53,
+      "exit_reason": "sl",
+      "time": "2026-02-22T06:31:24.019656+00:00",
+      "direction": "short",
+      "entry_price": 2.0245,
+      "stop_loss": 2.0346
+    },
+    {
+      "pair": "INJ/USDT:USDT",
+      "pnl_r": -1.0956,
+      "pnl_usd": -0.81,
+      "exit_reason": "sl",
+      "time": "2026-02-22T06:38:12.927037+00:00",
+      "direction": "long",
+      "entry_price": 3.603,
+      "stop_loss": 3.593
+    },
+    {
+      "pair": "BTR/USDT:USDT",
+      "pnl_r": 1.4633,
+      "pnl_usd": 1.17,
+      "exit_reason": "trail",
+      "time": "2026-02-22T07:16:57.903683+00:00",
+      "direction": "long",
+      "entry_price": 0.19416,
+      "stop_loss": 0.19309
+    },
+    {
+      "pair": "KITE/USDT:USDT",
+      "pnl_r": -1.1367,
+      "pnl_usd": -0.93,
+      "exit_reason": "sl",
+      "time": "2026-02-22T07:24:04.677268+00:00",
+      "direction": "short",
+      "entry_price": 0.22996,
+      "stop_loss": 0.23233
+    },
+    {
+      "pair": "BEAT/USDT:USDT",
+      "pnl_r": -2.012,
+      "pnl_usd": -1.47,
+      "exit_reason": "sl",
+      "time": "2026-02-22T07:43:04.589086+00:00",
+      "direction": "long",
+      "entry_price": 0.23985,
+      "stop_loss": 0.23928
+    },
+    {
+      "pair": "BCH/USDT:USDT",
+      "pnl_r": -0.1386,
+      "pnl_usd": -0.11,
+      "exit_reason": "sl",
+      "time": "2026-02-22T07:49:11.087808+00:00",
+      "direction": "short",
+      "entry_price": 581.3,
+      "stop_loss": 586.4
+    },
+    {
+      "pair": "ENSO/USDT:USDT",
+      "pnl_r": -1.0198,
+      "pnl_usd": -0.8,
+      "exit_reason": "sl",
+      "time": "2026-02-22T07:52:30.480687+00:00",
+      "direction": "short",
+      "entry_price": 2.2079,
+      "stop_loss": 2.254
+    },
+    {
+      "pair": "FLOW/USDT:USDT",
+      "pnl_r": -0.7953,
+      "pnl_usd": -0.58,
+      "exit_reason": "sl",
+      "time": "2026-02-22T07:53:48.067682+00:00",
+      "direction": "long",
+      "entry_price": 0.0387,
+      "stop_loss": 0.03837
+    },
+    {
+      "pair": "AZTEC/USDT:USDT",
+      "pnl_r": 0.9831,
+      "pnl_usd": 0.66,
+      "exit_reason": "trail",
+      "time": "2026-02-22T08:22:44.153480+00:00",
+      "direction": "short",
+      "entry_price": 0.032509,
+      "stop_loss": 0.032669
+    },
+    {
+      "pair": "1000PEPE/USDT:USDT",
+      "pnl_r": 0.0707,
+      "pnl_usd": 0.05,
+      "exit_reason": "trail",
+      "time": "2026-02-22T08:24:47.834414+00:00",
+      "direction": "short",
+      "entry_price": 0.004098,
+      "stop_loss": 0.004105
+    },
+    {
+      "pair": "FIGHT/USDT:USDT",
+      "pnl_r": -1.3836,
+      "pnl_usd": -1.08,
+      "exit_reason": "sl",
+      "time": "2026-02-22T08:46:54.488756+00:00",
+      "direction": "short",
+      "entry_price": 0.007054,
+      "stop_loss": 0.007105
+    },
+    {
+      "pair": "LYN/USDT:USDT",
+      "pnl_r": -1.483,
+      "pnl_usd": -1.03,
+      "exit_reason": "sl",
+      "time": "2026-02-22T09:01:30.563567+00:00",
+      "direction": "short",
+      "entry_price": 0.30589,
+      "stop_loss": 0.30738
+    },
+    {
+      "pair": "BTR/USDT:USDT",
+      "pnl_r": -0.5614,
+      "pnl_usd": -0.38,
+      "exit_reason": "sl",
+      "time": "2026-02-22T09:22:00.229070+00:00",
+      "direction": "short",
+      "entry_price": 0.19536,
+      "stop_loss": 0.1963
+    },
+    {
+      "pair": "DYDX/USDT:USDT",
+      "pnl_r": 0.7358,
+      "pnl_usd": 0.48,
+      "exit_reason": "trail",
+      "time": "2026-02-22T09:40:02.889301+00:00",
+      "direction": "short",
+      "entry_price": 0.09686,
+      "stop_loss": 0.09713
+    },
+    {
+      "pair": "FLOW/USDT:USDT",
+      "pnl_r": -1.0527,
+      "pnl_usd": -0.79,
+      "exit_reason": "sl",
+      "time": "2026-02-22T09:48:27.259628+00:00",
+      "direction": "long",
+      "entry_price": 0.03878,
+      "stop_loss": 0.0386
+    },
+    {
+      "pair": "FARTCOIN/USDT:USDT",
+      "pnl_r": 0.6214,
+      "pnl_usd": 0.43,
+      "exit_reason": "trail",
+      "time": "2026-02-22T10:01:08.361017+00:00",
+      "direction": "long",
+      "entry_price": 0.18026,
+      "stop_loss": 0.1794
+    },
+    {
+      "pair": "ESP/USDT:USDT",
+      "pnl_r": -1.0746,
+      "pnl_usd": -0.81,
+      "exit_reason": "sl",
+      "time": "2026-02-22T10:06:59.879650+00:00",
+      "direction": "long",
+      "entry_price": 0.07496,
+      "stop_loss": 0.07396
+    },
+    {
+      "pair": "HYPE/USDT:USDT",
+      "pnl_r": -1.3733,
+      "pnl_usd": -2.96,
+      "exit_reason": "sl",
+      "time": "2026-02-22T11:02:53.884757+00:00",
+      "direction": "short",
+      "entry_price": 29.646,
+      "stop_loss": 29.738
+    },
+    {
+      "pair": "MNT/USDT:USDT",
+      "pnl_r": 0.9154,
+      "pnl_usd": 0.68,
+      "exit_reason": "trail",
+      "time": "2026-02-22T11:40:53.306623+00:00",
+      "direction": "long",
+      "entry_price": 0.6292,
+      "stop_loss": 0.6271
+    },
+    {
+      "pair": "BTR/USDT:USDT",
+      "pnl_r": 0.1356,
+      "pnl_usd": 0.93,
+      "exit_reason": "tp",
+      "time": "2026-02-22T11:50:03.102334+00:00",
+      "direction": "long",
+      "entry_price": 0.20267,
+      "stop_loss": 0.2006
+    },
+    {
+      "pair": "HMSTR/USDT:USDT",
+      "pnl_r": -0.6626,
+      "pnl_usd": -0.84,
+      "exit_reason": "sl",
+      "time": "2026-02-22T12:03:14.153052+00:00",
+      "direction": "long",
+      "entry_price": 0.0001761,
+      "stop_loss": 0.0001754
+    },
+    {
+      "pair": "LYN/USDT:USDT",
+      "pnl_r": -0.4214,
+      "pnl_usd": -0.49,
+      "exit_reason": "sl",
+      "time": "2026-02-22T12:55:35.296814+00:00",
+      "direction": "long",
+      "entry_price": 0.30975,
+      "stop_loss": 0.30769
+    },
+    {
+      "pair": "AZTEC/USDT:USDT",
+      "pnl_r": -1.1789,
+      "pnl_usd": -5.15,
+      "exit_reason": "sl",
+      "time": "2026-02-22T13:40:10.107513+00:00",
+      "direction": "short",
+      "entry_price": 0.03056,
+      "stop_loss": 0.03134
+    },
+    {
+      "pair": "BERA/USDT:USDT",
+      "pnl_r": -1.1837,
+      "pnl_usd": -12.04,
+      "exit_reason": "sl",
+      "time": "2026-02-22T13:55:19.213293+00:00",
+      "direction": "short",
+      "entry_price": 0.588,
+      "stop_loss": 0.5954
+    },
+    {
+      "pair": "C98/USDT:USDT",
+      "pnl_r": -1.04,
+      "pnl_usd": -0.24,
+      "exit_reason": "sl_during_restart",
+      "time": "2026-02-22T14:29:33.726201+00:00",
+      "direction": "short",
+      "entry_price": 0.02685,
+      "stop_loss": 0.027292
+    },
+    {
+      "pair": "ENSO/USDT:USDT",
+      "pnl_r": -1.04,
+      "pnl_usd": -1.09,
+      "exit_reason": "sl_during_restart",
+      "time": "2026-02-22T14:29:33.728344+00:00",
+      "direction": "short",
+      "entry_price": 1.9445,
+      "stop_loss": 1.9576
+    }
+  ],
+  "pair_last_trade": {
+    "LIT/USDT:USDT": "2026-02-22T00:05:30.503994+00:00",
+    "IO/USDT:USDT": "2026-02-22T05:55:32.910770+00:00",
+    "ATOM/USDT:USDT": "2026-02-22T00:05:32.351859+00:00",
+    "CYBER/USDT:USDT": "2026-02-22T00:10:34.785499+00:00",
+    "AZTEC/USDT:USDT": "2026-02-22T13:00:39.352851+00:00",
+    "JTO/USDT:USDT": "2026-02-22T00:35:31.846787+00:00",
+    "ACU/USDT:USDT": "2026-02-22T00:35:32.551157+00:00",
+    "ME/USDT:USDT": "2026-02-22T00:40:32.180456+00:00",
+    "HMSTR/USDT:USDT": "2026-02-22T11:45:37.826658+00:00",
+    "KITE/USDT:USDT": "2026-02-22T07:20:33.296580+00:00",
+    "C98/USDT:USDT": "2026-02-22T13:10:07.426340+00:00",
+    "ENS/USDT:USDT": "2026-02-22T02:10:32.896103+00:00",
+    "ICP/USDT:USDT": "2026-02-22T01:40:32.186505+00:00",
+    "SNX/USDT:USDT": "2026-02-22T03:25:06.529773+00:00",
+    "INJ/USDT:USDT": "2026-02-22T06:35:32.959550+00:00",
+    "DYDX/USDT:USDT": "2026-02-22T09:10:32.572336+00:00",
+    "KAS/USDT:USDT": "2026-02-22T02:10:33.636929+00:00",
+    "CLO/USDT:USDT": "2026-02-22T06:15:35.659893+00:00",
+    "ARC/USDT:USDT": "2026-02-22T02:40:31.536901+00:00",
+    "BIO/USDT:USDT": "2026-02-22T04:10:31.852813+00:00",
+    "ENSO/USDT:USDT": "2026-02-22T14:05:38.272104+00:00",
+    "ENA/USDT:USDT": "2026-02-22T02:55:32.181392+00:00",
+    "BERA/USDT:USDT": "2026-02-22T12:10:38.603176+00:00",
+    "FARTCOIN/USDT:USDT": "2026-02-22T09:05:33.694607+00:00",
+    "GALA/USDT:USDT": "2026-02-22T03:05:33.217779+00:00",
+    "LINK/USDT:USDT": "2026-02-22T03:25:31.511403+00:00",
+    "AXS/USDT:USDT": "2026-02-22T03:35:31.811654+00:00",
+    "JUP/USDT:USDT": "2026-02-22T04:10:06.351088+00:00",
+    "AERO/USDT:USDT": "2026-02-22T04:10:33.431287+00:00",
+    "ESP/USDT:USDT": "2026-02-22T09:45:33.788772+00:00",
+    "AGLD/USDT:USDT": "2026-02-22T05:25:33.501840+00:00",
+    "AAVE/USDT:USDT": "2026-02-22T05:05:31.344257+00:00",
+    "EUL/USDT:USDT": "2026-02-22T05:15:33.498147+00:00",
+    "HANA/USDT:USDT": "2026-02-22T05:50:33.560018+00:00",
+    "DOGE/USDT:USDT": "2026-02-22T06:20:33.293684+00:00",
+    "FLOW/USDT:USDT": "2026-02-22T09:45:33.055509+00:00",
+    "BTR/USDT:USDT": "2026-02-22T11:30:37.723185+00:00",
+    "BEAT/USDT:USDT": "2026-02-22T07:35:33.857817+00:00",
+    "BCH/USDT:USDT": "2026-02-22T07:40:33.283098+00:00",
+    "1000PEPE/USDT:USDT": "2026-02-22T08:10:34.077959+00:00",
+    "FIGHT/USDT:USDT": "2026-02-22T08:40:33.927473+00:00",
+    "LYN/USDT:USDT": "2026-02-22T12:45:37.073678+00:00",
+    "MNT/USDT:USDT": "2026-02-22T10:15:33.838211+00:00",
+    "HYPE/USDT:USDT": "2026-02-22T10:56:02.900151+00:00"
+  },
+  "pair_consec_losses": {
+    "BIO/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T04:16:02.507488+00:00"
+    },
+    "BEAT/USDT:USDT": {
+      "streak": 2,
+      "last_loss_time": "2026-02-22T07:43:04.589075+00:00"
+    },
+    "INIT/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "KITE/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T07:24:04.677257+00:00"
+    },
+    "BTR/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T09:22:00.229058+00:00"
+    },
+    "C98/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T14:29:33.726190+00:00"
+    },
+    "IO/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "AZTEC/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T13:40:10.107500+00:00"
+    },
+    "LIT/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T00:36:51.031618+00:00"
+    },
+    "JTO/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T00:37:08.038310+00:00"
+    },
+    "CYBER/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T00:40:27.372351+00:00"
+    },
+    "ACU/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "ME/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "ATOM/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T00:47:09.072325+00:00"
+    },
+    "HMSTR/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T12:03:14.153025+00:00"
+    },
+    "ICP/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T01:44:08.359120+00:00"
+    },
+    "ENS/USDT:USDT": {
+      "streak": 2,
+      "last_loss_time": "2026-02-22T02:19:32.381109+00:00"
+    },
+    "INJ/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T06:38:12.927026+00:00"
+    },
+    "DYDX/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T02:19:30.190964+00:00"
+    },
+    "KAS/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T02:23:52.781651+00:00"
+    },
+    "CLO/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T06:30:21.403818+00:00"
+    },
+    "SNX/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T02:51:53.434393+00:00"
+    },
+    "ENSO/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T14:29:33.728330+00:00"
+    },
+    "ENA/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T02:57:47.227153+00:00"
+    },
+    "ARC/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T03:01:21.890600+00:00"
+    },
+    "GALA/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T03:07:59.077746+00:00"
+    },
+    "BERA/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T13:55:19.213279+00:00"
+    },
+    "FARTCOIN/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T03:18:26.225846+00:00"
+    },
+    "LINK/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "AXS/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T03:39:27.628081+00:00"
+    },
+    "JUP/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T04:13:28.175488+00:00"
+    },
+    "ESP/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T10:06:59.879640+00:00"
+    },
+    "AERO/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T04:36:06.046098+00:00"
+    },
+    "AGLD/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": "2026-02-22T05:53:59.739529+00:00"
+    },
+    "EUL/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T05:17:54.864589+00:00"
+    },
+    "AAVE/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T05:48:07.315891+00:00"
+    },
+    "HANA/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "DOGE/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T06:29:18.772332+00:00"
+    },
+    "BCH/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T07:49:11.087798+00:00"
+    },
+    "FLOW/USDT:USDT": {
+      "streak": 2,
+      "last_loss_time": "2026-02-22T09:48:27.259611+00:00"
+    },
+    "1000PEPE/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    },
+    "FIGHT/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T08:46:54.488744+00:00"
+    },
+    "LYN/USDT:USDT": {
+      "streak": 2,
+      "last_loss_time": "2026-02-22T12:55:35.296803+00:00"
+    },
+    "HYPE/USDT:USDT": {
+      "streak": 1,
+      "last_loss_time": "2026-02-22T11:02:53.884746+00:00"
+    },
+    "MNT/USDT:USDT": {
+      "streak": 0,
+      "last_loss_time": null
+    }
+  },
+  "milestones_alerted": [
+    500,
+    1000
+  ]
+}

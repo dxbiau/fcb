@@ -1,0 +1,732 @@
+{
+  "date": "2026-02-21",
+  "daily_counts": {},
+  "session_traded": {},
+  "equity": 122.83033193,
+  "total_trades": 18,
+  "total_pnl_r": -1.691,
+  "trade_history": [],
+  "day_start_equity": 122.83033193,
+  "wins_today": 0,
+  "losses_today": 0,
+  "entries_today": 0,
+  "pnl_today_usd": 0.0,
+  "total_wins": 6,
+  "total_losses": 12,
+  "pending_entries": [],
+  "equity_floor_hit": false,
+  "pair_classes": {
+    "CYS/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ACU/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "CLO/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "TRUST/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "BREV/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "RAVE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "FHE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ALU/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "OPEN/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "HEMI/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "US/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "SUPER/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "API3/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "1000TOSHI/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "UB/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "HOLO/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "STBL/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "MYX/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "F/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "SWARMS/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "TAI/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "RONIN/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "FLUID/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "10000QUBIC/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "CLOUD/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "KERNEL/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "POWER/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "PIPPIN/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "CYBER/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "WIF/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "VVV/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "JTO/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "PUMPFUN/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "AXS/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "SPACE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "SOL/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "XRP/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "RIVER/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "DOGE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ESP/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ORCA/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "HYPE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "WLFI/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "1000PEPE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "SUI/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ZEC/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "OP/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ADA/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "INJ/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "FARTCOIN/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "LINK/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "AAVE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "TAO/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ATOM/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ENA/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "DOT/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "NEAR/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "AVAX/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "LAB/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "HANA/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "IRYS/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ALCH/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ENSO/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "WHITEWHALE/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "APEX/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "UAI/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "VANA/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "SENT/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "WAVES/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "METIS/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ZKP/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "PUFFER/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "KITE/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "RENDER/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "EDEN/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "RECALL/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "COAI/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "ZAMA/USDT:USDT": {
+      "class": "B",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    },
+    "MANTA/USDT:USDT": {
+      "class": "A",
+      "consec_wins": 0,
+      "consec_losses": 0,
+      "live_wins": 0,
+      "live_losses": 0,
+      "promoted": false,
+      "demoted": false
+    }
+  },
+  "last_updated": "2026-02-21 01:05:29"
+}

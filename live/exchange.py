@@ -74,15 +74,18 @@ def get_equity(ex: ccxt.bybit) -> float:
 
 @log.timed_api
 def set_leverage(ex: ccxt.bybit, symbol: str, leverage: int = LEVERAGE):
-    """Set leverage for a symbol. Auto-clamps to pair's max if needed."""
+    """Set leverage for a symbol. SKIP pairs whose max leverage < required."""
     try:
-        # Check market's max leverage and clamp
+        # Check market's max leverage — skip if below required
         mkt = ex.market(symbol)
         max_lev = mkt.get("limits", {}).get("leverage", {}).get("max")
         if max_lev and leverage > max_lev:
-            log.info(f"  {symbol}: clamping leverage {leverage}x → {int(max_lev)}x (pair max)")
-            leverage = int(max_lev)
+            raise ValueError(
+                f"max leverage {int(max_lev)}x < required {leverage}x — EXCLUDED"
+            )
         ex.set_leverage(leverage, symbol, {"category": "linear"})
+    except ValueError:
+        raise  # re-raise exclusion errors so caller can skip this pair
     except Exception as e:
         # "leverage not modified" is fine
         if "not modified" not in str(e).lower():
@@ -100,14 +103,23 @@ def set_margin_mode(ex: ccxt.bybit, symbol: str, mode: str = "isolated"):
 
 
 @log.timed_api
-def fetch_latest_candles(ex: ccxt.bybit, symbol: str, n: int = 5) -> List[Dict]:
+def fetch_latest_candles(ex: ccxt.bybit, symbol: str, n: int = 5,
+                         timeframe: str = None) -> List[Dict]:
     """
-    Fetch the last N closed 5m candles.
+    Fetch the last N closed candles.
     Returns list of dicts: {ts, open, high, low, close, volume}
     Sorted oldest → newest.
+
+    timeframe: override (e.g. "15m"). Defaults to config TIMEFRAME ("5m").
     """
+    tf = timeframe or TIMEFRAME
+    # Determine candle duration in ms for forming-candle detection
+    tf_minutes = {"1m": 1, "3m": 3, "5m": 5, "15m": 15, "30m": 30,
+                  "1h": 60, "4h": 240}.get(tf, 5)
+    tf_ms = tf_minutes * 60 * 1000
+
     # Fetch n+1 to ensure we get n *closed* candles (last may be forming)
-    raw = ex.fetch_ohlcv(symbol, TIMEFRAME, limit=n + 1)
+    raw = ex.fetch_ohlcv(symbol, tf, limit=n + 1)
     if not raw:
         return []
 
@@ -124,7 +136,7 @@ def fetch_latest_candles(ex: ccxt.bybit, symbol: str, n: int = 5) -> List[Dict]:
 
     # Drop the last candle if it's still forming (not yet closed)
     now_ms = int(time.time() * 1000)
-    if candles and (now_ms - candles[-1]["ts"]) < 5 * 60 * 1000:
+    if candles and (now_ms - candles[-1]["ts"]) < tf_ms:
         candles = candles[:-1]
 
     return candles[-n:]  # return last n closed
@@ -134,6 +146,19 @@ def fetch_latest_candles(ex: ccxt.bybit, symbol: str, n: int = 5) -> List[Dict]:
 def get_ticker(ex: ccxt.bybit, symbol: str) -> Dict:
     """Get current ticker (last price, bid, ask)."""
     return ex.fetch_ticker(symbol)
+
+
+def get_funding_rate(ex: ccxt.bybit, symbol: str) -> float:
+    """Get current funding rate for a symbol.
+    Returns the rate as a decimal (e.g. 0.0001 = 0.01%).
+    Positive = longs pay shorts, Negative = shorts pay longs.
+    Returns 0.0 on any error (fail-open: never blocks a trade on API failure).
+    """
+    try:
+        resp = ex.fetch_funding_rate(symbol)
+        return float(resp.get("fundingRate", 0) or 0)
+    except Exception:
+        return 0.0
 
 
 @log.timed_api

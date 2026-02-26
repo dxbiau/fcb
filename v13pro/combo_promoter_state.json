@@ -1,0 +1,118 @@
+{
+  "promotions": [
+    {
+      "ts": 1772059103.8779442,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772059103.8779452,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772067012.6906636,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772067012.6906645,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772101859.9529543,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772101859.9529557,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    }
+  ],
+  "demotions": [],
+  "last_review": 1772101859.9529378,
+  "live_combos": [
+    [
+      "BB_BREAK",
+      "15m"
+    ],
+    [
+      "BB_BREAK",
+      "1h"
+    ],
+    [
+      "BB_FADE",
+      "15m"
+    ],
+    [
+      "BB_FADE",
+      "1h"
+    ],
+    [
+      "DONCHIAN",
+      "15m"
+    ],
+    [
+      "DONCHIAN",
+      "1h"
+    ],
+    [
+      "EMA_RIB",
+      "15m"
+    ],
+    [
+      "EMA_RIB",
+      "1h"
+    ],
+    [
+      "ENGULF",
+      "15m"
+    ],
+    [
+      "ENS2",
+      "1h"
+    ],
+    [
+      "ENS3",
+      "1h"
+    ],
+    [
+      "IB_BREAK",
+      "15m"
+    ],
+    [
+      "MOM_SURGE",
+      "1h"
+    ],
+    [
+      "MTF_RSI",
+      "15m"
+    ],
+    [
+      "PIN_BAR",
+      "15m"
+    ],
+    [
+      "PIN_BAR",
+      "1h"
+    ],
+    [
+      "RSI_FADE",
+      "15m"
+    ],
+    [
+      "RSI_FADE",
+      "1h"
+    ],
+    [
+      "TR_PULL",
+      "15m"
+    ],
+    [
+      "TR_PULL",
+      "1h"
+    ]
+  ]
+}

@@ -126,9 +126,9 @@ def _categorize_error(e: Exception) -> str:
         return "INSUFFICIENT_BALANCE"
     if "not found" in msg or "does not exist" in msg:
         return "NOT_FOUND"
-    if isinstance(e, ccxt.NetworkError):
+    if ccxt is not None and isinstance(e, ccxt.NetworkError):
         return "TRANSIENT"
-    if isinstance(e, ccxt.ExchangeError):
+    if ccxt is not None and isinstance(e, ccxt.ExchangeError):
         return "EXCHANGE"
     return "UNKNOWN"
 

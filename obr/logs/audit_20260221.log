@@ -1,0 +1,283 @@
+2026-02-21 21:16:19,116 | [SESSION_START] | session=london | equity=37.57 | pairs=30
+2026-02-21 21:18:33,438 | [SESSION_START] | session=london | equity=37.57 | pairs=30
+2026-02-21 21:20:11,377 | [HEARTBEAT] | equity=37.57 | open=0 | session=london
+2026-02-21 21:40:36,283 | [API_ERROR] | func=set_leverage | category=EXCHANGE | error=max leverage 12x < required 20x
+2026-02-21 21:40:38,926 | [API_ERROR] | func=set_leverage | category=EXCHANGE | error=max leverage 12x < required 20x
+2026-02-21 21:40:40,710 | [API_ERROR] | func=set_leverage | category=EXCHANGE | error=max leverage 12x < required 20x
+2026-02-21 21:40:41,127 | [API_ERROR] | func=set_leverage | category=EXCHANGE | error=max leverage 12x < required 20x
+2026-02-21 21:40:41,728 | [SESSION_START] | session=london | equity=49.05 | pairs=11
+2026-02-21 21:42:10,233 | [SESSION_START] | session=london | equity=49.05 | pairs=15
+2026-02-21 22:02:26,445 | [SESSION_START] | session=london | equity=49.05 | pairs=15
+2026-02-21 22:05:06,643 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:10:06,989 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:15:07,643 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:20:06,701 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:25:07,149 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:30:05,747 | [ORDER] | symbol=NEAR/USDT:USDT | side=buy | type=market | qty=714.0 | sl=1.0 | tp=1.0
+2026-02-21 22:30:05,884 | [API_ERROR] | func=place_market_order | category=EXCHANGE | error=bybit {"retCode":10001,"retMsg":"TakeProfit:100000000 set for Buy position should be higher than base_price:109520000??LastPrice","result":{},"retExtInfo":{},"time":1771673405830}
+2026-02-21 22:30:07,544 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:45:06,659 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:50:07,515 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 22:55:10,262 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:00:06,329 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771675206063}
+2026-02-21 23:00:06,636 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771675206595}
+2026-02-21 23:05:06,662 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:10:03,674 | [ORDER] | symbol=ENSO/USDT:USDT | side=buy | type=market | qty=462.9 | sl=1.9934 | tp=2.1122
+2026-02-21 23:10:04,030 | [API_ERROR] | func=place_market_order | category=EXCHANGE | error=bybit {"retCode":110007,"retMsg":"ab not enough for new order","result":{},"retExtInfo":{},"time":1771675803993}
+2026-02-21 23:10:08,333 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:20:09,093 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:30:08,242 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771677008214}
+2026-02-21 23:30:08,393 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:32:08,423 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:36:02,472 | [ORDER] | symbol=AWE/USDT:USDT | side=buy | type=market | qty=41660.0 | sl=0.05756 | tp=0.05888
+2026-02-21 23:36:02,622 | [API_ERROR] | func=place_market_order | category=EXCHANGE | error=bybit {"retCode":110007,"retMsg":"ab not enough for new order","result":{},"retExtInfo":{},"time":1771677362596}
+2026-02-21 23:37:08,536 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:41:04,525 | [ORDER] | symbol=GUN/USDT:USDT | side=buy | type=market | qty=151515.0 | sl=0.028269 | tp=0.028632
+2026-02-21 23:41:04,680 | [API_ERROR] | func=place_market_order | category=EXCHANGE | error=bybit {"retCode":110007,"retMsg":"ab not enough for new order","result":{},"retExtInfo":{},"time":1771677664656}
+2026-02-21 23:43:08,420 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:45:08,552 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:50:09,208 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:52:08,463 | [HEARTBEAT] | equity=49.05 | open=0 | session=london
+2026-02-21 23:55:07,132 | [ORDER] | symbol=RPL/USDT:USDT | side=sell | type=market | qty=60.17 | sl=2.4541 | tp=2.3584
+2026-02-21 23:55:07,296 | [POSITION_OPEN] | symbol=RPL/USDT:USDT | dir=short | entry=2.4454 | sl=2.4541 | tp=2.4192999999999993 | qty=60.17 | risk=0.52
+2026-02-21 23:58:08,292 | [HEARTBEAT] | equity=48.97 | open=1 | session=london
+2026-02-22 00:00:06,627 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771678806611}
+2026-02-22 00:01:45,827 | [POSITION_CLOSE] | symbol=RPL/USDT:USDT | dir=short | entry=2.4454 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:04:07,821 | [ORDER] | symbol=SNX/USDT:USDT | side=sell | type=market | qty=386.7 | sl=0.3851 | tp=0.3763
+2026-02-22 00:04:07,963 | [POSITION_OPEN] | symbol=SNX/USDT:USDT | dir=short | entry=0.3843 | sl=0.3851 | tp=0.38349999999999995 | qty=386.7 | risk=0.31
+2026-02-22 00:04:09,027 | [HEARTBEAT] | equity=49.54 | open=1 | session=london
+2026-02-22 00:08:05,801 | [POSITION_CLOSE] | symbol=SNX/USDT:USDT | dir=short | entry=0.3843 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:10:08,108 | [HEARTBEAT] | equity=48.97 | open=0 | session=london
+2026-02-22 00:15:07,913 | [ORDER] | symbol=RPL/USDT:USDT | side=buy | type=market | qty=61.14 | sl=2.3927 | tp=2.5027
+2026-02-22 00:15:08,082 | [POSITION_OPEN] | symbol=RPL/USDT:USDT | dir=long | entry=2.4027 | sl=2.3927 | tp=2.432699999999999 | qty=61.14 | risk=0.61
+2026-02-22 00:15:09,867 | [HEARTBEAT] | equity=48.97 | open=1 | session=london
+2026-02-22 00:16:04,895 | [ORDER] | symbol=HNT/USDT:USDT | side=sell | type=market | qty=94.97 | sl=1.5482 | tp=1.5042
+2026-02-22 00:16:05,061 | [POSITION_OPEN] | symbol=HNT/USDT:USDT | dir=short | entry=1.5442 | sl=1.5482 | tp=1.5322 | qty=94.97 | risk=0.38
+2026-02-22 00:16:29,979 | [POSITION_CLOSE] | symbol=RPL/USDT:USDT | dir=long | entry=2.4027 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:17:44,979 | [POSITION_CLOSE] | symbol=HNT/USDT:USDT | dir=short | entry=1.5442 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:21:08,864 | [HEARTBEAT] | equity=47.85 | open=0 | session=london
+2026-02-22 00:27:08,351 | [ORDER] | symbol=SPACE/USDT:USDT | side=buy | type=market | qty=14190.0 | sl=0.010092 | tp=0.010367
+2026-02-22 00:27:08,504 | [POSITION_OPEN] | symbol=SPACE/USDT:USDT | dir=long | entry=0.010117 | sl=0.010092 | tp=0.010191999999999996 | qty=14190.0 | risk=0.35
+2026-02-22 00:27:09,174 | [HEARTBEAT] | equity=47.85 | open=1 | session=london
+2026-02-22 00:28:54,773 | [POSITION_CLOSE] | symbol=SPACE/USDT:USDT | dir=long | entry=0.010117 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:33:08,120 | [HEARTBEAT] | equity=47.63 | open=0 | session=london
+2026-02-22 00:38:08,294 | [HEARTBEAT] | equity=47.63 | open=0 | session=london
+2026-02-22 00:40:04,975 | [ORDER] | symbol=HNT/USDT:USDT | side=sell | type=market | qty=93.66 | sl=1.5294 | tp=1.4876
+2026-02-22 00:40:05,127 | [POSITION_OPEN] | symbol=HNT/USDT:USDT | dir=short | entry=1.5256 | sl=1.5294 | tp=1.5142 | qty=93.66 | risk=0.36
+2026-02-22 00:40:10,540 | [POSITION_CLOSE] | symbol=HNT/USDT:USDT | dir=short | entry=1.5256 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:41:04,161 | [ORDER] | symbol=GUN/USDT:USDT | side=buy | type=market | qty=4958.0 | sl=0.028398 | tp=0.02886
+2026-02-22 00:41:04,319 | [POSITION_OPEN] | symbol=GUN/USDT:USDT | dir=long | entry=0.02844 | sl=0.028398 | tp=0.028566 | qty=4958.0 | risk=0.21
+2026-02-22 00:42:50,177 | [POSITION_CLOSE] | symbol=GUN/USDT:USDT | dir=long | entry=0.02844 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:44:08,593 | [HEARTBEAT] | equity=46.48 | open=0 | session=london
+2026-02-22 00:50:08,540 | [HEARTBEAT] | equity=46.48 | open=0 | session=london
+2026-02-22 00:52:06,967 | [ORDER] | symbol=RPL/USDT:USDT | side=sell | type=market | qty=58.62 | sl=2.3828 | tp=2.3322
+2026-02-22 00:52:07,123 | [POSITION_OPEN] | symbol=RPL/USDT:USDT | dir=short | entry=2.3782 | sl=2.3828 | tp=2.3644000000000003 | qty=58.62 | risk=0.27
+2026-02-22 00:56:08,169 | [HEARTBEAT] | equity=46.40 | open=1 | session=london
+2026-02-22 00:56:28,301 | [POSITION_CLOSE] | symbol=RPL/USDT:USDT | dir=short | entry=2.3782 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 00:58:05,859 | [ORDER] | symbol=JUP/USDT:USDT | side=buy | type=market | qty=879.0 | sl=0.15857 | tp=0.16671
+2026-02-22 00:58:06,010 | [POSITION_OPEN] | symbol=JUP/USDT:USDT | dir=long | entry=0.15931 | sl=0.15857 | tp=0.16042000000000003 | qty=879.0 | risk=0.65
+2026-02-22 01:02:08,106 | [HEARTBEAT] | equity=46.64 | open=1 | session=london
+2026-02-22 01:07:08,943 | [HEARTBEAT] | equity=46.64 | open=1 | session=london
+2026-02-22 01:13:08,044 | [HEARTBEAT] | equity=46.64 | open=1 | session=london
+2026-02-22 01:19:08,291 | [HEARTBEAT] | equity=46.64 | open=1 | session=london
+2026-02-22 01:20:03,277 | [ORDER] | symbol=ENSO/USDT:USDT | side=sell | type=market | qty=73.9 | sl=1.897 | tp=1.8442
+2026-02-22 01:20:03,420 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=short | entry=1.8922 | sl=1.897 | tp=1.8778000000000004 | qty=73.9 | risk=0.35
+2026-02-22 01:21:03,934 | [ORDER] | symbol=GUN/USDT:USDT | side=buy | type=market | qty=4917.0 | sl=0.028339 | tp=0.02912
+2026-02-22 01:21:04,096 | [POSITION_OPEN] | symbol=GUN/USDT:USDT | dir=long | entry=0.02841 | sl=0.028339 | tp=0.028623000000000006 | qty=4917.0 | risk=0.35
+2026-02-22 01:21:50,759 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=short | entry=1.8922 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:22:18,212 | [POSITION_CLOSE] | symbol=JUP/USDT:USDT | dir=long | entry=0.15931 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:24:08,935 | [HEARTBEAT] | equity=46.94 | open=1 | session=london
+2026-02-22 01:26:38,135 | [POSITION_CLOSE] | symbol=GUN/USDT:USDT | dir=long | entry=0.02841 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:27:02,743 | [ORDER] | symbol=AWE/USDT:USDT | side=sell | type=market | qty=2420.0 | sl=0.058 | tp=0.05668
+2026-02-22 01:27:03,230 | [POSITION_OPEN] | symbol=AWE/USDT:USDT | dir=short | entry=0.05788 | sl=0.058 | tp=0.05757999999999999 | qty=2420.0 | risk=0.29
+2026-02-22 01:30:08,253 | [ORDER] | symbol=SPACE/USDT:USDT | side=sell | type=market | qty=13480.0 | sl=0.010391 | tp=0.010182
+2026-02-22 01:30:08,397 | [POSITION_OPEN] | symbol=SPACE/USDT:USDT | dir=short | entry=0.010372 | sl=0.010391 | tp=0.010315 | qty=13480.0 | risk=0.26
+2026-02-22 01:30:09,063 | [HEARTBEAT] | equity=46.64 | open=2 | session=london
+2026-02-22 01:30:13,667 | [POSITION_CLOSE] | symbol=SPACE/USDT:USDT | dir=short | entry=0.010372 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:31:24,538 | [POSITION_CLOSE] | symbol=AWE/USDT:USDT | dir=short | entry=0.05788 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:35:09,562 | [HEARTBEAT] | equity=45.55 | open=0 | session=london
+2026-02-22 01:39:03,187 | [ORDER] | symbol=ENSO/USDT:USDT | side=buy | type=market | qty=71.7 | sl=1.896 | tp=1.9763
+2026-02-22 01:39:03,548 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=long | entry=1.9033 | sl=1.896 | tp=1.9252000000000002 | qty=71.7 | risk=0.52
+2026-02-22 01:41:07,908 | [HEARTBEAT] | equity=45.48 | open=1 | session=london
+2026-02-22 01:41:25,196 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=long | entry=1.9033 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:45:06,568 | [ORDER] | symbol=HNT/USDT:USDT | side=buy | type=market | qty=87.29 | sl=1.5684 | tp=1.6311
+2026-02-22 01:45:06,919 | [POSITION_OPEN] | symbol=HNT/USDT:USDT | dir=long | entry=1.5741 | sl=1.5684 | tp=1.5912000000000002 | qty=87.29 | risk=0.50
+2026-02-22 01:46:09,486 | [HEARTBEAT] | equity=45.73 | open=1 | session=london
+2026-02-22 01:48:11,716 | [POSITION_CLOSE] | symbol=HNT/USDT:USDT | dir=long | entry=1.5741 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 01:52:07,933 | [HEARTBEAT] | equity=44.79 | open=0 | session=london
+2026-02-22 01:57:08,038 | [HEARTBEAT] | equity=44.79 | open=0 | session=london
+2026-02-22 02:00:05,957 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771686005989}
+2026-02-22 02:00:07,890 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771686007922}
+2026-02-22 02:02:08,489 | [HEARTBEAT] | equity=44.79 | open=0 | session=london
+2026-02-22 02:06:03,308 | [ORDER] | symbol=ENSO/USDT:USDT | side=sell | type=market | qty=68.7 | sl=1.9707 | tp=1.787
+2026-02-22 02:06:03,466 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=short | entry=1.954 | sl=1.9707 | tp=1.9039000000000001 | qty=68.7 | risk=1.15
+2026-02-22 02:08:07,886 | [HEARTBEAT] | equity=44.72 | open=1 | session=london
+2026-02-22 02:09:14,486 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=short | entry=1.954 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 02:12:07,425 | [ORDER] | symbol=SPACE/USDT:USDT | side=buy | type=market | qty=13020.0 | sl=0.010236 | tp=0.010698
+2026-02-22 02:12:07,570 | [POSITION_OPEN] | symbol=SPACE/USDT:USDT | dir=long | entry=0.010278 | sl=0.010236 | tp=0.010404000000000002 | qty=13020.0 | risk=0.55
+2026-02-22 02:13:09,296 | [POSITION_CLOSE] | symbol=SPACE/USDT:USDT | dir=long | entry=0.010278 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 02:14:07,823 | [HEARTBEAT] | equity=43.57 | open=0 | session=london
+2026-02-22 02:20:07,860 | [HEARTBEAT] | equity=43.57 | open=0 | session=london
+2026-02-22 02:26:08,246 | [HEARTBEAT] | equity=43.57 | open=0 | session=london
+2026-02-22 02:32:07,775 | [HEARTBEAT] | equity=43.57 | open=0 | session=london
+2026-02-22 02:36:03,955 | [ORDER] | symbol=GUN/USDT:USDT | side=buy | type=market | qty=4605.0 | sl=0.028311 | tp=0.029114
+2026-02-22 02:36:04,131 | [POSITION_OPEN] | symbol=GUN/USDT:USDT | dir=long | entry=0.028384 | sl=0.028311 | tp=0.028603 | qty=4605.0 | risk=0.34
+2026-02-22 02:37:05,264 | [ORDER] | symbol=ICP/USDT:USDT | side=buy | type=market | qty=57.9 | sl=2.247 | tp=2.324
+2026-02-22 02:37:05,419 | [POSITION_OPEN] | symbol=ICP/USDT:USDT | dir=long | entry=2.254 | sl=2.247 | tp=2.261 | qty=57.9 | risk=0.41
+2026-02-22 02:37:08,242 | [HEARTBEAT] | equity=43.50 | open=2 | session=london
+2026-02-22 02:37:14,887 | [POSITION_CLOSE] | symbol=ICP/USDT:USDT | dir=long | entry=2.254 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 02:38:50,607 | [POSITION_CLOSE] | symbol=GUN/USDT:USDT | dir=long | entry=0.028384 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 02:43:07,432 | [HEARTBEAT] | equity=42.35 | open=0 | session=london
+2026-02-22 02:48:07,446 | [HEARTBEAT] | equity=42.35 | open=0 | session=london
+2026-02-22 02:51:04,179 | [ORDER] | symbol=HBAR/USDT:USDT | side=sell | type=market | qty=1258.0 | sl=0.10114 | tp=0.09905
+2026-02-22 02:51:04,319 | [POSITION_OPEN] | symbol=HBAR/USDT:USDT | dir=short | entry=0.10095 | sl=0.10114 | tp=0.10057 | qty=1258.0 | risk=0.24
+2026-02-22 02:53:07,689 | [HEARTBEAT] | equity=42.28 | open=1 | session=london
+2026-02-22 02:56:18,904 | [POSITION_CLOSE] | symbol=HBAR/USDT:USDT | dir=short | entry=0.10095 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 02:59:07,337 | [HEARTBEAT] | equity=42.68 | open=0 | session=london
+2026-02-22 03:00:07,386 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771689607443}
+2026-02-22 03:02:07,304 | [ORDER] | symbol=TIA/USDT:USDT | side=sell | type=market | qty=380.0 | sl=0.3387 | tp=0.3189
+2026-02-22 03:02:07,456 | [POSITION_OPEN] | symbol=TIA/USDT:USDT | dir=short | entry=0.3369 | sl=0.3387 | tp=0.3314999999999999 | qty=380.0 | risk=0.68
+2026-02-22 03:04:07,941 | [HEARTBEAT] | equity=42.61 | open=1 | session=ny
+2026-02-22 03:10:07,433 | [HEARTBEAT] | equity=42.61 | open=1 | session=ny
+2026-02-22 03:11:06,811 | [ORDER] | symbol=SNX/USDT:USDT | side=sell | type=market | qty=313.4 | sl=0.4136 | tp=0.3498
+2026-02-22 03:11:06,955 | [POSITION_OPEN] | symbol=SNX/USDT:USDT | dir=short | entry=0.4078 | sl=0.4136 | tp=0.40199999999999997 | qty=313.4 | risk=1.82
+2026-02-22 03:12:39,198 | [POSITION_CLOSE] | symbol=SNX/USDT:USDT | dir=short | entry=0.4078 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 03:16:07,229 | [HEARTBEAT] | equity=43.78 | open=1 | session=ny
+2026-02-22 03:17:02,457 | [ORDER] | symbol=AWE/USDT:USDT | side=sell | type=market | qty=2290.0 | sl=0.05731 | tp=0.0561
+2026-02-22 03:17:02,608 | [POSITION_OPEN] | symbol=AWE/USDT:USDT | dir=short | entry=0.0572 | sl=0.05731 | tp=0.056925 | qty=2290.0 | risk=0.25
+2026-02-22 03:19:04,059 | [ORDER] | symbol=HBAR/USDT:USDT | side=buy | type=market | qty=1301.0 | sl=0.1004 | tp=0.10216
+2026-02-22 03:19:04,200 | [POSITION_OPEN] | symbol=HBAR/USDT:USDT | dir=long | entry=0.10056 | sl=0.1004 | tp=0.10087999999999998 | qty=1301.0 | risk=0.21
+2026-02-22 03:21:07,853 | [POSITION_CLOSE] | symbol=HBAR/USDT:USDT | dir=long | entry=0.10056 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 03:22:06,955 | [HEARTBEAT] | equity=43.26 | open=2 | session=ny
+2026-02-22 03:26:39,621 | [POSITION_CLOSE] | symbol=AWE/USDT:USDT | dir=short | entry=0.0572 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 03:27:07,046 | [HEARTBEAT] | equity=43.58 | open=1 | session=ny
+2026-02-22 03:32:07,104 | [HEARTBEAT] | equity=43.58 | open=1 | session=ny
+2026-02-22 03:37:07,512 | [HEARTBEAT] | equity=43.58 | open=1 | session=ny
+2026-02-22 03:43:07,259 | [HEARTBEAT] | equity=43.58 | open=1 | session=ny
+2026-02-22 03:44:06,739 | [ORDER] | symbol=SNX/USDT:USDT | side=buy | type=market | qty=322.5 | sl=0.4035 | tp=0.4244
+2026-02-22 03:44:06,883 | [POSITION_OPEN] | symbol=SNX/USDT:USDT | dir=long | entry=0.4054 | sl=0.4035 | tp=0.40729999999999994 | qty=322.5 | risk=0.61
+2026-02-22 03:44:15,644 | [POSITION_CLOSE] | symbol=SNX/USDT:USDT | dir=long | entry=0.4054 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 03:49:07,367 | [HEARTBEAT] | equity=42.60 | open=1 | session=ny
+2026-02-22 03:54:07,445 | [HEARTBEAT] | equity=42.60 | open=1 | session=ny
+2026-02-22 04:00:07,316 | [HEARTBEAT] | equity=42.60 | open=1 | session=ny
+2026-02-22 04:06:07,781 | [HEARTBEAT] | equity=42.60 | open=1 | session=ny
+2026-02-22 04:08:02,477 | [ORDER] | symbol=AWE/USDT:USDT | side=buy | type=market | qty=2240.0 | sl=0.05681 | tp=0.05791
+2026-02-22 04:08:02,624 | [POSITION_OPEN] | symbol=AWE/USDT:USDT | dir=long | entry=0.05691 | sl=0.05681 | tp=0.05716000000000001 | qty=2240.0 | risk=0.22
+2026-02-22 04:12:07,159 | [HEARTBEAT] | equity=42.46 | open=2 | session=ny
+2026-02-22 04:13:38,153 | [POSITION_CLOSE] | symbol=AWE/USDT:USDT | dir=long | entry=0.05691 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 04:17:07,206 | [HEARTBEAT] | equity=42.69 | open=1 | session=ny
+2026-02-22 04:21:00,841 | [POSITION_CLOSE] | symbol=TIA/USDT:USDT | dir=short | entry=0.3369 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 04:22:02,764 | [ORDER] | symbol=C98/USDT:USDT | side=sell | type=market | qty=4846.5 | sl=0.026873 | tp=0.025839
+2026-02-22 04:22:02,922 | [POSITION_OPEN] | symbol=C98/USDT:USDT | dir=short | entry=0.026779 | sl=0.026873 | tp=0.026638000000000002 | qty=4846.5 | risk=0.46
+2026-02-22 04:22:08,608 | [HEARTBEAT] | equity=43.26 | open=1 | session=ny
+2026-02-22 04:28:07,099 | [HEARTBEAT] | equity=43.19 | open=1 | session=ny
+2026-02-22 04:29:05,871 | [ORDER] | symbol=RESOLV/USDT:USDT | side=buy | type=market | qty=1985.0 | sl=0.06516 | tp=0.06637
+2026-02-22 04:29:06,022 | [POSITION_OPEN] | symbol=RESOLV/USDT:USDT | dir=long | entry=0.06527 | sl=0.06516 | tp=0.06538 | qty=1985.0 | risk=0.22
+2026-02-22 04:34:07,323 | [HEARTBEAT] | equity=43.12 | open=2 | session=ny
+2026-02-22 04:38:44,082 | [POSITION_CLOSE] | symbol=C98/USDT:USDT | dir=short | entry=0.026779 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 04:40:07,196 | [HEARTBEAT] | equity=42.94 | open=1 | session=ny
+2026-02-22 04:46:07,182 | [HEARTBEAT] | equity=42.94 | open=1 | session=ny
+2026-02-22 04:47:34,147 | [POSITION_CLOSE] | symbol=RESOLV/USDT:USDT | dir=long | entry=0.06527 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 04:52:07,320 | [HEARTBEAT] | equity=42.65 | open=0 | session=ny
+2026-02-22 04:57:07,408 | [HEARTBEAT] | equity=42.65 | open=0 | session=ny
+2026-02-22 05:03:07,282 | [HEARTBEAT] | equity=42.65 | open=0 | session=ny
+2026-02-22 05:08:04,778 | [ORDER] | symbol=ICP/USDT:USDT | side=sell | type=market | qty=57.2 | sl=2.238 | tp=2.194
+2026-02-22 05:08:04,927 | [POSITION_OPEN] | symbol=ICP/USDT:USDT | dir=short | entry=2.234 | sl=2.238 | tp=2.23 | qty=57.2 | risk=0.23
+2026-02-22 05:08:07,613 | [HEARTBEAT] | equity=42.65 | open=1 | session=ny
+2026-02-22 05:09:34,139 | [POSITION_CLOSE] | symbol=ICP/USDT:USDT | dir=short | entry=2.234 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 05:14:07,101 | [HEARTBEAT] | equity=42.17 | open=0 | session=ny
+2026-02-22 05:19:07,128 | [HEARTBEAT] | equity=42.17 | open=0 | session=ny
+2026-02-22 05:24:07,326 | [HEARTBEAT] | equity=42.17 | open=0 | session=ny
+2026-02-22 05:28:02,705 | [ORDER] | symbol=C98/USDT:USDT | side=sell | type=market | qty=4640.7 | sl=0.02743 | tp=0.025538
+2026-02-22 05:28:02,866 | [POSITION_OPEN] | symbol=C98/USDT:USDT | dir=short | entry=0.027258 | sl=0.02743 | tp=0.027000000000000003 | qty=4640.7 | risk=0.80
+2026-02-22 05:29:07,673 | [HEARTBEAT] | equity=42.10 | open=1 | session=ny
+2026-02-22 05:30:06,755 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771698606873}
+2026-02-22 05:35:07,293 | [HEARTBEAT] | equity=42.10 | open=1 | session=ny
+2026-02-22 05:41:06,991 | [HEARTBEAT] | equity=42.10 | open=1 | session=ny
+2026-02-22 05:46:07,039 | [HEARTBEAT] | equity=42.10 | open=1 | session=ny
+2026-02-22 05:47:04,332 | [POSITION_CLOSE] | symbol=C98/USDT:USDT | dir=short | entry=0.027258 | exit=0 | pnl_r=0.00 | pnl_usd=0.00 | reason=tp
+2026-02-22 05:51:07,188 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 05:56:07,298 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:02:07,392 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:08:07,188 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:13:07,352 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:18:07,624 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:24:07,341 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:30:07,769 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:36:07,248 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:41:07,256 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:46:07,492 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:52:07,670 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 06:58:07,300 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:03:07,459 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:09:07,222 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:14:07,734 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:20:07,311 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:25:07,537 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:31:07,245 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:36:07,833 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:42:07,742 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:48:07,269 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:53:07,707 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 07:59:07,365 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:00:05,423 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771707605602}
+2026-02-22 08:05:07,296 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:11:07,143 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:16:07,260 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:22:07,496 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:28:07,935 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:34:07,283 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:40:07,212 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:44:11,339 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:50:11,236 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 08:56:10,913 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 09:02:11,014 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 09:07:11,798 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 09:15:12,342 | [HEARTBEAT] | equity=42.59 | open=0 | session=ny
+2026-02-22 09:20:07,624 | [ORDER] | symbol=HNT/USDT:USDT | side=buy | type=market | qty=84.22 | sl=1.5105 | tp=1.5842
+2026-02-22 09:20:07,791 | [POSITION_OPEN] | symbol=HNT/USDT:USDT | dir=long | entry=1.5172 | sl=1.5105 | tp=1.5373000000000006 | qty=84.22 | risk=0.56
+2026-02-22 09:20:13,502 | [HEARTBEAT] | equity=42.59 | open=1 | session=ny
+2026-02-22 09:24:25,080 | [POSITION_CLOSE] | symbol=HNT/USDT:USDT | dir=long | entry=1.5172 | exit=1.5216235 | pnl_r=0.05 | pnl_usd=0.03 | reason=trail
+2026-02-22 09:25:29,587 | [HEARTBEAT] | equity=42.62 | open=0 | session=ny
+2026-02-22 09:30:05,988 | [API_ERROR] | func=fetch_latest_candles | category=RATE_LIMIT | error=bybit {"retCode":10006,"retMsg":"Too many visits. Exceeded the API Rate Limit.","result":{},"retExtInfo":{},"time":1771713006199}
+2026-02-22 09:35:29,839 | [HEARTBEAT] | equity=42.62 | open=0 | session=ny
+2026-02-22 10:00:33,820 | [HEARTBEAT] | equity=42.62 | open=0 | session=ny
+2026-02-22 10:10:03,843 | [ORDER] | symbol=C98/USDT:USDT | side=buy | type=market | qty=2899.3 | sl=0.026309 | tp=0.02797
+2026-02-22 10:10:03,997 | [POSITION_OPEN] | symbol=C98/USDT:USDT | dir=long | entry=0.02646 | sl=0.026309 | tp=0.026686500000000002 | qty=2899.3 | risk=0.44
+2026-02-22 10:10:32,303 | [ORDER] | symbol=BIO/USDT:USDT | side=sell | type=market | qty=2637.0 | sl=0.02932 | tp=0.02679
+2026-02-22 10:10:32,446 | [POSITION_OPEN] | symbol=BIO/USDT:USDT | dir=short | entry=0.02909 | sl=0.02932 | tp=0.028630000000000006 | qty=2637.0 | risk=0.61
+2026-02-22 10:10:33,090 | [ORDER] | symbol=BEAT/USDT:USDT | side=sell | type=market | qty=312.0 | sl=0.247 | tp=0.23281
+2026-02-22 10:10:33,236 | [POSITION_OPEN] | symbol=BEAT/USDT:USDT | dir=short | entry=0.24571 | sl=0.247 | tp=0.24313000000000004 | qty=312.0 | risk=0.40
+2026-02-22 10:10:33,690 | [ORDER] | symbol=INIT/USDT:USDT | side=sell | type=market | qty=779.0 | sl=0.0987 | tp=0.09507
+2026-02-22 10:10:33,834 | [POSITION_OPEN] | symbol=INIT/USDT:USDT | dir=short | entry=0.09837 | sl=0.0987 | tp=0.09771 | qty=779.0 | risk=0.26
+2026-02-22 10:10:33,835 | [HEARTBEAT] | equity=42.62 | open=4 | session=ny
+2026-02-22 10:15:34,280 | [ORDER] | symbol=BTR/USDT:USDT | side=sell | type=market | qty=371.0 | sl=0.20619 | tp=0.19651
+2026-02-22 10:15:34,431 | [POSITION_OPEN] | symbol=BTR/USDT:USDT | dir=short | entry=0.20531 | sl=0.20619 | tp=0.20354999999999995 | qty=371.0 | risk=0.33
+2026-02-22 10:15:34,432 | [HEARTBEAT] | equity=42.41 | open=5 | session=ny
+2026-02-22 10:15:53,928 | [POSITION_CLOSE] | symbol=BIO/USDT:USDT | dir=short | entry=0.02909 | exit=0.02895 | pnl_r=0.43 | pnl_usd=0.26 | reason=trail
+2026-02-22 10:19:59,464 | [POSITION_CLOSE] | symbol=BEAT/USDT:USDT | dir=short | entry=0.24571 | exit=0.247 | pnl_r=-1.36 | pnl_usd=-0.55 | reason=sl
+2026-02-22 10:20:33,081 | [ORDER] | symbol=KITE/USDT:USDT | side=buy | type=market | qty=341.0 | sl=0.2201 | tp=0.24023
+2026-02-22 10:20:33,243 | [POSITION_OPEN] | symbol=KITE/USDT:USDT | dir=long | entry=0.22193 | sl=0.2201 | tp=0.22558999999999998 | qty=341.0 | risk=0.63
+2026-02-22 10:21:17,760 | [POSITION_CLOSE] | symbol=INIT/USDT:USDT | dir=short | entry=0.09837 | exit=0.09806 | pnl_r=0.55 | pnl_usd=0.14 | reason=trail
+2026-02-22 10:24:23,365 | [POSITION_CLOSE] | symbol=KITE/USDT:USDT | dir=long | entry=0.22193 | exit=0.22398539 | pnl_r=1.00 | pnl_usd=0.62 | reason=trail
+2026-02-22 10:25:30,427 | [HEARTBEAT] | equity=42.97 | open=2 | session=ny
+2026-02-22 10:27:12,619 | [POSITION_CLOSE] | symbol=BTR/USDT:USDT | dir=short | entry=0.20531 | exit=0.20415084 | pnl_r=0.47 | pnl_usd=0.15 | reason=trail
+2026-02-22 10:30:33,468 | [HEARTBEAT] | equity=43.21 | open=1 | session=ny
+2026-02-22 10:35:30,770 | [HEARTBEAT] | equity=43.21 | open=1 | session=ny
+2026-02-22 10:42:15,173 | [POSITION_CLOSE] | symbol=C98/USDT:USDT | dir=long | entry=0.02646 | exit=0.026463 | pnl_r=-0.27 | pnl_usd=-0.12 | reason=sl
+2026-02-22 10:45:02,182 | [HEARTBEAT] | equity=107.96 | open=0 | session=capped
+2026-02-22 10:55:29,944 | [HEARTBEAT] | equity=107.96 | open=0 | session=ny
+2026-02-22 11:00:34,071 | [HEARTBEAT] | equity=107.96 | open=0 | session=asia
+2026-02-22 11:05:30,360 | [ORDER] | symbol=LIT/USDT:USDT | side=buy | type=market | qty=128.2 | sl=1.504 | tp=1.6338
+2026-02-22 11:05:30,505 | [POSITION_OPEN] | symbol=LIT/USDT:USDT | dir=long | entry=1.5158 | sl=1.504 | tp=1.5394 | qty=128.2 | risk=1.51
+2026-02-22 11:05:31,308 | [ORDER] | symbol=IO/USDT:USDT | side=sell | type=market | qty=1597.5 | sl=0.12233 | tp=0.11474
+2026-02-22 11:05:31,455 | [POSITION_OPEN] | symbol=IO/USDT:USDT | dir=short | entry=0.12164 | sl=0.12233 | tp=0.12026 | qty=1597.5 | risk=1.10
+2026-02-22 11:05:32,216 | [ORDER] | symbol=ATOM/USDT:USDT | side=sell | type=market | qty=84.3 | sl=2.3133 | tp=2.2077
+2026-02-22 11:05:32,353 | [POSITION_OPEN] | symbol=ATOM/USDT:USDT | dir=short | entry=2.3037 | sl=2.3133 | tp=2.2845000000000004 | qty=84.3 | risk=0.81
+2026-02-22 11:10:34,637 | [ORDER] | symbol=CYBER/USDT:USDT | side=sell | type=market | qty=203.8 | sl=0.648 | tp=0.3576
+2026-02-22 11:10:34,786 | [POSITION_OPEN] | symbol=CYBER/USDT:USDT | dir=short | entry=0.6216 | sl=0.648 | tp=0.5688000000000001 | qty=203.8 | risk=5.38
+2026-02-22 11:10:35,765 | [ORDER] | symbol=AZTEC/USDT:USDT | side=buy | type=market | qty=5640.0 | sl=0.033912 | tp=0.038334
+2026-02-22 11:10:35,901 | [POSITION_OPEN] | symbol=AZTEC/USDT:USDT | dir=long | entry=0.034314 | sl=0.033912 | tp=0.035117999999999996 | qty=5640.0 | risk=2.27
+2026-02-22 11:10:35,903 | [HEARTBEAT] | equity=107.64 | open=5 | session=asia
+2026-02-22 11:12:26,591 | [POSITION_CLOSE] | symbol=IO/USDT:USDT | dir=short | entry=0.12164 | exit=0.12120159 | pnl_r=0.19 | pnl_usd=0.20 | reason=trail
+2026-02-22 11:12:28,384 | [POSITION_CLOSE] | symbol=AZTEC/USDT:USDT | dir=long | entry=0.034314 | exit=0.03406824 | pnl_r=-0.86 | pnl_usd=-1.95 | reason=sl

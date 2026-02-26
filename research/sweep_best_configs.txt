@@ -1,0 +1,1142 @@
+================================================================================
+  FCB MEGA SWEEP — BEST CONFIGURATIONS
+  Generated: 2026-02-21T02:27:25.681870+00:00
+  Total configs tested: 97
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+  TOP 15 BY TOTAL R (raw edge)
+────────────────────────────────────────────────────────────────────────────────
+
+  # 1 best_fcN_vl0.0_vs0.0_d0.15
+      Trades: 8,671  WR: 36.9%  Total R: +1564.1  Avg R: +0.1804
+      PF: 1.355  Sharpe(R): 0.120  Kelly f*: 0.097  Payoff: 2.316
+      Avg Win: +1.865R  Avg Loss: -0.805R  Max DD: 36.9R
+      Pairs: 102/125 profitable  (81.6%)
+      Exits: SL=5461 TP=0 Trail=3182 SessEnd=18 MaxR=9
+      Equity ($150 start, compounded):
+        12% risk: $5,144,951,210,144,851,356,296,018,919,424.00  DD=100.0%
+        08% risk: $89,181,989,190,059,524,625,607,719,649,280.00  DD=100.0%
+        06% risk: $58,581,289,177,005,986,076,245,884,928.00  DD=99.9%
+        04% risk: $75,150,086,273,915,722,661,888.00  DD=98.4%
+        02% risk: $123,856,909,287,646.47  DD=84.4%
+      Trades to x10 @ 12% risk: 107.5
+
+  # 2 best_fcN_vl0.5_vs0.25_d0.15
+      Trades: 6,673  WR: 36.5%  Total R: +1212.4  Avg R: +0.1817
+      PF: 1.358  Sharpe(R): 0.121  Kelly f*: 0.096  Payoff: 2.363
+      Avg Win: +1.890R  Avg Loss: -0.800R  Max DD: 36.4R
+      Pairs: 98/125 profitable  (78.4%)
+      Exits: SL=4234 TP=0 Trail=2429 SessEnd=6 MaxR=4
+      Equity ($150 start, compounded):
+        12% risk: $4,045,071,945,715,074,144,927,744.00  DD=100.0%
+        08% risk: $26,393,444,064,295,984,975,314,944.00  DD=100.0%
+        06% risk: $78,098,859,656,470,750,822,400.00  DD=99.9%
+        04% risk: $1,878,816,067,535,770,624.00  DD=99.0%
+        02% risk: $268,243,095,597.79  DD=88.8%
+      Trades to x10 @ 12% risk: 106.8
+
+  # 3 best_fcN_vl1.0_vs0.25_d0.15
+      Trades: 5,337  WR: 37.0%  Total R: +1062.2  Avg R: +0.1990
+      PF: 1.396  Sharpe(R): 0.132  Kelly f*: 0.105  Payoff: 2.375
+      Avg Win: +1.895R  Avg Loss: -0.798R  Max DD: 33.3R
+      Pairs: 95/125 profitable  (76.0%)
+      Exits: SL=3360 TP=0 Trail=1971 SessEnd=3 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $4,221,538,728,410,944,873,955,328.00  DD=100.0%
+        08% risk: $677,027,469,101,068,695,109,632.00  DD=100.0%
+        06% risk: $1,165,982,571,710,196,482,048.00  DD=99.9%
+        04% risk: $41,361,140,921,682,928.00  DD=99.2%
+        02% risk: $23,373,918,818.02  DD=90.0%
+      Trades to x10 @ 12% risk: 97.6
+
+  # 4 best_fcN_vl1.5_vs0.5_d0.15
+      Trades: 3,750  WR: 36.1%  Total R: +713.7  Avg R: +0.1903
+      PF: 1.372  Sharpe(R): 0.125  Kelly f*: 0.098  Payoff: 2.431
+      Avg Win: +1.945R  Avg Loss: -0.800R  Max DD: 30.0R
+      Pairs: 91/125 profitable  (72.8%)
+      Exits: SL=2397 TP=0 Trail=1352 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $5,889,806,818,683,634.00  DD=100.0%
+        08% risk: $10,654,776,715,913,860.00  DD=100.0%
+        06% risk: $291,028,268,291,939.69  DD=99.9%
+        04% risk: $492,958,950,951.94  DD=98.6%
+        02% risk: $42,919,702.01  DD=87.4%
+      Trades to x10 @ 12% risk: 102.0
+
+  # 5 best_body0.0_a0.95_d0.15
+      Trades: 3,383  WR: 37.3%  Total R: +710.5  Avg R: +0.2100
+      PF: 1.416  Sharpe(R): 0.137  Kelly f*: 0.110  Payoff: 2.383
+      Avg Win: +1.918R  Avg Loss: -0.805R  Max DD: 26.0R
+      Pairs: 92/124 profitable  (74.2%)
+      Exits: SL=2121 TP=0 Trail=1258 SessEnd=1 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $581,590,725,506,422,272.00  DD=100.0%
+        08% risk: $80,695,771,465,395,552.00  DD=99.7%
+        06% risk: $885,232,632,173,679.00  DD=98.6%
+        04% risk: $782,236,264,764.46  DD=93.3%
+        02% risk: $46,764,266.52  DD=72.6%
+      Trades to x10 @ 12% risk: 92.5
+
+  # 6 ultra_a1.25_d0.05_filt
+      Trades: 2,509  WR: 37.1%  Total R: +698.3  Avg R: +0.2783
+      PF: 1.503  Sharpe(R): 0.165  Kelly f*: 0.124  Payoff: 2.552
+      Avg Win: +2.243R  Avg Loss: -0.879R  Max DD: 15.9R
+      Pairs: 94/121 profitable  (77.7%)
+      Exits: SL=1579 TP=0 Trail=927 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $23,687,932,166,734,602,240.00  DD=99.9%
+        08% risk: $311,672,330,878,182,592.00  DD=98.4%
+        06% risk: $1,594,084,258,655,675.00  DD=95.2%
+        04% risk: $868,528,263,603.79  DD=86.2%
+        02% risk: $42,558,731.17  DD=62.1%
+      Trades to x10 @ 12% risk: 70.1
+
+  # 7 ultra_a1.1_d0.05_filt
+      Trades: 2,509  WR: 37.4%  Total R: +678.5  Avg R: +0.2704
+      PF: 1.512  Sharpe(R): 0.165  Kelly f*: 0.127  Payoff: 2.529
+      Avg Win: +2.133R  Avg Loss: -0.843R  Max DD: 18.7R
+      Pairs: 93/121 profitable  (76.9%)
+      Exits: SL=1570 TP=0 Trail=936 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $29,744,999,362,875,801,600.00  DD=99.9%
+        08% risk: $217,456,239,916,408,256.00  DD=98.1%
+        06% risk: $988,710,723,708,278.88  DD=94.5%
+        04% risk: $545,334,433,128.39  DD=84.8%
+        02% risk: $31,178,948.50  DD=60.2%
+      Trades to x10 @ 12% risk: 72.1
+
+  # 8 best_fcY_vl0.0_vs0.0_d0.15
+      Trades: 3,993  WR: 36.6%  Total R: +677.2  Avg R: +0.1696
+      PF: 1.329  Sharpe(R): 0.113  Kelly f*: 0.091  Payoff: 2.298
+      Avg Win: +1.870R  Avg Loss: -0.814R  Max DD: 22.6R
+      Pairs: 93/124 profitable  (75.0%)
+      Exits: SL=2527 TP=0 Trail=1456 SessEnd=5 MaxR=4
+      Equity ($150 start, compounded):
+        12% risk: $16,086,368,096,007.76  DD=100.0%
+        08% risk: $294,249,440,496,252.12  DD=99.6%
+        06% risk: $22,355,833,646,059.75  DD=97.7%
+        04% risk: $96,764,982,695.07  DD=89.2%
+        02% risk: $19,821,162.31  DD=64.1%
+      Trades to x10 @ 12% risk: 114.3
+
+  # 9 ultra_a1.25_d0.08_filt
+      Trades: 2,509  WR: 37.1%  Total R: +670.5  Avg R: +0.2672
+      PF: 1.483  Sharpe(R): 0.160  Kelly f*: 0.121  Payoff: 2.518
+      Avg Win: +2.213R  Avg Loss: -0.879R  Max DD: 16.3R
+      Pairs: 92/121 profitable  (76.0%)
+      Exits: SL=1579 TP=0 Trail=927 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $1,654,506,908,440,346,368.00  DD=100.0%
+        08% risk: $46,619,165,343,994,320.00  DD=98.6%
+        06% risk: $363,625,044,822,623.06  DD=95.3%
+        04% risk: $312,016,259,860.55  DD=86.4%
+        02% risk: $24,976,760.31  DD=62.3%
+      Trades to x10 @ 12% risk: 73.0
+
+  #10 best_fcN_vl2.0_vs0.5_d0.15
+      Trades: 3,474  WR: 36.1%  Total R: +659.7  Avg R: +0.1899
+      PF: 1.371  Sharpe(R): 0.125  Kelly f*: 0.098  Payoff: 2.425
+      Avg Win: +1.941R  Avg Loss: -0.800R  Max DD: 32.1R
+      Pairs: 90/125 profitable  (72.0%)
+      Exits: SL=2219 TP=0 Trail=1254 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $560,791,036,793,199.12  DD=100.0%
+        08% risk: $964,467,247,000,365.00  DD=100.0%
+        06% risk: $34,465,288,987,422.55  DD=99.8%
+        04% risk: $94,274,085,579.90  DD=98.0%
+        02% risk: $16,606,082.86  DD=85.0%
+      Trades to x10 @ 12% risk: 102.2
+
+  #11 ultra_a0.95_d0.05_filt
+      Trades: 2,509  WR: 37.9%  Total R: +658.3  Avg R: +0.2624
+      PF: 1.526  Sharpe(R): 0.167  Kelly f*: 0.131  Payoff: 2.495
+      Avg Win: +2.007R  Avg Loss: -0.804R  Max DD: 17.3R
+      Pairs: 88/121 profitable  (72.7%)
+      Exits: SL=1557 TP=0 Trail=949 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $48,592,513,121,448,263,680.00  DD=99.8%
+        08% risk: $171,376,917,311,227,072.00  DD=97.9%
+        06% risk: $656,586,258,013,354.38  DD=94.2%
+        04% risk: $352,187,154,014.91  DD=84.4%
+        02% risk: $22,932,799.00  DD=59.8%
+      Trades to x10 @ 12% risk: 74.3
+
+  #12 ultra_a1.0_d0.05_filt
+      Trades: 2,509  WR: 37.5%  Total R: +653.2  Avg R: +0.2603
+      PF: 1.514  Sharpe(R): 0.164  Kelly f*: 0.127  Payoff: 2.518
+      Avg Win: +2.043R  Avg Loss: -0.811R  Max DD: 17.3R
+      Pairs: 86/121 profitable  (71.1%)
+      Exits: SL=1567 TP=0 Trail=939 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $13,718,789,510,772,305,920.00  DD=99.8%
+        08% risk: $83,648,136,318,924,800.00  DD=98.1%
+        06% risk: $403,633,429,197,888.56  DD=94.5%
+        04% risk: $264,112,944,656.12  DD=85.0%
+        02% risk: $20,253,977.21  DD=60.6%
+      Trades to x10 @ 12% risk: 74.9
+
+  #13 ultra_a1.25_d0.1_filt
+      Trades: 2,509  WR: 37.1%  Total R: +651.9  Avg R: +0.2598
+      PF: 1.470  Sharpe(R): 0.156  Kelly f*: 0.118  Payoff: 2.495
+      Avg Win: +2.193R  Avg Loss: -0.879R  Max DD: 17.0R
+      Pairs: 91/121 profitable  (75.2%)
+      Exits: SL=1579 TP=0 Trail=927 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $279,405,941,947,353,568.00  DD=100.0%
+        08% risk: $13,107,825,403,208,396.00  DD=98.7%
+        06% risk: $135,574,548,162,225.95  DD=95.4%
+        04% risk: $157,579,375,648.34  DD=86.5%
+        02% risk: $17,504,931.29  DD=62.5%
+      Trades to x10 @ 12% risk: 75.0
+
+  #14 ultra_a1.1_d0.08_filt
+      Trades: 2,509  WR: 37.4%  Total R: +650.4  Avg R: +0.2592
+      PF: 1.491  Sharpe(R): 0.160  Kelly f*: 0.123  Payoff: 2.493
+      Avg Win: +2.103R  Avg Loss: -0.843R  Max DD: 19.1R
+      Pairs: 93/121 profitable  (76.9%)
+      Exits: SL=1570 TP=0 Trail=936 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $1,965,945,599,083,964,928.00  DD=99.9%
+        08% risk: $31,461,710,020,152,884.00  DD=98.4%
+        06% risk: $220,343,070,337,385.56  DD=94.6%
+        04% risk: $193,146,641,444.01  DD=85.0%
+        02% risk: $18,182,873.22  DD=60.4%
+      Trades to x10 @ 12% risk: 75.2
+
+  #15 best_body0.3_a0.95_d0.15
+      Trades: 3,153  WR: 37.0%  Total R: +642.9  Avg R: +0.2039
+      PF: 1.403  Sharpe(R): 0.134  Kelly f*: 0.106  Payoff: 2.387
+      Avg Win: +1.919R  Avg Loss: -0.804R  Max DD: 24.4R
+      Pairs: 90/123 profitable  (73.2%)
+      Exits: SL=1986 TP=0 Trail=1164 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $6,334,174,383,755,391.00  DD=100.0%
+        08% risk: $1,934,222,757,981,237.75  DD=99.6%
+        06% risk: $40,464,233,353,737.63  DD=97.9%
+        04% risk: $81,735,673,364.73  DD=91.3%
+        02% risk: $13,580,706.18  DD=68.7%
+      Trades to x10 @ 12% risk: 95.3
+
+
+────────────────────────────────────────────────────────────────────────────────
+  TOP 15 BY SHARPE RATIO (risk-adjusted)
+────────────────────────────────────────────────────────────────────────────────
+
+  # 1 best_range0.003_a1.1_d0.15
+      Trades: 1,933  WR: 39.3%  Total R: +542.9  Avg R: +0.2809
+      PF: 1.547  Sharpe(R): 0.174  Kelly f*: 0.139  Payoff: 2.393
+      Avg Win: +2.022R  Avg Loss: -0.845R  Max DD: 12.9R
+      Pairs: 94/119 profitable  (79.0%)
+      Exits: SL=1174 TP=0 Trail=757 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $74,019,203,743,690,784.00  DD=100.0%
+        08% risk: $499,540,855,655,169.06  DD=99.2%
+        06% risk: $4,538,310,970,285.72  DD=96.7%
+        04% risk: $8,454,965,548.53  DD=88.4%
+        02% risk: $2,863,400.40  DD=63.5%
+      Trades to x10 @ 12% risk: 69.5
+
+  # 2 best_range0.003_a0.95_d0.15
+      Trades: 1,933  WR: 39.7%  Total R: +516.7  Avg R: +0.2673
+      PF: 1.554  Sharpe(R): 0.173  Kelly f*: 0.142  Payoff: 2.357
+      Avg Win: +1.888R  Avg Loss: -0.801R  Max DD: 13.7R
+      Pairs: 92/119 profitable  (77.3%)
+      Exits: SL=1165 TP=0 Trail=766 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $39,992,574,746,224,008.00  DD=99.9%
+        08% risk: $203,085,309,626,120.84  DD=98.7%
+        06% risk: $1,891,590,565,310.62  DD=95.2%
+        04% risk: $4,090,565,892.81  DD=85.1%
+        02% risk: $1,844,130.87  DD=59.4%
+      Trades to x10 @ 12% risk: 72.9
+
+  # 3 CANDIDATE_ALPHA
+      Trades: 1,933  WR: 39.7%  Total R: +516.7  Avg R: +0.2673
+      PF: 1.554  Sharpe(R): 0.173  Kelly f*: 0.142  Payoff: 2.357
+      Avg Win: +1.888R  Avg Loss: -0.801R  Max DD: 13.7R
+      Pairs: 92/119 profitable  (77.3%)
+      Exits: SL=1165 TP=0 Trail=766 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $39,992,574,746,224,008.00  DD=99.9%
+        08% risk: $203,085,309,626,120.84  DD=98.7%
+        06% risk: $1,891,590,565,310.62  DD=95.2%
+        04% risk: $4,090,565,892.81  DD=85.1%
+        02% risk: $1,844,130.87  DD=59.4%
+      Trades to x10 @ 12% risk: 72.9
+
+  # 4 best_range0.003_a1.0_d0.15
+      Trades: 1,933  WR: 39.3%  Total R: +517.4  Avg R: +0.2677
+      PF: 1.546  Sharpe(R): 0.171  Kelly f*: 0.139  Payoff: 2.386
+      Avg Win: +1.928R  Avg Loss: -0.808R  Max DD: 14.5R
+      Pairs: 91/119 profitable  (76.5%)
+      Exits: SL=1173 TP=0 Trail=758 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $23,788,420,656,927,708.00  DD=100.0%
+        08% risk: $161,314,420,622,127.69  DD=99.0%
+        06% risk: $1,668,942,450,102.84  DD=96.0%
+        04% risk: $3,892,397,109.47  DD=86.8%
+        02% risk: $1,831,960.05  DD=61.3%
+      Trades to x10 @ 12% risk: 72.8
+
+  # 5 best_range0.003_a1.25_d0.15
+      Trades: 1,933  WR: 38.7%  Total R: +541.2  Avg R: +0.2800
+      PF: 1.517  Sharpe(R): 0.168  Kelly f*: 0.132  Payoff: 2.403
+      Avg Win: +2.123R  Avg Loss: -0.883R  Max DD: 13.9R
+      Pairs: 90/119 profitable  (75.6%)
+      Exits: SL=1185 TP=0 Trail=746 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $10,498,949,650,803,330.00  DD=100.0%
+        08% risk: $192,993,068,368,785.94  DD=99.1%
+        06% risk: $2,559,920,491,118.91  DD=96.5%
+        04% risk: $6,370,929,896.70  DD=87.6%
+        02% risk: $2,618,827.50  DD=62.1%
+      Trades to x10 @ 12% risk: 69.7
+
+  # 6 CANDIDATE_BETA
+      Trades: 1,933  WR: 38.7%  Total R: +541.2  Avg R: +0.2800
+      PF: 1.517  Sharpe(R): 0.168  Kelly f*: 0.132  Payoff: 2.403
+      Avg Win: +2.123R  Avg Loss: -0.883R  Max DD: 13.9R
+      Pairs: 90/119 profitable  (75.6%)
+      Exits: SL=1185 TP=0 Trail=746 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $10,498,949,650,803,330.00  DD=100.0%
+        08% risk: $192,993,068,368,785.94  DD=99.1%
+        06% risk: $2,559,920,491,118.91  DD=96.5%
+        04% risk: $6,370,929,896.70  DD=87.6%
+        02% risk: $2,618,827.50  DD=62.1%
+      Trades to x10 @ 12% risk: 69.7
+
+  # 7 best_range0.004_a0.95_d0.15
+      Trades: 1,546  WR: 40.2%  Total R: +399.9  Avg R: +0.2587
+      PF: 1.537  Sharpe(R): 0.168  Kelly f*: 0.140  Payoff: 2.289
+      Avg Win: +1.844R  Avg Loss: -0.805R  Max DD: 15.3R
+      Pairs: 82/113 profitable  (72.6%)
+      Exits: SL=925 TP=0 Trail=619 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $15,815,608,675,995.67  DD=99.8%
+        08% risk: $315,312,495,010.75  DD=97.9%
+        06% risk: $9,004,855,961.28  DD=93.7%
+        04% risk: $81,763,620.20  DD=82.6%
+        02% risk: $  216,951.96  DD=57.5%
+      Trades to x10 @ 12% risk: 75.3
+
+  # 8 best_range0.007_a0.95_d0.15
+      Trades: 770  WR: 43.1%  Total R: +188.4  Avg R: +0.2447
+      PF: 1.526  Sharpe(R): 0.168  Kelly f*: 0.149  Payoff: 2.014
+      Avg Win: +1.646R  Avg Loss: -0.817R  Max DD: 12.1R
+      Pairs: 45/66 profitable  (68.2%)
+      Exits: SL=438 TP=0 Trail=332 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $39,353,620.23  DD=98.3%
+        08% risk: $4,767,659.70  DD=92.9%
+        06% risk: $  804,134.45  DD=86.0%
+        04% risk: $   81,007.59  DD=72.6%
+        02% risk: $    4,705.83  DD=47.3%
+      Trades to x10 @ 12% risk: 79.6
+
+  # 9 best_range0.003_a0.85_d0.15
+      Trades: 1,933  WR: 39.7%  Total R: +478.9  Avg R: +0.2478
+      PF: 1.541  Sharpe(R): 0.168  Kelly f*: 0.139  Payoff: 2.337
+      Avg Win: +1.777R  Avg Loss: -0.760R  Max DD: 12.6R
+      Pairs: 89/119 profitable  (74.8%)
+      Exits: SL=1165 TP=0 Trail=767 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $4,655,597,935,788,815.00  DD=99.9%
+        08% risk: $30,953,353,095,948.64  DD=97.9%
+        06% risk: $383,197,904,420.92  DD=93.5%
+        04% risk: $1,233,595,122.55  DD=81.9%
+        02% risk: $  940,646.11  DD=54.9%
+      Trades to x10 @ 12% risk: 78.6
+
+  #10 best_range0.01_a0.85_d0.15
+      Trades: 471  WR: 45.0%  Total R: +115.5  Avg R: +0.2453
+      PF: 1.558  Sharpe(R): 0.168  Kelly f*: 0.161  Payoff: 1.903
+      Avg Win: +1.521R  Avg Loss: -0.799R  Max DD: 13.1R
+      Pairs: 29/42 profitable  (69.0%)
+      Exits: SL=259 TP=0 Trail=212 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  377,894.44  DD=85.8%
+        08% risk: $   92,068.79  DD=71.7%
+        06% risk: $   29,860.69  DD=60.6%
+        04% risk: $    7,165.00  DD=45.7%
+        02% risk: $    1,241.68  DD=26.0%
+      Trades to x10 @ 12% risk: 79.4
+
+  #11 ultra_a0.95_d0.05_filt
+      Trades: 2,509  WR: 37.9%  Total R: +658.3  Avg R: +0.2624
+      PF: 1.526  Sharpe(R): 0.167  Kelly f*: 0.131  Payoff: 2.495
+      Avg Win: +2.007R  Avg Loss: -0.804R  Max DD: 17.3R
+      Pairs: 88/121 profitable  (72.7%)
+      Exits: SL=1557 TP=0 Trail=949 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $48,592,513,121,448,263,680.00  DD=99.8%
+        08% risk: $171,376,917,311,227,072.00  DD=97.9%
+        06% risk: $656,586,258,013,354.38  DD=94.2%
+        04% risk: $352,187,154,014.91  DD=84.4%
+        02% risk: $22,932,799.00  DD=59.8%
+      Trades to x10 @ 12% risk: 74.3
+
+  #12 best_range0.004_a1.0_d0.15
+      Trades: 1,546  WR: 39.7%  Total R: +401.2  Avg R: +0.2595
+      PF: 1.529  Sharpe(R): 0.167  Kelly f*: 0.137  Payoff: 2.320
+      Avg Win: +1.890R  Avg Loss: -0.814R  Max DD: 15.1R
+      Pairs: 82/113 profitable  (72.6%)
+      Exits: SL=932 TP=0 Trail=612 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $10,384,529,924,609.37  DD=99.9%
+        08% risk: $266,218,079,683.22  DD=98.4%
+        06% risk: $8,301,264,526.68  DD=94.8%
+        04% risk: $80,007,417.16  DD=84.6%
+        02% risk: $  218,405.44  DD=58.8%
+      Trades to x10 @ 12% risk: 75.1
+
+  #13 best_range0.004_a1.1_d0.15
+      Trades: 1,546  WR: 39.5%  Total R: +415.3  Avg R: +0.2686
+      PF: 1.520  Sharpe(R): 0.166  Kelly f*: 0.135  Payoff: 2.333
+      Avg Win: +1.989R  Avg Loss: -0.853R  Max DD: 13.8R
+      Pairs: 87/113 profitable  (77.0%)
+      Exits: SL=936 TP=0 Trail=608 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $11,379,967,443,289.00  DD=99.9%
+        08% risk: $384,963,221,602.94  DD=98.9%
+        06% risk: $12,418,385,065.76  DD=95.9%
+        04% risk: $114,535,122.88  DD=87.0%
+        02% risk: $  274,428.52  DD=62.1%
+      Trades to x10 @ 12% risk: 72.6
+
+  #14 best_range0.007_a1.0_d0.15
+      Trades: 770  WR: 42.7%  Total R: +188.6  Avg R: +0.2449
+      PF: 1.517  Sharpe(R): 0.166  Kelly f*: 0.145  Payoff: 2.033
+      Avg Win: +1.683R  Avg Loss: -0.828R  Max DD: 11.9R
+      Pairs: 45/66 profitable  (68.2%)
+      Exits: SL=441 TP=0 Trail=329 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $31,877,738.33  DD=98.5%
+        08% risk: $4,339,877.29  DD=93.5%
+        06% risk: $  763,386.29  DD=86.8%
+        04% risk: $   79,264.29  DD=73.7%
+        02% risk: $    4,686.62  DD=48.3%
+      Trades to x10 @ 12% risk: 79.5
+
+  #15 best_range0.01_a1.0_d0.15
+      Trades: 471  WR: 43.7%  Total R: +120.8  Avg R: +0.2565
+      PF: 1.542  Sharpe(R): 0.166  Kelly f*: 0.154  Payoff: 1.983
+      Avg Win: +1.669R  Avg Loss: -0.842R  Max DD: 13.8R
+      Pairs: 26/42 profitable  (61.9%)
+      Exits: SL=265 TP=0 Trail=206 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  370,453.23  DD=93.1%
+        08% risk: $  102,929.11  DD=82.4%
+        06% risk: $   34,175.17  DD=72.3%
+        04% risk: $    8,134.29  DD=57.0%
+        02% risk: $    1,349.98  DD=34.0%
+      Trades to x10 @ 12% risk: 75.9
+
+
+────────────────────────────────────────────────────────────────────────────────
+  TOP 15 BY PROFIT FACTOR (≥100 trades)
+────────────────────────────────────────────────────────────────────────────────
+
+  # 1 best_range0.01_a0.85_d0.15
+      Trades: 471  WR: 45.0%  Total R: +115.5  Avg R: +0.2453
+      PF: 1.558  Sharpe(R): 0.168  Kelly f*: 0.161  Payoff: 1.903
+      Avg Win: +1.521R  Avg Loss: -0.799R  Max DD: 13.1R
+      Pairs: 29/42 profitable  (69.0%)
+      Exits: SL=259 TP=0 Trail=212 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  377,894.44  DD=85.8%
+        08% risk: $   92,068.79  DD=71.7%
+        06% risk: $   29,860.69  DD=60.6%
+        04% risk: $    7,165.00  DD=45.7%
+        02% risk: $    1,241.68  DD=26.0%
+      Trades to x10 @ 12% risk: 79.4
+
+  # 2 best_range0.003_a0.95_d0.15
+      Trades: 1,933  WR: 39.7%  Total R: +516.7  Avg R: +0.2673
+      PF: 1.554  Sharpe(R): 0.173  Kelly f*: 0.142  Payoff: 2.357
+      Avg Win: +1.888R  Avg Loss: -0.801R  Max DD: 13.7R
+      Pairs: 92/119 profitable  (77.3%)
+      Exits: SL=1165 TP=0 Trail=766 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $39,992,574,746,224,008.00  DD=99.9%
+        08% risk: $203,085,309,626,120.84  DD=98.7%
+        06% risk: $1,891,590,565,310.62  DD=95.2%
+        04% risk: $4,090,565,892.81  DD=85.1%
+        02% risk: $1,844,130.87  DD=59.4%
+      Trades to x10 @ 12% risk: 72.9
+
+  # 3 CANDIDATE_ALPHA
+      Trades: 1,933  WR: 39.7%  Total R: +516.7  Avg R: +0.2673
+      PF: 1.554  Sharpe(R): 0.173  Kelly f*: 0.142  Payoff: 2.357
+      Avg Win: +1.888R  Avg Loss: -0.801R  Max DD: 13.7R
+      Pairs: 92/119 profitable  (77.3%)
+      Exits: SL=1165 TP=0 Trail=766 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $39,992,574,746,224,008.00  DD=99.9%
+        08% risk: $203,085,309,626,120.84  DD=98.7%
+        06% risk: $1,891,590,565,310.62  DD=95.2%
+        04% risk: $4,090,565,892.81  DD=85.1%
+        02% risk: $1,844,130.87  DD=59.4%
+      Trades to x10 @ 12% risk: 72.9
+
+  # 4 best_range0.003_a1.1_d0.15
+      Trades: 1,933  WR: 39.3%  Total R: +542.9  Avg R: +0.2809
+      PF: 1.547  Sharpe(R): 0.174  Kelly f*: 0.139  Payoff: 2.393
+      Avg Win: +2.022R  Avg Loss: -0.845R  Max DD: 12.9R
+      Pairs: 94/119 profitable  (79.0%)
+      Exits: SL=1174 TP=0 Trail=757 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $74,019,203,743,690,784.00  DD=100.0%
+        08% risk: $499,540,855,655,169.06  DD=99.2%
+        06% risk: $4,538,310,970,285.72  DD=96.7%
+        04% risk: $8,454,965,548.53  DD=88.4%
+        02% risk: $2,863,400.40  DD=63.5%
+      Trades to x10 @ 12% risk: 69.5
+
+  # 5 CANDIDATE_SAFE
+      Trades: 1,933  WR: 39.4%  Total R: +462.5  Avg R: +0.2393
+      PF: 1.547  Sharpe(R): 0.166  Kelly f*: 0.139  Payoff: 2.377
+      Avg Win: +1.717R  Avg Loss: -0.723R  Max DD: 12.7R
+      Pairs: 85/119 profitable  (71.4%)
+      Exits: SL=1171 TP=0 Trail=761 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $2,183,277,310,262,947.00  DD=99.8%
+        08% risk: $14,524,077,628,990.78  DD=97.7%
+        06% risk: $196,809,403,344.61  DD=93.0%
+        04% risk: $739,006,502.05  DD=81.1%
+        02% risk: $  702,740.02  DD=54.1%
+      Trades to x10 @ 12% risk: 81.3
+
+  # 6 best_range0.003_a1.0_d0.15
+      Trades: 1,933  WR: 39.3%  Total R: +517.4  Avg R: +0.2677
+      PF: 1.546  Sharpe(R): 0.171  Kelly f*: 0.139  Payoff: 2.386
+      Avg Win: +1.928R  Avg Loss: -0.808R  Max DD: 14.5R
+      Pairs: 91/119 profitable  (76.5%)
+      Exits: SL=1173 TP=0 Trail=758 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $23,788,420,656,927,708.00  DD=100.0%
+        08% risk: $161,314,420,622,127.69  DD=99.0%
+        06% risk: $1,668,942,450,102.84  DD=96.0%
+        04% risk: $3,892,397,109.47  DD=86.8%
+        02% risk: $1,831,960.05  DD=61.3%
+      Trades to x10 @ 12% risk: 72.8
+
+  # 7 best_range0.01_a0.95_d0.15
+      Trades: 471  WR: 44.0%  Total R: +118.6  Avg R: +0.2519
+      PF: 1.542  Sharpe(R): 0.165  Kelly f*: 0.154  Payoff: 1.966
+      Avg Win: +1.631R  Avg Loss: -0.830R  Max DD: 13.8R
+      Pairs: 27/42 profitable  (64.3%)
+      Exits: SL=264 TP=0 Trail=207 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  333,061.99  DD=92.2%
+        08% risk: $   92,875.20  DD=80.8%
+        06% risk: $   31,240.33  DD=70.5%
+        04% risk: $    7,594.05  DD=55.2%
+        02% risk: $    1,298.32  DD=32.7%
+      Trades to x10 @ 12% risk: 77.3
+
+  # 8 best_range0.01_a1.0_d0.15
+      Trades: 471  WR: 43.7%  Total R: +120.8  Avg R: +0.2565
+      PF: 1.542  Sharpe(R): 0.166  Kelly f*: 0.154  Payoff: 1.983
+      Avg Win: +1.669R  Avg Loss: -0.842R  Max DD: 13.8R
+      Pairs: 26/42 profitable  (61.9%)
+      Exits: SL=265 TP=0 Trail=206 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  370,453.23  DD=93.1%
+        08% risk: $  102,929.11  DD=82.4%
+        06% risk: $   34,175.17  DD=72.3%
+        04% risk: $    8,134.29  DD=57.0%
+        02% risk: $    1,349.98  DD=34.0%
+      Trades to x10 @ 12% risk: 75.9
+
+  # 9 best_range0.003_a0.85_d0.15
+      Trades: 1,933  WR: 39.7%  Total R: +478.9  Avg R: +0.2478
+      PF: 1.541  Sharpe(R): 0.168  Kelly f*: 0.139  Payoff: 2.337
+      Avg Win: +1.777R  Avg Loss: -0.760R  Max DD: 12.6R
+      Pairs: 89/119 profitable  (74.8%)
+      Exits: SL=1165 TP=0 Trail=767 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $4,655,597,935,788,815.00  DD=99.9%
+        08% risk: $30,953,353,095,948.64  DD=97.9%
+        06% risk: $383,197,904,420.92  DD=93.5%
+        04% risk: $1,233,595,122.55  DD=81.9%
+        02% risk: $  940,646.11  DD=54.9%
+      Trades to x10 @ 12% risk: 78.6
+
+  #10 best_range0.004_a0.95_d0.15
+      Trades: 1,546  WR: 40.2%  Total R: +399.9  Avg R: +0.2587
+      PF: 1.537  Sharpe(R): 0.168  Kelly f*: 0.140  Payoff: 2.289
+      Avg Win: +1.844R  Avg Loss: -0.805R  Max DD: 15.3R
+      Pairs: 82/113 profitable  (72.6%)
+      Exits: SL=925 TP=0 Trail=619 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $15,815,608,675,995.67  DD=99.8%
+        08% risk: $315,312,495,010.75  DD=97.9%
+        06% risk: $9,004,855,961.28  DD=93.7%
+        04% risk: $81,763,620.20  DD=82.6%
+        02% risk: $  216,951.96  DD=57.5%
+      Trades to x10 @ 12% risk: 75.3
+
+  #11 best_range0.004_a1.0_d0.15
+      Trades: 1,546  WR: 39.7%  Total R: +401.2  Avg R: +0.2595
+      PF: 1.529  Sharpe(R): 0.167  Kelly f*: 0.137  Payoff: 2.320
+      Avg Win: +1.890R  Avg Loss: -0.814R  Max DD: 15.1R
+      Pairs: 82/113 profitable  (72.6%)
+      Exits: SL=932 TP=0 Trail=612 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $10,384,529,924,609.37  DD=99.9%
+        08% risk: $266,218,079,683.22  DD=98.4%
+        06% risk: $8,301,264,526.68  DD=94.8%
+        04% risk: $80,007,417.16  DD=84.6%
+        02% risk: $  218,405.44  DD=58.8%
+      Trades to x10 @ 12% risk: 75.1
+
+  #12 ultra_a0.75_d0.05_filt
+      Trades: 2,509  WR: 37.6%  Total R: +602.2  Avg R: +0.2400
+      PF: 1.528  Sharpe(R): 0.163  Kelly f*: 0.130  Payoff: 2.537
+      Avg Win: +1.849R  Avg Loss: -0.729R  Max DD: 14.2R
+      Pairs: 95/121 profitable  (78.5%)
+      Exits: SL=1566 TP=0 Trail=941 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $4,751,019,708,304,251,904.00  DD=99.4%
+        08% risk: $15,390,984,091,134,938.00  DD=96.2%
+        06% risk: $75,962,722,745,147.44  DD=91.0%
+        04% risk: $65,254,505,968.31  DD=79.2%
+        02% risk: $8,639,095.57  DD=53.6%
+      Trades to x10 @ 12% risk: 81.1
+
+  #13 ultra_a0.95_d0.05_filt
+      Trades: 2,509  WR: 37.9%  Total R: +658.3  Avg R: +0.2624
+      PF: 1.526  Sharpe(R): 0.167  Kelly f*: 0.131  Payoff: 2.495
+      Avg Win: +2.007R  Avg Loss: -0.804R  Max DD: 17.3R
+      Pairs: 88/121 profitable  (72.7%)
+      Exits: SL=1557 TP=0 Trail=949 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $48,592,513,121,448,263,680.00  DD=99.8%
+        08% risk: $171,376,917,311,227,072.00  DD=97.9%
+        06% risk: $656,586,258,013,354.38  DD=94.2%
+        04% risk: $352,187,154,014.91  DD=84.4%
+        02% risk: $22,932,799.00  DD=59.8%
+      Trades to x10 @ 12% risk: 74.3
+
+  #14 best_range0.007_a0.95_d0.15
+      Trades: 770  WR: 43.1%  Total R: +188.4  Avg R: +0.2447
+      PF: 1.526  Sharpe(R): 0.168  Kelly f*: 0.149  Payoff: 2.014
+      Avg Win: +1.646R  Avg Loss: -0.817R  Max DD: 12.1R
+      Pairs: 45/66 profitable  (68.2%)
+      Exits: SL=438 TP=0 Trail=332 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $39,353,620.23  DD=98.3%
+        08% risk: $4,767,659.70  DD=92.9%
+        06% risk: $  804,134.45  DD=86.0%
+        04% risk: $   81,007.59  DD=72.6%
+        02% risk: $    4,705.83  DD=47.3%
+      Trades to x10 @ 12% risk: 79.6
+
+  #15 best_range0.004_a0.85_d0.15
+      Trades: 1,546  WR: 40.4%  Total R: +372.1  Avg R: +0.2407
+      PF: 1.524  Sharpe(R): 0.164  Kelly f*: 0.139  Payoff: 2.246
+      Avg Win: +1.731R  Avg Loss: -0.771R  Max DD: 14.2R
+      Pairs: 83/113 profitable  (73.5%)
+      Exits: SL=921 TP=0 Trail=624 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $3,527,594,055,767.92  DD=99.6%
+        08% risk: $82,394,513,288.10  DD=96.3%
+        06% risk: $2,853,402,386.14  DD=90.4%
+        04% risk: $34,257,905.33  DD=77.0%
+        02% risk: $  132,597.16  DD=51.4%
+      Trades to x10 @ 12% risk: 80.9
+
+
+────────────────────────────────────────────────────────────────────────────────
+  TOP 15 BY EQUITY @ 12% risk ($150 start)
+────────────────────────────────────────────────────────────────────────────────
+
+  # 1 best_fcN_vl0.0_vs0.0_d0.15
+      Trades: 8,671  WR: 36.9%  Total R: +1564.1  Avg R: +0.1804
+      PF: 1.355  Sharpe(R): 0.120  Kelly f*: 0.097  Payoff: 2.316
+      Avg Win: +1.865R  Avg Loss: -0.805R  Max DD: 36.9R
+      Pairs: 102/125 profitable  (81.6%)
+      Exits: SL=5461 TP=0 Trail=3182 SessEnd=18 MaxR=9
+      Equity ($150 start, compounded):
+        12% risk: $5,144,951,210,144,851,356,296,018,919,424.00  DD=100.0%
+        08% risk: $89,181,989,190,059,524,625,607,719,649,280.00  DD=100.0%
+        06% risk: $58,581,289,177,005,986,076,245,884,928.00  DD=99.9%
+        04% risk: $75,150,086,273,915,722,661,888.00  DD=98.4%
+        02% risk: $123,856,909,287,646.47  DD=84.4%
+      Trades to x10 @ 12% risk: 107.5
+
+  # 2 best_fcN_vl1.0_vs0.25_d0.15
+      Trades: 5,337  WR: 37.0%  Total R: +1062.2  Avg R: +0.1990
+      PF: 1.396  Sharpe(R): 0.132  Kelly f*: 0.105  Payoff: 2.375
+      Avg Win: +1.895R  Avg Loss: -0.798R  Max DD: 33.3R
+      Pairs: 95/125 profitable  (76.0%)
+      Exits: SL=3360 TP=0 Trail=1971 SessEnd=3 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $4,221,538,728,410,944,873,955,328.00  DD=100.0%
+        08% risk: $677,027,469,101,068,695,109,632.00  DD=100.0%
+        06% risk: $1,165,982,571,710,196,482,048.00  DD=99.9%
+        04% risk: $41,361,140,921,682,928.00  DD=99.2%
+        02% risk: $23,373,918,818.02  DD=90.0%
+      Trades to x10 @ 12% risk: 97.6
+
+  # 3 best_fcN_vl0.5_vs0.25_d0.15
+      Trades: 6,673  WR: 36.5%  Total R: +1212.4  Avg R: +0.1817
+      PF: 1.358  Sharpe(R): 0.121  Kelly f*: 0.096  Payoff: 2.363
+      Avg Win: +1.890R  Avg Loss: -0.800R  Max DD: 36.4R
+      Pairs: 98/125 profitable  (78.4%)
+      Exits: SL=4234 TP=0 Trail=2429 SessEnd=6 MaxR=4
+      Equity ($150 start, compounded):
+        12% risk: $4,045,071,945,715,074,144,927,744.00  DD=100.0%
+        08% risk: $26,393,444,064,295,984,975,314,944.00  DD=100.0%
+        06% risk: $78,098,859,656,470,750,822,400.00  DD=99.9%
+        04% risk: $1,878,816,067,535,770,624.00  DD=99.0%
+        02% risk: $268,243,095,597.79  DD=88.8%
+      Trades to x10 @ 12% risk: 106.8
+
+  # 4 ultra_a0.95_d0.05_filt
+      Trades: 2,509  WR: 37.9%  Total R: +658.3  Avg R: +0.2624
+      PF: 1.526  Sharpe(R): 0.167  Kelly f*: 0.131  Payoff: 2.495
+      Avg Win: +2.007R  Avg Loss: -0.804R  Max DD: 17.3R
+      Pairs: 88/121 profitable  (72.7%)
+      Exits: SL=1557 TP=0 Trail=949 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $48,592,513,121,448,263,680.00  DD=99.8%
+        08% risk: $171,376,917,311,227,072.00  DD=97.9%
+        06% risk: $656,586,258,013,354.38  DD=94.2%
+        04% risk: $352,187,154,014.91  DD=84.4%
+        02% risk: $22,932,799.00  DD=59.8%
+      Trades to x10 @ 12% risk: 74.3
+
+  # 5 ultra_a1.1_d0.05_filt
+      Trades: 2,509  WR: 37.4%  Total R: +678.5  Avg R: +0.2704
+      PF: 1.512  Sharpe(R): 0.165  Kelly f*: 0.127  Payoff: 2.529
+      Avg Win: +2.133R  Avg Loss: -0.843R  Max DD: 18.7R
+      Pairs: 93/121 profitable  (76.9%)
+      Exits: SL=1570 TP=0 Trail=936 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $29,744,999,362,875,801,600.00  DD=99.9%
+        08% risk: $217,456,239,916,408,256.00  DD=98.1%
+        06% risk: $988,710,723,708,278.88  DD=94.5%
+        04% risk: $545,334,433,128.39  DD=84.8%
+        02% risk: $31,178,948.50  DD=60.2%
+      Trades to x10 @ 12% risk: 72.1
+
+  # 6 ultra_a1.25_d0.05_filt
+      Trades: 2,509  WR: 37.1%  Total R: +698.3  Avg R: +0.2783
+      PF: 1.503  Sharpe(R): 0.165  Kelly f*: 0.124  Payoff: 2.552
+      Avg Win: +2.243R  Avg Loss: -0.879R  Max DD: 15.9R
+      Pairs: 94/121 profitable  (77.7%)
+      Exits: SL=1579 TP=0 Trail=927 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $23,687,932,166,734,602,240.00  DD=99.9%
+        08% risk: $311,672,330,878,182,592.00  DD=98.4%
+        06% risk: $1,594,084,258,655,675.00  DD=95.2%
+        04% risk: $868,528,263,603.79  DD=86.2%
+        02% risk: $42,558,731.17  DD=62.1%
+      Trades to x10 @ 12% risk: 70.1
+
+  # 7 ultra_a1.0_d0.05_filt
+      Trades: 2,509  WR: 37.5%  Total R: +653.2  Avg R: +0.2603
+      PF: 1.514  Sharpe(R): 0.164  Kelly f*: 0.127  Payoff: 2.518
+      Avg Win: +2.043R  Avg Loss: -0.811R  Max DD: 17.3R
+      Pairs: 86/121 profitable  (71.1%)
+      Exits: SL=1567 TP=0 Trail=939 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $13,718,789,510,772,305,920.00  DD=99.8%
+        08% risk: $83,648,136,318,924,800.00  DD=98.1%
+        06% risk: $403,633,429,197,888.56  DD=94.5%
+        04% risk: $264,112,944,656.12  DD=85.0%
+        02% risk: $20,253,977.21  DD=60.6%
+      Trades to x10 @ 12% risk: 74.9
+
+  # 8 ultra_a0.85_d0.05_filt
+      Trades: 2,509  WR: 37.9%  Total R: +620.8  Avg R: +0.2474
+      PF: 1.520  Sharpe(R): 0.164  Kelly f*: 0.130  Payoff: 2.487
+      Avg Win: +1.905R  Avg Loss: -0.766R  Max DD: 16.2R
+      Pairs: 92/121 profitable  (76.0%)
+      Exits: SL=1557 TP=0 Trail=950 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $8,772,773,469,343,431,680.00  DD=99.5%
+        08% risk: $32,285,585,644,255,492.00  DD=96.7%
+        06% risk: $150,918,827,908,367.44  DD=91.9%
+        04% risk: $112,908,311,699.34  DD=80.6%
+        02% risk: $11,913,418.22  DD=55.3%
+      Trades to x10 @ 12% risk: 78.7
+
+  # 9 ultra_a0.75_d0.05_filt
+      Trades: 2,509  WR: 37.6%  Total R: +602.2  Avg R: +0.2400
+      PF: 1.528  Sharpe(R): 0.163  Kelly f*: 0.130  Payoff: 2.537
+      Avg Win: +1.849R  Avg Loss: -0.729R  Max DD: 14.2R
+      Pairs: 95/121 profitable  (78.5%)
+      Exits: SL=1566 TP=0 Trail=941 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $4,751,019,708,304,251,904.00  DD=99.4%
+        08% risk: $15,390,984,091,134,938.00  DD=96.2%
+        06% risk: $75,962,722,745,147.44  DD=91.0%
+        04% risk: $65,254,505,968.31  DD=79.2%
+        02% risk: $8,639,095.57  DD=53.6%
+      Trades to x10 @ 12% risk: 81.1
+
+  #10 ultra_a0.95_d0.08_filt
+      Trades: 2,509  WR: 37.9%  Total R: +629.8  Avg R: +0.2510
+      PF: 1.503  Sharpe(R): 0.161  Kelly f*: 0.127  Payoff: 2.458
+      Avg Win: +1.977R  Avg Loss: -0.804R  Max DD: 17.6R
+      Pairs: 87/121 profitable  (71.9%)
+      Exits: SL=1557 TP=0 Trail=949 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $2,989,030,840,357,125,120.00  DD=99.8%
+        08% risk: $23,727,676,385,383,204.00  DD=97.9%
+        06% risk: $141,837,412,360,717.38  DD=94.3%
+        04% risk: $122,349,746,759.33  DD=84.6%
+        02% risk: $13,256,547.92  DD=60.0%
+      Trades to x10 @ 12% risk: 77.6
+
+  #11 ultra_a1.1_d0.08_filt
+      Trades: 2,509  WR: 37.4%  Total R: +650.4  Avg R: +0.2592
+      PF: 1.491  Sharpe(R): 0.160  Kelly f*: 0.123  Payoff: 2.493
+      Avg Win: +2.103R  Avg Loss: -0.843R  Max DD: 19.1R
+      Pairs: 93/121 profitable  (76.9%)
+      Exits: SL=1570 TP=0 Trail=936 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $1,965,945,599,083,964,928.00  DD=99.9%
+        08% risk: $31,461,710,020,152,884.00  DD=98.4%
+        06% risk: $220,343,070,337,385.56  DD=94.6%
+        04% risk: $193,146,641,444.01  DD=85.0%
+        02% risk: $18,182,873.22  DD=60.4%
+      Trades to x10 @ 12% risk: 75.2
+
+  #12 ultra_a1.25_d0.08_filt
+      Trades: 2,509  WR: 37.1%  Total R: +670.5  Avg R: +0.2672
+      PF: 1.483  Sharpe(R): 0.160  Kelly f*: 0.121  Payoff: 2.518
+      Avg Win: +2.213R  Avg Loss: -0.879R  Max DD: 16.3R
+      Pairs: 92/121 profitable  (76.0%)
+      Exits: SL=1579 TP=0 Trail=927 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $1,654,506,908,440,346,368.00  DD=100.0%
+        08% risk: $46,619,165,343,994,320.00  DD=98.6%
+        06% risk: $363,625,044,822,623.06  DD=95.3%
+        04% risk: $312,016,259,860.55  DD=86.4%
+        02% risk: $24,976,760.31  DD=62.3%
+      Trades to x10 @ 12% risk: 73.0
+
+  #13 ultra_a1.0_d0.08_filt
+      Trades: 2,509  WR: 37.5%  Total R: +625.0  Avg R: +0.2491
+      PF: 1.492  Sharpe(R): 0.158  Kelly f*: 0.124  Payoff: 2.481
+      Avg Win: +2.013R  Avg Loss: -0.811R  Max DD: 17.6R
+      Pairs: 85/121 profitable  (70.2%)
+      Exits: SL=1567 TP=0 Trail=939 SessEnd=0 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $877,353,284,863,938,688.00  DD=99.9%
+        08% risk: $11,882,106,712,631,608.00  DD=98.1%
+        06% risk: $88,869,857,292,157.39  DD=94.6%
+        04% risk: $92,908,888,430.42  DD=85.2%
+        02% risk: $11,780,226.03  DD=60.8%
+      Trades to x10 @ 12% risk: 78.2
+
+  #14 best_body0.0_a0.95_d0.15
+      Trades: 3,383  WR: 37.3%  Total R: +710.5  Avg R: +0.2100
+      PF: 1.416  Sharpe(R): 0.137  Kelly f*: 0.110  Payoff: 2.383
+      Avg Win: +1.918R  Avg Loss: -0.805R  Max DD: 26.0R
+      Pairs: 92/124 profitable  (74.2%)
+      Exits: SL=2121 TP=0 Trail=1258 SessEnd=1 MaxR=3
+      Equity ($150 start, compounded):
+        12% risk: $581,590,725,506,422,272.00  DD=100.0%
+        08% risk: $80,695,771,465,395,552.00  DD=99.7%
+        06% risk: $885,232,632,173,679.00  DD=98.6%
+        04% risk: $782,236,264,764.46  DD=93.3%
+        02% risk: $46,764,266.52  DD=72.6%
+      Trades to x10 @ 12% risk: 92.5
+
+  #15 ultra_a0.85_d0.08_filt
+      Trades: 2,509  WR: 37.9%  Total R: +592.3  Avg R: +0.2361
+      PF: 1.496  Sharpe(R): 0.158  Kelly f*: 0.126  Payoff: 2.447
+      Avg Win: +1.875R  Avg Loss: -0.766R  Max DD: 16.6R
+      Pairs: 91/121 profitable  (75.2%)
+      Exits: SL=1557 TP=0 Trail=950 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $524,325,011,685,439,296.00  DD=99.6%
+        08% risk: $4,403,558,089,526,209.50  DD=96.8%
+        06% risk: $32,298,762,039,696.03  DD=92.0%
+        04% risk: $39,037,167,011.05  DD=80.8%
+        02% risk: $6,875,930.41  DD=55.5%
+      Trades to x10 @ 12% risk: 82.4
+
+
+────────────────────────────────────────────────────────────────────────────────
+  TOP 15 BY KELLY FRACTION (≥100 trades)
+────────────────────────────────────────────────────────────────────────────────
+
+  # 1 best_range0.01_a0.85_d0.15
+      Trades: 471  WR: 45.0%  Total R: +115.5  Avg R: +0.2453
+      PF: 1.558  Sharpe(R): 0.168  Kelly f*: 0.161  Payoff: 1.903
+      Avg Win: +1.521R  Avg Loss: -0.799R  Max DD: 13.1R
+      Pairs: 29/42 profitable  (69.0%)
+      Exits: SL=259 TP=0 Trail=212 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  377,894.44  DD=85.8%
+        08% risk: $   92,068.79  DD=71.7%
+        06% risk: $   29,860.69  DD=60.6%
+        04% risk: $    7,165.00  DD=45.7%
+        02% risk: $    1,241.68  DD=26.0%
+      Trades to x10 @ 12% risk: 79.4
+
+  # 2 best_range0.01_a0.95_d0.15
+      Trades: 471  WR: 44.0%  Total R: +118.6  Avg R: +0.2519
+      PF: 1.542  Sharpe(R): 0.165  Kelly f*: 0.154  Payoff: 1.966
+      Avg Win: +1.631R  Avg Loss: -0.830R  Max DD: 13.8R
+      Pairs: 27/42 profitable  (64.3%)
+      Exits: SL=264 TP=0 Trail=207 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  333,061.99  DD=92.2%
+        08% risk: $   92,875.20  DD=80.8%
+        06% risk: $   31,240.33  DD=70.5%
+        04% risk: $    7,594.05  DD=55.2%
+        02% risk: $    1,298.32  DD=32.7%
+      Trades to x10 @ 12% risk: 77.3
+
+  # 3 best_range0.01_a1.0_d0.15
+      Trades: 471  WR: 43.7%  Total R: +120.8  Avg R: +0.2565
+      PF: 1.542  Sharpe(R): 0.166  Kelly f*: 0.154  Payoff: 1.983
+      Avg Win: +1.669R  Avg Loss: -0.842R  Max DD: 13.8R
+      Pairs: 26/42 profitable  (61.9%)
+      Exits: SL=265 TP=0 Trail=206 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  370,453.23  DD=93.1%
+        08% risk: $  102,929.11  DD=82.4%
+        06% risk: $   34,175.17  DD=72.3%
+        04% risk: $    8,134.29  DD=57.0%
+        02% risk: $    1,349.98  DD=34.0%
+      Trades to x10 @ 12% risk: 75.9
+
+  # 4 best_range0.007_a0.95_d0.15
+      Trades: 770  WR: 43.1%  Total R: +188.4  Avg R: +0.2447
+      PF: 1.526  Sharpe(R): 0.168  Kelly f*: 0.149  Payoff: 2.014
+      Avg Win: +1.646R  Avg Loss: -0.817R  Max DD: 12.1R
+      Pairs: 45/66 profitable  (68.2%)
+      Exits: SL=438 TP=0 Trail=332 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $39,353,620.23  DD=98.3%
+        08% risk: $4,767,659.70  DD=92.9%
+        06% risk: $  804,134.45  DD=86.0%
+        04% risk: $   81,007.59  DD=72.6%
+        02% risk: $    4,705.83  DD=47.3%
+      Trades to x10 @ 12% risk: 79.6
+
+  # 5 best_range0.007_a0.85_d0.15
+      Trades: 770  WR: 43.4%  Total R: +175.3  Avg R: +0.2277
+      PF: 1.514  Sharpe(R): 0.163  Kelly f*: 0.147  Payoff: 1.977
+      Avg Win: +1.546R  Avg Loss: -0.782R  Max DD: 10.7R
+      Pairs: 44/66 profitable  (66.7%)
+      Exits: SL=436 TP=0 Trail=334 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $17,881,602.70  DD=96.5%
+        08% risk: $2,426,144.20  DD=88.6%
+        06% risk: $  455,682.76  DD=80.1%
+        04% risk: $   53,091.53  DD=65.4%
+        02% risk: $    3,719.90  DD=40.8%
+      Trades to x10 @ 12% risk: 85.4
+
+  # 6 best_range0.007_a1.0_d0.15
+      Trades: 770  WR: 42.7%  Total R: +188.6  Avg R: +0.2449
+      PF: 1.517  Sharpe(R): 0.166  Kelly f*: 0.145  Payoff: 2.033
+      Avg Win: +1.683R  Avg Loss: -0.828R  Max DD: 11.9R
+      Pairs: 45/66 profitable  (68.2%)
+      Exits: SL=441 TP=0 Trail=329 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $31,877,738.33  DD=98.5%
+        08% risk: $4,339,877.29  DD=93.5%
+        06% risk: $  763,386.29  DD=86.8%
+        04% risk: $   79,264.29  DD=73.7%
+        02% risk: $    4,686.62  DD=48.3%
+      Trades to x10 @ 12% risk: 79.5
+
+  # 7 best_range0.003_a0.95_d0.15
+      Trades: 1,933  WR: 39.7%  Total R: +516.7  Avg R: +0.2673
+      PF: 1.554  Sharpe(R): 0.173  Kelly f*: 0.142  Payoff: 2.357
+      Avg Win: +1.888R  Avg Loss: -0.801R  Max DD: 13.7R
+      Pairs: 92/119 profitable  (77.3%)
+      Exits: SL=1165 TP=0 Trail=766 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $39,992,574,746,224,008.00  DD=99.9%
+        08% risk: $203,085,309,626,120.84  DD=98.7%
+        06% risk: $1,891,590,565,310.62  DD=95.2%
+        04% risk: $4,090,565,892.81  DD=85.1%
+        02% risk: $1,844,130.87  DD=59.4%
+      Trades to x10 @ 12% risk: 72.9
+
+  # 8 CANDIDATE_ALPHA
+      Trades: 1,933  WR: 39.7%  Total R: +516.7  Avg R: +0.2673
+      PF: 1.554  Sharpe(R): 0.173  Kelly f*: 0.142  Payoff: 2.357
+      Avg Win: +1.888R  Avg Loss: -0.801R  Max DD: 13.7R
+      Pairs: 92/119 profitable  (77.3%)
+      Exits: SL=1165 TP=0 Trail=766 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $39,992,574,746,224,008.00  DD=99.9%
+        08% risk: $203,085,309,626,120.84  DD=98.7%
+        06% risk: $1,891,590,565,310.62  DD=95.2%
+        04% risk: $4,090,565,892.81  DD=85.1%
+        02% risk: $1,844,130.87  DD=59.4%
+      Trades to x10 @ 12% risk: 72.9
+
+  # 9 best_range0.007_a1.1_d0.15
+      Trades: 770  WR: 41.8%  Total R: +197.9  Avg R: +0.2570
+      PF: 1.509  Sharpe(R): 0.165  Kelly f*: 0.141  Payoff: 2.099
+      Avg Win: +1.823R  Avg Loss: -0.868R  Max DD: 12.6R
+      Pairs: 48/66 profitable  (72.7%)
+      Exits: SL=448 TP=0 Trail=322 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $32,188,955.46  DD=97.9%
+        08% risk: $5,379,463.47  DD=91.7%
+        06% risk: $  977,863.52  DD=84.1%
+        04% risk: $   99,534.01  DD=70.2%
+        02% risk: $    5,435.89  DD=44.9%
+      Trades to x10 @ 12% risk: 75.8
+
+  #10 best_range0.01_a1.1_d0.15
+      Trades: 471  WR: 42.2%  Total R: +117.7  Avg R: +0.2498
+      PF: 1.499  Sharpe(R): 0.158  Kelly f*: 0.141  Payoff: 2.048
+      Avg Win: +1.777R  Avg Loss: -0.868R  Max DD: 15.8R
+      Pairs: 27/42 profitable  (64.3%)
+      Exits: SL=272 TP=0 Trail=199 SessEnd=0 MaxR=0
+      Equity ($150 start, compounded):
+        12% risk: $  177,787.55  DD=91.8%
+        08% risk: $   67,882.58  DD=80.0%
+        06% risk: $   25,742.91  DD=69.5%
+        04% risk: $    6,870.16  DD=54.1%
+        02% risk: $    1,253.66  DD=31.8%
+      Trades to x10 @ 12% risk: 78.0
+
+  #11 best_range0.004_a0.95_d0.15
+      Trades: 1,546  WR: 40.2%  Total R: +399.9  Avg R: +0.2587
+      PF: 1.537  Sharpe(R): 0.168  Kelly f*: 0.140  Payoff: 2.289
+      Avg Win: +1.844R  Avg Loss: -0.805R  Max DD: 15.3R
+      Pairs: 82/113 profitable  (72.6%)
+      Exits: SL=925 TP=0 Trail=619 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $15,815,608,675,995.67  DD=99.8%
+        08% risk: $315,312,495,010.75  DD=97.9%
+        06% risk: $9,004,855,961.28  DD=93.7%
+        04% risk: $81,763,620.20  DD=82.6%
+        02% risk: $  216,951.96  DD=57.5%
+      Trades to x10 @ 12% risk: 75.3
+
+  #12 best_range0.003_a0.85_d0.15
+      Trades: 1,933  WR: 39.7%  Total R: +478.9  Avg R: +0.2478
+      PF: 1.541  Sharpe(R): 0.168  Kelly f*: 0.139  Payoff: 2.337
+      Avg Win: +1.777R  Avg Loss: -0.760R  Max DD: 12.6R
+      Pairs: 89/119 profitable  (74.8%)
+      Exits: SL=1165 TP=0 Trail=767 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $4,655,597,935,788,815.00  DD=99.9%
+        08% risk: $30,953,353,095,948.64  DD=97.9%
+        06% risk: $383,197,904,420.92  DD=93.5%
+        04% risk: $1,233,595,122.55  DD=81.9%
+        02% risk: $  940,646.11  DD=54.9%
+      Trades to x10 @ 12% risk: 78.6
+
+  #13 CANDIDATE_SAFE
+      Trades: 1,933  WR: 39.4%  Total R: +462.5  Avg R: +0.2393
+      PF: 1.547  Sharpe(R): 0.166  Kelly f*: 0.139  Payoff: 2.377
+      Avg Win: +1.717R  Avg Loss: -0.723R  Max DD: 12.7R
+      Pairs: 85/119 profitable  (71.4%)
+      Exits: SL=1171 TP=0 Trail=761 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $2,183,277,310,262,947.00  DD=99.8%
+        08% risk: $14,524,077,628,990.78  DD=97.7%
+        06% risk: $196,809,403,344.61  DD=93.0%
+        04% risk: $739,006,502.05  DD=81.1%
+        02% risk: $  702,740.02  DD=54.1%
+      Trades to x10 @ 12% risk: 81.3
+
+  #14 best_range0.004_a0.85_d0.15
+      Trades: 1,546  WR: 40.4%  Total R: +372.1  Avg R: +0.2407
+      PF: 1.524  Sharpe(R): 0.164  Kelly f*: 0.139  Payoff: 2.246
+      Avg Win: +1.731R  Avg Loss: -0.771R  Max DD: 14.2R
+      Pairs: 83/113 profitable  (73.5%)
+      Exits: SL=921 TP=0 Trail=624 SessEnd=0 MaxR=1
+      Equity ($150 start, compounded):
+        12% risk: $3,527,594,055,767.92  DD=99.6%
+        08% risk: $82,394,513,288.10  DD=96.3%
+        06% risk: $2,853,402,386.14  DD=90.4%
+        04% risk: $34,257,905.33  DD=77.0%
+        02% risk: $  132,597.16  DD=51.4%
+      Trades to x10 @ 12% risk: 80.9
+
+  #15 best_range0.003_a1.1_d0.15
+      Trades: 1,933  WR: 39.3%  Total R: +542.9  Avg R: +0.2809
+      PF: 1.547  Sharpe(R): 0.174  Kelly f*: 0.139  Payoff: 2.393
+      Avg Win: +2.022R  Avg Loss: -0.845R  Max DD: 12.9R
+      Pairs: 94/119 profitable  (79.0%)
+      Exits: SL=1174 TP=0 Trail=757 SessEnd=0 MaxR=2
+      Equity ($150 start, compounded):
+        12% risk: $74,019,203,743,690,784.00  DD=100.0%
+        08% risk: $499,540,855,655,169.06  DD=99.2%
+        06% risk: $4,538,310,970,285.72  DD=96.7%
+        04% risk: $8,454,965,548.53  DD=88.4%
+        02% risk: $2,863,400.40  DD=63.5%
+      Trades to x10 @ 12% risk: 69.5
+
+
+════════════════════════════════════════════════════════════════════════════════
+  LIVE BASELINE (current bot params)
+════════════════════════════════════════════════════════════════════════════════
+
+  Config: LIVE_BASELINE
+  Trades: 1,195  WR: 40.5%  Total R: +116.9  Avg R: +0.0978
+  PF: 1.201  Sharpe(R): 0.072  Kelly f*: 0.068
+  Avg Win: +1.444R  Avg Loss: -0.819R
+  Equity @ 12% risk: $213.16  DD: 99.9%
+  Exits: SL=711 TP=0 Trail=483 SessEnd=0
+
+  Configs that beat baseline Total R: 94/97
+
+
+════════════════════════════════════════════════════════════════════════════════
+  RECOMMENDATIONS
+════════════════════════════════════════════════════════════════════════════════
+
+  ROBUST CONFIGS (≥200 trades, Sharpe>0.05, PF>1.05, Kelly>1%):
+
+    #1 best_fcN_vl0.0_vs0.0_d0.15
+       8671t  WR=36.9%  R=+1564.1  PF=1.355  Sharpe=0.120  Kelly=0.097
+       Equity(12%): $5,144,951,210,144,851,356,296,018,919,424.00  DD=100.0%  x10 in 107.5 trades
+
+    #2 best_fcN_vl0.5_vs0.25_d0.15
+       6673t  WR=36.5%  R=+1212.4  PF=1.358  Sharpe=0.121  Kelly=0.096
+       Equity(12%): $4,045,071,945,715,074,144,927,744.00  DD=100.0%  x10 in 106.8 trades
+
+    #3 best_fcN_vl1.0_vs0.25_d0.15
+       5337t  WR=37.0%  R=+1062.2  PF=1.396  Sharpe=0.132  Kelly=0.105
+       Equity(12%): $4,221,538,728,410,944,873,955,328.00  DD=100.0%  x10 in 97.6 trades
+
+    #4 ultra_a1.25_d0.05_filt
+       2509t  WR=37.1%  R=+698.3  PF=1.503  Sharpe=0.165  Kelly=0.124
+       Equity(12%): $23,687,932,166,734,602,240.00  DD=99.9%  x10 in 70.1 trades
+
+    #5 ultra_a1.1_d0.05_filt
+       2509t  WR=37.4%  R=+678.5  PF=1.512  Sharpe=0.165  Kelly=0.127
+       Equity(12%): $29,744,999,362,875,801,600.00  DD=99.9%  x10 in 72.1 trades
+
+    #6 ultra_a0.95_d0.05_filt
+       2509t  WR=37.9%  R=+658.3  PF=1.526  Sharpe=0.167  Kelly=0.131
+       Equity(12%): $48,592,513,121,448,263,680.00  DD=99.8%  x10 in 74.3 trades
+
+    #7 ultra_a1.0_d0.05_filt
+       2509t  WR=37.5%  R=+653.2  PF=1.514  Sharpe=0.164  Kelly=0.127
+       Equity(12%): $13,718,789,510,772,305,920.00  DD=99.8%  x10 in 74.9 trades
+
+    #8 ultra_a1.25_d0.08_filt
+       2509t  WR=37.1%  R=+670.5  PF=1.483  Sharpe=0.160  Kelly=0.121
+       Equity(12%): $1,654,506,908,440,346,368.00  DD=100.0%  x10 in 73.0 trades
+
+    #9 ultra_a1.1_d0.08_filt
+       2509t  WR=37.4%  R=+650.4  PF=1.491  Sharpe=0.160  Kelly=0.123
+       Equity(12%): $1,965,945,599,083,964,928.00  DD=99.9%  x10 in 75.2 trades
+
+    #10 ultra_a1.25_d0.1_filt
+       2509t  WR=37.1%  R=+651.9  PF=1.470  Sharpe=0.156  Kelly=0.118
+       Equity(12%): $279,405,941,947,353,568.00  DD=100.0%  x10 in 75.0 trades
+

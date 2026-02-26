@@ -1,0 +1,317 @@
+2026-02-22 11:20:34,412 | [HEARTBEAT] | equity=105.93 | open=3 | session=asia
+2026-02-22 11:30:34,147 | [HEARTBEAT] | equity=105.93 | open=3 | session=asia
+2026-02-22 11:35:31,702 | [ORDER] | symbol=JTO/USDT:USDT | side=buy | type=market | qty=621.8 | sl=0.3058 | tp=0.3146
+2026-02-22 11:35:31,850 | [POSITION_OPEN] | symbol=JTO/USDT:USDT | dir=long | entry=0.3066 | sl=0.3058 | tp=0.3081999999999999 | qty=621.8 | risk=0.50
+2026-02-22 11:35:32,405 | [ORDER] | symbol=ACU/USDT:USDT | side=buy | type=market | qty=1701.0 | sl=0.11143 | tp=0.11869
+2026-02-22 11:35:32,553 | [POSITION_OPEN] | symbol=ACU/USDT:USDT | dir=long | entry=0.11209 | sl=0.11143 | tp=0.11340999999999998 | qty=1701.0 | risk=1.12
+2026-02-22 11:36:51,033 | [POSITION_CLOSE] | symbol=LIT/USDT:USDT | dir=long | entry=1.5158 | exit=1.50441287 | pnl_r=-1.10 | pnl_usd=-1.67 | reason=sl
+2026-02-22 11:37:08,041 | [POSITION_CLOSE] | symbol=JTO/USDT:USDT | dir=long | entry=0.3066 | exit=0.3057 | pnl_r=-1.67 | pnl_usd=-0.83 | reason=sl
+2026-02-22 11:40:27,374 | [POSITION_CLOSE] | symbol=CYBER/USDT:USDT | dir=short | entry=0.6216 | exit=0.6485 | pnl_r=-1.05 | pnl_usd=-5.62 | reason=sl
+2026-02-22 11:40:32,038 | [ORDER] | symbol=ME/USDT:USDT | side=sell | type=market | qty=1393.0 | sl=0.12647 | tp=0.12405
+2026-02-22 11:40:32,181 | [POSITION_OPEN] | symbol=ME/USDT:USDT | dir=short | entry=0.12625 | sl=0.12647 | tp=0.12581 | qty=1393.0 | risk=0.31
+2026-02-22 11:40:32,182 | [HEARTBEAT] | equity=103.33 | open=3 | session=asia
+2026-02-22 11:44:02,847 | [POSITION_CLOSE] | symbol=ACU/USDT:USDT | dir=long | entry=0.11209 | exit=0.11264289 | pnl_r=0.35 | pnl_usd=0.40 | reason=trail
+2026-02-22 11:46:06,628 | [POSITION_CLOSE] | symbol=ME/USDT:USDT | dir=short | entry=0.12625 | exit=0.12589516 | pnl_r=0.97 | pnl_usd=0.30 | reason=trail
+2026-02-22 11:47:09,074 | [POSITION_CLOSE] | symbol=ATOM/USDT:USDT | dir=short | entry=2.3037 | exit=2.3037 | pnl_r=-0.27 | pnl_usd=-0.22 | reason=sl
+2026-02-22 11:50:30,566 | [ORDER] | symbol=HMSTR/USDT:USDT | side=buy | type=market | qty=1016090.0 | sl=0.0001742 | tp=0.0001786
+2026-02-22 11:50:30,724 | [POSITION_OPEN] | symbol=HMSTR/USDT:USDT | dir=long | entry=0.0001746 | sl=0.0001742 | tp=0.00017539999999999995 | qty=1016090.0 | risk=0.41
+2026-02-22 11:50:30,725 | [HEARTBEAT] | equity=98.56 | open=1 | session=asia
+2026-02-22 11:55:32,748 | [HEARTBEAT] | equity=98.49 | open=0 | session=asia
+2026-02-22 12:00:38,156 | [ORDER] | symbol=KITE/USDT:USDT | side=buy | type=market | qty=787.0 | sl=0.22311 | tp=0.24511
+2026-02-22 12:00:38,299 | [POSITION_OPEN] | symbol=KITE/USDT:USDT | dir=long | entry=0.22511 | sl=0.22311 | tp=0.22911 | qty=787.0 | risk=1.58
+2026-02-22 12:00:38,300 | [HEARTBEAT] | equity=98.49 | open=1 | session=asia
+2026-02-22 12:01:44,151 | [POSITION_CLOSE] | symbol=KITE/USDT:USDT | dir=long | entry=0.22511 | exit=0.22297337 | pnl_r=-1.19 | pnl_usd=-1.88 | reason=sl
+2026-02-22 12:10:34,181 | [HEARTBEAT] | equity=96.61 | open=0 | session=asia
+2026-02-22 12:20:03,647 | [ORDER] | symbol=C98/USDT:USDT | side=sell | type=market | qty=6591.1 | sl=0.026462 | tp=0.025604
+2026-02-22 12:20:03,793 | [POSITION_OPEN] | symbol=C98/USDT:USDT | dir=short | entry=0.026384 | sl=0.026462 | tp=0.026267000000000006 | qty=6591.1 | risk=0.51
+2026-02-22 12:20:32,828 | [ORDER] | symbol=HMSTR/USDT:USDT | side=sell | type=market | qty=997700.0 | sl=0.0001748 | tp=0.0001693
+2026-02-22 12:20:32,975 | [POSITION_OPEN] | symbol=HMSTR/USDT:USDT | dir=short | entry=0.0001743 | sl=0.0001748 | tp=0.00017330000000000004 | qty=997700.0 | risk=0.50
+2026-02-22 12:20:33,559 | [ORDER] | symbol=ENS/USDT:USDT | side=sell | type=market | qty=26.2 | sl=6.654 | tp=6.423
+2026-02-22 12:20:33,702 | [POSITION_OPEN] | symbol=ENS/USDT:USDT | dir=short | entry=6.633 | sl=6.654 | tp=6.591 | qty=26.2 | risk=0.55
+2026-02-22 12:20:33,704 | [HEARTBEAT] | equity=96.61 | open=3 | session=asia
+2026-02-22 12:24:35,003 | [POSITION_CLOSE] | symbol=C98/USDT:USDT | dir=short | entry=0.026384 | exit=0.026463 | pnl_r=-0.23 | pnl_usd=-0.12 | reason=trail
+2026-02-22 12:24:51,990 | [POSITION_CLOSE] | symbol=HMSTR/USDT:USDT | dir=short | entry=0.0001743 | exit=0.0001744 | pnl_r=-0.70 | pnl_usd=-0.35 | reason=sl
+2026-02-22 12:30:31,763 | [HEARTBEAT] | equity=96.07 | open=1 | session=asia
+2026-02-22 12:35:32,341 | [HEARTBEAT] | equity=96.07 | open=1 | session=asia
+2026-02-22 12:40:32,039 | [ORDER] | symbol=ICP/USDT:USDT | side=buy | type=market | qty=79.6 | sl=2.167 | tp=2.211
+2026-02-22 12:40:32,188 | [POSITION_OPEN] | symbol=ICP/USDT:USDT | dir=long | entry=2.171 | sl=2.167 | tp=2.179 | qty=79.6 | risk=0.32
+2026-02-22 12:44:08,362 | [POSITION_CLOSE] | symbol=ICP/USDT:USDT | dir=long | entry=2.171 | exit=2.171 | pnl_r=-0.85 | pnl_usd=-0.27 | reason=sl
+2026-02-22 12:45:31,140 | [HEARTBEAT] | equity=95.80 | open=1 | session=asia
+2026-02-22 12:49:13,633 | [POSITION_CLOSE] | symbol=ENS/USDT:USDT | dir=short | entry=6.633 | exit=6.657 | pnl_r=-1.51 | pnl_usd=-0.83 | reason=sl
+2026-02-22 12:50:31,426 | [HEARTBEAT] | equity=95.07 | open=0 | session=asia
+2026-02-22 13:00:34,487 | [HEARTBEAT] | equity=95.07 | open=0 | session=asia
+2026-02-22 13:05:06,132 | [ORDER] | symbol=SNX/USDT:USDT | side=buy | type=market | qty=430.8 | sl=0.3921 | tp=0.4482
+2026-02-22 13:05:06,271 | [POSITION_OPEN] | symbol=SNX/USDT:USDT | dir=long | entry=0.3972 | sl=0.3921 | tp=0.4023 | qty=430.8 | risk=2.20
+2026-02-22 13:05:32,673 | [ORDER] | symbol=INJ/USDT:USDT | side=buy | type=market | qty=46.0 | sl=3.704 | tp=3.792
+2026-02-22 13:05:32,989 | [POSITION_OPEN] | symbol=INJ/USDT:USDT | dir=long | entry=3.712 | sl=3.704 | tp=3.728 | qty=46.0 | risk=0.37
+2026-02-22 13:06:32,576 | [POSITION_CLOSE] | symbol=INJ/USDT:USDT | dir=long | entry=3.712 | exit=3.74 | pnl_r=2.86 | pnl_usd=1.05 | reason=trail
+2026-02-22 13:10:32,311 | [ORDER] | symbol=DYDX/USDT:USDT | side=buy | type=market | qty=1748.4 | sl=0.09852 | tp=0.10248
+2026-02-22 13:10:32,448 | [POSITION_OPEN] | symbol=DYDX/USDT:USDT | dir=long | entry=0.09888 | sl=0.09852 | tp=0.0996 | qty=1748.4 | risk=0.63
+2026-02-22 13:10:32,746 | [ORDER] | symbol=ENS/USDT:USDT | side=buy | type=market | qty=25.9 | sl=6.642 | tp=6.851
+2026-02-22 13:10:32,897 | [POSITION_OPEN] | symbol=ENS/USDT:USDT | dir=long | entry=6.661 | sl=6.642 | tp=6.698999999999998 | qty=25.9 | risk=0.49
+2026-02-22 13:10:33,490 | [ORDER] | symbol=KAS/USDT:USDT | side=buy | type=market | qty=5580.0 | sl=0.03088 | tp=0.03187
+2026-02-22 13:10:33,638 | [POSITION_OPEN] | symbol=KAS/USDT:USDT | dir=long | entry=0.03097 | sl=0.03088 | tp=0.03115 | qty=5580.0 | risk=0.50
+2026-02-22 13:10:33,639 | [HEARTBEAT] | equity=96.05 | open=4 | session=asia
+2026-02-22 13:19:30,194 | [POSITION_CLOSE] | symbol=DYDX/USDT:USDT | dir=long | entry=0.09888 | exit=0.0985 | pnl_r=-1.38 | pnl_usd=-0.87 | reason=sl
+2026-02-22 13:19:32,384 | [POSITION_CLOSE] | symbol=ENS/USDT:USDT | dir=long | entry=6.661 | exit=6.649 | pnl_r=-1.01 | pnl_usd=-0.50 | reason=sl
+2026-02-22 13:20:31,400 | [HEARTBEAT] | equity=94.58 | open=2 | session=asia
+2026-02-22 13:23:52,785 | [POSITION_CLOSE] | symbol=KAS/USDT:USDT | dir=long | entry=0.03097 | exit=0.03086894 | pnl_r=-1.61 | pnl_usd=-0.81 | reason=sl
+2026-02-22 13:25:32,696 | [ORDER] | symbol=KITE/USDT:USDT | side=sell | type=market | qty=751.0 | sl=0.2261 | tp=0.21378
+2026-02-22 13:25:32,843 | [POSITION_OPEN] | symbol=KITE/USDT:USDT | dir=short | entry=0.22498 | sl=0.2261 | tp=0.22274000000000005 | qty=751.0 | risk=0.84
+2026-02-22 13:25:32,844 | [HEARTBEAT] | equity=93.87 | open=2 | session=asia
+2026-02-22 13:26:57,329 | [POSITION_CLOSE] | symbol=KITE/USDT:USDT | dir=short | entry=0.22498 | exit=0.22329226 | pnl_r=1.30 | pnl_usd=1.10 | reason=trail
+2026-02-22 13:30:32,881 | [HEARTBEAT] | equity=94.96 | open=1 | session=asia
+2026-02-22 13:35:32,589 | [ORDER] | symbol=CLO/USDT:USDT | side=sell | type=market | qty=1959.0 | sl=0.0875 | tp=0.08464
+2026-02-22 13:35:32,731 | [POSITION_OPEN] | symbol=CLO/USDT:USDT | dir=short | entry=0.08724 | sl=0.0875 | tp=0.08672 | qty=1959.0 | risk=0.51
+2026-02-22 13:40:31,399 | [ORDER] | symbol=ARC/USDT:USDT | side=sell | type=market | qty=2235.0 | sl=0.07722 | tp=0.06743
+2026-02-22 13:40:31,538 | [POSITION_OPEN] | symbol=ARC/USDT:USDT | dir=short | entry=0.07633 | sl=0.07722 | tp=0.07454999999999999 | qty=2235.0 | risk=1.99
+2026-02-22 13:40:31,539 | [HEARTBEAT] | equity=94.78 | open=3 | session=asia
+2026-02-22 13:41:25,733 | [POSITION_CLOSE] | symbol=CLO/USDT:USDT | dir=short | entry=0.08724 | exit=0.06832365 | pnl_r=-74.71 | pnl_usd=-38.06 | reason=trail
+2026-02-22 13:50:30,891 | [ORDER] | symbol=BIO/USDT:USDT | side=sell | type=market | qty=6229.0 | sl=0.02741 | tp=0.02686
+2026-02-22 13:50:31,035 | [POSITION_OPEN] | symbol=BIO/USDT:USDT | dir=short | entry=0.02736 | sl=0.02741 | tp=0.027259999999999996 | qty=6229.0 | risk=0.31
+2026-02-22 13:50:31,036 | [HEARTBEAT] | equity=94.68 | open=3 | session=asia
+2026-02-22 13:51:06,115 | [POSITION_CLOSE] | symbol=BIO/USDT:USDT | dir=short | entry=0.02736 | exit=0.02737228 | pnl_r=-1.13 | pnl_usd=-0.35 | reason=sl
+2026-02-22 13:51:53,438 | [POSITION_CLOSE] | symbol=SNX/USDT:USDT | dir=long | entry=0.3972 | exit=0.3971 | pnl_r=-0.12 | pnl_usd=-0.27 | reason=sl
+2026-02-22 13:55:31,298 | [ORDER] | symbol=ENSO/USDT:USDT | side=buy | type=market | qty=87.8 | sl=1.9244 | tp=1.964
+2026-02-22 13:55:31,444 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=long | entry=1.928 | sl=1.9244 | tp=1.9351999999999996 | qty=87.8 | risk=0.32
+2026-02-22 13:55:32,040 | [ORDER] | symbol=ENA/USDT:USDT | side=buy | type=market | qty=1617.0 | sl=0.10449 | tp=0.1079
+2026-02-22 13:55:32,183 | [POSITION_OPEN] | symbol=ENA/USDT:USDT | dir=long | entry=0.1048 | sl=0.10449 | tp=0.10542000000000001 | qty=1617.0 | risk=0.50
+2026-02-22 13:55:33,394 | [ORDER] | symbol=BERA/USDT:USDT | side=buy | type=market | qty=298.0 | sl=0.5661 | tp=0.5859
+2026-02-22 13:55:33,544 | [POSITION_OPEN] | symbol=BERA/USDT:USDT | dir=long | entry=0.5679 | sl=0.5661 | tp=0.5714999999999998 | qty=298.0 | risk=0.54
+2026-02-22 13:55:33,545 | [HEARTBEAT] | equity=94.15 | open=4 | session=asia
+2026-02-22 13:56:14,436 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=long | entry=1.928 | exit=1.9541 | pnl_r=-0.49 | pnl_usd=-0.15 | reason=trail
+2026-02-22 13:57:47,230 | [POSITION_CLOSE] | symbol=ENA/USDT:USDT | dir=long | entry=0.1048 | exit=0.10462 | pnl_r=-0.97 | pnl_usd=-0.49 | reason=sl
+2026-02-22 14:01:21,894 | [POSITION_CLOSE] | symbol=ARC/USDT:USDT | dir=short | entry=0.07633 | exit=0.0763743 | pnl_r=-0.17 | pnl_usd=-0.34 | reason=sl
+2026-02-22 14:05:32,348 | [ORDER] | symbol=FARTCOIN/USDT:USDT | side=buy | type=market | qty=933.0 | sl=0.17909 | tp=0.18954
+2026-02-22 14:05:32,499 | [POSITION_OPEN] | symbol=FARTCOIN/USDT:USDT | dir=long | entry=0.18004 | sl=0.17909 | tp=0.18194000000000002 | qty=933.0 | risk=0.89
+2026-02-22 14:05:33,074 | [ORDER] | symbol=GALA/USDT:USDT | side=buy | type=market | qty=44009.0 | sl=0.003808 | tp=0.003918
+2026-02-22 14:05:33,219 | [POSITION_OPEN] | symbol=GALA/USDT:USDT | dir=long | entry=0.003818 | sl=0.003808 | tp=0.0038380000000000003 | qty=44009.0 | risk=0.44
+2026-02-22 14:05:33,220 | [HEARTBEAT] | equity=93.35 | open=3 | session=asia
+2026-02-22 14:07:59,082 | [POSITION_CLOSE] | symbol=GALA/USDT:USDT | dir=long | entry=0.003818 | exit=0.003809 | pnl_r=-1.42 | pnl_usd=-0.62 | reason=sl
+2026-02-22 14:14:36,799 | [POSITION_CLOSE] | symbol=BERA/USDT:USDT | dir=long | entry=0.5679 | exit=0.57064496 | pnl_r=1.18 | pnl_usd=0.63 | reason=trail
+2026-02-22 14:15:32,539 | [HEARTBEAT] | equity=93.36 | open=1 | session=asia
+2026-02-22 14:18:26,229 | [POSITION_CLOSE] | symbol=FARTCOIN/USDT:USDT | dir=long | entry=0.18004 | exit=0.17908 | pnl_r=-1.22 | pnl_usd=-1.08 | reason=sl
+2026-02-22 14:25:06,379 | [ORDER] | symbol=SNX/USDT:USDT | side=buy | type=market | qty=417.6 | sl=0.3963 | tp=0.4161
+2026-02-22 14:25:06,532 | [POSITION_OPEN] | symbol=SNX/USDT:USDT | dir=long | entry=0.3981 | sl=0.3963 | tp=0.39990000000000003 | qty=417.6 | risk=0.75
+2026-02-22 14:25:31,372 | [ORDER] | symbol=LINK/USDT:USDT | side=buy | type=market | qty=18.8 | sl=8.792 | tp=8.979
+2026-02-22 14:25:31,514 | [POSITION_OPEN] | symbol=LINK/USDT:USDT | dir=long | entry=8.809 | sl=8.792 | tp=8.842999999999998 | qty=18.8 | risk=0.32
+2026-02-22 14:25:31,515 | [HEARTBEAT] | equity=92.36 | open=2 | session=asia
+2026-02-22 14:30:17,735 | [POSITION_CLOSE] | symbol=LINK/USDT:USDT | dir=long | entry=8.809 | exit=8.82378191 | pnl_r=0.30 | pnl_usd=0.10 | reason=trail
+2026-02-22 14:35:31,676 | [ORDER] | symbol=AXS/USDT:USDT | side=buy | type=market | qty=131.6 | sl=1.3253 | tp=1.3715
+2026-02-22 14:35:31,814 | [POSITION_OPEN] | symbol=AXS/USDT:USDT | dir=long | entry=1.3295 | sl=1.3253 | tp=1.3378999999999999 | qty=131.6 | risk=0.55
+2026-02-22 14:35:31,815 | [HEARTBEAT] | equity=97.23 | open=2 | session=asia
+2026-02-22 14:36:38,942 | [POSITION_CLOSE] | symbol=SNX/USDT:USDT | dir=long | entry=0.3981 | exit=0.4002 | pnl_r=0.82 | pnl_usd=0.61 | reason=trail
+2026-02-22 14:39:27,632 | [POSITION_CLOSE] | symbol=AXS/USDT:USDT | dir=long | entry=1.3295 | exit=1.3302 | pnl_r=-0.24 | pnl_usd=-0.13 | reason=sl
+2026-02-22 14:45:31,832 | [ORDER] | symbol=ENSO/USDT:USDT | side=sell | type=market | qty=92.1 | sl=1.9138 | tp=1.8786
+2026-02-22 14:45:31,970 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=short | entry=1.9106 | sl=1.9138 | tp=1.9042000000000003 | qty=92.1 | risk=0.29
+2026-02-22 14:45:31,973 | [HEARTBEAT] | equity=97.81 | open=1 | session=asia
+2026-02-22 14:47:46,357 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=short | entry=1.9106 | exit=1.90807612 | pnl_r=0.29 | pnl_usd=0.09 | reason=trail
+2026-02-22 14:55:30,210 | [ORDER] | symbol=INJ/USDT:USDT | side=sell | type=market | qty=48.3 | sl=3.661 | tp=3.485
+2026-02-22 14:55:30,363 | [POSITION_OPEN] | symbol=INJ/USDT:USDT | dir=short | entry=3.645 | sl=3.661 | tp=3.613 | qty=48.3 | risk=0.77
+2026-02-22 14:55:30,365 | [HEARTBEAT] | equity=97.90 | open=1 | session=asia
+2026-02-22 15:00:36,599 | [HEARTBEAT] | equity=97.24 | open=1 | session=asia
+2026-02-22 15:10:06,211 | [ORDER] | symbol=JUP/USDT:USDT | side=sell | type=market | qty=1134.0 | sl=0.15446 | tp=0.15215
+2026-02-22 15:10:06,353 | [POSITION_OPEN] | symbol=JUP/USDT:USDT | dir=short | entry=0.15425 | sl=0.15446 | tp=0.153872 | qty=1134.0 | risk=0.24
+2026-02-22 15:10:31,716 | [ORDER] | symbol=BIO/USDT:USDT | side=buy | type=market | qty=6497.0 | sl=0.02678 | tp=0.02854
+2026-02-22 15:10:31,854 | [POSITION_OPEN] | symbol=BIO/USDT:USDT | dir=long | entry=0.02694 | sl=0.02678 | tp=0.027211999999999993 | qty=6497.0 | risk=1.04
+2026-02-22 15:10:33,292 | [ORDER] | symbol=AERO/USDT:USDT | side=sell | type=market | qty=546.0 | sl=0.3214 | tp=0.3082
+2026-02-22 15:10:33,433 | [POSITION_OPEN] | symbol=AERO/USDT:USDT | dir=short | entry=0.3202 | sl=0.3214 | tp=0.3170799999999999 | qty=546.0 | risk=0.66
+2026-02-22 15:10:34,393 | [ORDER] | symbol=APT/USDT:USDT | side=sell | type=market | qty=203.45 | sl=0.8621 | tp=0.8423
+2026-02-22 15:10:34,540 | [API_ERROR] | func=place_market_order | category=EXCHANGE | error=bybit {"retCode":110007,"retMsg":"ab not enough for new order","result":{},"retExtInfo":{},"time":1771733434895}
+2026-02-22 15:10:35,578 | [ORDER] | symbol=1000BONK/USDT:USDT | side=sell | type=market | qty=28300.0 | sl=0.00618 | tp=0.006081
+2026-02-22 15:10:35,747 | [API_ERROR] | func=place_market_order | category=EXCHANGE | error=bybit {"retCode":110007,"retMsg":"ab not enough for new order","result":{},"retExtInfo":{},"time":1771733436103}
+2026-02-22 15:10:35,747 | [HEARTBEAT] | equity=97.24 | open=4 | session=asia
+2026-02-22 15:13:28,179 | [POSITION_CLOSE] | symbol=JUP/USDT:USDT | dir=short | entry=0.15425 | exit=0.15448711 | pnl_r=-2.02 | pnl_usd=-0.48 | reason=sl
+2026-02-22 15:16:02,511 | [POSITION_CLOSE] | symbol=BIO/USDT:USDT | dir=long | entry=0.02694 | exit=0.02678 | pnl_r=-1.12 | pnl_usd=-1.17 | reason=sl
+2026-02-22 15:18:37,293 | [POSITION_CLOSE] | symbol=INJ/USDT:USDT | dir=short | entry=3.645 | exit=3.66113458 | pnl_r=-1.41 | pnl_usd=-1.09 | reason=sl
+2026-02-22 15:20:31,330 | [HEARTBEAT] | equity=94.52 | open=1 | session=asia
+2026-02-22 15:25:32,998 | [ORDER] | symbol=ESP/USDT:USDT | side=sell | type=market | qty=7540.0 | sl=0.07662 | tp=0.06837
+2026-02-22 15:25:33,177 | [POSITION_OPEN] | symbol=ESP/USDT:USDT | dir=short | entry=0.07587 | sl=0.07662 | tp=0.07414500000000004 | qty=7540.0 | risk=5.66
+2026-02-22 15:25:35,536 | [HEARTBEAT] | equity=94.52 | open=2 | session=asia
+2026-02-22 15:31:16,136 | [POSITION_CLOSE] | symbol=ESP/USDT:USDT | dir=short | entry=0.07587 | exit=0.07662206 | pnl_r=-1.15 | pnl_usd=-6.53 | reason=sl
+2026-02-22 15:35:31,755 | [HEARTBEAT] | equity=87.99 | open=1 | session=asia
+2026-02-22 15:36:06,048 | [POSITION_CLOSE] | symbol=AERO/USDT:USDT | dir=short | entry=0.3202 | exit=0.3204 | pnl_r=-0.54 | pnl_usd=-0.36 | reason=sl
+2026-02-22 15:45:31,727 | [HEARTBEAT] | equity=87.73 | open=0 | session=asia
+2026-02-22 15:50:34,393 | [HEARTBEAT] | equity=87.73 | open=0 | session=asia
+2026-02-22 15:55:33,434 | [ORDER] | symbol=AGLD/USDT:USDT | side=sell | type=market | qty=2373.7 | sl=0.24544 | tp=0.22003
+2026-02-22 15:55:33,793 | [POSITION_OPEN] | symbol=AGLD/USDT:USDT | dir=short | entry=0.24313 | sl=0.24544 | tp=0.23712400000000006 | qty=2373.7 | risk=5.48
+2026-02-22 15:55:35,202 | [HEARTBEAT] | equity=87.73 | open=1 | session=asia
+2026-02-22 16:05:31,206 | [ORDER] | symbol=AAVE/USDT:USDT | side=buy | type=market | qty=1.17 | sl=118.86 | tp=123.92
+2026-02-22 16:05:31,347 | [POSITION_OPEN] | symbol=AAVE/USDT:USDT | dir=long | entry=119.32 | sl=118.86 | tp=120.23999999999998 | qty=1.17 | risk=0.54
+2026-02-22 16:05:31,348 | [HEARTBEAT] | equity=86.89 | open=2 | session=asia
+2026-02-22 16:07:46,284 | [POSITION_CLOSE] | symbol=AGLD/USDT:USDT | dir=short | entry=0.24313 | exit=0.24564814 | pnl_r=-1.23 | pnl_usd=-6.74 | reason=sl
+2026-02-22 16:10:32,428 | [HEARTBEAT] | equity=80.39 | open=1 | session=asia
+2026-02-22 16:15:33,350 | [ORDER] | symbol=EUL/USDT:USDT | side=buy | type=market | qty=487.9 | sl=0.9758 | tp=1.0
+2026-02-22 16:15:33,501 | [POSITION_OPEN] | symbol=EUL/USDT:USDT | dir=long | entry=0.978 | sl=0.9758 | tp=0.9823999999999999 | qty=487.9 | risk=1.07
+2026-02-22 16:15:33,502 | [HEARTBEAT] | equity=80.39 | open=2 | session=asia
+2026-02-22 16:17:54,869 | [POSITION_CLOSE] | symbol=EUL/USDT:USDT | dir=long | entry=0.978 | exit=0.97446099 | pnl_r=-2.33 | pnl_usd=-2.50 | reason=sl
+2026-02-22 16:25:33,303 | [ORDER] | symbol=AGLD/USDT:USDT | side=sell | type=market | qty=630.1 | sl=0.24677 | tp=0.21278
+2026-02-22 16:25:33,503 | [POSITION_OPEN] | symbol=AGLD/USDT:USDT | dir=short | entry=0.24368 | sl=0.24677 | tp=0.23750000000000004 | qty=630.1 | risk=1.95
+2026-02-22 16:25:34,104 | [ORDER] | symbol=ESP/USDT:USDT | side=buy | type=market | qty=4120.0 | sl=0.07611 | tp=0.07974
+2026-02-22 16:25:34,291 | [POSITION_OPEN] | symbol=ESP/USDT:USDT | dir=long | entry=0.07644 | sl=0.07611 | tp=0.07709999999999999 | qty=4120.0 | risk=1.36
+2026-02-22 16:25:36,331 | [HEARTBEAT] | equity=77.89 | open=3 | session=asia
+2026-02-22 16:29:20,948 | [POSITION_CLOSE] | symbol=ESP/USDT:USDT | dir=long | entry=0.07644 | exit=0.07623 | pnl_r=-0.97 | pnl_usd=-1.32 | reason=sl
+2026-02-22 16:35:04,223 | [ORDER] | symbol=C98/USDT:USDT | side=sell | type=market | qty=11572.3 | sl=0.026305 | tp=0.025062
+2026-02-22 16:35:04,376 | [POSITION_OPEN] | symbol=C98/USDT:USDT | dir=short | entry=0.026192 | sl=0.026305 | tp=0.025997075 | qty=11572.3 | risk=1.31
+2026-02-22 16:35:33,699 | [HEARTBEAT] | equity=76.48 | open=3 | session=asia
+2026-02-22 16:45:32,059 | [HEARTBEAT] | equity=76.32 | open=3 | session=asia
+2026-02-22 16:48:07,320 | [POSITION_CLOSE] | symbol=AAVE/USDT:USDT | dir=long | entry=119.32 | exit=118.89 | pnl_r=-1.24 | pnl_usd=-0.67 | reason=sl
+2026-02-22 16:50:10,491 | [POSITION_CLOSE] | symbol=C98/USDT:USDT | dir=short | entry=0.026192 | exit=0.026079 | pnl_r=0.61 | pnl_usd=0.79 | reason=trail
+2026-02-22 16:50:33,396 | [ORDER] | symbol=HANA/USDT:USDT | side=buy | type=market | qty=7370.0 | sl=0.034971 | tp=0.037259
+2026-02-22 16:50:33,562 | [POSITION_OPEN] | symbol=HANA/USDT:USDT | dir=long | entry=0.035179 | sl=0.034971 | tp=0.035532600000000004 | qty=7370.0 | risk=1.53
+2026-02-22 16:50:33,563 | [HEARTBEAT] | equity=75.72 | open=2 | session=asia
+2026-02-22 16:53:59,744 | [POSITION_CLOSE] | symbol=AGLD/USDT:USDT | dir=short | entry=0.24368 | exit=0.24375263 | pnl_r=-0.11 | pnl_usd=-0.21 | reason=sl
+2026-02-22 16:55:32,766 | [ORDER] | symbol=IO/USDT:USDT | side=buy | type=market | qty=2795.3 | sl=0.11799 | tp=0.12195
+2026-02-22 16:55:32,912 | [POSITION_OPEN] | symbol=IO/USDT:USDT | dir=long | entry=0.11835 | sl=0.11799 | tp=0.11907 | qty=2795.3 | risk=1.01
+2026-02-22 17:00:44,017 | [HEARTBEAT] | equity=75.56 | open=2 | session=asia
+2026-02-22 17:02:08,147 | [POSITION_CLOSE] | symbol=IO/USDT:USDT | dir=long | entry=0.11835 | exit=0.12120159 | pnl_r=0.20 | pnl_usd=0.20 | reason=tp
+2026-02-22 17:10:35,344 | [HEARTBEAT] | equity=75.56 | open=1 | session=asia
+2026-02-22 17:15:35,321 | [ORDER] | symbol=CLO/USDT:USDT | side=sell | type=market | qty=1710.0 | sl=0.08554 | tp=0.0807
+2026-02-22 17:15:35,662 | [POSITION_OPEN] | symbol=CLO/USDT:USDT | dir=short | entry=0.0851 | sl=0.08554 | tp=0.08421999999999998 | qty=1710.0 | risk=0.75
+2026-02-22 17:15:35,663 | [HEARTBEAT] | equity=75.25 | open=2 | session=asia
+2026-02-22 17:16:06,744 | [POSITION_CLOSE] | symbol=HANA/USDT:USDT | dir=long | entry=0.035179 | exit=0.03557669 | pnl_r=1.54 | pnl_usd=2.36 | reason=trail
+2026-02-22 17:20:33,143 | [ORDER] | symbol=DOGE/USDT:USDT | side=buy | type=market | qty=4607.0 | sl=0.09682 | tp=0.09924
+2026-02-22 17:20:33,296 | [POSITION_OPEN] | symbol=DOGE/USDT:USDT | dir=long | entry=0.09704 | sl=0.09682 | tp=0.09748 | qty=4607.0 | risk=1.01
+2026-02-22 17:25:34,778 | [HEARTBEAT] | equity=77.49 | open=2 | session=asia
+2026-02-22 17:29:18,777 | [POSITION_CLOSE] | symbol=DOGE/USDT:USDT | dir=long | entry=0.09704 | exit=0.09703 | pnl_r=-0.53 | pnl_usd=-0.54 | reason=sl
+2026-02-22 17:30:21,409 | [POSITION_CLOSE] | symbol=CLO/USDT:USDT | dir=short | entry=0.0851 | exit=0.08540662 | pnl_r=-1.06 | pnl_usd=-0.80 | reason=sl
+2026-02-22 17:30:35,308 | [ORDER] | symbol=ENSO/USDT:USDT | side=sell | type=market | qty=208.4 | sl=2.0346 | tp=1.9235
+2026-02-22 17:30:35,474 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=short | entry=2.0245 | sl=2.0346 | tp=2.0012700000000003 | qty=208.4 | risk=2.11
+2026-02-22 17:30:35,476 | [HEARTBEAT] | equity=77.20 | open=1 | session=asia
+2026-02-22 17:31:24,024 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=short | entry=2.0245 | exit=2.03520298 | pnl_r=-1.20 | pnl_usd=-2.53 | reason=sl
+2026-02-22 17:35:32,788 | [ORDER] | symbol=INJ/USDT:USDT | side=buy | type=market | qty=74.0 | sl=3.593 | tp=3.703
+2026-02-22 17:35:32,961 | [POSITION_OPEN] | symbol=INJ/USDT:USDT | dir=long | entry=3.603 | sl=3.593 | tp=3.6230000000000007 | qty=74.0 | risk=0.74
+2026-02-22 17:38:12,931 | [POSITION_CLOSE] | symbol=INJ/USDT:USDT | dir=long | entry=3.603 | exit=3.597 | pnl_r=-1.10 | pnl_usd=-0.81 | reason=sl
+2026-02-22 17:40:32,026 | [HEARTBEAT] | equity=73.22 | open=0 | session=asia
+2026-02-22 17:45:32,954 | [HEARTBEAT] | equity=73.22 | open=0 | session=asia
+2026-02-22 17:50:33,671 | [HEARTBEAT] | equity=73.22 | open=0 | session=asia
+2026-02-22 17:55:34,507 | [HEARTBEAT] | equity=73.22 | open=0 | session=asia
+2026-02-22 18:00:39,324 | [ORDER] | symbol=FLOW/USDT:USDT | side=buy | type=market | qty=2209.2 | sl=0.03837 | tp=0.042
+2026-02-22 18:00:39,472 | [POSITION_OPEN] | symbol=FLOW/USDT:USDT | dir=long | entry=0.0387 | sl=0.03837 | tp=0.03935999999999999 | qty=2209.2 | risk=0.73
+2026-02-22 18:00:39,473 | [HEARTBEAT] | equity=72.91 | open=1 | session=asia
+2026-02-22 18:10:32,778 | [ORDER] | symbol=BTR/USDT:USDT | side=buy | type=market | qty=749.0 | sl=0.19309 | tp=0.20486
+2026-02-22 18:10:32,932 | [POSITION_OPEN] | symbol=BTR/USDT:USDT | dir=long | entry=0.19416 | sl=0.19309 | tp=0.19662099999999996 | qty=749.0 | risk=0.80
+2026-02-22 18:10:32,933 | [HEARTBEAT] | equity=72.86 | open=2 | session=asia
+2026-02-22 18:15:32,981 | [HEARTBEAT] | equity=72.70 | open=2 | session=asia
+2026-02-22 18:16:57,909 | [POSITION_CLOSE] | symbol=BTR/USDT:USDT | dir=long | entry=0.19416 | exit=0.19617748 | pnl_r=1.46 | pnl_usd=1.17 | reason=trail
+2026-02-22 18:20:33,148 | [ORDER] | symbol=KITE/USDT:USDT | side=sell | type=market | qty=343.0 | sl=0.23233 | tp=0.20626
+2026-02-22 18:20:33,298 | [POSITION_OPEN] | symbol=KITE/USDT:USDT | dir=short | entry=0.22996 | sl=0.23233 | tp=0.22450899999999996 | qty=343.0 | risk=0.81
+2026-02-22 18:20:33,299 | [HEARTBEAT] | equity=74.03 | open=2 | session=asia
+2026-02-22 18:24:04,682 | [POSITION_CLOSE] | symbol=KITE/USDT:USDT | dir=short | entry=0.22996 | exit=0.23238444 | pnl_r=-1.14 | pnl_usd=-0.93 | reason=sl
+2026-02-22 18:30:33,977 | [HEARTBEAT] | equity=73.11 | open=1 | session=asia
+2026-02-22 18:35:33,708 | [ORDER] | symbol=BEAT/USDT:USDT | side=buy | type=market | qty=1282.0 | sl=0.23928 | tp=0.24555
+2026-02-22 18:35:33,860 | [POSITION_OPEN] | symbol=BEAT/USDT:USDT | dir=long | entry=0.23985 | sl=0.23928 | tp=0.24099000000000004 | qty=1282.0 | risk=0.73
+2026-02-22 18:40:33,149 | [ORDER] | symbol=BCH/USDT:USDT | side=sell | type=market | qty=0.15 | sl=586.4 | tp=530.3
+2026-02-22 18:40:33,285 | [POSITION_OPEN] | symbol=BCH/USDT:USDT | dir=short | entry=581.3 | sl=586.4 | tp=569.5699999999999 | qty=0.15 | risk=0.80
+2026-02-22 18:40:33,286 | [HEARTBEAT] | equity=72.77 | open=3 | session=asia
+2026-02-22 18:43:04,593 | [POSITION_CLOSE] | symbol=BEAT/USDT:USDT | dir=long | entry=0.23985 | exit=0.23921071 | pnl_r=-2.01 | pnl_usd=-1.47 | reason=sl
+2026-02-22 18:49:11,092 | [POSITION_CLOSE] | symbol=BCH/USDT:USDT | dir=short | entry=581.3 | exit=581.4 | pnl_r=-0.14 | pnl_usd=-0.11 | reason=sl
+2026-02-22 18:50:32,294 | [ORDER] | symbol=ENSO/USDT:USDT | side=sell | type=market | qty=17.0 | sl=2.254 | tp=1.7469
+2026-02-22 18:50:32,447 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=short | entry=2.2079 | sl=2.254 | tp=2.10187 | qty=17.0 | risk=0.79
+2026-02-22 18:50:32,448 | [HEARTBEAT] | equity=71.52 | open=2 | session=asia
+2026-02-22 18:52:30,487 | [POSITION_CLOSE] | symbol=ENSO/USDT:USDT | dir=short | entry=2.2079 | exit=2.2537 | pnl_r=-1.02 | pnl_usd=-0.80 | reason=sl
+2026-02-22 18:53:48,072 | [POSITION_CLOSE] | symbol=FLOW/USDT:USDT | dir=long | entry=0.0387 | exit=0.03849 | pnl_r=-0.80 | pnl_usd=-0.58 | reason=sl
+2026-02-22 18:55:34,703 | [HEARTBEAT] | equity=70.19 | open=0 | session=asia
+2026-02-22 19:00:34,985 | [HEARTBEAT] | equity=70.09 | open=0 | session=london
+2026-02-22 19:10:33,921 | [ORDER] | symbol=1000PEPE/USDT:USDT | side=sell | type=market | qty=100100.0 | sl=0.004105 | tp=0.004028
+2026-02-22 19:10:34,080 | [POSITION_OPEN] | symbol=1000PEPE/USDT:USDT | dir=short | entry=0.004098 | sl=0.004105 | tp=0.004084 | qty=100100.0 | risk=0.70
+2026-02-22 19:10:34,081 | [HEARTBEAT] | equity=70.09 | open=1 | session=london
+2026-02-22 19:20:34,044 | [ORDER] | symbol=AZTEC/USDT:USDT | side=sell | type=market | qty=4220.0 | sl=0.032669 | tp=0.030909
+2026-02-22 19:20:34,201 | [POSITION_OPEN] | symbol=AZTEC/USDT:USDT | dir=short | entry=0.032509 | sl=0.032669 | tp=0.032189000000000016 | qty=4220.0 | risk=0.68
+2026-02-22 19:20:34,202 | [HEARTBEAT] | equity=69.87 | open=2 | session=london
+2026-02-22 19:22:44,158 | [POSITION_CLOSE] | symbol=AZTEC/USDT:USDT | dir=short | entry=0.032509 | exit=0.03227397 | pnl_r=0.98 | pnl_usd=0.66 | reason=trail
+2026-02-22 19:24:47,839 | [POSITION_CLOSE] | symbol=1000PEPE/USDT:USDT | dir=short | entry=0.004098 | exit=0.004093 | pnl_r=0.07 | pnl_usd=0.05 | reason=trail
+2026-02-22 19:30:36,296 | [HEARTBEAT] | equity=70.81 | open=0 | session=london
+2026-02-22 19:40:33,783 | [ORDER] | symbol=FIGHT/USDT:USDT | side=sell | type=market | qty=15270.0 | sl=0.007105 | tp=0.006544
+2026-02-22 19:40:33,929 | [POSITION_OPEN] | symbol=FIGHT/USDT:USDT | dir=short | entry=0.007054 | sl=0.007105 | tp=0.0069367000000000005 | qty=15270.0 | risk=0.78
+2026-02-22 19:40:33,930 | [HEARTBEAT] | equity=70.81 | open=1 | session=london
+2026-02-22 19:46:54,494 | [POSITION_CLOSE] | symbol=FIGHT/USDT:USDT | dir=short | entry=0.007054 | exit=0.007106 | pnl_r=-1.38 | pnl_usd=-1.08 | reason=sl
+2026-02-22 19:50:33,138 | [HEARTBEAT] | equity=69.73 | open=0 | session=london
+2026-02-22 19:55:34,873 | [ORDER] | symbol=LYN/USDT:USDT | side=sell | type=market | qty=467.0 | sl=0.30738 | tp=0.29099
+2026-02-22 19:55:35,031 | [POSITION_OPEN] | symbol=LYN/USDT:USDT | dir=short | entry=0.30589 | sl=0.30738 | tp=0.30291 | qty=467.0 | risk=0.70
+2026-02-22 19:55:35,032 | [HEARTBEAT] | equity=69.73 | open=1 | session=london
+2026-02-22 20:01:30,569 | [POSITION_CLOSE] | symbol=LYN/USDT:USDT | dir=short | entry=0.30589 | exit=0.30755414 | pnl_r=-1.48 | pnl_usd=-1.03 | reason=sl
+2026-02-22 20:05:33,550 | [ORDER] | symbol=FARTCOIN/USDT:USDT | side=buy | type=market | qty=797.0 | sl=0.1794 | tp=0.18886
+2026-02-22 20:05:33,697 | [POSITION_OPEN] | symbol=FARTCOIN/USDT:USDT | dir=long | entry=0.18026 | sl=0.1794 | tp=0.18198 | qty=797.0 | risk=0.69
+2026-02-22 20:05:34,568 | [HEARTBEAT] | equity=68.63 | open=1 | session=london
+2026-02-22 20:10:31,120 | [ORDER] | symbol=BTR/USDT:USDT | side=sell | type=market | qty=729.0 | sl=0.1963 | tp=0.18596
+2026-02-22 20:10:31,266 | [POSITION_OPEN] | symbol=BTR/USDT:USDT | dir=short | entry=0.19536 | sl=0.1963 | tp=0.19348 | qty=729.0 | risk=0.69
+2026-02-22 20:10:32,425 | [ORDER] | symbol=DYDX/USDT:USDT | side=sell | type=market | qty=2435.6 | sl=0.09713 | tp=0.09416
+2026-02-22 20:10:32,575 | [POSITION_OPEN] | symbol=DYDX/USDT:USDT | dir=short | entry=0.09686 | sl=0.09713 | tp=0.09623900000000002 | qty=2435.6 | risk=0.66
+2026-02-22 20:15:34,978 | [HEARTBEAT] | equity=68.26 | open=3 | session=london
+2026-02-22 20:22:00,234 | [POSITION_CLOSE] | symbol=BTR/USDT:USDT | dir=short | entry=0.19536 | exit=0.19544802 | pnl_r=-0.56 | pnl_usd=-0.38 | reason=sl
+2026-02-22 20:25:34,115 | [HEARTBEAT] | equity=68.03 | open=2 | session=london
+2026-02-22 20:30:38,779 | [HEARTBEAT] | equity=68.03 | open=2 | session=london
+2026-02-22 20:40:02,895 | [POSITION_CLOSE] | symbol=DYDX/USDT:USDT | dir=short | entry=0.09686 | exit=0.09653184 | pnl_r=0.74 | pnl_usd=0.48 | reason=trail
+2026-02-22 20:40:32,271 | [HEARTBEAT] | equity=68.65 | open=1 | session=london
+2026-02-22 20:45:32,905 | [ORDER] | symbol=FLOW/USDT:USDT | side=buy | type=market | qty=4195.0 | sl=0.0386 | tp=0.04058
+2026-02-22 20:45:33,060 | [POSITION_OPEN] | symbol=FLOW/USDT:USDT | dir=long | entry=0.03878 | sl=0.0386 | tp=0.039194 | qty=4195.0 | risk=0.76
+2026-02-22 20:45:33,636 | [ORDER] | symbol=ESP/USDT:USDT | side=buy | type=market | qty=750.0 | sl=0.07396 | tp=0.08496
+2026-02-22 20:45:33,791 | [POSITION_OPEN] | symbol=ESP/USDT:USDT | dir=long | entry=0.07496 | sl=0.07396 | tp=0.07726 | qty=750.0 | risk=0.76
+2026-02-22 20:45:35,078 | [HEARTBEAT] | equity=68.65 | open=3 | session=london
+2026-02-22 20:48:27,266 | [POSITION_CLOSE] | symbol=FLOW/USDT:USDT | dir=long | entry=0.03878 | exit=0.03865 | pnl_r=-1.05 | pnl_usd=-0.79 | reason=sl
+2026-02-22 20:55:32,899 | [HEARTBEAT] | equity=67.82 | open=2 | session=london
+2026-02-22 21:00:35,352 | [HEARTBEAT] | equity=67.59 | open=2 | session=london
+2026-02-22 21:01:08,366 | [POSITION_CLOSE] | symbol=FARTCOIN/USDT:USDT | dir=long | entry=0.18026 | exit=0.1809918 | pnl_r=0.62 | pnl_usd=0.43 | reason=trail
+2026-02-22 21:06:59,886 | [POSITION_CLOSE] | symbol=ESP/USDT:USDT | dir=long | entry=0.07496 | exit=0.07396 | pnl_r=-1.07 | pnl_usd=-0.81 | reason=sl
+2026-02-22 21:10:32,410 | [HEARTBEAT] | equity=67.32 | open=0 | session=london
+2026-02-22 21:15:33,691 | [ORDER] | symbol=MNT/USDT:USDT | side=buy | type=market | qty=352.6 | sl=0.6271 | tp=0.6502
+2026-02-22 21:15:33,695 | [ORDER] | symbol=MNT/USDT:USDT | side=buy | type=market | qty=352.6 | sl=0.6271 | tp=0.6502
+2026-02-22 21:15:33,840 | [POSITION_OPEN] | symbol=MNT/USDT:USDT | dir=long | entry=0.6292 | sl=0.6271 | tp=0.63403 | qty=352.6 | risk=0.74
+2026-02-22 21:15:33,841 | [HEARTBEAT] | equity=67.32 | open=1 | session=london
+2026-02-22 21:15:33,848 | [POSITION_OPEN] | symbol=MNT/USDT:USDT | dir=long | entry=0.6292 | sl=0.6271 | tp=0.63403 | qty=352.6 | risk=0.74
+2026-02-22 21:15:33,849 | [HEARTBEAT] | equity=67.32 | open=1 | session=london
+2026-02-22 21:30:33,943 | [HEARTBEAT] | equity=99.79 | open=1 | session=london
+2026-02-22 21:41:03,621 | [HEARTBEAT] | equity=99.79 | open=1 | session=london
+2026-02-22 21:50:36,046 | [HEARTBEAT] | equity=99.79 | open=1 | session=london
+2026-02-22 21:56:02,487 | [ORDER] | symbol=HYPE/USDT:USDT | side=sell | type=market | qty=23.52 | sl=29.738 | tp=28.731
+2026-02-22 21:56:02,902 | [POSITION_OPEN] | symbol=HYPE/USDT:USDT | dir=short | entry=29.646 | sl=29.738 | tp=29.463 | qty=23.52 | risk=2.15
+2026-02-22 21:56:04,069 | [HEARTBEAT] | equity=99.79 | open=2 | session=london
+2026-02-22 22:02:53,889 | [POSITION_CLOSE] | symbol=HYPE/USDT:USDT | dir=short | entry=29.646 | exit=29.73802084 | pnl_r=-1.37 | pnl_usd=-2.96 | reason=sl
+2026-02-22 22:05:54,543 | [HEARTBEAT] | equity=96.83 | open=1 | session=london
+2026-02-22 22:16:16,807 | [API_ERROR] | func=fetch_latest_candles | category=EXCHANGE | error=bybit GET https://api.bybit.com/v5/market/kline?symbol=LDOUSDT&limit=6&interval=5&category=linear
+2026-02-22 22:16:22,306 | [HEARTBEAT] | equity=96.83 | open=1 | session=london
+2026-02-22 22:25:35,821 | [HEARTBEAT] | equity=96.83 | open=1 | session=london
+2026-02-22 22:30:37,570 | [ORDER] | symbol=BTR/USDT:USDT | side=buy | type=market | qty=3309.0 | sl=0.2006 | tp=0.22337
+2026-02-22 22:30:37,725 | [POSITION_OPEN] | symbol=BTR/USDT:USDT | dir=long | entry=0.20267 | sl=0.2006 | tp=0.20743099999999998 | qty=3309.0 | risk=6.85
+2026-02-22 22:30:37,726 | [HEARTBEAT] | equity=96.83 | open=2 | session=london
+2026-02-22 22:35:38,360 | [HEARTBEAT] | equity=100.09 | open=2 | session=london
+2026-02-22 22:40:53,308 | [POSITION_CLOSE] | symbol=MNT/USDT:USDT | dir=long | entry=0.6292 | exit=0.63191602 | pnl_r=0.92 | pnl_usd=0.68 | reason=trail
+2026-02-22 22:45:37,687 | [ORDER] | symbol=HMSTR/USDT:USDT | side=buy | type=market | qty=1693770.0 | sl=0.0001754 | tp=0.0001836
+2026-02-22 22:45:37,828 | [POSITION_OPEN] | symbol=HMSTR/USDT:USDT | dir=long | entry=0.0001761 | sl=0.0001754 | tp=0.00017759999999999998 | qty=1693770.0 | risk=1.27
+2026-02-22 22:45:39,182 | [HEARTBEAT] | equity=100.89 | open=2 | session=london
+2026-02-22 22:50:03,114 | [POSITION_CLOSE] | symbol=BTR/USDT:USDT | dir=long | entry=0.20267 | exit=0.2034725 | pnl_r=0.14 | pnl_usd=0.93 | reason=tp
+2026-02-22 22:55:37,559 | [HEARTBEAT] | equity=102.40 | open=1 | session=london
+2026-02-22 23:00:39,019 | [HEARTBEAT] | equity=102.38 | open=1 | session=london
+2026-02-22 23:03:14,171 | [POSITION_CLOSE] | symbol=HMSTR/USDT:USDT | dir=long | entry=0.0001761 | exit=0.0001759 | pnl_r=-0.66 | pnl_usd=-0.84 | reason=sl
+2026-02-22 23:10:38,447 | [ORDER] | symbol=BERA/USDT:USDT | side=sell | type=market | qty=1383.0 | sl=0.5954 | tp=0.5145
+2026-02-22 23:10:38,605 | [POSITION_OPEN] | symbol=BERA/USDT:USDT | dir=short | entry=0.588 | sl=0.5954 | tp=0.5732999999999998 | qty=1383.0 | risk=10.17
+2026-02-22 23:10:38,613 | [HEARTBEAT] | equity=101.72 | open=1 | session=london
+2026-02-22 23:20:36,474 | [HEARTBEAT] | equity=101.27 | open=1 | session=london
+2026-02-22 23:25:38,692 | [HEARTBEAT] | equity=101.27 | open=1 | session=london
+2026-02-22 23:30:40,756 | [HEARTBEAT] | equity=101.27 | open=1 | session=london
+2026-02-22 23:40:39,145 | [HEARTBEAT] | equity=101.27 | open=1 | session=london
+2026-02-22 23:45:36,931 | [ORDER] | symbol=LYN/USDT:USDT | side=buy | type=market | qty=567.0 | sl=0.30769 | tp=0.3303
+2026-02-22 23:45:37,076 | [POSITION_OPEN] | symbol=LYN/USDT:USDT | dir=long | entry=0.30975 | sl=0.30769 | tp=0.3144765000000002 | qty=567.0 | risk=1.17
+2026-02-22 23:50:35,592 | [HEARTBEAT] | equity=101.18 | open=2 | session=london
+2026-02-22 23:55:35,302 | [POSITION_CLOSE] | symbol=LYN/USDT:USDT | dir=long | entry=0.30975 | exit=0.30929 | pnl_r=-0.42 | pnl_usd=-0.49 | reason=sl
+2026-02-22 23:55:36,811 | [HEARTBEAT] | equity=101.18 | open=1 | session=london
+2026-02-23 00:00:39,188 | [ORDER] | symbol=AZTEC/USDT:USDT | side=sell | type=market | qty=5600.0 | sl=0.03134 | tp=0.02276
+2026-02-23 00:00:39,355 | [POSITION_OPEN] | symbol=AZTEC/USDT:USDT | dir=short | entry=0.03056 | sl=0.03134 | tp=0.028766000000000003 | qty=5600.0 | risk=4.37
+2026-02-23 00:00:39,356 | [HEARTBEAT] | equity=100.78 | open=2 | session=london
+2026-02-23 00:10:07,263 | [ORDER] | symbol=C98/USDT:USDT | side=sell | type=market | qty=519.0 | sl=0.027292 | tp=0.022425
+2026-02-23 00:10:07,429 | [POSITION_OPEN] | symbol=C98/USDT:USDT | dir=short | entry=0.02685 | sl=0.027292 | tp=0.0260866875 | qty=519.0 | risk=0.23
+2026-02-23 00:10:40,481 | [HEARTBEAT] | equity=100.59 | open=3 | session=london
+2026-02-23 00:15:38,376 | [HEARTBEAT] | equity=100.59 | open=3 | session=london
+2026-02-23 00:25:36,947 | [HEARTBEAT] | equity=100.59 | open=3 | session=london
+2026-02-23 00:30:44,700 | [HEARTBEAT] | equity=100.59 | open=3 | session=london
+2026-02-23 00:40:10,109 | [POSITION_CLOSE] | symbol=AZTEC/USDT:USDT | dir=short | entry=0.03056 | exit=0.03136747 | pnl_r=-1.18 | pnl_usd=-5.15 | reason=sl
+2026-02-23 00:40:42,770 | [HEARTBEAT] | equity=95.62 | open=2 | session=london
+2026-02-23 00:50:38,448 | [HEARTBEAT] | equity=95.62 | open=2 | session=london
+2026-02-23 00:55:19,215 | [POSITION_CLOSE] | symbol=BERA/USDT:USDT | dir=short | entry=0.588 | exit=0.5956 | pnl_r=-1.18 | pnl_usd=-12.04 | reason=sl
+2026-02-23 01:00:37,959 | [HEARTBEAT] | equity=84.03 | open=1 | session=london
+2026-02-23 01:05:38,120 | [ORDER] | symbol=ENSO/USDT:USDT | side=sell | type=market | qty=80.0 | sl=1.9576 | tp=1.8132
+2026-02-23 01:05:38,276 | [POSITION_OPEN] | symbol=ENSO/USDT:USDT | dir=short | entry=1.9445 | sl=1.9576 | tp=1.9182499999999993 | qty=80.0 | risk=1.05
+2026-02-23 01:05:38,882 | [HEARTBEAT] | equity=84.03 | open=2 | session=london
+2026-02-23 01:30:36,150 | [HEARTBEAT] | equity=84.45 | open=0 | session=london
+2026-02-23 01:35:36,779 | [HEARTBEAT] | equity=84.45 | open=0 | session=london

@@ -1,5 +1,5 @@
-"""
-run_live.py — Launch FCB bot in LIVE (real money) mode on Bybit mainnet.
+﻿"""
+run_live.py â€” Launch FCB bot in LIVE (real money) mode on Bybit mainnet.
 
 This script:
   1. Verifies config is set to MAINNET mode
@@ -29,7 +29,7 @@ The bot runs 24/7, trading 3 sessions:
   - 37 unique pairs total
 
 Strategy: FCB trail 0.3R | 2% risk | 10x leverage | midpoint SL
-Equity floor: $500 — stops all trading if breached
+Equity floor: $500 â€” stops all trading if breached
 """
 
 import sys, os, time, json, shutil, argparse, traceback, atexit, signal
@@ -57,7 +57,7 @@ def acquire_lock():
                 print(f"  If this is stale, delete {LOCK_FILE} and retry.")
                 sys.exit(1)
             else:
-                # Process is dead — stale lock
+                # Process is dead â€” stale lock
                 print(f"  Removing stale lock (PID {old_pid} no longer running)")
         except (ValueError, OSError):
             print(f"  Removing invalid lock file")
@@ -82,7 +82,7 @@ def release_lock():
 def preflight():
     """Run all pre-flight checks before starting the bot."""
     print("=" * 70)
-    print("  FCB BOT — LIVE (MAINNET) PRE-FLIGHT CHECK")
+    print("  FCB BOT â€” LIVE (MAINNET) PRE-FLIGHT CHECK")
     print(f"  Time: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC")
     print("=" * 70)
 
@@ -95,17 +95,17 @@ def preflight():
     )
     assert MAINNET, "MAINNET must be True for live trading"
     assert not DEMO_MODE, "DEMO_MODE must be False for live trading"
-    assert API_KEY, "API_KEY is empty — set BYBIT_API_KEY env var"
-    assert API_SECRET, "API_SECRET is empty — set BYBIT_API_SECRET env var"
-    print(f"  ✓ MAINNET={MAINNET}, DEMO_MODE={DEMO_MODE}")
-    print(f"  ✓ API_KEY={API_KEY[:4]}...{API_KEY[-4:]} ({len(API_KEY)} chars)")
-    print(f"  ✓ Pairs: {len(ALL_PAIRS)} unique across {len(PAIRS)} sessions")
-    print(f"  ✓ Risk: A={RISK_PCT_A*100:.0f}% B={RISK_PCT_B*100:.0f}% | "
+    assert API_KEY, "API_KEY is empty â€” set BYBIT_API_KEY env var"
+    assert API_SECRET, "API_SECRET is empty â€” set BYBIT_API_SECRET env var"
+    print(f"  âœ“ MAINNET={MAINNET}, DEMO_MODE={DEMO_MODE}")
+    print(f"  âœ“ API_KEY={API_KEY[:4]}...{API_KEY[-4:]} ({len(API_KEY)} chars)")
+    print(f"  âœ“ Pairs: {len(ALL_PAIRS)} unique across {len(PAIRS)} sessions")
+    print(f"  âœ“ Risk: A={RISK_PCT_A*100:.0f}% B={RISK_PCT_B*100:.0f}% | "
           f"TP={TP_R}R | Leverage={LEVERAGE}x")
     if EQUITY_FLOOR > 0:
-        print(f"  ✓ Equity floor: ${EQUITY_FLOOR:.0f}")
+        print(f"  âœ“ Equity floor: ${EQUITY_FLOOR:.0f}")
     else:
-        print(f"  ✓ Equity floor: DISABLED")
+        print(f"  âœ“ Equity floor: DISABLED")
 
     for sess, plist in PAIRS.items():
         a_count = sum(1 for _, c in plist if c == "A")
@@ -116,16 +116,16 @@ def preflight():
     print("\n[2/7] Connecting to Bybit MAINNET...")
     from live import exchange as exch
     ex = exch.create_exchange()
-    print(f"  ✓ Connected — {len(ex.markets)} markets loaded")
+    print(f"  âœ“ Connected â€” {len(ex.markets)} markets loaded")
 
     # 3. Check balance
     print("\n[3/7] Checking balance...")
     equity = exch.get_equity(ex)
-    print(f"  ✓ Equity: ${equity:.2f} USDT")
+    print(f"  âœ“ Equity: ${equity:.2f} USDT")
     if equity < 100:
-        print(f"  ⚠ WARNING: Equity very low (${equity:.2f}).")
+        print(f"  âš  WARNING: Equity very low (${equity:.2f}).")
     if EQUITY_FLOOR > 0 and equity < EQUITY_FLOOR:
-        print(f"  ✗ FATAL: Equity ${equity:.2f} < floor ${EQUITY_FLOOR:.0f}. "
+        print(f"  âœ— FATAL: Equity ${equity:.2f} < floor ${EQUITY_FLOOR:.0f}. "
               "Cannot start.")
         return False
 
@@ -138,12 +138,12 @@ def preflight():
             exch.get_market_info(ex, pair)
             ok += 1
         except Exception as e:
-            print(f"  ✗ {pair}: {e}")
+            print(f"  âœ— {pair}: {e}")
             fail_pairs.append(pair)
-    print(f"  ✓ {ok}/{len(ALL_PAIRS)} pairs available" +
+    print(f"  âœ“ {ok}/{len(ALL_PAIRS)} pairs available" +
           (f" ({len(fail_pairs)} failed: {', '.join(fail_pairs)})" if fail_pairs else ""))
     if fail_pairs:
-        print("  ⚠ Failed pairs will be skipped at runtime")
+        print("  âš  Failed pairs will be skipped at runtime")
 
     # 5. Set leverage + margin mode
     print(f"\n[5/7] Setting leverage & margin mode...")
@@ -157,8 +157,8 @@ def preflight():
             if "not modified" in str(e).lower():
                 lev_ok += 1
             else:
-                print(f"  ⚠ {pair}: {e}")
-    print(f"  ✓ {lev_ok}/{len(ALL_PAIRS)} pairs configured")
+                print(f"  âš  {pair}: {e}")
+    print(f"  âœ“ {lev_ok}/{len(ALL_PAIRS)} pairs configured")
 
     # 6. Test order placement (place + cancel a tiny limit order)
     print("\n[6/7] Testing order placement (place + cancel)...")
@@ -175,12 +175,12 @@ def preflight():
             params={"category": "linear", "timeInForce": "GTC"},
         )
         order_id = order["id"]
-        print(f"  ✓ Limit order placed: {order_id}")
+        print(f"  âœ“ Limit order placed: {order_id}")
 
         ex.cancel_order(order_id, test_pair, params={"category": "linear"})
-        print(f"  ✓ Order cancelled successfully")
+        print(f"  âœ“ Order cancelled successfully")
     except Exception as e:
-        print(f"  ✗ Order test failed: {e}")
+        print(f"  âœ— Order test failed: {e}")
         return False
 
     # 7. Check existing positions/orders
@@ -188,7 +188,7 @@ def preflight():
     try:
         positions = exch.get_open_positions(ex)
         open_count = len(positions)
-        print(f"  ✓ Open positions: {open_count}")
+        print(f"  âœ“ Open positions: {open_count}")
         for p in positions:
             sym = p.get("symbol", "?")
             side = p.get("side", "?")
@@ -196,10 +196,10 @@ def preflight():
             pnl = p.get("unrealizedPnl", 0)
             print(f"    {sym} {side} size={sz} uPnL={pnl}")
         if open_count > 0:
-            print(f"  ⚠ WARNING: {open_count} open position(s)! "
+            print(f"  âš  WARNING: {open_count} open position(s)! "
                   "Close them manually before starting or the bot will track them.")
     except Exception as e:
-        print(f"  ⚠ Could not check positions: {e}")
+        print(f"  âš  Could not check positions: {e}")
 
     try:
         stale = 0
@@ -207,14 +207,14 @@ def preflight():
             orders = exch.get_open_orders(ex, pair)
             stale += len(orders)
         if stale:
-            print(f"  ⚠ Found {stale} stale orders (will be cleaned on bot start)")
+            print(f"  âš  Found {stale} stale orders (will be cleaned on bot start)")
         else:
-            print(f"  ✓ No stale orders found (checked 5 pairs)")
+            print(f"  âœ“ No stale orders found (checked 5 pairs)")
     except Exception as e:
-        print(f"  ⚠ Could not check orders: {e}")
+        print(f"  âš  Could not check orders: {e}")
 
     print("\n" + "=" * 70)
-    print("  PRE-FLIGHT COMPLETE — All systems GO for LIVE trading")
+    print("  PRE-FLIGHT COMPLETE â€” All systems GO for LIVE trading")
     print(f"  Equity: ${equity:.2f} | Pairs: {len(ALL_PAIRS)} | "
           f"Risk: A={RISK_PCT_A*100:.0f}% B={RISK_PCT_B*100:.0f}%")
     print("=" * 70)
@@ -230,7 +230,7 @@ def reset_state_for_live(equity: float = 0):
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         backup = f"live/state_demo_backup_{ts}.json"
         shutil.copy2(state_file, backup)
-        print(f"  ✓ Demo state backed up → {backup}")
+        print(f"  âœ“ Demo state backed up â†’ {backup}")
 
     # Write clean state
     fresh = {
@@ -255,7 +255,7 @@ def reset_state_for_live(equity: float = 0):
     }
     with open(state_file, "w") as f:
         json.dump(fresh, f, indent=2)
-    print(f"  ✓ Fresh state created (equity=${equity:.2f})")
+    print(f"  âœ“ Fresh state created (equity=${equity:.2f})")
 
 
 def run_bot():
@@ -264,7 +264,7 @@ def run_bot():
     from live import logger as log
 
     log.info("=" * 70)
-    log.info("  FCB BOT — LIVE MAINNET")
+    log.info("  FCB BOT â€” LIVE MAINNET")
     log.info(f"  Started: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC")
     log.info("=" * 70)
     log.audit("BOT_START", mode="LIVE_MAINNET",
@@ -289,7 +289,7 @@ def run_bot():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="FCB Bot — LIVE Trading Runner")
+    parser = argparse.ArgumentParser(description="FCB Bot â€” LIVE Trading Runner")
     parser.add_argument("--preflight", action="store_true",
                         help="Run pre-flight checks only, don't trade")
     parser.add_argument("--yes", "-y", action="store_true",
@@ -312,12 +312,12 @@ def main():
     # Full live startup
     print("Running pre-flight checks...")
     if not preflight():
-        print("\n  ✗ Pre-flight FAILED. Fix issues before trading.")
+        print("\n  âœ— Pre-flight FAILED. Fix issues before trading.")
         sys.exit(1)
 
     if not args.yes:
         print("\n" + "!" * 70)
-        print("  ⚠  YOU ARE ABOUT TO TRADE WITH REAL MONEY  ⚠")
+        print("  âš   YOU ARE ABOUT TO TRADE WITH REAL MONEY  âš ")
         print("!" * 70)
         confirm = input("\n  Type 'GO LIVE' to confirm: ")
         if confirm.strip() != "GO LIVE":
@@ -332,7 +332,7 @@ def main():
     equity = exch.get_equity(ex)
     reset_state_for_live(equity)
 
-    # Acquire lock — prevents duplicate instances
+    # Acquire lock â€” prevents duplicate instances
     acquire_lock()
     atexit.register(release_lock)
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))  # clean lock on kill
@@ -344,3 +344,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

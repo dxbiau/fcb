@@ -1,0 +1,1253 @@
+{
+  "min_conviction": 75,
+  "outcomes": [
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 70.6,
+      "grade": "A",
+      "pnl_r": 1.5,
+      "win": true,
+      "ts": "2026-02-23T10:31:23.116474+00:00"
+    },
+    {
+      "symbol": "XAUT/USDT:USDT",
+      "score": 74.6,
+      "grade": "A",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-23T22:10:04.635778+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 75.2,
+      "grade": "A",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-23T22:20:22.184539+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 79.04,
+      "grade": "A",
+      "pnl_r": -0.5373,
+      "win": false,
+      "ts": "2026-02-23T22:25:34.455962+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 75.14,
+      "grade": "A",
+      "pnl_r": -1.8686,
+      "win": false,
+      "ts": "2026-02-23T22:30:34.385193+00:00"
+    },
+    {
+      "symbol": "AGLD/USDT:USDT",
+      "score": 53.660000000000004,
+      "grade": "B",
+      "pnl_r": 0.0009,
+      "win": true,
+      "ts": "2026-02-23T22:52:50.631460+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 70.47999999999999,
+      "grade": "A",
+      "pnl_r": -1.2279,
+      "win": false,
+      "ts": "2026-02-24T00:17:15.097864+00:00"
+    },
+    {
+      "symbol": "XAUT/USDT:USDT",
+      "score": 79.51,
+      "grade": "A",
+      "pnl_r": -0.278,
+      "win": false,
+      "ts": "2026-02-24T00:17:32.361630+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 72.11999999999999,
+      "grade": "A",
+      "pnl_r": -0.1191,
+      "win": false,
+      "ts": "2026-02-24T00:22:55.693129+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 73.5,
+      "grade": "A",
+      "pnl_r": -0.0754,
+      "win": false,
+      "ts": "2026-02-24T01:00:04.303980+00:00"
+    },
+    {
+      "symbol": "FARTCOIN/USDT:USDT",
+      "score": 70.10000000000001,
+      "grade": "A",
+      "pnl_r": 1.8763,
+      "win": true,
+      "ts": "2026-02-24T01:05:43.929137+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 68.53999999999999,
+      "grade": "A",
+      "pnl_r": 1.8976,
+      "win": true,
+      "ts": "2026-02-24T01:13:42.762433+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 70.39,
+      "grade": "A",
+      "pnl_r": 1.7038,
+      "win": true,
+      "ts": "2026-02-24T01:13:44.699800+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 84.88000000000001,
+      "grade": "A+",
+      "pnl_r": -1.0356,
+      "win": false,
+      "ts": "2026-02-24T01:16:19.701281+00:00"
+    },
+    {
+      "symbol": "AGLD/USDT:USDT",
+      "score": 65.51,
+      "grade": "A",
+      "pnl_r": 0.024,
+      "win": true,
+      "ts": "2026-02-24T01:16:21.632054+00:00"
+    },
+    {
+      "symbol": "BCH/USDT:USDT",
+      "score": 80.0,
+      "grade": "A+",
+      "pnl_r": -0.0171,
+      "win": false,
+      "ts": "2026-02-24T01:16:23.558175+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 86.15,
+      "grade": "A+",
+      "pnl_r": -1.0332,
+      "win": false,
+      "ts": "2026-02-24T01:26:06.949496+00:00"
+    },
+    {
+      "symbol": "BNB/USDT:USDT",
+      "score": 80.00999999999999,
+      "grade": "A+",
+      "pnl_r": -1.1917,
+      "win": false,
+      "ts": "2026-02-24T01:26:08.871734+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 95.39999999999999,
+      "grade": "A+",
+      "pnl_r": 1.3948,
+      "win": true,
+      "ts": "2026-02-24T01:53:13.085566+00:00"
+    },
+    {
+      "symbol": "XRP/USDT:USDT",
+      "score": 72.56,
+      "grade": "A",
+      "pnl_r": 0.0817,
+      "win": true,
+      "ts": "2026-02-24T01:55:44.007295+00:00"
+    },
+    {
+      "symbol": "TRIA/USDT:USDT",
+      "score": 53.28,
+      "grade": "B",
+      "pnl_r": -1.0956,
+      "win": false,
+      "ts": "2026-02-24T02:03:44.457340+00:00"
+    },
+    {
+      "symbol": "RAVE/USDT:USDT",
+      "score": 64.29,
+      "grade": "B",
+      "pnl_r": -0.6851,
+      "win": false,
+      "ts": "2026-02-24T02:07:07.908446+00:00"
+    },
+    {
+      "symbol": "RIVER/USDT:USDT",
+      "score": 71.95,
+      "grade": "A",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-24T02:11:47.408692+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 47.269999999999996,
+      "grade": "C",
+      "pnl_r": 2.086,
+      "win": true,
+      "ts": "2026-02-24T02:15:09.124770+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 70.38,
+      "grade": "A",
+      "pnl_r": -1.0967,
+      "win": false,
+      "ts": "2026-02-24T02:32:57.171334+00:00"
+    },
+    {
+      "symbol": "LA/USDT:USDT",
+      "score": 55.15,
+      "grade": "B",
+      "pnl_r": -0.5515,
+      "win": false,
+      "ts": "2026-02-24T02:46:53.526481+00:00"
+    },
+    {
+      "symbol": "WLFI/USDT:USDT",
+      "score": 73.12,
+      "grade": "A",
+      "pnl_r": 1.149,
+      "win": true,
+      "ts": "2026-02-24T03:16:30.623170+00:00"
+    },
+    {
+      "symbol": "XRP/USDT:USDT",
+      "score": 75.81,
+      "grade": "A",
+      "pnl_r": 0.0757,
+      "win": true,
+      "ts": "2026-02-24T03:20:54.893578+00:00"
+    },
+    {
+      "symbol": "BNB/USDT:USDT",
+      "score": 59.06,
+      "grade": "B",
+      "pnl_r": -1.2961,
+      "win": false,
+      "ts": "2026-02-24T03:36:39.341658+00:00"
+    },
+    {
+      "symbol": "FARTCOIN/USDT:USDT",
+      "score": 70.16,
+      "grade": "A",
+      "pnl_r": -0.0156,
+      "win": false,
+      "ts": "2026-02-24T03:42:24.214001+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 76.96000000000001,
+      "grade": "A",
+      "pnl_r": 2.1044,
+      "win": true,
+      "ts": "2026-02-24T13:44:26.468155+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 74.91,
+      "grade": "A",
+      "pnl_r": -1.2269,
+      "win": false,
+      "ts": "2026-02-24T13:44:28.457967+00:00"
+    },
+    {
+      "symbol": "WHITEWHALE/USDT:USDT",
+      "score": 37.040000000000006,
+      "grade": "C",
+      "pnl_r": -0.1276,
+      "win": false,
+      "ts": "2026-02-24T14:00:06.380166+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 86.53999999999999,
+      "grade": "A+",
+      "pnl_r": 1.1488,
+      "win": true,
+      "ts": "2026-02-24T14:32:36.565769+00:00"
+    },
+    {
+      "symbol": "XRP/USDT:USDT",
+      "score": 84.92,
+      "grade": "A+",
+      "pnl_r": -0.7734,
+      "win": false,
+      "ts": "2026-02-24T14:36:29.959063+00:00"
+    },
+    {
+      "symbol": "XAUT/USDT:USDT",
+      "score": 71.14,
+      "grade": "A",
+      "pnl_r": -0.2342,
+      "win": false,
+      "ts": "2026-02-24T14:39:51.942419+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 69.04,
+      "grade": "A",
+      "pnl_r": 1.1828,
+      "win": true,
+      "ts": "2026-02-24T14:53:29.131898+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 74.41999999999999,
+      "grade": "A",
+      "pnl_r": 1.2758,
+      "win": true,
+      "ts": "2026-02-24T14:56:35.424380+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 62.28,
+      "grade": "B",
+      "pnl_r": -0.2157,
+      "win": false,
+      "ts": "2026-02-24T14:58:25.435081+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 66.52,
+      "grade": "A",
+      "pnl_r": 1.6818,
+      "win": true,
+      "ts": "2026-02-24T15:02:13.073116+00:00"
+    },
+    {
+      "symbol": "POWER/USDT:USDT",
+      "score": 68.61,
+      "grade": "A",
+      "pnl_r": 0.3853,
+      "win": true,
+      "ts": "2026-02-24T15:02:15.297683+00:00"
+    },
+    {
+      "symbol": "FARTCOIN/USDT:USDT",
+      "score": 40.19,
+      "grade": "C",
+      "pnl_r": -1.0657,
+      "win": false,
+      "ts": "2026-02-24T15:16:29.619725+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 72.82,
+      "grade": "A",
+      "pnl_r": -0.9992,
+      "win": false,
+      "ts": "2026-02-24T15:33:05.769413+00:00"
+    },
+    {
+      "symbol": "RIVER/USDT:USDT",
+      "score": 61.25,
+      "grade": "B",
+      "pnl_r": -1.1177,
+      "win": false,
+      "ts": "2026-02-24T16:01:59.993509+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 80.85,
+      "grade": "A+",
+      "pnl_r": -1.0796,
+      "win": false,
+      "ts": "2026-02-24T16:28:37.229937+00:00"
+    },
+    {
+      "symbol": "VIRTUAL/USDT:USDT",
+      "score": 40.71,
+      "grade": "C",
+      "pnl_r": 0.6965,
+      "win": true,
+      "ts": "2026-02-24T16:30:11.215028+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 66.3,
+      "grade": "A",
+      "pnl_r": 1.9059,
+      "win": true,
+      "ts": "2026-02-24T16:35:34.900147+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 77.51,
+      "grade": "A",
+      "pnl_r": 1.5142,
+      "win": true,
+      "ts": "2026-02-24T16:41:14.283042+00:00"
+    },
+    {
+      "symbol": "POWER/USDT:USDT",
+      "score": 43.879999999999995,
+      "grade": "C",
+      "pnl_r": 0.4928,
+      "win": true,
+      "ts": "2026-02-24T16:41:16.264149+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 68.47,
+      "grade": "A",
+      "pnl_r": 1.4037,
+      "win": true,
+      "ts": "2026-02-24T16:45:07.593493+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 79.36,
+      "grade": "A",
+      "pnl_r": -1.12,
+      "win": false,
+      "ts": "2026-02-24T17:52:33.141690+00:00"
+    },
+    {
+      "symbol": "SAND/USDT:USDT",
+      "score": 64.32000000000001,
+      "grade": "B",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-24T18:00:14.473167+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 70.06,
+      "grade": "A",
+      "pnl_r": -1.1626,
+      "win": false,
+      "ts": "2026-02-24T18:13:37.211134+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 72.5,
+      "grade": "A",
+      "pnl_r": -1.1389,
+      "win": false,
+      "ts": "2026-02-24T18:14:40.423422+00:00"
+    },
+    {
+      "symbol": "XRP/USDT:USDT",
+      "score": 73.44000000000001,
+      "grade": "A",
+      "pnl_r": -0.8689,
+      "win": false,
+      "ts": "2026-02-24T18:14:42.384027+00:00"
+    },
+    {
+      "symbol": "BCH/USDT:USDT",
+      "score": 77.0,
+      "grade": "A",
+      "pnl_r": -0.2537,
+      "win": false,
+      "ts": "2026-02-24T18:24:44.188092+00:00"
+    },
+    {
+      "symbol": "SUI/USDT:USDT",
+      "score": 72.15,
+      "grade": "A",
+      "pnl_r": 1.9862,
+      "win": true,
+      "ts": "2026-02-24T18:25:32.055646+00:00"
+    },
+    {
+      "symbol": "POWER/USDT:USDT",
+      "score": 46.980000000000004,
+      "grade": "C",
+      "pnl_r": -0.2387,
+      "win": false,
+      "ts": "2026-02-24T19:14:00.733836+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 72.8,
+      "grade": "A",
+      "pnl_r": 1.1827,
+      "win": true,
+      "ts": "2026-02-24T20:09:22.978198+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 70.97,
+      "grade": "A",
+      "pnl_r": 1.1904,
+      "win": true,
+      "ts": "2026-02-24T20:14:33.130188+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 64.64,
+      "grade": "B",
+      "pnl_r": 1.6882,
+      "win": true,
+      "ts": "2026-02-24T22:53:33.841586+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 74.86999999999999,
+      "grade": "A",
+      "pnl_r": -1.4311,
+      "win": false,
+      "ts": "2026-02-24T22:58:58.468505+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 76.74000000000001,
+      "grade": "A",
+      "pnl_r": -1.4317,
+      "win": false,
+      "ts": "2026-02-24T23:04:22.557897+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 73.27,
+      "grade": "A",
+      "pnl_r": -1.1078,
+      "win": false,
+      "ts": "2026-02-24T23:08:00.194706+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 79.43,
+      "grade": "A",
+      "pnl_r": -1.1207,
+      "win": false,
+      "ts": "2026-02-24T23:09:50.837414+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 77.89,
+      "grade": "A",
+      "pnl_r": -1.4879,
+      "win": false,
+      "ts": "2026-02-24T23:09:53.034729+00:00"
+    },
+    {
+      "symbol": "RIVER/USDT:USDT",
+      "score": 72.29,
+      "grade": "A",
+      "pnl_r": 0.7441,
+      "win": true,
+      "ts": "2026-02-24T23:16:51.493871+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 70.39999999999999,
+      "grade": "A",
+      "pnl_r": -0.506,
+      "win": false,
+      "ts": "2026-02-24T23:17:56.046500+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 77.4,
+      "grade": "A",
+      "pnl_r": -0.5053,
+      "win": false,
+      "ts": "2026-02-24T23:20:32.190453+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 70.38000000000001,
+      "grade": "A",
+      "pnl_r": 1.5145,
+      "win": true,
+      "ts": "2026-02-24T23:20:34.305294+00:00"
+    },
+    {
+      "symbol": "BTC/USDT:USDT",
+      "score": 71.11,
+      "grade": "A",
+      "pnl_r": -0.5054,
+      "win": false,
+      "ts": "2026-02-24T23:25:59.420622+00:00"
+    },
+    {
+      "symbol": "RIVER/USDT:USDT",
+      "score": 79.93,
+      "grade": "A",
+      "pnl_r": 0.6699,
+      "win": true,
+      "ts": "2026-02-24T23:34:31.738367+00:00"
+    },
+    {
+      "symbol": "SUI/USDT:USDT",
+      "score": 56.5,
+      "grade": "B",
+      "pnl_r": -1.5371,
+      "win": false,
+      "ts": "2026-02-24T23:34:33.692713+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 69.16000000000001,
+      "grade": "A",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-24T23:34:35.639858+00:00"
+    },
+    {
+      "symbol": "AVAX/USDT:USDT",
+      "score": 68.19,
+      "grade": "A",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-24T23:40:06.118551+00:00"
+    },
+    {
+      "symbol": "GPS/USDT:USDT",
+      "score": 42.58,
+      "grade": "C",
+      "pnl_r": -0.31,
+      "win": false,
+      "ts": "2026-02-24T23:40:55.855066+00:00"
+    },
+    {
+      "symbol": "KITE/USDT:USDT",
+      "score": 66.32,
+      "grade": "A",
+      "pnl_r": -0.236,
+      "win": false,
+      "ts": "2026-02-24T23:45:34.904681+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 62.05,
+      "grade": "B",
+      "pnl_r": 0.6762,
+      "win": true,
+      "ts": "2026-02-24T23:49:44.867224+00:00"
+    },
+    {
+      "symbol": "LA/USDT:USDT",
+      "score": 42.92,
+      "grade": "C",
+      "pnl_r": -1.033,
+      "win": false,
+      "ts": "2026-02-25T00:03:37.719948+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 59.55,
+      "grade": "B",
+      "pnl_r": 1.6856,
+      "win": true,
+      "ts": "2026-02-25T00:28:48.431894+00:00"
+    },
+    {
+      "symbol": "STEEM/USDT:USDT",
+      "score": 51.1,
+      "grade": "B",
+      "pnl_r": -1.04,
+      "win": false,
+      "ts": "2026-02-25T00:28:50.394446+00:00"
+    },
+    {
+      "symbol": "SUI/USDT:USDT",
+      "score": 59.27,
+      "grade": "B",
+      "pnl_r": -1.2648,
+      "win": false,
+      "ts": "2026-02-25T01:03:20.650626+00:00"
+    },
+    {
+      "symbol": "AAVE/USDT:USDT",
+      "score": 95.37,
+      "grade": "A+",
+      "pnl_r": -1.3354,
+      "win": false,
+      "ts": "2026-02-25T01:12:43.829506+00:00"
+    },
+    {
+      "symbol": "GPS/USDT:USDT",
+      "score": 62.019999999999996,
+      "grade": "B",
+      "pnl_r": -1.0872,
+      "win": false,
+      "ts": "2026-02-25T01:17:08.428760+00:00"
+    },
+    {
+      "symbol": "LINK/USDT:USDT",
+      "score": 93.77,
+      "grade": "A+",
+      "pnl_r": 0.0072,
+      "win": true,
+      "ts": "2026-02-25T01:30:17.495148+00:00"
+    },
+    {
+      "symbol": "BREV/USDT:USDT",
+      "score": 74.06,
+      "grade": "A",
+      "pnl_r": 0.246,
+      "win": true,
+      "ts": "2026-02-25T01:30:19.452674+00:00"
+    },
+    {
+      "symbol": "TAO/USDT:USDT",
+      "score": 76.83,
+      "grade": "A",
+      "pnl_r": -0.7301,
+      "win": false,
+      "ts": "2026-02-25T01:44:57.281773+00:00"
+    },
+    {
+      "symbol": "WIF/USDT:USDT",
+      "score": 63.690000000000005,
+      "grade": "B",
+      "pnl_r": -1.0804,
+      "win": false,
+      "ts": "2026-02-25T01:51:23.020263+00:00"
+    },
+    {
+      "symbol": "RIVER/USDT:USDT",
+      "score": 75.57,
+      "grade": "A",
+      "pnl_r": 1.2103,
+      "win": true,
+      "ts": "2026-02-25T01:56:15.413443+00:00"
+    },
+    {
+      "symbol": "TAO/USDT:USDT",
+      "score": 74.14,
+      "grade": "A",
+      "pnl_r": -1.1177,
+      "win": false,
+      "ts": "2026-02-25T03:20:07.469912+00:00"
+    },
+    {
+      "symbol": "RIVER/USDT:USDT",
+      "score": 75.97,
+      "grade": "A",
+      "pnl_r": -1.0665,
+      "win": false,
+      "ts": "2026-02-25T04:22:46.955448+00:00"
+    },
+    {
+      "symbol": "BNB/USDT:USDT",
+      "score": 68.05,
+      "grade": "A",
+      "pnl_r": -1.4108,
+      "win": false,
+      "ts": "2026-02-25T04:23:04.342348+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 68.08999999999999,
+      "grade": "A",
+      "pnl_r": -0.5828,
+      "win": false,
+      "ts": "2026-02-25T04:28:29.011391+00:00"
+    },
+    {
+      "symbol": "KITE/USDT:USDT",
+      "score": 68.38,
+      "grade": "A",
+      "pnl_r": -0.2015,
+      "win": false,
+      "ts": "2026-02-25T04:28:31.178797+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 63.11000000000001,
+      "grade": "B",
+      "pnl_r": 0.2812,
+      "win": true,
+      "ts": "2026-02-25T04:36:45.653398+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 71.36,
+      "grade": "A",
+      "pnl_r": 1.6482,
+      "win": true,
+      "ts": "2026-02-25T05:01:06.793043+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 75.88,
+      "grade": "A",
+      "pnl_r": 0.0675,
+      "win": true,
+      "ts": "2026-02-25T07:16:54.020867+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 81.98,
+      "grade": "A+",
+      "pnl_r": 0.0677,
+      "win": true,
+      "ts": "2026-02-25T09:43:36.987419+00:00"
+    },
+    {
+      "symbol": "LA/USDT:USDT",
+      "score": 60.81,
+      "grade": "B",
+      "pnl_r": -0.8963,
+      "win": false,
+      "ts": "2026-02-25T09:43:39.098137+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 70.01,
+      "grade": "A",
+      "pnl_r": 1.2878,
+      "win": true,
+      "ts": "2026-02-25T12:54:40.881995+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 64.50999999999999,
+      "grade": "B",
+      "pnl_r": 0.85,
+      "win": true,
+      "ts": "2026-02-25T12:54:44.185588+00:00"
+    },
+    {
+      "symbol": "AVAX/USDT:USDT",
+      "score": 88.41000000000001,
+      "grade": "A+",
+      "pnl_r": 1.067,
+      "win": true,
+      "ts": "2026-02-25T12:55:02.855677+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 61.589999999999996,
+      "grade": "B",
+      "pnl_r": 0.737,
+      "win": true,
+      "ts": "2026-02-25T12:55:22.085774+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 64.53,
+      "grade": "B",
+      "pnl_r": -0.6204,
+      "win": false,
+      "ts": "2026-02-25T13:02:05.132704+00:00"
+    },
+    {
+      "symbol": "POWER/USDT:USDT",
+      "score": 83.94,
+      "grade": "A+",
+      "pnl_r": 0.1127,
+      "win": true,
+      "ts": "2026-02-25T13:15:57.377604+00:00"
+    },
+    {
+      "symbol": "XRP/USDT:USDT",
+      "score": 83.35,
+      "grade": "A+",
+      "pnl_r": 0.859,
+      "win": true,
+      "ts": "2026-02-25T13:30:51.085741+00:00"
+    },
+    {
+      "symbol": "TAO/USDT:USDT",
+      "score": 77.84,
+      "grade": "A",
+      "pnl_r": 0.7349,
+      "win": true,
+      "ts": "2026-02-25T13:51:09.967224+00:00"
+    },
+    {
+      "symbol": "BNB/USDT:USDT",
+      "score": 73.89,
+      "grade": "A",
+      "pnl_r": -0.3907,
+      "win": false,
+      "ts": "2026-02-25T13:51:28.669465+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 79.35,
+      "grade": "A",
+      "pnl_r": 0.8534,
+      "win": true,
+      "ts": "2026-02-25T14:12:02.530872+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 74.60000000000001,
+      "grade": "A",
+      "pnl_r": -1.133,
+      "win": false,
+      "ts": "2026-02-25T14:36:09.430806+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 80.15,
+      "grade": "A+",
+      "pnl_r": -0.2377,
+      "win": false,
+      "ts": "2026-02-25T14:40:03.677822+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 88.49,
+      "grade": "A+",
+      "pnl_r": 0.6188,
+      "win": true,
+      "ts": "2026-02-25T15:01:07.378898+00:00"
+    },
+    {
+      "symbol": "XRP/USDT:USDT",
+      "score": 79.87,
+      "grade": "A",
+      "pnl_r": 0.6766,
+      "win": true,
+      "ts": "2026-02-25T15:02:13.230273+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 78.27,
+      "grade": "A",
+      "pnl_r": -0.9433,
+      "win": false,
+      "ts": "2026-02-25T15:22:44.525541+00:00"
+    },
+    {
+      "symbol": "AVAX/USDT:USDT",
+      "score": 88.69,
+      "grade": "A+",
+      "pnl_r": 0.8693,
+      "win": true,
+      "ts": "2026-02-25T15:51:43.340292+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 71.06,
+      "grade": "A",
+      "pnl_r": -0.2845,
+      "win": false,
+      "ts": "2026-02-25T15:58:42.074724+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 85.47,
+      "grade": "A+",
+      "pnl_r": 0.5843,
+      "win": true,
+      "ts": "2026-02-25T17:00:42.147244+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 88.5,
+      "grade": "A+",
+      "pnl_r": 0.6084,
+      "win": true,
+      "ts": "2026-02-25T17:03:51.465519+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 71.34,
+      "grade": "A",
+      "pnl_r": 0.7551,
+      "win": true,
+      "ts": "2026-02-25T17:13:09.331111+00:00"
+    },
+    {
+      "symbol": "UNI/USDT:USDT",
+      "score": 92.88000000000001,
+      "grade": "A+",
+      "pnl_r": 0.8676,
+      "win": true,
+      "ts": "2026-02-25T17:33:24.922522+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 76.44,
+      "grade": "A",
+      "pnl_r": -0.6023,
+      "win": false,
+      "ts": "2026-02-25T20:10:01.990774+00:00"
+    },
+    {
+      "symbol": "SUI/USDT:USDT",
+      "score": 75.49,
+      "grade": "A",
+      "pnl_r": 1.0512,
+      "win": true,
+      "ts": "2026-02-25T20:35:12.556812+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 83.36999999999999,
+      "grade": "A+",
+      "pnl_r": 0.8595,
+      "win": true,
+      "ts": "2026-02-25T20:58:20.720909+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 81.55,
+      "grade": "A+",
+      "pnl_r": -0.7427,
+      "win": false,
+      "ts": "2026-02-25T21:12:29.308132+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 81.48,
+      "grade": "A+",
+      "pnl_r": 2.5606,
+      "win": true,
+      "ts": "2026-02-25T21:36:55.400607+00:00"
+    },
+    {
+      "symbol": "BCH/USDT:USDT",
+      "score": 75.54,
+      "grade": "A",
+      "pnl_r": -1.0575,
+      "win": false,
+      "ts": "2026-02-25T22:30:48.211559+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 75.62,
+      "grade": "A",
+      "pnl_r": -0.8751,
+      "win": false,
+      "ts": "2026-02-25T22:52:21.260744+00:00"
+    },
+    {
+      "symbol": "BNB/USDT:USDT",
+      "score": 77.96000000000001,
+      "grade": "A",
+      "pnl_r": -1.1512,
+      "win": false,
+      "ts": "2026-02-25T23:30:15.099948+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 78.05,
+      "grade": "A",
+      "pnl_r": 0.8981,
+      "win": true,
+      "ts": "2026-02-26T00:19:24.015881+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 77.08999999999999,
+      "grade": "A",
+      "pnl_r": -0.2017,
+      "win": false,
+      "ts": "2026-02-26T00:37:40.505717+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 77.43,
+      "grade": "A",
+      "pnl_r": -0.678,
+      "win": false,
+      "ts": "2026-02-26T00:39:16.497840+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 75.96,
+      "grade": "A",
+      "pnl_r": -1.0713,
+      "win": false,
+      "ts": "2026-02-26T00:41:22.672079+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 71.31,
+      "grade": "A",
+      "pnl_r": -0.2616,
+      "win": false,
+      "ts": "2026-02-26T01:28:24.904292+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 76.14,
+      "grade": "A",
+      "pnl_r": -0.5702,
+      "win": "False",
+      "ts": "2026-02-26T01:34:53.757001+00:00"
+    },
+    {
+      "symbol": "UNI/USDT:USDT",
+      "score": 74.84,
+      "grade": "A",
+      "pnl_r": -0.6641,
+      "win": false,
+      "ts": "2026-02-26T01:45:13.227012+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 77.43,
+      "grade": "A",
+      "pnl_r": -0.6272,
+      "win": false,
+      "ts": "2026-02-26T01:53:44.067448+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 70.55,
+      "grade": "A",
+      "pnl_r": -1.0714,
+      "win": "False",
+      "ts": "2026-02-26T02:11:29.179911+00:00"
+    },
+    {
+      "symbol": "NEAR/USDT:USDT",
+      "score": 73.89,
+      "grade": "A",
+      "pnl_r": -0.9626,
+      "win": "False",
+      "ts": "2026-02-26T02:37:57.830478+00:00"
+    },
+    {
+      "symbol": "SOL/USDT:USDT",
+      "score": 76.09,
+      "grade": "A",
+      "pnl_r": 0.833,
+      "win": "True",
+      "ts": "2026-02-26T04:44:08.707989+00:00"
+    },
+    {
+      "symbol": "AVAX/USDT:USDT",
+      "score": 75.93,
+      "grade": "A",
+      "pnl_r": -1.0348,
+      "win": false,
+      "ts": "2026-02-26T05:16:54.768708+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 76.66,
+      "grade": "A",
+      "pnl_r": -1.0312,
+      "win": "False",
+      "ts": "2026-02-26T06:15:08.651247+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 78.77,
+      "grade": "A",
+      "pnl_r": -1.1359,
+      "win": "False",
+      "ts": "2026-02-26T07:51:58.988220+00:00"
+    },
+    {
+      "symbol": "XAUT/USDT:USDT",
+      "score": 81.3,
+      "grade": "A+",
+      "pnl_r": -0.9754,
+      "win": "False",
+      "ts": "2026-02-26T08:29:46.305121+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 77.28999999999999,
+      "grade": "A",
+      "pnl_r": 0.6572,
+      "win": true,
+      "ts": "2026-02-26T09:09:00.910490+00:00"
+    },
+    {
+      "symbol": "BCH/USDT:USDT",
+      "score": 75.05,
+      "grade": "A",
+      "pnl_r": 0.4801,
+      "win": true,
+      "ts": "2026-02-26T09:14:55.541133+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 78.28,
+      "grade": "A",
+      "pnl_r": 1.1977,
+      "win": true,
+      "ts": "2026-02-26T09:45:55.756725+00:00"
+    },
+    {
+      "symbol": "BARD/USDT:USDT",
+      "score": 80.7,
+      "grade": "A+",
+      "pnl_r": -0.9616,
+      "win": false,
+      "ts": "2026-02-26T10:06:50.709401+00:00"
+    },
+    {
+      "symbol": "ETH/USDT:USDT",
+      "score": 77.85,
+      "grade": "A",
+      "pnl_r": 0.5221,
+      "win": true,
+      "ts": "2026-02-26T12:28:10.307920+00:00"
+    }
+  ],
+  "buckets": {
+    "70-80": {
+      "wins": 31,
+      "losses": 50,
+      "total_r": -10.412388810631677
+    },
+    "50-60": {
+      "wins": 2,
+      "losses": 6,
+      "total_r": -5.098582098722371
+    },
+    "60-70": {
+      "wins": 12,
+      "losses": 14,
+      "total_r": 1.4597479564710123
+    },
+    "80-90": {
+      "wins": 11,
+      "losses": 10,
+      "total_r": 1.3082924751065508
+    },
+    "90-100": {
+      "wins": 3,
+      "losses": 1,
+      "total_r": 0.9342508231380242
+    },
+    "40-50": {
+      "wins": 3,
+      "losses": 4,
+      "total_r": 0.6277461256970862
+    },
+    "30-40": {
+      "wins": 0,
+      "losses": 1,
+      "total_r": -0.12759898243610066
+    }
+  },
+  "grade_stats": {
+    "A": {
+      "wins": 38,
+      "losses": 56,
+      "total_r": -6.442347694026244
+    },
+    "B": {
+      "wins": 7,
+      "losses": 14,
+      "total_r": -7.608875258856786
+    },
+    "A+": {
+      "wins": 14,
+      "losses": 11,
+      "total_r": 2.2425432982445748
+    },
+    "C": {
+      "wins": 3,
+      "losses": 5,
+      "total_r": 0.5001471432609854
+    }
+  },
+  "total_evaluated": 2405,
+  "total_passed": 1809,
+  "total_rejected": 596,
+  "recal_count": 14,
+  "last_recal": "2026-02-26T05:16:54.776405+00:00"
+}

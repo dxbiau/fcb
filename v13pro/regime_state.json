@@ -1,0 +1,12 @@
+{
+  "regime": "COOL",
+  "regime_mult": 0.7,
+  "session_mults": {
+    "london": 1.0494,
+    "asia": 0.7549,
+    "ny": 1.4
+  },
+  "n_outcomes": 300,
+  "refreshes": 0,
+  "ts": 1772142178.129373
+}

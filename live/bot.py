@@ -7,9 +7,11 @@ Lifecycle:
   3. Enter main loop:
      a. Determine current session (asia/london/ny).
      b. At session open (minute 0-4): capture first 5m candle for each pair.
-     c. At candle 2 close (minute 5-9): check breakout, place orders.
-     d. Positions managed by exchange SL/TP — bot monitors and logs outcomes.
-     e. Sleep until next session if all pairs processed.
+     c. At candle 2 close (minute 10): check breakout for all pairs.
+     d. Minutes 10-60: continuously re-scan untraded pairs every 5m candle
+        close (breakouts can happen on C3, C4, ... C12, not only C2).
+     e. Positions managed by exchange SL/TP — bot monitors and logs outcomes.
+     f. Sleep until next session once breakout window closes.
 
 The bot is designed to run 24/7.  State persists across restarts.
 """
@@ -24,17 +26,25 @@ from live.config import (
     SESSIONS, PAIRS, ALL_PAIRS,
     RISK_PCT, SCALE_RISK_PCT, SPLIT_ENTRY, FEE_RATE, LEVERAGE,
     RISK_PCT_A, RISK_PCT_B, SCALE_RISK_PCT_A, SCALE_RISK_PCT_B,
-    MAX_TRADES_SESSION, MAX_TRADES_DAY,
+    MAX_TRADES_SESSION, MAX_TRADES_DAY, MAX_CONCURRENT_POSITIONS, MAX_CONCURRENT_B,
     POLL_INTERVAL, TIMEFRAME, EQUITY_FLOOR, TRADE_LOG, TP_R,
     SCALE_OUT, SCALE_OUT_PCT,
     TRAIL_ENABLED, TRAIL_ACTIVATION_R, TRAIL_DISTANCE_R, EXCHANGE_TP_R,
+    MICRO_FILTER_ENABLED, MIN_C2_BODY_RATIO, FC_COUNTER_5M,
+    VOL_FILTER_ENABLED, MIN_VOL_RATIO_LONG, MIN_VOL_RATIO_SHORT,
     HYBRID_ENTRY, MAX_SLIP_R, SKIP_LOG,
     C3_EXIT, C3_REVERSAL_BODY_PCT, C3_MAX_R_TO_EXIT,
     BACKTEST_WR, BACKTEST_EXPECTANCY_R, BACKTEST_PF,
     BACKTEST_AVG_WIN_R, BACKTEST_AVG_LOSS_R,
     BACKTEST_TRADES_PER_DAY, BACKTEST_START_EQUITY,
     pairs_for_session as cfg_pairs_for_session,
+    BREAKOUT_WINDOW_5M, API_DELAY_SECS,
+    SPREAD_FILTER_ENABLED, MAX_SPREAD_PCT, MIN_TURNOVER_USDT,
+    FUNDING_FILTER_ENABLED, FUNDING_EXTREME_RATE, FUNDING_EXTREME_NEG,
+    MAX_C2_BODY_RATIO,
+    C3_RETEST_REQUIRED,
 )
+from live.pair_scanner import scan_and_configure
 from live import exchange as exch
 from live import logger as log
 from live.state import BotState
@@ -46,6 +56,21 @@ from live.strategy import (
 from live import trades as trade_log
 from live import trade_logger as tlog
 from live.guardian import GuardianAgent
+from live.session_reviewer import review_session as _journal_review
+from live.session_reviewer import get_session_exits as _get_session_exits
+from live.growth_tracker import (
+    record_session_end as _growth_session_end,
+    log_dashboard as _growth_dashboard,
+    check_pace_alert as _growth_pace_alert,
+    init_tracker as _growth_init,
+)
+from live.edge_score import (
+    score_entry as _edge_score,
+    should_block as _edge_block,
+    format_score as _edge_fmt,
+)
+from live.pair_intel import get_congestion_zones_for_trade, get_sr_context_for_trade, PairProfile
+from live.dynamic_engine import DynamicEngine
 
 
 # ═══════════════════════════════════════════════════════════
@@ -224,6 +249,9 @@ def _startup_report(equity: float):
                     equity_after = float(row.get("equity_after") or 0)
                     equity_before = float(entry.get("equity_before") or 0)
 
+                    tf = "5m"
+                    tf_type = "5M"
+
                     trades.append({
                         "symbol": entry["symbol"].replace("/USDT:USDT", ""),
                         "symbol_full": entry["symbol"],
@@ -237,6 +265,8 @@ def _startup_report(equity: float):
                         "time": row["timestamp_utc"][11:16],
                         "equity_after": equity_after,
                         "pnl_usd": round(equity_after - equity_before, 2) if equity_after and equity_before else 0,
+                        "tf": tf,
+                        "tf_type": tf_type,
                     })
     except Exception as e:
         log.warning(f"Could not parse trade history: {e}")
@@ -325,13 +355,15 @@ def _startup_report(equity: float):
             trades_to_x2 = int(math.ceil(math.log(2) / math.log(g)))
             trades_to_x5 = int(math.ceil(math.log(5) / math.log(g)))
             trades_to_x10 = int(math.ceil(math.log(10) / math.log(g)))
+            trades_to_x1000 = int(math.ceil(math.log(1000) / math.log(g)))
             days_to_x10 = trades_to_x10 / max(trades_per_day, 0.1)
+            days_to_x1000 = trades_to_x1000 / max(trades_per_day, 0.1)
         else:
-            trades_to_x2 = trades_to_x5 = trades_to_x10 = None
-            days_to_x10 = None
+            trades_to_x2 = trades_to_x5 = trades_to_x10 = trades_to_x1000 = None
+            days_to_x10 = days_to_x1000 = None
     else:
-        trades_to_x2 = trades_to_x5 = trades_to_x10 = None
-        days_to_x10 = None
+        trades_to_x2 = trades_to_x5 = trades_to_x10 = trades_to_x1000 = None
+        days_to_x10 = days_to_x1000 = None
 
     # Net P&L
     net_pnl = equity - start_equity
@@ -364,6 +396,24 @@ def _startup_report(equity: float):
             log.info(f"    {sname:<8} {st:>3} trades  {ss['w']:>2}W/{ss['l']:>2}L  "
                      f"WR={swr:>5.1f}%  E(R)={savg:+.3f}")
 
+    # Micro-filter stats (from skipped_trades.csv)
+    if os.path.exists(SKIP_LOG):
+        try:
+            skip_counts = defaultdict(int)
+            with open(SKIP_LOG, "r") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    skip_counts[row.get("reason", "unknown")] += 1
+            total_skipped = sum(skip_counts.values())
+            if total_skipped > 0:
+                log.info("-" * 70)
+                log.info(f"  MICRO-FILTER STATS  (taken={total} | filtered={total_skipped} | "
+                         f"selectivity={total/(total+total_skipped)*100:.0f}%)")
+                for reason, cnt in sorted(skip_counts.items(), key=lambda x: -x[1]):
+                    log.info(f"    {reason:<30} {cnt:>4} blocked")
+        except Exception:
+            pass
+
     # Per-pair breakdown (sorted by total R)
     log.info("-" * 70)
     log.info("  PAIR PERFORMANCE")
@@ -376,13 +426,14 @@ def _startup_report(equity: float):
         log.info(f"    {marker} {pname:<16} {pt:>2} trades  {ps['w']:>2}W/{ps['l']:>2}L  "
                  f"WR={pwr:>5.1f}%  totalR={ps['r']:+.3f}  E(R)={pavg:+.3f}")
 
-    # Recent trades
+    # Recent trades (with timeframe tag)
     log.info("-" * 70)
     log.info("  RECENT TRADES")
     for t in trades[-10:]:
         icon = "✓" if t["result"] == "WIN" else "✗"
+        tf_tag = f"[{t.get('tf', '5m')}]"
         log.info(f"    {icon} {t['date']} {t['time']}  {t['symbol']:<16} "
-                 f"{t['direction']:<5} {t['session']:<7} "
+                 f"{t['direction']:<5} {t['session']:<7} {tf_tag:<5} "
                  f"R={t['r_mult']:+.3f}  ${t['equity_after']:.2f}")
 
     # Projections
@@ -393,6 +444,7 @@ def _startup_report(equity: float):
         log.info(f"    x2:    {trades_to_x2:>6} trades  (~{trades_to_x2/max(trades_per_day,0.1):.0f} days)")
         log.info(f"    x5:    {trades_to_x5:>6} trades  (~{trades_to_x5/max(trades_per_day,0.1):.0f} days)")
         log.info(f"    x10:   {trades_to_x10:>6} trades  (~{days_to_x10:.0f} days)")
+        log.info(f"    x1000: {trades_to_x1000:>6} trades  (~{days_to_x1000:.0f} days)")
     else:
         log.info("    Insufficient data or negative expectancy — no projection available")
     log.info("=" * 70)
@@ -412,16 +464,16 @@ def _startup_report(equity: float):
     bt_g = bt_g_win * bt_g_loss
     bt_trades_x10 = int(math.ceil(math.log(10) / math.log(bt_g))) if bt_g > 1 else 9999
     bt_days_x10   = bt_trades_x10 / max(BACKTEST_TRADES_PER_DAY, 0.1)
+    bt_trades_x1000 = int(math.ceil(math.log(1000) / math.log(bt_g))) if bt_g > 1 else 9999
+    bt_days_x1000   = bt_trades_x1000 / max(BACKTEST_TRADES_PER_DAY, 0.1)
 
-    # Live growth rate (g already computed above)
-    live_g = g if (wr > 0 and avg_win_r > 0 and avg_loss_r > 0 and 'g' in dir() and g > 1) else 1.0
-    # re-derive safely
+    # Live growth rate
+    live_g = 1.0
     if wr > 0 and avg_win_r > 0 and avg_loss_r > 0:
         _lg_win  = (1 + risk_pct * avg_win_r) ** (wr / 100)
         _lg_loss = (1 - risk_pct * avg_loss_r) ** (1 - wr / 100)
         live_g = _lg_win * _lg_loss
 
-    # Expected equity after N trades at backtest rate
     # Expected equity after N trades at backtest rate
     bt_expected_equity = start_equity * (bt_g ** total)
     equity_delta = equity - bt_expected_equity
@@ -483,9 +535,10 @@ def _startup_report(equity: float):
         speed_clr = DM
 
     # Print the tracker
-    log.info(f"{BG}{'═' * 70}{RS}")
-    log.info(f"{BG}  🌿 FCB PERFORMANCE TRACKER — Expected vs Actual{RS}")
-    log.info(f"{BG}{'═' * 70}{RS}")
+    log.info(f"{BG}{'=' * 70}{RS}")
+    log.info(f"{BG}  FCB PERFORMANCE TRACKER -- Expected vs Actual{RS}")
+    log.info(f"{BG}  5m FCB | Dynamic Scanner | Micro-filters: ON{RS}")
+    log.info(f"{BG}{'=' * 70}{RS}")
     log.info(f"{G}{'':>18}{'BACKTEST':>12}    {'LIVE':>12}    DELTA{RS}")
     log.info(f"{G}  Win Rate:{RS}     {BACKTEST_WR:>10.1f}%    {wr:>10.1f}%     {_arrow(wr, BACKTEST_WR, pp=True)}")
     log.info(f"{G}  Expectancy:{RS}   {BACKTEST_EXPECTANCY_R:>+10.3f}R    {avg_r:>+10.3f}R     {_arrow(avg_r, BACKTEST_EXPECTANCY_R, suffix='R')}")
@@ -500,20 +553,28 @@ def _startup_report(equity: float):
     bt_pnl_pct = (bt_expected_equity - start_equity) / start_equity * 100
     log.info(f"    Return:           {pnl_pct:>+9.2f}%      {DM}(expected: {bt_pnl_pct:+.2f}%){RS}")
     log.info(f"{G}{'-' * 70}{RS}")
-    log.info(f"{G}  ROAD TO x10  ($150 → $1,500){RS}")
-    log.info(f"    Trades done:      {total:>6} / {bt_trades_x10}  {DM}({pct_trades:.1f}% of backtest path){RS}")
-    log.info(f"    Days elapsed:     {days_elapsed:>6} / {bt_days_x10:.0f}   {DM}({pct_days:.1f}% of expected timeline){RS}")
+    log.info(f"{G}  ROAD TO x10  (${start_equity:.0f} -> ${start_equity*10:,.0f})  |  x1000  (${start_equity:.0f} -> ${start_equity*1000:,.0f}){RS}")
+    log.info(f"    Trades done:      {total:>6} / {bt_trades_x10} (x10)   {total:>6} / {bt_trades_x1000} (x1000)")
+    pct_x1000 = (total / bt_trades_x1000 * 100) if bt_trades_x1000 else 0
+    log.info(f"    Progress:         {pct_trades:>5.1f}% to x10          {pct_x1000:>5.1f}% to x1000")
+    log.info(f"    Days elapsed:     {days_elapsed:>6} / {bt_days_x10:.0f} (x10)   {days_elapsed:>6} / {bt_days_x1000:.0f} (x1000)")
     if live_trades_x10 and live_days_x10:
+        live_trades_x1000_val = trades_to_x1000 if trades_to_x1000 else None
+        live_days_x1000_val = days_to_x1000 if days_to_x1000 else None
         pace_arrow = UP if live_trades_x10 < bt_trades_x10 else DN
-        log.info(f"    At LIVE pace:     {live_trades_x10:>6} trades  (~{live_days_x10:.0f} days)")
-        log.info(f"    At BACKTEST pace: {bt_trades_x10:>6} trades  (~{bt_days_x10:.0f} days)")
+        log.info(f"    At LIVE pace:     {live_trades_x10:>6} trades  (~{live_days_x10:.0f} days) to x10")
+        if live_trades_x1000_val and live_days_x1000_val:
+            log.info(f"                      {live_trades_x1000_val:>6} trades  (~{live_days_x1000_val:.0f} days) to x1000")
+        log.info(f"    At BACKTEST pace: {bt_trades_x10:>6} trades  (~{bt_days_x10:.0f} days) to x10")
+        log.info(f"                      {bt_trades_x1000:>6} trades  (~{bt_days_x1000:.0f} days) to x1000")
         saved = bt_days_x10 - live_days_x10
         if saved >= 0:
             log.info(f"    Time saved:       {pace_arrow}{saved:>+.0f} days faster to x10{RS}")
         else:
             log.info(f"    Time added:       {pace_arrow}{saved:>+.0f} days slower to x10{RS}")
     else:
-        log.info(f"    At BACKTEST pace: {bt_trades_x10:>6} trades  (~{bt_days_x10:.0f} days)")
+        log.info(f"    At BACKTEST pace: {bt_trades_x10:>6} trades  (~{bt_days_x10:.0f} days) to x10")
+        log.info(f"                      {bt_trades_x1000:>6} trades  (~{bt_days_x1000:.0f} days) to x1000")
         log.info(f"    Live projection:  insufficient data")
     log.info(f"{G}{'-' * 70}{RS}")
     log.info(f"    Status:  {status_icon}  {status_label}  — {status_note}")
@@ -533,6 +594,22 @@ class FCBBot:
         self.guardian: Optional[GuardianAgent] = None
         self.profit_guardian: Optional[ProfitGuardian] = None
         self._running = True
+        self._5m_entered: Dict[str, set] = {}  # session → set of pairs already entered
+        self._5m_initial_done: Dict[str, bool] = {}  # session → initial C2 scan done
+        self._scanned_sessions: Dict[str, list] = {}  # session → scanned pair list
+        self.pair_profiles: Dict[str, PairProfile] = {}  # symbol → intel profile from scanner
+        self._pending_retests: Dict[str, dict] = {}  # pair → C2 breakout info awaiting C3 retest
+        self._retest_attempted: set = set()  # pairs that already had breakout+retest attempt this session
+
+        # Dynamic Hybrid Engine — real-time adaptive intelligence
+        try:
+            from live.config import DYN_ENABLED, DYN_START_EQUITY
+            if DYN_ENABLED:
+                self.dynamic = DynamicEngine(start_equity=DYN_START_EQUITY)
+            else:
+                self.dynamic = None
+        except (ImportError, AttributeError):
+            self.dynamic = None
 
     def connect(self):
         """Connect to exchange and prepare all pairs."""
@@ -554,7 +631,9 @@ class FCBBot:
             return
 
         # Set leverage + margin mode for all pairs
+        # Skip pairs whose max leverage < required (instead of clamping)
         log.info(f"Configuring {len(ALL_PAIRS)} pairs (leverage={LEVERAGE}x, isolated margin)...")
+        excluded_pairs = []
         for pair in ALL_PAIRS:
             try:
                 exch.set_leverage(self.ex, pair, LEVERAGE)
@@ -564,8 +643,16 @@ class FCBBot:
                 log.debug(f"  {pair}: OK | min_qty={info['min_qty']} "
                           f"price_prec={info['price_precision']} "
                           f"amt_prec={info['amount_precision']}")
+            except ValueError as e:
+                # Leverage too low — exclude this pair entirely
+                excluded_pairs.append(pair)
+                log.warning(f"  {pair}: EXCLUDED — {e}")
             except Exception as e:
                 log.error(f"  {pair}: FAILED to configure — {e}")
+
+        if excluded_pairs:
+            log.info(f"Excluded {len(excluded_pairs)} pairs (max leverage < {LEVERAGE}x): "
+                     f"{', '.join(excluded_pairs[:10])}{'...' if len(excluded_pairs) > 10 else ''}")
 
         log.info(f"Ready. {len(self.market_info)} pairs configured.")
         _write_activity("READY", f"{len(self.market_info)} pairs configured",
@@ -589,6 +676,17 @@ class FCBBot:
         # Print trade history report from persistent trades.csv
         equity = exch.get_equity(self.ex)
         _startup_report(equity)
+
+        # x10 Growth Tracker dashboard
+        try:
+            if not os.path.exists("live/growth_state.json"):
+                _growth_init(start_equity=equity)
+            _growth_dashboard(equity)
+            alert = _growth_pace_alert(equity)
+            if alert:
+                log.warning(f"  GROWTH ALERT: {alert}")
+        except Exception as e:
+            log.warning(f"Growth tracker error: {e}")
 
         # Sync state totals from trades.csv so state.json
         # reflects reality even after a restart/state reset
@@ -702,6 +800,15 @@ class FCBBot:
         """One iteration of the main loop."""
         self.state.check_new_day()
 
+        # Reset 5m continuous scan + scanner tracking per session
+        if self.state.date != getattr(self, '_5m_last_date', None):
+            self._5m_entered.clear()
+            self._5m_initial_done.clear()
+            self._scanned_sessions.clear()
+            self._pending_retests.clear()
+            self._retest_attempted.clear()
+            self._5m_last_date = self.state.date
+
         # Check equity floor
         if self.state.equity_floor_hit:
             log.critical("Equity floor hit — bot is stopped. Fund account to resume.")
@@ -722,8 +829,30 @@ class FCBBot:
             time.sleep(min(wait, 300))
             return
 
-        session_pairs = cfg_pairs_for_session(sess)
+        # Dynamic pair scanning — scan before each session
+        if sess not in self._scanned_sessions:
+            log.info(f"━━━ SCANNING PAIRS for {sess.upper()} session ━━━")
+            try:
+                scanned_syms, scanned_pairs, scanned_profiles = scan_and_configure(self.ex, self.state, session=sess)
+                self._scanned_sessions[sess] = scanned_syms
+                # Store intel profiles for entry-time context awareness
+                self.pair_profiles.update(scanned_profiles)
+                # Update market_info for newly discovered pairs
+                for sym, cls in scanned_pairs:
+                    if sym not in self.market_info:
+                        try:
+                            info = exch.get_market_info(self.ex, sym)
+                            self.market_info[sym] = info
+                        except Exception as e:
+                            log.warning(f"  {sym}: market info failed — {e}")
+                        time.sleep(API_DELAY_SECS)
+            except Exception as e:
+                log.error(f"Scanner failed: {e} — falling back to static pairs")
+                self._scanned_sessions[sess] = cfg_pairs_for_session(sess)
+
+        session_pairs = self._scanned_sessions.get(sess, [])
         if not session_pairs:
+            log.warning(f"No pairs for {sess} — sleeping")
             time.sleep(60)
             return
 
@@ -744,36 +873,70 @@ class FCBBot:
             wait_for_candle_close()
             return
 
-        # ── Phase 2: Check breakouts (minute 10+) ──
-        if 10 <= minute < 15:
-            _write_activity("SCANNING", f"Checking breakouts",
-                            session=sess, pairs=len(session_pairs),
-                            positions=len(self.state.pending_entries))
-            self._check_breakouts(sess, session_pairs)
+        # ── Phase 2: Continuous breakout scanning (5m only) ──
+        outer_window = BREAKOUT_WINDOW_5M
 
-            # NOTE: Do NOT cancel scale-in orders here — they need to stay
-            # alive for the duration of the session so price can retrace to
-            # the FC boundary. Scale orders are cancelled when:
-            #   - Base position resolves (in _resolve_positions)
-            #   - Bot restarts (in _cleanup_stale_orders)
-            #   - Next session starts (in _resolve_positions → _cancel_scale_order)
+        if 10 <= minute < outer_window:
+            # Initialize tracking for this session
+            if sess not in self._5m_entered:
+                self._5m_entered[sess] = set()
 
-            # Session report
-            self._print_session_report(sess)
+            # ── 5m scanning (only within 5m window) ──
+            if minute < BREAKOUT_WINDOW_5M:
+                if sess not in self._5m_initial_done:
+                    # First scan at minute 10 (C2 close)
+                    _write_activity("SCANNING", f"Checking 5m breakouts (C2)",
+                                    session=sess, pairs=len(session_pairs),
+                                    positions=len(self.state.pending_entries))
+                    self._check_breakouts(sess, session_pairs)
+                    self._5m_initial_done[sess] = True
 
-            # After NY session: daily report + equity floor check
+                    # Print 5m session report
+                    self._print_session_report(sess)
+                else:
+                    # Subsequent scans — check remaining pairs that haven't broken out
+                    remaining = [p for p in session_pairs
+                                 if p not in self._5m_entered.get(sess, set())
+                                 and self.first_candles.get(p) is not None
+                                 and self.first_candles[p].valid
+                                 and self.state.can_trade(p, sess, MAX_TRADES_SESSION, MAX_TRADES_DAY)]
+
+                    if remaining:
+                        _write_activity("SCANNING", f"Re-scanning {len(remaining)} pairs (C{minute//5+1})",
+                                        session=sess, pairs=len(remaining),
+                                        positions=len(self.state.pending_entries))
+                        log.info(f"━━━ {sess.upper()} — Continuous scan: {len(remaining)} pairs "
+                                 f"waiting for breakout (minute {minute}) ━━━")
+                        self._check_breakouts(sess, remaining)
+                    else:
+                        log.debug(f"All pairs entered or filtered — no remaining 5m targets")
+
+                    # Also resolve any positions
+                    self._resolve_positions()
+
+            # Wait for next 5m candle close, then loop back
+            wait_for_candle_close()
+            return
+
+        # ── Phase 3: All windows closed — transition to monitoring ──
+        if minute >= outer_window and sess in self._5m_initial_done:
+            # Log 5m stats if not already logged
+            if not getattr(self, '_5m_window_logged', {}).get(sess):
+                entered_5m = len(self._5m_entered.get(sess, set()))
+                total_5m = sum(1 for p in session_pairs
+                               if self.first_candles.get(p) and self.first_candles[p].valid)
+                log.info(f"━━━ {sess.upper()} — 5m window closed "
+                         f"({BREAKOUT_WINDOW_5M}m). Entered {entered_5m}/{total_5m} valid pairs ━━━")
+
+            # End-of-session flow
             if sess == "ny":
                 self._print_daily_report()
                 self._check_equity_floor()
-                # Guardian session debrief
                 if self.guardian:
                     s = self.state.daily_summary()
                     self.guardian.session_debrief(
                         sess, s["entries_today"], s["wins"], s["losses"], []
                     )
-
-            # Monitor scale-in fills for the remainder of the session,
-            # then sleep until next session
             self._monitor_and_sleep(sess)
             return
 
@@ -794,6 +957,9 @@ class FCBBot:
 
     def _capture_first_candles(self, session: str, pairs: List[str]):
         """Fetch the first 5m candle for each pair in this session."""
+        # New session = new FCs → clear retest state from previous session
+        self._pending_retests.clear()
+        self._retest_attempted.clear()
         log.info(f"━━━ SESSION {session.upper()} — Capturing first candles for {len(pairs)} pairs ━━━")
 
         # Update equity
@@ -802,6 +968,21 @@ class FCBBot:
             self.state.update_equity(equity)
             log.info(f"Current equity: ${equity:.2f}")
             log.session_start(session, equity, len(pairs))
+
+            # ── Initialize Dynamic Engine for this session ──
+            if self.dynamic:
+                try:
+                    _btc_tk = self.ex.fetch_ticker("BTC/USDT:USDT")
+                    _d_btc_chg = float(_btc_tk.get("percentage", 0) or 0)
+                    _d_btc_price = float(_btc_tk.get("last", 0))
+                except Exception:
+                    _d_btc_chg, _d_btc_price = 0.0, 0.0
+                self.dynamic.session_start(
+                    session=session, equity=equity,
+                    btc_chg=_d_btc_chg, btc_price=_d_btc_price,
+                )
+                log.info(f"  DYN ENGINE: {self.dynamic.status_line(equity)}")
+
             # Structured JSONL session open
             _cls_a = sum(1 for p in pairs if self.state.get_pair_class(p) == "A")
             _cls_b = len(pairs) - _cls_a
@@ -848,6 +1029,8 @@ class FCBBot:
             except Exception as e:
                 log.error(f"  {pair}: error fetching candle — {e}")
 
+            time.sleep(API_DELAY_SECS)  # rate-limit pacing
+
         valid = sum(1 for fc in self.first_candles.values() if fc.valid)
         log.info(f"Captured {len(self.first_candles)} candles, {valid} valid (range >= 0.3%)")
 
@@ -864,35 +1047,145 @@ class FCBBot:
                 log.error("Cannot determine equity — skipping all trades")
                 return
 
+        # ── Learning agent: capture BTC context once per batch ──
+        _btc_price, _btc_chg = 0.0, 0.0
+        try:
+            _btc_tk = self.ex.fetch_ticker("BTC/USDT:USDT")
+            _btc_price = float(_btc_tk.get("last", 0))
+            _btc_chg = float(_btc_tk.get("percentage", 0) or 0)
+        except Exception:
+            pass
+        _sess_start_h = SESSIONS.get(session, (0, 0))[0]
+        _now = datetime.now(timezone.utc)
+        _mins_into = (_now.hour - _sess_start_h) * 60 + _now.minute
+        if _mins_into < 0:
+            _mins_into += 24 * 60  # handle midnight wrap
+
         entries = 0
 
         for pair in pairs:
-            fc = self.first_candles.get(pair)
+            # ══════════════════════════════════════════════════════
+            #  C3 RETEST GATE — check pending retests from last scan
+            # ══════════════════════════════════════════════════════
+            _is_retest_entry = False
+            _retest_data = self._pending_retests.pop(pair, None)
+            _c3_candles = None
+            _c3 = None
+
+            if _retest_data is not None:
+                # This pair had a C2 breakout on previous scan — check C3
+                try:
+                    _c3_candles = exch.fetch_latest_candles(self.ex, pair, n=6)
+                    time.sleep(API_DELAY_SECS)
+                    if not _c3_candles:
+                        log.info(f"  {pair}: C3 retest — no candle data, discarding")
+                        continue
+                    _c3 = _c3_candles[-1]
+                    _fc_r = _retest_data["fc"]
+                    _dir_r = _retest_data["direction"]
+                    if _dir_r == "long":
+                        _retest_ok = (_c3["low"] <= _fc_r.high
+                                      and _c3["close"] > _fc_r.high)
+                    else:
+                        _retest_ok = (_c3["high"] >= _fc_r.low
+                                      and _c3["close"] < _fc_r.low)
+                    if _retest_ok:
+                        log.info(f"  ✅ {pair}: C3 RETEST CONFIRMED — "
+                                 f"{_dir_r} entry at C3 close={_c3['close']:.6f}")
+                        _is_retest_entry = True
+                    else:
+                        log.info(f"  ❌ {pair}: C3 retest FAILED — no entry "
+                                 f"(C3: L={_c3['low']:.6f} H={_c3['high']:.6f} "
+                                 f"C={_c3['close']:.6f})")
+                        continue
+                except Exception as e:
+                    log.warning(f"  {pair}: C3 retest check error: {e}")
+                    continue
+            elif C3_RETEST_REQUIRED and pair in self._retest_attempted:
+                # Already had breakout+retest this session — one shot per FC
+                continue
+
+            if _is_retest_entry:
+                fc = _retest_data["fc"]
+            else:
+                fc = self.first_candles.get(pair)
             if fc is None or not fc.valid:
                 continue
 
             if not self.state.can_trade(pair, session, MAX_TRADES_SESSION, MAX_TRADES_DAY):
                 continue
 
+            # ── Position cap ──
+            if len(self.state.pending_entries) >= MAX_CONCURRENT_POSITIONS:
+                log.info(f"  █ Position cap reached ({MAX_CONCURRENT_POSITIONS}) — "
+                         f"skipping remaining pairs")
+                break
+
             # ── Determine pair class and risk tier ──
             pair_class = self.state.get_pair_class(pair)
             risk_pct = RISK_PCT_A if pair_class == "A" else RISK_PCT_B
             scale_risk_pct = SCALE_RISK_PCT_A if pair_class == "A" else SCALE_RISK_PCT_B
 
+            # ── B-class slot cap (margin reservation for A) ──
+            if pair_class == "B":
+                b_open = sum(1 for e in self.state.pending_entries
+                             if isinstance(e, dict) and e.get("pair_class") == "B")
+                if b_open >= MAX_CONCURRENT_B:
+                    log.info(f"  {pair}: B-class cap ({MAX_CONCURRENT_B}) — "
+                             f"reserving slots for A entries")
+                    continue
+
             try:
-                # Fetch latest candle (candle 2 should now be closed)
-                candles = exch.fetch_latest_candles(self.ex, pair, n=3)
-                if not candles:
-                    continue
+                if _is_retest_entry:
+                    # ── RETEST ENTRY: C3 confirmed — use stored C2 data ──
+                    candles = _c3_candles       # C3 + history (for trend alignment)
+                    candle2 = _retest_data["c2_candle"]  # original C2 for micro-filters
+                    c2_close = _c3["close"]     # enter at C3 close (better entry, closer to FC)
+                    direction = _retest_data["direction"]
+                    log.info(f"  🔄 {pair}: RETEST ENTRY — "
+                             f"C2 was {_retest_data['c2_close']:.6f}, "
+                             f"C3 entry={c2_close:.6f} ({direction})")
+                else:
+                    # ── NORMAL: Fetch latest candles and check for breakout ──
+                    # [pre3, pre2, pre1, FC, C2] = 5 candles minimum
+                    candles = exch.fetch_latest_candles(self.ex, pair, n=6)
+                    time.sleep(API_DELAY_SECS)  # rate-limit pacing
+                    if not candles:
+                        continue
 
-                candle2 = candles[-1]
-                c2_close = candle2["close"]
+                    candle2 = candles[-1]
+                    c2_close = candle2["close"]
 
-                direction = check_breakout(fc, c2_close)
-                if direction is None:
-                    log.info(f"  {pair}: no breakout (close={c2_close:.6f}, "
-                             f"range=[{fc.low:.6f}, {fc.high:.6f}])")
-                    continue
+                    direction = check_breakout(fc, c2_close)
+                    if direction is None:
+                        # Volume intel for watchlist awareness
+                        c2_vol = candle2.get("volume", 0)
+                        fc_vol = fc.volume if fc.volume > 0 else 1
+                        vr = c2_vol / fc_vol if fc_vol > 0 else 0
+                        dist_high = abs(c2_close - fc.high) / fc.high * 100 if fc.high > 0 else 0
+                        dist_low = abs(c2_close - fc.low) / fc.low * 100 if fc.low > 0 else 0
+                        near = "HIGH" if dist_high < dist_low else "LOW"
+                        near_pct = min(dist_high, dist_low)
+                        vol_flag = " ⚡VOL" if vr >= 1.5 and near_pct < 0.3 else ""
+                        log.info(f"  {pair}: no breakout (close={c2_close:.6f}, "
+                                 f"range=[{fc.low:.6f}, {fc.high:.6f}]) "
+                                 f"vol={vr:.1f}x near_{near}={near_pct:.2f}%{vol_flag}")
+                        continue
+
+                    # ── C3 RETEST: queue breakout for next scan ──
+                    if C3_RETEST_REQUIRED:
+                        self._pending_retests[pair] = {
+                            "fc": fc,
+                            "direction": direction,
+                            "c2_candle": candle2,
+                            "c2_close": c2_close,
+                            "candles": candles,
+                            "pair_class": pair_class,
+                        }
+                        self._retest_attempted.add(pair)
+                        log.info(f"  ⏳ {pair}: {direction.upper()} breakout at "
+                                 f"{c2_close:.6f} — queued for C3 retest confirmation")
+                        continue
 
                 # Compute signal with position sizing
                 info = self.market_info.get(pair, {})
@@ -913,6 +1206,196 @@ class FCBBot:
                     log.warning(f"  {pair}: signal rejected (position too small)")
                     continue
 
+                # ═══════════════════════════════════════════════════
+                #  PRE-ENTRY CONFIDENCE CHECK — never trade blind
+                # ═══════════════════════════════════════════════════
+
+                # ── TREND ALIGNMENT from pre-FC candles ──
+                # Oracle's 3rd strongest weight (+0.153). Use 3 pre-FC candles
+                # to determine if recent momentum matches breakout direction.
+                _trend_aligned = False
+                _pre_fc_candles = candles[:-2]  # everything before FC and C2
+                if len(_pre_fc_candles) >= 2:
+                    # Net direction of the 2-3 candles preceding FC
+                    _pre_net = _pre_fc_candles[-1]["close"] - _pre_fc_candles[0]["open"]
+                    if direction == "long" and _pre_net > 0:
+                        _trend_aligned = True
+                    elif direction == "short" and _pre_net < 0:
+                        _trend_aligned = True
+
+                # ── INTEL CONTEXT from pair profile (scanner phase) ──
+                _pair_profile = self.pair_profiles.get(pair)
+                _ctx_flags = []
+                _ctx_score = 0  # context score: positive=confident, negative=hostile
+                _has_intel = _pair_profile is not None
+
+                if _has_intel:
+                    # 1. Congestion zone blocking TP path?
+                    _tp_price = signal.take_profit
+                    _blocking_zones = get_congestion_zones_for_trade(
+                        _pair_profile, c2_close, _tp_price, signal.stop_loss
+                    )
+                    if _blocking_zones:
+                        _strongest = max(_blocking_zones, key=lambda z: z.strength)
+                        _ctx_flags.append(
+                            f"TP_BLOCKED(zone@{_strongest.midpoint:.4f} "
+                            f"str={_strongest.strength:.0%})"
+                        )
+                        _ctx_score -= 15  # congestion in profit path
+
+                    # 2. Volatility regime
+                    if _pair_profile.atr_ratio < 0.7:
+                        _ctx_flags.append(f"DEAD_VOL(atr×{_pair_profile.atr_ratio:.2f})")
+                        _ctx_score -= 15  # dead vol = trail captures nothing
+                    elif _pair_profile.atr_ratio >= 1.3:
+                        _ctx_flags.append(f"HOT_VOL(atr×{_pair_profile.atr_ratio:.2f})")
+                        _ctx_score += 10  # elevated vol = bigger R-moves
+                    elif _pair_profile.atr_ratio >= 1.0:
+                        _ctx_score += 3   # normal — mild positive
+
+                    # 3. Breakout follow-through quality
+                    if _pair_profile.breakout_follow_pct < 0.20:
+                        _ctx_flags.append(f"BAD_FOLLOW({_pair_profile.breakout_follow_pct:.0%})")
+                        _ctx_score -= 15  # <20% follow = this pair doesn't breakout
+                    elif _pair_profile.breakout_follow_pct < 0.30:
+                        _ctx_flags.append(f"WEAK_FOLLOW({_pair_profile.breakout_follow_pct:.0%})")
+                        _ctx_score -= 5
+                    elif _pair_profile.breakout_follow_pct >= 0.45:
+                        _ctx_flags.append(f"STRONG_FOLLOW({_pair_profile.breakout_follow_pct:.0%})")
+                        _ctx_score += 10
+                    else:
+                        _ctx_score += 3   # normal follow
+
+                    # 4. Session momentum alignment
+                    if _pair_profile.session_trend_strength >= 0.4:
+                        _ctx_flags.append(f"SESS_TREND({_pair_profile.session_trend_strength:.0%})")
+                        _ctx_score += 5
+                    elif _pair_profile.session_trend_strength < 0.15:
+                        _ctx_flags.append(f"SESS_CHOP({_pair_profile.session_trend_strength:.0%})")
+                        _ctx_score -= 5   # pair chops in this session
+
+                    # 5. POC proximity (volume magnet)
+                    if _pair_profile.poc_distance_pct < 0.3:
+                        _ctx_flags.append(f"AT_POC({_pair_profile.poc_distance_pct:.1f}%)")
+                        _ctx_score -= 10  # sitting on max-volume level
+                    elif _pair_profile.poc_distance_pct > 2.0:
+                        _ctx_score += 5   # well clear of volume gravity
+
+                    # 6. Congestion right at current price
+                    if _pair_profile.zone_near_entry:
+                        _ctx_flags.append("CONGESTION_AT_ENTRY")
+                        _ctx_score -= 10
+
+                    # 7. High reversal rate
+                    if _pair_profile.breakout_reversal_pct > 0.40:
+                        _ctx_flags.append(f"HIGH_REVERSAL({_pair_profile.breakout_reversal_pct:.0%})")
+                        _ctx_score -= 10
+
+                    # 8. Support & Resistance context
+                    _sr_ctx = get_sr_context_for_trade(
+                        _pair_profile, c2_close, signal.take_profit,
+                        signal.stop_loss, direction
+                    )
+                    _ctx_score += _sr_ctx["score_adj"]
+                    _ctx_flags.extend(_sr_ctx["flags"])
+                    if _sr_ctx["blocking"]:
+                        _n_blockers = len(_sr_ctx["blocking"])
+                        _max_str = max(l.strength_score for l in _sr_ctx["blocking"])
+                        log.info(f"  S/R {pair}: {_n_blockers} level(s) blocking TP path "
+                                 f"(max_str={_max_str:.2f})")
+                    if _sr_ctx.get("at_level"):
+                        _lev = _sr_ctx["at_level"]
+                        log.info(f"  S/R {pair}: entry near {_lev.level_type} "
+                                 f"@ {_lev.price:.4f} ({_lev.strength}, {_lev.touches}t)")
+                else:
+                    # No intel data — flag it. B-class without intel = unknown risk.
+                    _ctx_flags.append("NO_INTEL")
+                    if pair_class == "B":
+                        _ctx_score -= 10  # B-class without intel = risky blind entry
+
+                # ── BTC regime — alts follow BTC, ignore at your peril ──
+                # _btc_chg is 24h % change, fetched once per session scan
+                if _btc_chg <= -5.0 and direction == "long":
+                    _ctx_flags.append(f"BTC_CRASH({_btc_chg:+.1f}%)")
+                    _ctx_score -= 20  # alt longs during BTC crash → near-certain loss
+                elif _btc_chg <= -3.0 and direction == "long":
+                    _ctx_flags.append(f"BTC_DUMP({_btc_chg:+.1f}%)")
+                    _ctx_score -= 10  # BTC weak, alt longs risky
+                elif _btc_chg >= 5.0 and direction == "short":
+                    _ctx_flags.append(f"BTC_RALLY({_btc_chg:+.1f}%)")
+                    _ctx_score -= 15  # shorting alts during BTC rip
+                elif _btc_chg >= 3.0 and direction == "short":
+                    _ctx_flags.append(f"BTC_PUMP({_btc_chg:+.1f}%)")
+                    _ctx_score -= 8   # BTC strong, alt shorts headwind
+                elif abs(_btc_chg) <= 1.5:
+                    _ctx_score += 3   # calm BTC → alts trade on own merit
+
+                # ── Trend alignment scoring (asymmetric: counter-trend is a real penalty) ──
+                if _trend_aligned:
+                    _ctx_flags.append("TREND_ALIGNED")
+                    _ctx_score += 8   # momentum backing the breakout
+                else:
+                    _ctx_flags.append("COUNTER_TREND")
+                    _ctx_score -= 5   # fighting the trend = lower probability
+
+                # ── COMPOSITE CONFIDENCE GRADE ──
+                _ctx_grade = ("STRONG" if _ctx_score >= 15
+                              else "GOOD" if _ctx_score >= 5
+                              else "NEUTRAL" if _ctx_score >= -5
+                              else "WEAK" if _ctx_score >= -15
+                              else "HOSTILE")
+                _ctx_str = " | ".join(_ctx_flags) if _ctx_flags else "no_data"
+                log.info(f"  CTX {pair}: {_ctx_grade} ({_ctx_score:+d}) | {_ctx_str}")
+
+                # ═══════════════════════════════════════════════════
+                #  CONFIDENCE GATE — hard-block hostile context
+                # ═══════════════════════════════════════════════════
+                # Don't enter blindly. If everything says the environment is
+                # against us, stepping aside is smarter than entering small.
+                if _ctx_score <= -25:
+                    log.info(f"  BLOCK {pair}: HOSTILE context ({_ctx_score:+d}) "
+                             f"— environment too dangerous, skipping")
+                    self._log_skipped_trade(
+                        pair, session, direction, c2_close, fc,
+                        signal, 0.0, f"context_hostile_{_ctx_score}",
+                    )
+                    continue
+
+                # ── CONTEXT RISK ADJUSTMENT ──
+                if _ctx_score >= 15:
+                    _ctx_risk_mult = 1.0     # strong conviction — full size
+                elif _ctx_score >= 5:
+                    _ctx_risk_mult = 1.0     # good — full size
+                elif _ctx_score >= -5:
+                    _ctx_risk_mult = 0.85    # neutral — slight caution
+                elif _ctx_score >= -15:
+                    _ctx_risk_mult = 0.65    # weak — meaningful reduction
+                else:
+                    _ctx_risk_mult = 0.50    # hostile but not blocked (score -16 to -24)
+
+                risk_pct = risk_pct * _ctx_risk_mult
+                if _ctx_risk_mult < 1.0:
+                    log.info(f"  CTX {pair}: risk ×{_ctx_risk_mult:.0%} "
+                             f"({_ctx_grade})")
+
+                # Recompute signal with context-adjusted risk
+                if _ctx_risk_mult < 1.0:
+                    signal = compute_signal(
+                        fc=fc,
+                        direction=direction,
+                        entry_price=c2_close,
+                        equity=equity,
+                        contract_size=info.get("contract_size") or 1,
+                        price_precision=info.get("price_precision") or 4,
+                        qty_precision=info.get("amount_precision") or 2,
+                        min_qty=info.get("min_qty") or 0.001,
+                        min_notional=info.get("min_notional") or 5.0,
+                        risk_pct=risk_pct,
+                    )
+                    if signal is None:
+                        log.warning(f"  {pair}: too small after context adjustment")
+                        continue
+
                 # ── ENTRY INTELLIGENCE: Measure slip (log only, never skip) ──
                 fc_boundary = fc.high if direction == "long" else fc.low
                 if direction == "long":
@@ -924,10 +1407,92 @@ class FCBBot:
                 c2_range = candle2["high"] - candle2["low"]
                 c2_body_ratio = c2_body / c2_range if c2_range > 0 else 0
 
+                # ── FC lean direction for micro-filter ──
+                fc_body_dir = "long" if fc.close > fc.open else "short"
+                fc_is_counter = (fc_body_dir != direction)  # FC leans opposite breakout
+
+                # ── VOLUME CONFIRMATION ──
+                c2_vol = candle2.get("volume", 0)
+                fc_vol = fc.volume if fc.volume > 0 else 1
+                vol_ratio = c2_vol / fc_vol if fc_vol > 0 else 0
+                vol_confirm = vol_ratio >= 1.0  # breakout candle has higher vol than FC
+                vol_tag = "📈" if vol_confirm else "📉"
+
                 slip_tag = "⚡" if slip_r <= 0.3 else ("⚠" if slip_r <= MAX_SLIP_R else "🔥")
                 log.info(f"  {slip_tag} {pair}: slip={slip_r:.3f}R | "
                          f"body={c2_body_ratio:.0%} | "
-                         f"{'STRONG' if c2_body_ratio >= 0.6 and slip_r <= 0.5 else 'ENTER'}")
+                         f"fc_counter={'Y' if fc_is_counter else 'N'} | "
+                         f"vol={vol_tag}{vol_ratio:.1f}x | "
+                         f"{'STRONG' if c2_body_ratio >= 0.6 and slip_r <= 0.5 and vol_confirm else 'ENTER'}")
+
+                # ── FOMO SPIKE FILTER (5m) ──
+                # Live data: c2_body > 0.85 → 100% losers (panic candles that reverse)
+                if c2_body_ratio > MAX_C2_BODY_RATIO:
+                    log.info(f"  ✋ {pair}: FILTERED — FOMO spike "
+                             f"body={c2_body_ratio:.0%} > {MAX_C2_BODY_RATIO:.0%} max")
+                    self._log_skipped_trade(
+                        pair, session, direction, c2_close, fc,
+                        signal, slip_r, "fomo_spike",
+                    )
+                    continue
+
+                # ── MICRO-FILTER GATE (5m) ──
+                # Sweep proved: c2_body>=0.5 + fc_counter → WR 45.3%, x1000 in 280t
+                if MICRO_FILTER_ENABLED:
+                    if c2_body_ratio < MIN_C2_BODY_RATIO:
+                        log.info(f"  ✋ {pair}: FILTERED — weak C2 body "
+                                 f"{c2_body_ratio:.0%} < {MIN_C2_BODY_RATIO:.0%}")
+                        self._log_skipped_trade(
+                            pair, session, direction, c2_close, fc,
+                            signal, slip_r, "micro_weak_c2_body",
+                        )
+                        continue
+                    if FC_COUNTER_5M and not fc_is_counter:
+                        log.info(f"  ✋ {pair}: FILTERED — FC leaned {fc_body_dir} "
+                                 f"(same as {direction}), need counter-lean")
+                        self._log_skipped_trade(
+                            pair, session, direction, c2_close, fc,
+                            signal, slip_r, "micro_fc_not_counter",
+                        )
+                        continue
+
+                # ── VOLUME FILTER (5m) ──
+                # Live data: low-vol longs (vol<1x FC) mostly lose.
+                # Shorts can work with less volume (gravity assists).
+                if VOL_FILTER_ENABLED:
+                    min_vol = MIN_VOL_RATIO_LONG if direction == "long" else MIN_VOL_RATIO_SHORT
+                    if vol_ratio < min_vol:
+                        log.info(f"  ✋ {pair}: FILTERED — weak volume "
+                                 f"{vol_ratio:.1f}x < {min_vol:.1f}x min for {direction}")
+                        self._log_skipped_trade(
+                            pair, session, direction, c2_close, fc,
+                            signal, slip_r, f"vol_too_low_{direction}",
+                        )
+                        continue
+
+                # ── FUNDING RATE BIAS FILTER (5m) ──
+                # Skip trades going WITH the over-leveraged crowd
+                if FUNDING_FILTER_ENABLED:
+                    try:
+                        _fr = exch.get_funding_rate(self.ex, pair)
+                        if direction == "long" and _fr >= FUNDING_EXTREME_RATE:
+                            log.info(f"  ✋ {pair}: FILTERED — funding={_fr*100:.3f}% "
+                                     f"(crowd is long, long=trap)")
+                            self._log_skipped_trade(
+                                pair, session, direction, c2_close, fc,
+                                signal, slip_r, "funding_bias_long",
+                            )
+                            continue
+                        if direction == "short" and _fr <= FUNDING_EXTREME_NEG:
+                            log.info(f"  ✋ {pair}: FILTERED — funding={_fr*100:.3f}% "
+                                     f"(crowd is short, short=trap)")
+                            self._log_skipped_trade(
+                                pair, session, direction, c2_close, fc,
+                                signal, slip_r, "funding_bias_short",
+                            )
+                            continue
+                    except Exception:
+                        pass  # fail-open: if API fails, allow trade
 
                 if HYBRID_ENTRY and slip_r > MAX_SLIP_R:
                     log.info(f"  ✋ {pair}: SKIPPED — slip={slip_r:.3f}R > {MAX_SLIP_R}R")
@@ -949,6 +1514,101 @@ class FCBBot:
                         open_positions=len(self.state.pending_entries),
                     )
                     continue
+
+                # ── DIRECTION CONFIDENCE → RISK SIZING ──
+                # Oracle: per-trade structural quality scoring.
+                # Compute additional oracle features from FC + C2 candle data.
+                fc_range = fc.high - fc.low
+                fc_body_size = abs(fc.close - fc.open)
+                fc_lower_wick = min(fc.open, fc.close) - fc.low
+                _fc_lower_wick_pct = fc_lower_wick / fc_range if fc_range > 0 else 0
+
+                # C2 momentum: how far past FC boundary did C2 close?
+                if direction == "long":
+                    _c2_momentum = (c2_close - fc.high) / fc_range if fc_range > 0 else 0
+                    # C2 against-wick: lower wick on C2 (against long direction)
+                    _c2_against_wick = min(candle2["open"], candle2["close"]) - candle2["low"]
+                else:
+                    _c2_momentum = (fc.low - c2_close) / fc_range if fc_range > 0 else 0
+                    # C2 against-wick: upper wick on C2 (against short direction)
+                    _c2_against_wick = candle2["high"] - max(candle2["open"], candle2["close"])
+
+                _c2_against_wick_pct = _c2_against_wick / c2_range if c2_range > 0 else 0
+
+                _edge = _edge_score(
+                    direction=direction,
+                    session=session,
+                    fc_range_pct=fc.range_pct,
+                    c2_body_ratio=c2_body_ratio,
+                    fee_r=signal.fee_r,
+                    vol_ratio=vol_ratio,
+                    slip_r=slip_r,
+                    minutes_into_session=_mins_into,
+                    is_15m=False,
+                    # Oracle structural features
+                    c2_body=c2_body,
+                    fc_body=fc_body_size,
+                    fc_is_counter=fc_is_counter,
+                    trend_aligned=_trend_aligned,  # computed from pre-FC candle
+                    c3_hold_strength=0.0,  # no C3 in live (enter at C2)
+                    c2_momentum=_c2_momentum,
+                    fc_lower_wick_pct=_fc_lower_wick_pct,
+                    c2_against_wick_pct=_c2_against_wick_pct,
+                )
+                log.info(f"  >> {pair}: {_edge_fmt(_edge)}")
+
+                # Apply risk multiplier — confident = full size, unsure = small
+                risk_pct = risk_pct * _edge["risk_mult"]
+
+                # ═══════════════════════════════════════════════════
+                #  DYNAMIC ENGINE — real-time adaptive intelligence
+                # ═══════════════════════════════════════════════════
+                _dyn_mult = 1.0
+                _dyn_flags = []
+                if self.dynamic:
+                    _dyn_take, _dyn_mult, _dyn_flags = self.dynamic.evaluate_entry(
+                        pair=pair,
+                        pair_class=pair_class,
+                        direction=direction,
+                        ctx_score=_ctx_score,
+                        ctx_grade=_ctx_grade,
+                        edge_tier=_edge["tier"],
+                        edge_risk_mult=_edge["risk_mult"],
+                        equity=equity,
+                    )
+                    _dyn_str = " | ".join(_dyn_flags) if _dyn_flags else "ok"
+                    log.info(f"  DYN {pair}: {'TAKE' if _dyn_take else 'BLOCK'} "
+                             f"×{_dyn_mult:.2f} | {_dyn_str}")
+                    log.info(f"  DYN STATUS: {self.dynamic.status_line(equity)}")
+
+                    if not _dyn_take:
+                        log.info(f"  ✋ {pair}: DYNAMIC ENGINE BLOCKED — {_dyn_str}")
+                        self._log_skipped_trade(
+                            pair, session, direction, c2_close, fc,
+                            signal, slip_r, f"dynamic_block_{_dyn_flags[0] if _dyn_flags else 'unknown'}",
+                        )
+                        continue
+
+                    # Apply dynamic multiplier to risk
+                    if _dyn_mult != 1.0:
+                        risk_pct = risk_pct * _dyn_mult
+
+                if _edge["risk_mult"] < 1.0 or _ctx_risk_mult < 1.0 or _dyn_mult != 1.0:
+                    signal = compute_signal(
+                        fc=fc,
+                        direction=direction,
+                        entry_price=c2_close,
+                        equity=equity,
+                        contract_size=info.get("contract_size") or 1,
+                        price_precision=info.get("price_precision") or 4,
+                        qty_precision=info.get("amount_precision") or 2,
+                        min_qty=info.get("min_qty") or 0.001,
+                        min_notional=info.get("min_notional") or 5.0,
+                        risk_pct=risk_pct,
+                    )
+                    if signal is None:
+                        log.warning(f"  {pair}: sized too small after confidence adj")
+                        continue
 
                 # Round to exchange precision
                 sl_price = exch.round_price(self.ex, pair, signal.stop_loss)
@@ -995,11 +1655,22 @@ class FCBBot:
                 log.info(f"  ★ BREAKOUT {pair} [Class {pair_class}]: {direction.upper()} "
                          f"entry~{c2_close:.6f} SL={sl_price} TP={exchange_tp} "
                          f"qty={qty} risk=${equity * risk_pct:.2f} "
-                         f"feeR={signal.fee_r:.3f} [TRAIL v3]")
+                         f"feeR={signal.fee_r:.3f} edge={_edge['score']}/10 [TRAIL v3]")
                 log.audit("BREAKOUT_DETECTED", symbol=pair, direction=direction,
                           c2_close=f"{c2_close:.6f}", fc_high=f"{fc.high:.6f}",
                           fc_low=f"{fc.low:.6f}", range_pct=f"{fc.range_pct*100:.3f}%",
-                          trail_mode="guardian_v3")
+                          trail_mode="guardian_v3",
+                          edge_score=_edge["score"],
+                          edge_flags=",".join(_edge["flags"]),
+                          risk_mult=f"{_edge['risk_mult']:.2f}",
+                          context_grade=_ctx_grade,
+                          context_score=_ctx_score,
+                          context_risk_mult=f"{_ctx_risk_mult:.2f}",
+                          trend_aligned=_trend_aligned,
+                          context_flags=",".join(_ctx_flags),
+                          btc_regime=f"{_btc_chg:+.1f}%",
+                          dyn_mult=f"{_dyn_mult:.2f}",
+                          dyn_flags=",".join(_dyn_flags))
 
                 # Place the order
                 _bid, _ask = 0.0, 0.0
@@ -1009,6 +1680,27 @@ class FCBBot:
                     _ask = float(_ticker.get("ask", 0) or 0)
                 except Exception:
                     pass
+
+                # ── LIQUIDITY CHECK: skip thin order books (SL slippage protection) ──
+                if SPREAD_FILTER_ENABLED and _bid > 0 and _ask > 0:
+                    _mid = (_bid + _ask) / 2
+                    _spread_pct = (_ask - _bid) / _mid * 100
+                    _turnover = float(_ticker.get("quoteVolume", 0) or 0)
+                    if _spread_pct > MAX_SPREAD_PCT:
+                        log.info(f"  ✋ {pair}: LIQUIDITY SKIP — spread={_spread_pct:.3f}% > {MAX_SPREAD_PCT}% (thin book)")
+                        self._log_skipped_trade(
+                            pair, session, direction, c2_close, fc,
+                            signal, slip_r, f"spread_too_wide",
+                        )
+                        continue
+                    if _turnover < MIN_TURNOVER_USDT:
+                        log.info(f"  ✋ {pair}: LIQUIDITY SKIP — 24h vol=${_turnover/1e6:.1f}M < ${MIN_TURNOVER_USDT/1e6:.0f}M min")
+                        self._log_skipped_trade(
+                            pair, session, direction, c2_close, fc,
+                            signal, slip_r, f"turnover_too_low",
+                        )
+                        continue
+
                 order = exch.place_market_order(
                     self.ex, pair, side, qty, sl_price, exchange_tp
                 )
@@ -1056,7 +1748,7 @@ class FCBBot:
                     price=fill_price, qty=qty, sl=sl_price, tp=exchange_tp,
                     risk_per_unit=risk_per_unit, fee_r=actual_fee_r,
                     order_id=order_id, equity=equity,
-                    notes=f"fc_high={fc.high} fc_low={fc.low} TRAIL_v3",
+                    notes=f"fc_high={fc.high} fc_low={fc.low} TRAIL_v3 ctx={_ctx_grade}({_ctx_score:+d}) trend={'Y' if _trend_aligned else 'N'}",
                 )
                 log.position_opened(pair, direction, fill_price, qty,
                                     sl_price, exchange_tp, equity * risk_pct)
@@ -1082,6 +1774,11 @@ class FCBBot:
                     live_wins=self.state.pair_classes.get(pair, {}).get("live_wins", 0),
                     live_losses=self.state.pair_classes.get(pair, {}).get("live_losses", 0),
                     day_of_week=datetime.now(timezone.utc).weekday(),
+                    btc_price=_btc_price, btc_change_pct=_btc_chg,
+                    sim_breakouts=entries, mins_into_session=_mins_into,
+                    edge_score=_edge["score"],
+                    edge_flags=",".join(_edge["flags"]),
+                    edge_risk_mult=_edge["risk_mult"],
                 )
 
                 entry_data = {
@@ -1101,8 +1798,16 @@ class FCBBot:
                     # Analysis tracking
                     "_slip_r": slip_r,
                     "_fc_range_pct": fc.range_pct,
+                    "_edge_score": _edge["score"],
+                    "_dyn_mult": _dyn_mult,
+                    "_dyn_flags": _dyn_flags,
                 }
                 self.state.record_entry(pair, session, entry_data)
+
+                # Track this pair as entered for continuous scan
+                if session not in self._5m_entered:
+                    self._5m_entered[session] = set()
+                self._5m_entered[session].add(pair)
 
                 # ── SCALE-OUT: reduce-only limit at FC boundary ──
                 # If price retraces to FC boundary, close 50% to cap losses.
@@ -1214,8 +1919,9 @@ class FCBBot:
                 time.sleep(0.5)
 
             except ccxt.InsufficientFunds:
-                log.warning(f"  {pair}: INSUFFICIENT MARGIN — stopping entries for this session")
-                break  # No point trying more pairs — margin is exhausted
+                log.warning(f"  {pair}: INSUFFICIENT MARGIN — skipping "
+                            f"(will try remaining cheaper pairs)")
+                continue  # Try next pair — it may need less margin
 
             except ccxt.BadRequest as e:
                 err_msg = str(e).lower()
@@ -1237,6 +1943,8 @@ class FCBBot:
             self.state.update_equity(equity)
         except:
             pass
+
+    # (15m FCB removed — 5m only with dynamic scanner)
 
     # ═══════════════════════════════════════════════════════════
     #  POSITION MONITORING — C3 Fakeout + Health Logging
@@ -1484,7 +2192,11 @@ class FCBBot:
                 sl_price = entry.get("sl", 0)
                 tp_price = entry.get("tp", 0)
                 qty = entry.get("qty", 0)
-                risk_per_unit = abs(entry_price - sl_price)
+                # Use stored risk_per_unit (original SL distance), NOT
+                # guardian-modified SL which may have moved to breakeven.
+                risk_per_unit = entry.get("risk_per_unit") or abs(
+                    entry_price - entry.get("original_sl", sl_price)
+                )
 
                 if risk_per_unit <= 0:
                     log.warning(f"  {symbol}: risk_per_unit=0, cannot resolve — removing from pending")
@@ -1618,6 +2330,10 @@ class FCBBot:
                 # Update pair classification (promotion/demotion)
                 self.state.record_pair_outcome(symbol, is_win)
 
+                # ── Dynamic Engine: record outcome for next-trade adaptation ──
+                if self.dynamic:
+                    self.dynamic.record_outcome(symbol, pnl_r, is_win)
+
                 outcome = "WIN" if is_win else "LOSS"
                 scale_note = ""
                 if entry.get("scale_status") == "filled":
@@ -1671,13 +2387,6 @@ class FCBBot:
                 exit_rsn = "c3_fakeout" if entry.get("c3_exited") else (
                     entry.get("guardian_reason", "guardian") if gc else outcome.lower()
                 )
-                fc_rng = 0.0
-                # Recover fc_range_pct from entry notes or first_candles
-                try:
-                    fc_h = entry.get("original_sl", 0)
-                    fc_mid = (entry.get("original_sl", 0) + entry_price) / 2 if entry.get("original_sl") else 0
-                except Exception:
-                    pass
 
                 tlog.log_exit(
                     symbol=symbol,
@@ -2042,6 +2751,28 @@ class FCBBot:
             skips=0,  # TODO: track session skip count
         )
 
+        # ── x10 Growth Tracker ──
+        try:
+            _growth_session_end(
+                equity, session,
+                s['entries_today'], s['wins'], s['losses'],
+                s.get('total_pnl_r', 0),
+            )
+            alert = _growth_pace_alert(equity)
+            if alert:
+                log.warning(f"  GROWTH ALERT: {alert}")
+        except Exception as e:
+            log.warning(f"Growth tracker error: {e}")
+
+        # ── Learning Agent: automated session review ──
+        try:
+            today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            sess_exits = _get_session_exits(session, today)
+            if sess_exits:
+                _journal_review(session, sess_exits, equity)
+        except Exception as exc:
+            log.warning(f"[JOURNAL] Session review failed: {exc}")
+
     def _print_daily_report(self):
         """Print full daily report after NY session.
 
@@ -2196,8 +2927,11 @@ class FCBBot:
                 self._resolve_positions()
                 break
 
-            # NOTE: Profit Guardian v2 handles position monitoring in its
-            # own daemon thread (every 2s). No need to call _trail_positions().
+            # NOTE: Profit Guardian v3 handles trailing SL in its
+            # own daemon thread (every 2s). But C3 fakeout detection
+            # runs here since it uses candle data, not price polling.
+            if C3_EXIT:
+                self._trail_positions()
 
             # Check scale-in fills for all pending entries with pending scales
             pending_scales = [

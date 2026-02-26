@@ -1,0 +1,636 @@
+{
+  "min_conviction": 58,
+  "outcomes": [
+    {
+      "symbol": "KITE/USDT:USDT",
+      "score": 52.3,
+      "grade": "B",
+      "pnl_r": 0.9972,
+      "pnl_usd": 0.62,
+      "win": true,
+      "ts": "2026-02-21T23:24:23.364261+00:00"
+    },
+    {
+      "symbol": "BTR/USDT:USDT",
+      "score": 63.1,
+      "grade": "B",
+      "pnl_r": 0.4707,
+      "pnl_usd": 0.15,
+      "win": true,
+      "ts": "2026-02-21T23:27:12.618331+00:00"
+    },
+    {
+      "symbol": "IO/USDT:USDT",
+      "score": 71.0,
+      "grade": "A",
+      "pnl_r": 0.1855,
+      "pnl_usd": 0.2,
+      "win": true,
+      "ts": "2026-02-22T00:12:26.590307+00:00"
+    },
+    {
+      "symbol": "AZTEC/USDT:USDT",
+      "score": 84.9,
+      "grade": "A+",
+      "pnl_r": -0.8597,
+      "pnl_usd": -1.95,
+      "win": false,
+      "ts": "2026-02-22T00:12:28.383296+00:00"
+    },
+    {
+      "symbol": "JTO/USDT:USDT",
+      "score": 74.0,
+      "grade": "A",
+      "pnl_r": -1.6708,
+      "pnl_usd": -0.83,
+      "win": false,
+      "ts": "2026-02-22T00:37:08.039892+00:00"
+    },
+    {
+      "symbol": "ACU/USDT:USDT",
+      "score": 46.1,
+      "grade": "C",
+      "pnl_r": 0.353,
+      "pnl_usd": 0.4,
+      "win": true,
+      "ts": "2026-02-22T00:44:02.845784+00:00"
+    },
+    {
+      "symbol": "ME/USDT:USDT",
+      "score": 44.2,
+      "grade": "C",
+      "pnl_r": 0.9743,
+      "pnl_usd": 0.3,
+      "win": true,
+      "ts": "2026-02-22T00:46:06.626872+00:00"
+    },
+    {
+      "symbol": "KITE/USDT:USDT",
+      "score": 83.9,
+      "grade": "A+",
+      "pnl_r": -1.1908,
+      "pnl_usd": -1.88,
+      "win": false,
+      "ts": "2026-02-22T01:01:44.149526+00:00"
+    },
+    {
+      "symbol": "C98/USDT:USDT",
+      "score": 73.4,
+      "grade": "A",
+      "pnl_r": -0.2312,
+      "pnl_usd": -0.12,
+      "win": false,
+      "ts": "2026-02-22T01:24:35.001465+00:00"
+    },
+    {
+      "symbol": "HMSTR/USDT:USDT",
+      "score": 74.4,
+      "grade": "A",
+      "pnl_r": -0.7013,
+      "pnl_usd": -0.35,
+      "win": false,
+      "ts": "2026-02-22T01:24:51.988346+00:00"
+    },
+    {
+      "symbol": "ICP/USDT:USDT",
+      "score": 53.7,
+      "grade": "B",
+      "pnl_r": -0.8466,
+      "pnl_usd": -0.27,
+      "win": false,
+      "ts": "2026-02-22T01:44:08.360459+00:00"
+    },
+    {
+      "symbol": "ENS/USDT:USDT",
+      "score": 61.9,
+      "grade": "B",
+      "pnl_r": -1.5085,
+      "pnl_usd": -0.83,
+      "win": false,
+      "ts": "2026-02-22T01:49:13.631954+00:00"
+    },
+    {
+      "symbol": "INJ/USDT:USDT",
+      "score": 64.4,
+      "grade": "B",
+      "pnl_r": 2.8565,
+      "pnl_usd": 1.05,
+      "win": true,
+      "ts": "2026-02-22T02:06:32.574704+00:00"
+    },
+    {
+      "symbol": "DYDX/USDT:USDT",
+      "score": 46.9,
+      "grade": "C",
+      "pnl_r": -1.3841,
+      "pnl_usd": -0.87,
+      "win": false,
+      "ts": "2026-02-22T02:19:30.192778+00:00"
+    },
+    {
+      "symbol": "ENS/USDT:USDT",
+      "score": 60.0,
+      "grade": "B",
+      "pnl_r": -1.0147,
+      "pnl_usd": -0.5,
+      "win": false,
+      "ts": "2026-02-22T02:19:32.382403+00:00"
+    },
+    {
+      "symbol": "KAS/USDT:USDT",
+      "score": 77.4,
+      "grade": "A",
+      "pnl_r": -1.6112,
+      "pnl_usd": -0.81,
+      "win": false,
+      "ts": "2026-02-22T02:23:52.783103+00:00"
+    },
+    {
+      "symbol": "KITE/USDT:USDT",
+      "score": 81.7,
+      "grade": "A+",
+      "pnl_r": 1.3038,
+      "pnl_usd": 1.1,
+      "win": true,
+      "ts": "2026-02-22T02:26:57.327324+00:00"
+    },
+    {
+      "symbol": "CLO/USDT:USDT",
+      "score": 45.0,
+      "grade": "C",
+      "pnl_r": -74.7113,
+      "pnl_usd": -38.06,
+      "win": false,
+      "ts": "2026-02-22T02:41:25.731170+00:00"
+    },
+    {
+      "symbol": "BIO/USDT:USDT",
+      "score": 70.8,
+      "grade": "A",
+      "pnl_r": -1.1312,
+      "pnl_usd": -0.35,
+      "win": false,
+      "ts": "2026-02-22T02:51:06.112710+00:00"
+    },
+    {
+      "symbol": "SNX/USDT:USDT",
+      "score": 74.0,
+      "grade": "A",
+      "pnl_r": -0.1249,
+      "pnl_usd": -0.27,
+      "win": false,
+      "ts": "2026-02-22T02:51:53.435857+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 64.0,
+      "grade": "B",
+      "pnl_r": -0.4884,
+      "pnl_usd": -0.15,
+      "win": false,
+      "ts": "2026-02-22T02:56:14.433968+00:00"
+    },
+    {
+      "symbol": "ENA/USDT:USDT",
+      "score": 52.1,
+      "grade": "B",
+      "pnl_r": -0.9701,
+      "pnl_usd": -0.49,
+      "win": false,
+      "ts": "2026-02-22T02:57:47.228669+00:00"
+    },
+    {
+      "symbol": "ARC/USDT:USDT",
+      "score": 59.3,
+      "grade": "B",
+      "pnl_r": -0.1704,
+      "pnl_usd": -0.34,
+      "win": false,
+      "ts": "2026-02-22T03:01:21.892220+00:00"
+    },
+    {
+      "symbol": "GALA/USDT:USDT",
+      "score": 51.1,
+      "grade": "B",
+      "pnl_r": -1.4195,
+      "pnl_usd": -0.62,
+      "win": false,
+      "ts": "2026-02-22T03:07:59.079513+00:00"
+    },
+    {
+      "symbol": "BERA/USDT:USDT",
+      "score": 47.2,
+      "grade": "C",
+      "pnl_r": 1.1755,
+      "pnl_usd": 0.63,
+      "win": true,
+      "ts": "2026-02-22T03:14:36.797588+00:00"
+    },
+    {
+      "symbol": "FARTCOIN/USDT:USDT",
+      "score": 66.8,
+      "grade": "A",
+      "pnl_r": -1.223,
+      "pnl_usd": -1.08,
+      "win": false,
+      "ts": "2026-02-22T03:18:26.227340+00:00"
+    },
+    {
+      "symbol": "LINK/USDT:USDT",
+      "score": 68.0,
+      "grade": "A",
+      "pnl_r": 0.2979,
+      "pnl_usd": 0.1,
+      "win": true,
+      "ts": "2026-02-22T03:30:17.732906+00:00"
+    },
+    {
+      "symbol": "SNX/USDT:USDT",
+      "score": 58.0,
+      "grade": "B",
+      "pnl_r": 0.8179,
+      "pnl_usd": 0.61,
+      "win": true,
+      "ts": "2026-02-22T03:36:38.939609+00:00"
+    },
+    {
+      "symbol": "AXS/USDT:USDT",
+      "score": 54.1,
+      "grade": "B",
+      "pnl_r": -0.2359,
+      "pnl_usd": -0.13,
+      "win": false,
+      "ts": "2026-02-22T03:39:27.629989+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 67.0,
+      "grade": "A",
+      "pnl_r": 0.2884,
+      "pnl_usd": 0.09,
+      "win": true,
+      "ts": "2026-02-22T03:47:46.352769+00:00"
+    },
+    {
+      "symbol": "JUP/USDT:USDT",
+      "score": 55.1,
+      "grade": "B",
+      "pnl_r": -2.0167,
+      "pnl_usd": -0.48,
+      "win": false,
+      "ts": "2026-02-22T04:13:28.177121+00:00"
+    },
+    {
+      "symbol": "BIO/USDT:USDT",
+      "score": 49.5,
+      "grade": "C",
+      "pnl_r": -1.1221,
+      "pnl_usd": -1.17,
+      "win": false,
+      "ts": "2026-02-22T04:16:02.509364+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 67.5,
+      "grade": "A",
+      "pnl_r": -1.154,
+      "pnl_usd": -6.53,
+      "win": false,
+      "ts": "2026-02-22T04:31:16.133481+00:00"
+    },
+    {
+      "symbol": "AGLD/USDT:USDT",
+      "score": 89.5,
+      "grade": "A+",
+      "pnl_r": -1.2298,
+      "pnl_usd": -6.74,
+      "win": false,
+      "ts": "2026-02-22T05:07:46.282180+00:00"
+    },
+    {
+      "symbol": "EUL/USDT:USDT",
+      "score": 53.8,
+      "grade": "B",
+      "pnl_r": -2.3287,
+      "pnl_usd": -2.5,
+      "win": false,
+      "ts": "2026-02-22T05:17:54.866281+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 61.1,
+      "grade": "B",
+      "pnl_r": -0.9692,
+      "pnl_usd": -1.32,
+      "win": false,
+      "ts": "2026-02-22T05:29:20.945924+00:00"
+    },
+    {
+      "symbol": "AAVE/USDT:USDT",
+      "score": 64.7,
+      "grade": "B",
+      "pnl_r": -1.2412,
+      "pnl_usd": -0.67,
+      "win": false,
+      "ts": "2026-02-22T05:48:07.317860+00:00"
+    },
+    {
+      "symbol": "C98/USDT:USDT",
+      "score": 66.8,
+      "grade": "A",
+      "pnl_r": 0.6056,
+      "pnl_usd": 0.79,
+      "win": true,
+      "ts": "2026-02-22T05:50:10.488864+00:00"
+    },
+    {
+      "symbol": "AGLD/USDT:USDT",
+      "score": 59.8,
+      "grade": "B",
+      "pnl_r": -0.1098,
+      "pnl_usd": -0.21,
+      "win": false,
+      "ts": "2026-02-22T05:53:59.741396+00:00"
+    },
+    {
+      "symbol": "IO/USDT:USDT",
+      "score": 50.5,
+      "grade": "B",
+      "pnl_r": 0.2032,
+      "pnl_usd": 0.2,
+      "win": true,
+      "ts": "2026-02-22T06:02:08.142878+00:00"
+    },
+    {
+      "symbol": "HANA/USDT:USDT",
+      "score": 49.9,
+      "grade": "C",
+      "pnl_r": 1.539,
+      "pnl_usd": 2.36,
+      "win": true,
+      "ts": "2026-02-22T06:16:06.742013+00:00"
+    },
+    {
+      "symbol": "DOGE/USDT:USDT",
+      "score": 53.4,
+      "grade": "B",
+      "pnl_r": -0.5306,
+      "pnl_usd": -0.54,
+      "win": false,
+      "ts": "2026-02-22T06:29:18.774007+00:00"
+    },
+    {
+      "symbol": "CLO/USDT:USDT",
+      "score": 58.5,
+      "grade": "B",
+      "pnl_r": -1.0603,
+      "pnl_usd": -0.8,
+      "win": false,
+      "ts": "2026-02-22T06:30:21.405699+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 66.6,
+      "grade": "A",
+      "pnl_r": -1.2019,
+      "pnl_usd": -2.53,
+      "win": false,
+      "ts": "2026-02-22T06:31:24.021421+00:00"
+    },
+    {
+      "symbol": "INJ/USDT:USDT",
+      "score": 59.9,
+      "grade": "B",
+      "pnl_r": -1.0956,
+      "pnl_usd": -0.81,
+      "win": false,
+      "ts": "2026-02-22T06:38:12.929017+00:00"
+    },
+    {
+      "symbol": "BTR/USDT:USDT",
+      "score": 71.7,
+      "grade": "A",
+      "pnl_r": 1.4633,
+      "pnl_usd": 1.17,
+      "win": true,
+      "ts": "2026-02-22T07:16:57.905473+00:00"
+    },
+    {
+      "symbol": "KITE/USDT:USDT",
+      "score": 72.5,
+      "grade": "A",
+      "pnl_r": -1.1367,
+      "pnl_usd": -0.93,
+      "win": false,
+      "ts": "2026-02-22T07:24:04.679154+00:00"
+    },
+    {
+      "symbol": "BEAT/USDT:USDT",
+      "score": 60.7,
+      "grade": "B",
+      "pnl_r": -2.012,
+      "pnl_usd": -1.47,
+      "win": false,
+      "ts": "2026-02-22T07:43:04.590919+00:00"
+    },
+    {
+      "symbol": "BCH/USDT:USDT",
+      "score": 74.2,
+      "grade": "A",
+      "pnl_r": -0.1386,
+      "pnl_usd": -0.11,
+      "win": false,
+      "ts": "2026-02-22T07:49:11.089658+00:00"
+    },
+    {
+      "symbol": "ENSO/USDT:USDT",
+      "score": 68.5,
+      "grade": "A",
+      "pnl_r": -1.0198,
+      "pnl_usd": -0.8,
+      "win": false,
+      "ts": "2026-02-22T07:52:30.482737+00:00"
+    },
+    {
+      "symbol": "FLOW/USDT:USDT",
+      "score": 60.4,
+      "grade": "B",
+      "pnl_r": -0.7953,
+      "pnl_usd": -0.58,
+      "win": false,
+      "ts": "2026-02-22T07:53:48.069570+00:00"
+    },
+    {
+      "symbol": "AZTEC/USDT:USDT",
+      "score": 64.5,
+      "grade": "B",
+      "pnl_r": 0.9831,
+      "pnl_usd": 0.66,
+      "win": true,
+      "ts": "2026-02-22T08:22:44.155322+00:00"
+    },
+    {
+      "symbol": "1000PEPE/USDT:USDT",
+      "score": 55.6,
+      "grade": "B",
+      "pnl_r": 0.0707,
+      "pnl_usd": 0.05,
+      "win": true,
+      "ts": "2026-02-22T08:24:47.836315+00:00"
+    },
+    {
+      "symbol": "FIGHT/USDT:USDT",
+      "score": 74.5,
+      "grade": "A",
+      "pnl_r": -1.3836,
+      "pnl_usd": -1.08,
+      "win": false,
+      "ts": "2026-02-22T08:46:54.490989+00:00"
+    },
+    {
+      "symbol": "LYN/USDT:USDT",
+      "score": 61.5,
+      "grade": "B",
+      "pnl_r": -1.483,
+      "pnl_usd": -1.03,
+      "win": false,
+      "ts": "2026-02-22T09:01:30.565739+00:00"
+    },
+    {
+      "symbol": "BTR/USDT:USDT",
+      "score": 61.4,
+      "grade": "B",
+      "pnl_r": -0.5614,
+      "pnl_usd": -0.38,
+      "win": false,
+      "ts": "2026-02-22T09:22:00.231100+00:00"
+    },
+    {
+      "symbol": "DYDX/USDT:USDT",
+      "score": 66.3,
+      "grade": "A",
+      "pnl_r": 0.7358,
+      "pnl_usd": 0.48,
+      "win": true,
+      "ts": "2026-02-22T09:40:02.891522+00:00"
+    },
+    {
+      "symbol": "FLOW/USDT:USDT",
+      "score": 73.9,
+      "grade": "A",
+      "pnl_r": -1.0527,
+      "pnl_usd": -0.79,
+      "win": false,
+      "ts": "2026-02-22T09:48:27.262922+00:00"
+    },
+    {
+      "symbol": "FARTCOIN/USDT:USDT",
+      "score": 60.1,
+      "grade": "B",
+      "pnl_r": 0.6214,
+      "pnl_usd": 0.43,
+      "win": true,
+      "ts": "2026-02-22T10:01:08.362971+00:00"
+    },
+    {
+      "symbol": "ESP/USDT:USDT",
+      "score": 69.6,
+      "grade": "A",
+      "pnl_r": -1.0746,
+      "pnl_usd": -0.81,
+      "win": false,
+      "ts": "2026-02-22T10:06:59.881683+00:00"
+    },
+    {
+      "symbol": "HYPE/USDT:USDT",
+      "score": 61.8,
+      "grade": "B",
+      "pnl_r": -1.3733,
+      "pnl_usd": -2.96,
+      "win": false,
+      "ts": "2026-02-22T11:02:53.886526+00:00"
+    },
+    {
+      "symbol": "BTR/USDT:USDT",
+      "score": 67.8,
+      "grade": "A",
+      "pnl_r": 0.1356,
+      "pnl_usd": 0.93,
+      "win": true,
+      "ts": "2026-02-22T11:50:03.106789+00:00"
+    },
+    {
+      "symbol": "HMSTR/USDT:USDT",
+      "score": 64.2,
+      "grade": "B",
+      "pnl_r": -0.6626,
+      "pnl_usd": -0.84,
+      "win": false,
+      "ts": "2026-02-22T12:03:14.157193+00:00"
+    },
+    {
+      "symbol": "LYN/USDT:USDT",
+      "score": 70.8,
+      "grade": "A",
+      "pnl_r": -0.4214,
+      "pnl_usd": -0.49,
+      "win": false,
+      "ts": "2026-02-22T12:55:35.299183+00:00"
+    }
+  ],
+  "buckets": {
+    "50-60": {
+      "wins": 4,
+      "losses": 11,
+      "total_r": -8.695214365145947
+    },
+    "60-70": {
+      "wins": 9,
+      "losses": 16,
+      "total_r": -10.788056344754843
+    },
+    "70-80": {
+      "wins": 2,
+      "losses": 11,
+      "total_r": -7.95480997791838
+    },
+    "80-90": {
+      "wins": 1,
+      "losses": 3,
+      "total_r": -1.9764831681943829
+    },
+    "40-50": {
+      "wins": 4,
+      "losses": 3,
+      "total_r": -73.17579666586255
+    }
+  },
+  "grade_stats": {
+    "B": {
+      "wins": 8,
+      "losses": 22,
+      "total_r": -15.87325996965589
+    },
+    "A": {
+      "wins": 7,
+      "losses": 16,
+      "total_r": -11.564820718163276
+    },
+    "A+": {
+      "wins": 1,
+      "losses": 3,
+      "total_r": -1.9764831681943829
+    },
+    "C": {
+      "wins": 4,
+      "losses": 3,
+      "total_r": -73.17579666586255
+    }
+  },
+  "total_evaluated": 156,
+  "total_passed": 94,
+  "total_rejected": 62,
+  "recal_count": 6,
+  "created": "2026-02-21T23:10:54.020043+00:00",
+  "last_recal": "2026-02-22T10:06:59.885062+00:00"
+}

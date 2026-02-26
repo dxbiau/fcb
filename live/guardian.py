@@ -29,7 +29,9 @@ from live import logger as log
 # ─── Configurable thresholds ───
 MAX_HOLD_HOURS   = 8     # force-close positions older than this
 MARGIN_SAFETY    = 0.85  # only use 85% of available margin
-MIN_MARGIN_ENTRY = 50.0  # minimum $50 free margin to attempt an entry
+MIN_MARGIN_ENTRY = 5.0   # absolute minimum free margin to attempt entry
+# NOTE: For small accounts ($150), the old $50 floor blocked most entries.
+# Now uses max(MIN_MARGIN_ENTRY, equity * 0.03) so it scales with account.
 
 
 class GuardianAgent:
@@ -58,9 +60,12 @@ class GuardianAgent:
             usdt = bal.get("USDT", {})
             free_margin = float(usdt.get("free", 0))
 
-            if free_margin < MIN_MARGIN_ENTRY:
+            # Dynamic floor: 3% of total equity or $5, whichever is higher
+            total_eq = float(usdt.get("total", 0)) or free_margin
+            floor = max(MIN_MARGIN_ENTRY, total_eq * 0.03)
+            if free_margin < floor:
                 reason = (f"GUARDIAN BLOCK: only ${free_margin:.2f} free margin "
-                          f"(need ${MIN_MARGIN_ENTRY:.0f} minimum)")
+                          f"(need ${floor:.0f} minimum)")
                 log.warning(reason)
                 self._issues.append(("margin_low", symbol, reason))
                 return False, reason

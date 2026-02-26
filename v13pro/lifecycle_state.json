@@ -1,0 +1,229 @@
+{
+  "smoothed": {
+    "BTC/USDT:USDT": {
+      "expanding": 0.22368733551365283,
+      "compressing": 0.7763126644863472,
+      "improving": 0.4249821417909828,
+      "degrading": 0.5750178582090172,
+      "stable": 0.16314241709105134
+    },
+    "ETH/USDT:USDT": {
+      "expanding": 0.28902696378586074,
+      "compressing": 0.7109730362141393,
+      "improving": 0.0,
+      "degrading": 1.0,
+      "stable": 0.0
+    },
+    "SOL/USDT:USDT": {
+      "expanding": 0.38882953687529,
+      "compressing": 0.6111704631247099,
+      "improving": 0.02499999999999991,
+      "degrading": 0.9750000000000001,
+      "stable": 0.07021209833410638
+    },
+    "ESP/USDT:USDT": {
+      "expanding": 0.0773284588475387,
+      "compressing": 0.9226715411524613,
+      "improving": 0.875,
+      "degrading": 0.125,
+      "stable": 0.0
+    },
+    "PIPPIN/USDT:USDT": {
+      "expanding": 0.3066202670336945,
+      "compressing": 0.6933797329663055,
+      "improving": 0.55,
+      "degrading": 0.44999999999999996,
+      "stable": 0.4176540454231854
+    },
+    "XAUT/USDT:USDT": {
+      "expanding": 0.4401344815277165,
+      "compressing": 0.5598655184722835,
+      "improving": 0.2999940472636609,
+      "degrading": 0.7000059527363391,
+      "stable": 0.5736840137587922
+    },
+    "POWER/USDT:USDT": {
+      "expanding": 0.3026491005043961,
+      "compressing": 0.6973508994956039,
+      "improving": 0.375,
+      "degrading": 0.625,
+      "stable": 0.3070642680117228
+    },
+    "BCH/USDT:USDT": {
+      "expanding": 0.4337321489161531,
+      "compressing": 0.5662678510838469,
+      "improving": 0.09999999999999998,
+      "degrading": 0.9,
+      "stable": 0.2899523971097415
+    },
+    "ENSO/USDT:USDT": {
+      "expanding": 0.35397753402521737,
+      "compressing": 0.6460224659747826,
+      "improving": 0.32499404726366093,
+      "degrading": 0.675005952736339,
+      "stable": 0.377265487085461
+    },
+    "BNB/USDT:USDT": {
+      "expanding": 0.4344792241291787,
+      "compressing": 0.5655207758708213,
+      "improving": 0.0,
+      "degrading": 1.0,
+      "stable": 0.0
+    },
+    "SUI/USDT:USDT": {
+      "expanding": 0.4421852275584426,
+      "compressing": 0.5578147724415574,
+      "improving": 0.0,
+      "degrading": 1.0,
+      "stable": 0.045851084434536254
+    },
+    "ADA/USDT:USDT": {
+      "expanding": 0.4323991085381097,
+      "compressing": 0.5676008914618903,
+      "improving": 0.0,
+      "degrading": 1.0,
+      "stable": 0.0
+    },
+    "KITE/USDT:USDT": {
+      "expanding": 0.43487755291529173,
+      "compressing": 0.5651224470847083,
+      "improving": 0.2749999999999999,
+      "degrading": 0.7250000000000001,
+      "stable": 0.5263401411074446
+    },
+    "ZEC/USDT:USDT": {
+      "expanding": 0.509899078016864,
+      "compressing": 0.49010092198313593,
+      "improving": 0.574994047263661,
+      "degrading": 0.42500595273633907,
+      "stable": 0.8736103956034814
+    },
+    "RIVER/USDT:USDT": {
+      "expanding": 0.6569137129128183,
+      "compressing": 0.3430862870871817,
+      "improving": 0.5249821417909829,
+      "degrading": 0.4750178582090171,
+      "stable": 0.5482221619173655
+    },
+    "WLFI/USDT:USDT": {
+      "expanding": 0.36008339835311154,
+      "compressing": 0.6399166016468885,
+      "improving": 1.0,
+      "degrading": 0.0,
+      "stable": 0.0
+    },
+    "AVAX/USDT:USDT": {
+      "expanding": 0.3125401208112649,
+      "compressing": 0.6874598791887351,
+      "improving": 0.050017858209017045,
+      "degrading": 0.9499821417909828,
+      "stable": 1.0510368884523861e-05
+    },
+    "XRP/USDT:USDT": {
+      "expanding": 0.46443036967827195,
+      "compressing": 0.535569630321728,
+      "improving": 0.2749999999999999,
+      "degrading": 0.7250000000000001,
+      "stable": 0.605147652475392
+    },
+    "HYPE/USDT:USDT": {
+      "expanding": 0.5255039948356708,
+      "compressing": 0.4744960051643292,
+      "improving": 0.875005952736339,
+      "degrading": 0.12499404726366112,
+      "stable": 0.43198141012309244
+    },
+    "FARTCOIN/USDT:USDT": {
+      "expanding": 0.40357778446476245,
+      "compressing": 0.5964222155352374,
+      "improving": 0.600005952736339,
+      "degrading": 0.39999404726366095,
+      "stable": 0.6095328215909147
+    },
+    "AGLD/USDT:USDT": {
+      "expanding": 0.5271093056208818,
+      "compressing": 0.47289069437911824,
+      "improving": 0.8,
+      "degrading": 0.19999999999999996,
+      "stable": 0.5277085183443154
+    },
+    "1000BONK/USDT:USDT": {
+      "expanding": 0.983243856756084,
+      "compressing": 0.016756143243916055,
+      "improving": 1.0,
+      "degrading": 0.0,
+      "stable": 0.0
+    },
+    "AAVE/USDT:USDT": {
+      "expanding": 0.6985119637911281,
+      "compressing": 0.3014880362088719,
+      "improving": 0.19999999999999996,
+      "degrading": 0.8,
+      "stable": 0.07063476322365847
+    },
+    "TAO/USDT:USDT": {
+      "expanding": 0.45646891927890787,
+      "compressing": 0.5435310807210921,
+      "improving": 1.0,
+      "degrading": 0.0,
+      "stable": 0.12465785881782832
+    },
+    "ASTER/USDT:USDT": {
+      "expanding": 0.5837363391395748,
+      "compressing": 0.4162636608604252,
+      "improving": 0.25,
+      "degrading": 0.75,
+      "stable": 0.44336976229446723
+    },
+    "GPS/USDT:USDT": {
+      "expanding": 0.22125181464872523,
+      "compressing": 0.7787481853512748,
+      "improving": 1.0,
+      "degrading": 0.0,
+      "stable": 0.0
+    },
+    "LA/USDT:USDT": {
+      "expanding": 0.32712637198440897,
+      "compressing": 0.672873628015591,
+      "improving": 0.8,
+      "degrading": 0.19999999999999996,
+      "stable": 0.13900365862509056
+    },
+    "ARC/USDT:USDT": {
+      "expanding": 0.41907475345858647,
+      "compressing": 0.5809252465414134,
+      "improving": 0.9999965984363777,
+      "degrading": 3.4015636222860093e-06,
+      "stable": 0.05088641860463094
+    },
+    "UNI/USDT:USDT": {
+      "expanding": 0.42200021987024117,
+      "compressing": 0.5779997801297588,
+      "improving": 0.02631578947368418,
+      "degrading": 0.9736842105263158,
+      "stable": 0.16042163895222195
+    },
+    "NEAR/USDT:USDT": {
+      "expanding": 0.3438772816904514,
+      "compressing": 0.6561227183095486,
+      "improving": 0.14706144973662008,
+      "degrading": 0.85293855026338,
+      "stable": 0.11308801749003057
+    },
+    "APT/USDT:USDT": {
+      "expanding": 0.4040440426471601,
+      "compressing": 0.5959559573528399,
+      "improving": 1.0,
+      "degrading": 0.0,
+      "stable": 0.07745078039242681
+    },
+    "BARD/USDT:USDT": {
+      "expanding": 0.30215812537610554,
+      "compressing": 0.6978418746238945,
+      "improving": 0.5,
+      "degrading": 0.5,
+      "stable": 0.4724216676696148
+    }
+  },
+  "ts": 1772141565.7353134
+}

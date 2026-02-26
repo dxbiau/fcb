@@ -13,12 +13,15 @@ Tracks:
 State is saved to JSON after every mutation so the bot can resume after crash/restart.
 """
 
-import os, json
+import os, json, threading
 from datetime import datetime, timezone
 from typing import Dict, Set
 from live.config import STATE_FILE, INITIAL_PAIR_CLASS, PROMOTE_WINS, DEMOTE_LOSSES, REHABILITATE_WINS
 from live import logger as log
 from live import trade_logger as tlog
+
+# Thread-safety: both main thread and ProfitGuardian daemon call _save()
+_save_lock = threading.Lock()
 
 
 def _utc_today() -> str:
@@ -128,50 +131,51 @@ class BotState:
             log.error(f"Failed to load state: {e} — starting fresh")
 
     def _save(self):
-        """Persist state to disk using atomic write.
+        """Persist state to disk using atomic write. Thread-safe.
 
         Writes to a temp file first, then renames.  If the process is killed
         mid-write the temp file is corrupted but the original state.json
         remains intact.  On next startup, _load() reads the uncorrupted file.
         """
-        os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
-        data = {
-            "date": self.date,
-            "daily_counts": self.daily_counts,
-            "session_traded": self.session_traded,
-            "equity": self.equity,
-            "total_trades": self.total_trades,
-            "total_pnl_r": self.total_pnl_r,
-            "trade_history": self.trade_history[-200:],
-            "day_start_equity": self.day_start_equity,
-            "wins_today": self.wins_today,
-            "losses_today": self.losses_today,
-            "entries_today": self.entries_today,
-            "pnl_today_usd": self.pnl_today_usd,
-            "total_wins": self.total_wins,
-            "total_losses": self.total_losses,
-            "pending_entries": self.pending_entries,
-            "equity_floor_hit": self.equity_floor_hit,
-            "pair_classes": self.pair_classes,
-            "last_updated": _utc_now_str(),
-        }
-        tmp_file = STATE_FILE + ".tmp"
-        try:
-            with open(tmp_file, "w") as f:
-                json.dump(data, f, indent=2)
-            # Atomic rename (on Windows, need to remove target first)
-            if os.path.exists(STATE_FILE):
-                os.replace(tmp_file, STATE_FILE)
-            else:
-                os.rename(tmp_file, STATE_FILE)
-        except Exception as e:
-            log.error(f"Failed to save state: {e}")
-            # Clean up temp file if it exists
-            if os.path.exists(tmp_file):
-                try:
-                    os.remove(tmp_file)
-                except:
-                    pass
+        with _save_lock:
+            os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
+            data = {
+                "date": self.date,
+                "daily_counts": self.daily_counts,
+                "session_traded": self.session_traded,
+                "equity": self.equity,
+                "total_trades": self.total_trades,
+                "total_pnl_r": self.total_pnl_r,
+                "trade_history": self.trade_history[-200:],
+                "day_start_equity": self.day_start_equity,
+                "wins_today": self.wins_today,
+                "losses_today": self.losses_today,
+                "entries_today": self.entries_today,
+                "pnl_today_usd": self.pnl_today_usd,
+                "total_wins": self.total_wins,
+                "total_losses": self.total_losses,
+                "pending_entries": self.pending_entries,
+                "equity_floor_hit": self.equity_floor_hit,
+                "pair_classes": self.pair_classes,
+                "last_updated": _utc_now_str(),
+            }
+            tmp_file = STATE_FILE + ".tmp"
+            try:
+                with open(tmp_file, "w") as f:
+                    json.dump(data, f, indent=2)
+                # Atomic rename (on Windows, need to remove target first)
+                if os.path.exists(STATE_FILE):
+                    os.replace(tmp_file, STATE_FILE)
+                else:
+                    os.rename(tmp_file, STATE_FILE)
+            except Exception as e:
+                log.error(f"Failed to save state: {e}")
+                # Clean up temp file if it exists
+                if os.path.exists(tmp_file):
+                    try:
+                        os.remove(tmp_file)
+                    except:
+                        pass
 
     def check_new_day(self):
         """Call at start of each cycle — reset if new UTC day."""

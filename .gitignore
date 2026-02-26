@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════
 # FCB Bot — Git Ignore
-# Only deployment files are tracked.
+# Updated 2026-02-21 after workspace reorganization
 # ═══════════════════════════════════════════════════
 
 # ─── SECRETS (NEVER commit) ───
@@ -18,68 +18,40 @@ build/
 .venv/
 venv/
 
-# ─── Data (hundreds of MB) ───
+# ─── Data (hundreds of MB of candle CSVs) ───
 data/
 results/
 old_cache/
 
-# ─── Analysis / Backtest (not needed for deploy) ───
+# ─── Organized research scripts (moved from root) ───
+scripts/
+
+# ─── Archive (old state backups, output logs, deploys) ───
+archive/
+
+# ─── Framework modules (not needed for live deploy) ───
 analysis/
 backtest/
 strategy/
 tests/
 config/
 
-# ─── Research scripts ───
-analyze_*.py
-mega_sweep.py
-quick_scan.py
-screen_*.py
-sweep_*.py
-x1000_*.py
-guardian_replay.py
-peak_analysis.py
-truth_test*.py
-run_backtest.py
-run_analysis.py
-/config.py
-fcb_sweep.py
-pair_scanner.py
-discover_bybit_pairs.py
-download_sweep_pairs.py
-check_*.py
-compare_*.py
-entry_*.py
-fakeout_dna.py
-hybrid_tp_analysis.py
-loser_forensics.py
-mega_upgrade_sim.py
-preflight_check.py
-probe_testnet.py
-projection_model.py
-realtime_intelligence.py
-research_*.py
-run_demo.py
-smart_entry_analysis.py
-test_*.py
-verify_edge.py
-audit_*.py
-breakout_dna_discovery.py
-/_*.py
-
 # ─── Build / Packaging ───
 pyproject.toml
 setup.cfg
 MANIFEST.in
-LICENSE
 *.tar.gz
+*.zip
 
-# ─── Runtime state (created at runtime) ───
+# ─── Backtest config at root (not live config) ───
+/config.py
+
+# ─── Runtime state (created/modified at runtime) ───
 live/state.json
+live/growth_state.json
 live/trades.csv
 live/bot.lock
 live/logs/
-live/state_demo_backup_*.json
 live/skipped_trades.csv
 
 # ─── IDE / OS ───
@@ -92,14 +64,6 @@ live/skipped_trades.csv
 Thumbs.db
 desktop.ini
 
-# ─── Misc ───
-*.txt
-!requirements-live.txt
-peak_output.txt
-IMPROVEMENT_PLAN.md
-PROJECT_TRACKER.md
-*.zip
-
-# ─── Old live modules ───
-# NOTE: guardian.py, logger.py, strategy.py are REQUIRED by bot.py
-# They were previously ignored by mistake — now tracked.
+# ─── Temp files ───
+/_*.py
+*.tmp
