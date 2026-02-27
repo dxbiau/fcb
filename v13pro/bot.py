@@ -33,6 +33,8 @@ from v13pro import journal
 from v13pro.state import BotState
 from v13pro.registry import ComboRegistry, EXIT_PARAMS
 from v13pro.strategies import scan_last_bar, ensemble_signals, Signal, STRATEGIES
+from v13pro.strat_orb_fcb import NEW_STRATEGIES as _LAB_STRATS
+STRATEGIES.update(_LAB_STRATS)  # Register ORB + FCB into strategy dict
 from v13pro.ws_data import WSDataEngine
 from v13pro.guardian import Guardian
 from v13pro.hunter import PairHunter
@@ -58,6 +60,8 @@ from v13pro.edge_radar import EdgeRadar
 from v13pro.micro_tf import MicroTFIntelligence, MICRO_TFS
 from v13pro.momentum import MomentumAlignment
 from v13pro.session_lifecycle import SessionTracker
+from v13pro.strategy_lab import StrategyLab, LAB_STRATEGIES, ORB_SESSIONS
+from v13pro.strat_orb_fcb import LAB_STRATEGY_NAMES, get_confirmations as _lab_confirmations
 from v13pro import preflight
 
 
@@ -93,6 +97,7 @@ class FCBBot:
         self._edge_radar = None   # EdgeRadar (full shadow exploitation)
         self._micro_tf = None     # MicroTFIntelligence (3m/5m cross-TF validation)
         self._alignment = None    # MomentumAlignment (BTC/ETH/SOL trend alignment)
+        self._strategy_lab = None # StrategyLab (ORB/FCB learning system)
         self._session_lc = None   # SessionTracker (intra-session lifecycle)
         self._watchdog = None     # Watchdog
         self._scan_count = 0
@@ -261,6 +266,13 @@ class FCBBot:
             self._alignment.log_status()
         except Exception:
             log.info("Momentum alignment ready (will warm on first sentiment)")
+
+        # Init Strategy Lab (ORB/FCB shadow learning system)
+        self._strategy_lab = StrategyLab()
+        log.info(f"Strategy lab ready: tracking {', '.join(sorted(LAB_STRATEGIES))}")
+        # Wire lab into shadow for outcome tracking
+        if self._shadow:
+            self._shadow.set_strategy_lab(self._strategy_lab)
 
         # Init Session Lifecycle Tracker (intra-session risk modulation)
         self._session_lc = SessionTracker()
@@ -551,6 +563,12 @@ class FCBBot:
         if stop_dist <= 0 or entry_price <= 0:
             return
 
+        # ── ORB NY-session-only filter ──
+        # ORB strategy only fires during NY session.
+        # Skip entirely outside NY (don't even shadow-track — data is meaningless).
+        if strat == 'ORB' and session not in ORB_SESSIONS:
+            return
+
         # ── Directional Intelligence: adaptive side filtering ──
         # Instead of hardcoded LONG_ONLY, let shadow data decide
         # which sides are profitable in current market sentiment.
@@ -758,6 +776,19 @@ class FCBBot:
         except Exception:
             all_dna_features = {}
 
+        # Compute lab confirmations for ORB/FCB strategies (rich metadata for learning)
+        _lab_conf = {}
+        if strat in LAB_STRATEGY_NAMES:
+            try:
+                arrays = await self._ws.get_arrays(symbol, tf)
+                if arrays is not None:
+                    _o, _h, _l, _c, _v = arrays
+                    from v13pro.indicators import atr as _atr_fn
+                    _a = _atr_fn(_h, _l, _c, 14)
+                    _lab_conf = _lab_confirmations(strat, _o, _h, _l, _c, _v, _a, len(_c) - 1)
+            except Exception:
+                pass
+
         # Shadow: track conviction-scored signals (passed AND rejected)
         if self._shadow:
             try:
@@ -774,6 +805,7 @@ class FCBBot:
                     dna_features=all_dna_features,
                     bayes_adjustment=skill_result.get("bayes_adjustment", 0.0),
                     level_info=skill_result.get("level_info", {}),
+                    lab_confirmations=_lab_conf,
                 )
             except Exception as e:
                 log.warning(f"Shadow record error: {e}")
@@ -1951,6 +1983,7 @@ class FCBBot:
             micro_tf=self._micro_tf.summary() if self._micro_tf else {},
             alignment=self._alignment.summary() if self._alignment else {},
             session_lc=self._session_lc.summary() if self._session_lc else {},
+            strategy_lab=self._strategy_lab.summary() if self._strategy_lab else {},
         )
 
         # Daily summary check (once per day at midnight UTC)

@@ -29,10 +29,30 @@
       "ts": 1772101859.9529557,
       "action": "promote",
       "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772145166.531344,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772145166.531345,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772151871.8160613,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772151871.816062,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
     }
   ],
   "demotions": [],
-  "last_review": 1772101859.9529378,
+  "last_review": 1772151871.8160508,
   "live_combos": [
     [
       "BB_BREAK",

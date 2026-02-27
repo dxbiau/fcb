@@ -100,6 +100,12 @@ LIVE_COMBOS = {
 # Their outcomes feed cross-TF validation for 15m/1h signals.
 MICRO_TFS = {"3m", "5m"}
 
+# Strategy Lab strategies — shadow-only until graduated.
+# ORB (15m, NY-session only) + FCB (5m, all sessions).
+# These are tracked by StrategyLab with rich confirmation metadata.
+# When they graduate (≥50 trades, WR≥52%, ExpR≥+0.15), they can auto-promote.
+LAB_STRATEGIES = {"ORB", "FCB"}
+
 # Shadow promotion: auto-promote combos from shadow to live
 SHADOW_PROMOTE_MIN_TRADES = 30     # need ≥30 shadow outcomes to evaluate
 SHADOW_PROMOTE_MIN_EXPR = 0.05     # need ExpR ≥ +0.05 to promote

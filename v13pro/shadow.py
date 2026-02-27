@@ -76,6 +76,7 @@ class ShadowTrader:
         self._directional = None  # DirectionalIntelligence (set via set_directional)
         self._edge_radar = None   # EdgeRadar (set via set_edge_radar)
         self._micro_tf = None     # MicroTFIntelligence (set via set_micro_tf)
+        self._strategy_lab = None  # StrategyLab (set via set_strategy_lab)
 
     def set_thesis_logger(self, thesis):
         """Wire in thesis logger to receive all shadow outcomes."""
@@ -96,6 +97,10 @@ class ShadowTrader:
     def set_micro_tf(self, micro_tf):
         """Wire in micro-TF intelligence for 3m/5m outcome tracking."""
         self._micro_tf = micro_tf
+
+    def set_strategy_lab(self, lab):
+        """Wire in strategy lab for ORB/FCB learning outcome tracking."""
+        self._strategy_lab = lab
 
     async def start(self):
         """Start the shadow tracking loop."""
@@ -140,7 +145,8 @@ class ShadowTrader:
                             skill_breakdown: dict = None,
                             dna_features: dict = None,
                             bayes_adjustment: float = 0.0,
-                            level_info: dict = None):
+                            level_info: dict = None,
+                            lab_confirmations: dict = None):
         """
         Record a signal for shadow tracking.
 
@@ -254,6 +260,7 @@ class ShadowTrader:
                 "dna_features": dna_features or {},
                 "bayes_adjustment": bayes_adjustment,
                 "level_info": level_info or {},
+                "lab_confirmations": lab_confirmations or {},
             })
 
         tag = "PASS" if passed else f"SKIP({rejection_reason})"
@@ -521,6 +528,32 @@ class ShadowTrader:
                 )
             except Exception:
                 pass
+
+        # Feed Strategy Lab (ORB/FCB rich confirmation learning)
+        if self._strategy_lab:
+            _strat_name = item.get("strategy", "")
+            from v13pro.strategy_lab import LAB_STRATEGIES as _LAB_SET
+            if _strat_name in _LAB_SET:
+                try:
+                    _dur_ms = int(time.time() * 1000) - item["entry_ts_ms"]
+                    self._strategy_lab.record_outcome(
+                        strategy=_strat_name,
+                        symbol=item.get("symbol", ""),
+                        side=item.get("side", ""),
+                        tf=item.get("tf", ""),
+                        session=item.get("session", ""),
+                        entry_price=item.get("entry_price", 0),
+                        stop_dist=item.get("stop_dist", 0),
+                        peak_r=item.get("peak_r", 0),
+                        trough_r=item.get("trough_r", 0),
+                        outcome_r=pnl_r,
+                        hit_tp=item.get("hit_tp", False),
+                        hit_sl=item.get("hit_sl", False),
+                        confirmations=item.get("lab_confirmations", {}),
+                        duration_min=_dur_ms / 60_000,
+                    )
+                except Exception:
+                    pass
 
         emoji = "✅" if pnl_r > 0 else "❌"
         traded = "TRADED" if item["passed"] else "REJECTED"

@@ -559,69 +559,949 @@
     "test_R": 11.023,
     "avg_r": 0.3556
   },
-
-  {"pair": "BTC_USDT",  "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "BB_FADE",   "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "DONCHIAN",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "MOM_SURGE", "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "DONCHIAN",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "IB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "BTC_USDT",  "strat": "RSI_FADE",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "ETH_USDT",  "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "BB_FADE",   "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "DONCHIAN",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "MOM_SURGE", "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "DONCHIAN",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "IB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ETH_USDT",  "strat": "ENGULF",    "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "SOL_USDT",  "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "BB_FADE",   "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "DONCHIAN",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "MOM_SURGE", "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "DONCHIAN",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "IB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SOL_USDT",  "strat": "ENGULF",    "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "HYPE_USDT", "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "DONCHIAN",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "MOM_SURGE", "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "DONCHIAN",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "HYPE_USDT", "strat": "IB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "XRP_USDT",  "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "XRP_USDT",  "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "XRP_USDT",  "strat": "DONCHIAN",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "XRP_USDT",  "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "XRP_USDT",  "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "XRP_USDT",  "strat": "DONCHIAN",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "SUI_USDT",  "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SUI_USDT",  "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SUI_USDT",  "strat": "DONCHIAN",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SUI_USDT",  "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "SUI_USDT",  "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "AVAX_USDT", "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "AVAX_USDT", "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "AVAX_USDT", "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "AVAX_USDT", "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-
-  {"pair": "ADA_USDT",  "strat": "RSI_FADE",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ADA_USDT",  "strat": "BB_BREAK",  "tf": "3m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ADA_USDT",  "strat": "BB_BREAK",  "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"},
-  {"pair": "ADA_USDT",  "strat": "EMA_RIB",   "tf": "5m",  "exit": "trl_tight", "source": "micro_shadow"}
+  {
+    "pair": "BTC_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "BB_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "DONCHIAN",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "MOM_SURGE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "DONCHIAN",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "IB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "RSI_FADE",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "BB_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "DONCHIAN",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "MOM_SURGE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "DONCHIAN",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "IB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "ENGULF",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "BB_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "DONCHIAN",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "MOM_SURGE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "DONCHIAN",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "IB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "ENGULF",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "DONCHIAN",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "MOM_SURGE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "DONCHIAN",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "IB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "DONCHIAN",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "DONCHIAN",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "DONCHIAN",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "AVAX_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "AVAX_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "AVAX_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "AVAX_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ADA_USDT",
+    "strat": "RSI_FADE",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ADA_USDT",
+    "strat": "BB_BREAK",
+    "tf": "3m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ADA_USDT",
+    "strat": "BB_BREAK",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "ADA_USDT",
+    "strat": "EMA_RIB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "micro_shadow"
+  },
+  {
+    "pair": "1000BONK_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ADA_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ALCH_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ALU_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "API3_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "AVAX_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "AWE_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "BONK",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "BREV_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "CLOUD_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "CLO_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "COW",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "DOGE",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "DOT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "DYM",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ESP_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "FHE_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "FLOKI",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "H_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "LINK",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "LTC",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "OM_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "PENDLE",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "PEPE",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "PUFFER_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SKR_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SPACE_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SWARMS_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "TRIA_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "VIRTUAL_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "WIF",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "WIF_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ZIL_USDT",
+    "strat": "ORB",
+    "tf": "15m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "1000BONK_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ADA_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ALCH_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ALU_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "API3_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "AVAX_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "AWE_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "BONK",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "BREV_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "BTC_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "CLOUD_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "CLO_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "COW",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "DOGE",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "DOT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "DYM",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ESP_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ETH_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "FHE_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "FLOKI",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "HYPE_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "H_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "LINK",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "LTC",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "OM_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "PENDLE",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "PEPE",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "PUFFER_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SKR_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SOL_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SPACE_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SUI_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "SWARMS_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "TRIA_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "VIRTUAL_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "WIF",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "WIF_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "XRP_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  },
+  {
+    "pair": "ZIL_USDT",
+    "strat": "FCB",
+    "tf": "5m",
+    "exit": "trl_tight",
+    "source": "strategy_lab"
+  }
 ]

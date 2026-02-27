@@ -155,7 +155,8 @@ def dashboard(*, equity=0, peak_equity=0, target_equity=5000,
               sentiment=None, orderflow=None, shadow=None, regime=None,
               lifecycle=None, cross_sectional=None, calibrator=None,
               burst=None, burst_optim=None, edge_radar=None,
-              micro_tf=None, alignment=None, session_lc=None):
+              micro_tf=None, alignment=None, session_lc=None,
+              strategy_lab=None):
     """Rich colored dashboard display — preflight-style layout."""
 
     W = 58
@@ -552,6 +553,41 @@ def dashboard(*, equity=0, peak_equity=0, target_equity=5000,
                f"  risk×{sl_mult:.2f}  tp×{sl_tp:.2f}")
         else:
             _p(f"     Risk       x{sl_mult:.2f}  TP×{sl_tp:.2f}")
+        _p(f"  {C.DIM}{'─' * (W - 4)}{C.RESET}")
+
+    # ── STRATEGY LAB BLOCK ──
+    if strategy_lab:
+        has_data = any(v.get("n", 0) > 0 for v in strategy_lab.values())
+        _p(f"  {C.BOLD}🧪 STRATEGY LAB{C.RESET}  {C.DIM}(shadow learning){C.RESET}")
+        for sname, sd in strategy_lab.items():
+            n = sd.get("n", 0)
+            wr = sd.get("wr", 0)
+            expr = sd.get("expr", 0)
+            grad = sd.get("graduated", False)
+            lev_v = sd.get("lev_verdict", "?")
+            lev_r = sd.get("lev_rec", "?")
+            top_cf = sd.get("top_confirm", "")
+
+            if n == 0:
+                _p(f"     {C.BWHITE}{sname:4s}{C.RESET}  "
+                   f"{C.DIM}awaiting signals...{C.RESET}")
+                continue
+
+            wr_c = C.BGREEN if wr >= 52 else (C.BYELLOW if wr >= 45 else C.BRED)
+            ex_c = C.BGREEN if expr > 0 else C.BRED
+            grad_tag = f"  {C.BGREEN}GRADUATED{C.RESET}" if grad else ""
+            lev_tag = ""
+            if "x10" in str(lev_v) or "x20" in str(lev_v):
+                lev_tag = f"  {C.BGREEN}LEV:{lev_r}x{C.RESET}"
+            elif "x8" in str(lev_v):
+                lev_tag = f"  {C.BYELLOW}LEV:{lev_r}x{C.RESET}"
+
+            _p(f"     {C.BWHITE}{sname:4s}{C.RESET}  "
+               f"N={n}  WR={wr_c}{wr:.0f}%{C.RESET}"
+               f"  ExpR={ex_c}{expr:+.3f}{C.RESET}"
+               f"{lev_tag}{grad_tag}")
+            if top_cf:
+                _p(f"           top: {C.DIM}{top_cf}{C.RESET}")
         _p(f"  {C.DIM}{'─' * (W - 4)}{C.RESET}")
 
     # ── LIFECYCLE / CALIBRATOR / CROSS-SECTIONAL ──

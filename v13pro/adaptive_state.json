@@ -1,15 +1,15 @@
 {
   "smoothed": {
-    "of_block_threshold": 0.3,
+    "of_block_threshold": 0.5995,
     "of_boost": 2.0,
     "of_penalty": 1.0,
-    "min_key_level_score": 5.0,
-    "conv_mult_A+": 1.0908,
-    "conv_mult_A": 0.9321,
-    "conv_mult_B": 0.9352,
-    "conv_mult_C": 1.6883,
+    "min_key_level_score": 5.0034,
+    "conv_mult_A+": 1.1028,
+    "conv_mult_A": 0.9273,
+    "conv_mult_B": 0.9379,
+    "conv_mult_C": 1.6959,
     "dna_boost_cap": 2.0
   },
   "refreshes": 1,
-  "ts": 1772141564.6186068
+  "ts": 1772189853.181975
 }

@@ -1184,13 +1184,85 @@
       "pnl_r": 0.5221,
       "win": true,
       "ts": "2026-02-26T12:28:10.307920+00:00"
+    },
+    {
+      "symbol": "BARD/USDT:USDT",
+      "score": 75.93,
+      "grade": "A",
+      "pnl_r": 1.4535,
+      "win": true,
+      "ts": "2026-02-27T00:07:17.691004+00:00"
+    },
+    {
+      "symbol": "AAVE/USDT:USDT",
+      "score": 78.32,
+      "grade": "A",
+      "pnl_r": -1.1234,
+      "win": false,
+      "ts": "2026-02-27T00:37:42.755784+00:00"
+    },
+    {
+      "symbol": "MYX/USDT:USDT",
+      "score": 78.69,
+      "grade": "A",
+      "pnl_r": -0.9307,
+      "win": "False",
+      "ts": "2026-02-27T01:07:37.168474+00:00"
+    },
+    {
+      "symbol": "XAUT/USDT:USDT",
+      "score": 76.25999999999999,
+      "grade": "A",
+      "pnl_r": 0.0163,
+      "win": "True",
+      "ts": "2026-02-27T02:36:52.890039+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 87.72,
+      "grade": "A+",
+      "pnl_r": 1.6181,
+      "win": "True",
+      "ts": "2026-02-27T08:12:13.861935+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 80.16000000000001,
+      "grade": "A+",
+      "pnl_r": 1.2372,
+      "win": "True",
+      "ts": "2026-02-27T08:30:48.114361+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 85.96000000000001,
+      "grade": "A+",
+      "pnl_r": 0.2362,
+      "win": "True",
+      "ts": "2026-02-27T09:13:10.444758+00:00"
+    },
+    {
+      "symbol": "BARD/USDT:USDT",
+      "score": 77.05,
+      "grade": "A",
+      "pnl_r": -1.0674,
+      "win": "False",
+      "ts": "2026-02-27T10:01:42.411599+00:00"
+    },
+    {
+      "symbol": "ZEC/USDT:USDT",
+      "score": 89.83999999999999,
+      "grade": "A+",
+      "pnl_r": 1.7319,
+      "win": "True",
+      "ts": "2026-02-27T10:16:07.549094+00:00"
     }
   ],
   "buckets": {
     "70-80": {
-      "wins": 31,
-      "losses": 50,
-      "total_r": -10.412388810631677
+      "wins": 33,
+      "losses": 53,
+      "total_r": -12.064034743310648
     },
     "50-60": {
       "wins": 2,
@@ -1203,9 +1275,9 @@
       "total_r": 1.4597479564710123
     },
     "80-90": {
-      "wins": 11,
+      "wins": 15,
       "losses": 10,
-      "total_r": 1.3082924751065508
+      "total_r": 6.131763673927645
     },
     "90-100": {
       "wins": 3,
@@ -1225,9 +1297,9 @@
   },
   "grade_stats": {
     "A": {
-      "wins": 38,
-      "losses": 56,
-      "total_r": -6.442347694026244
+      "wins": 40,
+      "losses": 59,
+      "total_r": -8.093993626705215
     },
     "B": {
       "wins": 7,
@@ -1235,9 +1307,9 @@
       "total_r": -7.608875258856786
     },
     "A+": {
-      "wins": 14,
+      "wins": 18,
       "losses": 11,
-      "total_r": 2.2425432982445748
+      "total_r": 7.066014497065669
     },
     "C": {
       "wins": 3,
@@ -1245,9 +1317,9 @@
       "total_r": 0.5001471432609854
     }
   },
-  "total_evaluated": 2405,
-  "total_passed": 1809,
-  "total_rejected": 596,
-  "recal_count": 14,
-  "last_recal": "2026-02-26T05:16:54.776405+00:00"
+  "total_evaluated": 2768,
+  "total_passed": 1846,
+  "total_rejected": 922,
+  "recal_count": 15,
+  "last_recal": "2026-02-27T00:37:42.762296+00:00"
 }

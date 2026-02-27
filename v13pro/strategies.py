@@ -170,6 +170,8 @@ STRATEGIES = {
     'PIN_BAR': S_pin_bar, 'IB_BREAK': S_ib_break, 'ENGULF': S_engulf,
     'MTF_RSI': S_mtf_rsi, 'TR_PULL': S_tr_pull, 'MOM_SURGE': S_mom_surge,
 }
+# NOTE: ORB + FCB lab strategies are registered at startup by bot.py
+# (avoids circular import: strat_orb_fcb → strategies → strat_orb_fcb)
 
 
 def scan_last_bar(o, h, l, c, v, pair='', tf='',
