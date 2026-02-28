@@ -56,6 +56,10 @@ DNA_BOOST_CAP = 6            # max +conviction from DNA profiler (prevent garbag
 
 # Shadow-validated edge filters
 LONG_ONLY_MODE = True         # shadow: longs 59.4% WR, shorts 27.9% WR → block shorts
+# Sentiment-gated shorts: allow shorts when DI confirms edge in non-BEAR
+# sentiments.  Learning modules stay longs-only until real short data
+# accumulates.  DI gate: BULL shorts 78% WR, NEUTRAL 61% WR.
+SENTIMENT_GATED_SHORTS = True # when True, LONG_ONLY_MODE relaxed per-sentiment
 REQUIRE_OF_ALIGNMENT = False  # legacy flag — replaced by tiered OF gate in bot.py
 OF_HARD_BLOCK_IMB = 0.30      # block entry if OF imbalance > this against our direction
                               # shadow: imb -0.20 to 0 wins 83% → only block heavy opposition
@@ -78,22 +82,25 @@ LIVE_COMBOS = {
     # Tier 2: Moderate edge (ExpR +0.03 to +0.30)
     ("EMA_RIB",   "1h"),    # ExpR=+0.214  WR=69%  N=77
     ("RSI_FADE",  "15m"),   # ExpR=+0.172  WR=44%  N=9
+    ("DONCHIAN",  "1h"),    # ExpR=+0.142  WR=37%  N=79  (promoted 2025-02-28)
     ("BB_BREAK",  "1h"),    # ExpR=+0.163  WR=56%  N=48
     ("IB_BREAK",  "15m"),   # ExpR=+0.154  WR=53%  N=77
     ("PIN_BAR",   "15m"),   # ExpR=+0.147  WR=65%  N=23
     ("TR_PULL",   "15m"),   # ExpR=+0.092  WR=53%  N=208
     ("PIN_BAR",   "1h"),    # ExpR=+0.074  WR=71%  N=7
+    ("EMA_RIB",   "15m"),   # ExpR=+0.060  WR=24%  N=541 (promoted 2025-02-28, EdgeRadar HOT)
     ("DONCHIAN",  "15m"),   # ExpR=+0.034  WR=42%  N=123
+    ("MOM_SURGE", "30m"),   # ExpR=+0.378  WR=42%  N=12  (promoted 2025-02-28, EdgeRadar HOT)
     # Ensemble signals (portfolio) — allowed through
     ("ENS2",      "1h"),
     ("ENS3",      "1h"),
 }
-# Shadow-only combos (negative ExpR for longs — study only):
-# EMA_RIB/15m (-0.030), IB_BREAK/1h (-0.030), MTF_RSI/1h (-0.091)
-# ENGULF/1h (-0.094), DONCHIAN/1h (-0.111), MOM_SURGE/30m (-0.113)
-# MOM_SURGE/15m (-0.238)
+# Shadow-only combos (negative/marginal ExpR for longs — study only):
+# IB_BREAK/1h (-0.030), MTF_RSI/1h (-0.091)
+# ENGULF/1h (-0.094), MOM_SURGE/15m (-0.238)
 # → These still shadow-track every signal. When their rolling ExpR
 #   turns positive, they auto-promote to LIVE_COMBOS.
+# Promoted 2025-02-28: EMA_RIB/15m, DONCHIAN/1h, MOM_SURGE/30m
 
 # Micro-TF shadow intelligence (3m/5m cross-TF validation)
 # These TFs are shadow-only — never place live orders.

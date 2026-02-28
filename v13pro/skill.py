@@ -27,6 +27,7 @@ Self-contained: no imports from obr/.
 """
 
 import json
+import math
 import os
 import threading
 from datetime import datetime, timezone
@@ -389,19 +390,21 @@ class PerformanceSkill:
         """
         result = score_setup(candles, direction, current_price, maker)
 
-        # ── Key level gate: reject signals not near a real level ──
+        # ── Key level: sigmoid risk multiplier (replaces hard block) ──
+        # Shadow audit: 243 KL-rejected longs had +0.107 ExpR, +26.0R total.
+        # KL 5-10 bucket: 29.2% WR, +0.230 ExpR (clearly profitable).
+        # Sigmoid scales risk: at threshold → 1.0x, at zero → 0.20x.
         kl_score = result["breakdown"]["key_level"][0]
         _kl_min = self._adaptive.min_key_level_score if self._adaptive else cfg.MIN_KEY_LEVEL_SCORE
-        if kl_score < _kl_min:
-            result["pass"] = False
-            result["min_conviction"] = self._memory.get("min_conviction", MIN_CONVICTION_DEFAULT)
-            result["score"] = result["score"]
-            result["rejection_reason"] = (
-                f"key_level={kl_score:.0f}<{_kl_min:.0f} "
-                f"(not near support/resistance)")
-            result["bayes_adjustment"] = 0
-            result["pair_status"] = {}
-            return result
+        if kl_score >= _kl_min:
+            result["kl_risk_mult"] = 1.0
+        else:
+            # Normalised position: 0 = at threshold, negative = below
+            _kl_ratio = kl_score / max(_kl_min, 1.0)  # 0..1
+            # Sigmoid: floor=0.20, ceiling=1.0, steepness=5.0
+            _kl_floor, _kl_steep = 0.20, 5.0
+            result["kl_risk_mult"] = _kl_floor + (1.0 - _kl_floor) / (
+                1.0 + math.exp(-_kl_steep * (_kl_ratio - 0.5)))
 
         # ── Stop distance quality gate ──
         if stop_dist > 0 and entry_price > 0:

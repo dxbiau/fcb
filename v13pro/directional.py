@@ -347,6 +347,13 @@ class DirectionalIntelligence:
         if cfg.LONG_ONLY_MODE and side == "long":
             return True
 
+        # Sentiment-gated shorts: when enabled, allow shorts through
+        # to data-driven check (no blanket LONG_ONLY block)
+        if (cfg.SENTIMENT_GATED_SHORTS and side == "short"
+                and cfg.LONG_ONLY_MODE):
+            # Fall through to data-driven check below
+            pass
+
         with self._lock:
             stats = self._side_stats.get((bias, side))
             if stats is None:

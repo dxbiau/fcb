@@ -197,3 +197,226 @@
 [02:27:56] SIG ATH/USDT:USDT 15m TR_PULL long entry=0.006133 conv=37C SKIP(key_level=0<10 (not near support/resistance))
 [02:27:57] SIG ENA/USDT:USDT 15m TR_PULL short entry=0.103540 conv=53B SKIP(conv=53<75)
 [02:29:11] EVENT[bot_stop] Bot stopped cleanly
+[02:35:31] EVENT[bot_start] Bot starting
+[02:36:56] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.022215 conv=51B SKIP(key_level=0<10 (not near support/resistance))
+[02:36:57] SIG PIPPIN/USDT:USDT 15m MTF_RSI short entry=0.666010 conv=62B SKIP(conv=62<75)
+[02:36:58] SIG VVV/USDT:USDT 15m BB_BREAK long entry=5.045300 conv=84A+ PASS
+[02:37:00] ENTRY LONG VVV/USDT:USDT [BB_BREAK/15m] entry=5.045300 SL=4.947000 TP=6.028100 qty=91.68 risk=$9.01 lev=8x conv=86A+ exit=trl_tight eq=$558.32 mkt=neutral(BTC→ ETH↓ SOL→) spread=0.2bps imb=+0.08 [tight]
+[02:37:01] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099930 conv=63B SKIP(conv=63<75)
+[02:37:02] SIG TAO/USDT:USDT 15m DONCHIAN long entry=181.300000 conv=84A+ PASS
+[02:37:04] ENTRY LONG TAO/USDT:USDT [DONCHIAN/15m] entry=181.300000 SL=180.130000 TP=193.020000 qty=6.628 risk=$7.77 lev=8x conv=86A+ exit=trl_tight eq=$558.32 mkt=neutral(BTC→ ETH↓ SOL→) spread=0.6bps imb=-0.10 [tight]
+[02:42:23] SIG POWER/USDT:USDT 15m EMA_RIB short entry=1.394540 conv=66A SKIP(conv=66<75)
+[02:42:23] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.022032 conv=51B SKIP(key_level=0<10 (not near support/resistance))
+[02:42:24] SIG PIPPIN/USDT:USDT 15m MTF_RSI short entry=0.668460 conv=44C SKIP(conv=44<75)
+[02:42:25] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099910 conv=63B SKIP(conv=63<75)
+[02:42:26] SIG WET/USDT:USDT 15m MTF_RSI long entry=0.112550 conv=37C SKIP(key_level=0<10 (not near support/resistance))
+[02:47:47] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.023042 conv=51B SKIP(key_level=0<10 (not near support/resistance))
+[02:47:48] SIG PIPPIN/USDT:USDT 15m EMA_RIB long entry=0.664500 conv=70A SKIP(conv=70<75)
+[02:47:50] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.100010 conv=66A SKIP(conv=66<75)
+[02:47:51] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006178 conv=50B SKIP(key_level=0<10 (not near support/resistance))
+[02:47:57] EXIT VVV/USDT:USDT [BB_BREAK/15m] SL -1.10R ($-9.90) entry=5.045300 exit=4.945077 peak=0.26R dur=11m conv=86A+ eq=$547.76 mkt_entry=neutral mkt_exit=neutral
+[02:52:38] EXIT TAO/USDT:USDT [DONCHIAN/15m] SL -1.18R ($-9.17) entry=181.300000 exit=180.084848 peak=0.00R dur=16m conv=86A+ eq=$539.25 mkt_entry=neutral mkt_exit=neutral
+[02:53:13] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.022588 conv=69A SKIP(stop_dist=8.3%>5.0% (too wide, not a key level entry))
+[02:53:14] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.100100 conv=66A SKIP(conv=66<75)
+[02:53:15] SIG WET/USDT:USDT 15m EMA_RIB short entry=0.111940 conv=46C SKIP(key_level=0<10 (not near support/resistance))
+[02:53:16] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006199 conv=49C SKIP(key_level=0<10 (not near support/resistance))
+[02:58:37] SIG POWER/USDT:USDT 15m BB_FADE long entry=1.415920 conv=66A SKIP(conv=66<75)
+[02:58:37] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.022821 conv=59B SKIP(key_level=5<10 (not near support/resistance))
+[02:58:38] SIG PIPPIN/USDT:USDT 15m EMA_RIB long entry=0.667430 conv=65A SKIP(conv=65<75)
+[02:58:39] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.100050 conv=65A SKIP(conv=65<75)
+[02:58:40] SIG WET/USDT:USDT 15m EMA_RIB short entry=0.111430 conv=56B SKIP(conv=56<75)
+[02:58:42] SIG PUMPFUN/USDT:USDT 15m BB_BREAK long entry=0.001842 conv=75A SKIP(key_level=5<10 (not near support/resistance))
+[03:04:04] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.023486 conv=46C SKIP(key_level=0<10 (not near support/resistance))
+[03:04:05] SIG PIPPIN/USDT:USDT 15m EMA_RIB long entry=0.668120 conv=58B SKIP(conv=58<75)
+[03:04:08] SIG WET/USDT:USDT 1h TR_PULL long entry=0.111390 conv=46C SKIP(key_level=0<10 (not near support/resistance))
+[03:09:28] SIG PIPPIN/USDT:USDT 15m EMA_RIB long entry=0.669330 conv=68A SKIP(conv=68<75)
+[03:09:31] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006228 conv=54B SKIP(key_level=5<10 (not near support/resistance))
+[03:14:54] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.432590 conv=54B SKIP(stop_dist=9.2%>5.0% (too wide, not a key level entry))
+[03:14:55] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.023362 conv=72A SKIP(stop_dist=7.8%>5.0% (too wide, not a key level entry))
+[03:14:55] SIG PIPPIN/USDT:USDT 15m EMA_RIB long entry=0.683370 conv=69A SKIP(conv=69<75)
+[03:14:56] SIG VVV/USDT:USDT 15m EMA_RIB long entry=5.016100 conv=79A PASS
+[03:14:58] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006263 conv=78A PASS
+[03:14:59] SIG WET/USDT:USDT 1h TR_PULL long entry=0.111410 conv=44C SKIP(key_level=0<10 (not near support/resistance))
+[03:20:20] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.023556 conv=48C SKIP(key_level=0<10 (not near support/resistance))
+[03:20:22] SIG BNB/USDT:USDT 15m DONCHIAN long entry=614.900000 conv=72A SKIP(conv=72<75)
+[03:20:23] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006287 conv=45C SKIP(key_level=0<10 (not near support/resistance))
+[03:20:35] EVENT[bot_start] Bot starting
+[03:21:58] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.444980 conv=63B SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[03:21:58] SIG SAHARA/USDT:USDT 1h IB_BREAK long entry=0.023357 conv=71A SKIP(stop_dist=7.8%>5.0% (too wide, not a key level entry))
+[03:22:00] SIG BNB/USDT:USDT 15m DONCHIAN long entry=614.900000 conv=67A SKIP(conv=67<75)
+[03:22:01] SIG ATH/USDT:USDT 1h IB_BREAK long entry=0.006286 conv=47C SKIP(conv=47<75)
+[03:27:23] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.445020 conv=63B SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[03:27:24] SIG BNB/USDT:USDT 15m DONCHIAN long entry=615.200000 conv=76A PASS
+[03:27:27] ENTRY LONG BNB/USDT:USDT [DONCHIAN/15m] entry=615.200000 SL=613.400000 TP=633.700000 qty=2.44 risk=$4.51 lev=8x conv=78A exit=trl_tight eq=$539.25 mkt=bear(BTC→ ETH↓ SOL→) spread=1.6bps imb=+0.10 [tight]
+[03:32:47] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.448860 conv=63B SKIP(stop_dist=9.2%>5.0% (too wide, not a key level entry))
+[03:32:48] SIG VVV/USDT:USDT 15m DONCHIAN long entry=5.120000 conv=73A SKIP(conv=73<75)
+[03:32:51] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006184 conv=47C SKIP(conv=47<75)
+[03:35:18] EXIT BNB/USDT:USDT [DONCHIAN/15m] SL -1.28R ($-5.80) entry=615.200000 exit=613.400000 peak=0.00R dur=8m conv=78A eq=$525.91 mkt_entry=bear mkt_exit=bear
+[03:38:12] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.469420 conv=65A SKIP(stop_dist=9.2%>5.0% (too wide, not a key level entry))
+[03:38:13] SIG VVV/USDT:USDT 15m DONCHIAN long entry=5.113200 conv=77A PASS
+[03:38:16] ENTRY LONG VVV/USDT:USDT [DONCHIAN/15m] entry=5.113200 SL=5.010100 TP=6.143900 qty=128.51 risk=$13.24 lev=8x conv=84A+ exit=trl_tight eq=$525.91 mkt=bear(BTC→ ETH↓ SOL↓) spread=2.5bps imb=+0.25 [tight]
+[03:43:43] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.462810 conv=59B SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[03:43:43] SIG PIPPIN/USDT:USDT 15m IB_BREAK long entry=0.687170 conv=61B SKIP(conv=61<75)
+[03:49:07] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.460450 conv=63B SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[03:49:08] SIG PIPPIN/USDT:USDT 15m DONCHIAN long entry=0.695050 conv=74A SKIP(conv=74<75)
+[03:49:11] SIG PUMPFUN/USDT:USDT 15m EMA_RIB long entry=0.001835 conv=70A SKIP(conv=70<75)
+[03:51:11] GUARD VVV/USDT:USDT tier_move R=0.53 peak=0.53 SL 5.010100->5.082280 tier0_protect
+[03:54:32] SIG SAHARA/USDT:USDT 15m TR_PULL long entry=0.022194 conv=26D SKIP(conv=26<75)
+[03:54:32] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.479910 conv=68A SKIP(stop_dist=9.2%>5.0% (too wide, not a key level entry))
+[03:54:33] SIG PIPPIN/USDT:USDT 15m DONCHIAN long entry=0.694670 conv=78A PASS
+[03:54:36] ENTRY LONG PIPPIN/USDT:USDT [DONCHIAN/15m] entry=0.694670 SL=0.677690 TP=0.864490 qty=176.0 risk=$3.00 lev=8x conv=78A exit=trl_tight eq=$525.19 mkt=bear(BTC→ ETH↓ SOL↓) spread=0.1bps imb=-0.08 [tight]
+[03:54:39] SIG PUMPFUN/USDT:USDT 15m EMA_RIB long entry=0.001838 conv=59B SKIP(conv=59<75)
+[03:58:09] EXIT VVV/USDT:USDT [DONCHIAN/15m] SL -0.41R ($-5.40) entry=5.113200 exit=5.075906 peak=0.61R dur=20m conv=84A+ eq=$520.51 mkt_entry=bear mkt_exit=bear
+[04:00:00] SIG SAHARA/USDT:USDT 15m TR_PULL long entry=0.022289 conv=34D SKIP(conv=34<75)
+[04:00:00] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.478910 conv=65B SKIP(stop_dist=9.2%>5.0% (too wide, not a key level entry))
+[04:05:26] SIG SAHARA/USDT:USDT 15m TR_PULL long entry=0.022331 conv=45C SKIP(conv=45<75)
+[04:05:27] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.098790 conv=42C SKIP(conv=42<75)
+[04:05:28] SIG PUMPFUN/USDT:USDT 15m EMA_RIB long entry=0.001836 conv=72A SKIP(conv=72<75)
+[04:05:29] SIG WET/USDT:USDT 1h TR_PULL long entry=0.109690 conv=56B SKIP(stop_dist=5.0%>5.0% (too wide, not a key level entry))
+[04:10:51] SIG SAHARA/USDT:USDT 15m EMA_RIB long entry=0.022687 conv=39C SKIP(conv=39<75)
+[04:10:52] SIG POWER/USDT:USDT 15m BB_BREAK long entry=1.530870 conv=79A PASS
+[04:16:17] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.023051 conv=58B SKIP(stop_dist=8.0%>5.0% (too wide, not a key level entry))
+[04:16:20] SIG WET/USDT:USDT 1h TR_PULL long entry=0.109630 conv=48C SKIP(stop_dist=5.1%>5.0% (too wide, not a key level entry))
+[04:16:21] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.136720 conv=54B SKIP(conv=54<75)
+[04:21:43] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.022889 conv=46C SKIP(stop_dist=8.1%>5.0% (too wide, not a key level entry))
+[04:21:45] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099110 conv=58B SKIP(conv=58<75)
+[04:21:52] SIG WET/USDT:USDT 1h TR_PULL long entry=0.110040 conv=74A SKIP(stop_dist=5.0%>5.0% (too wide, not a key level entry))
+[04:21:53] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.136520 conv=61B SKIP(conv=61<75)
+[04:27:15] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.023090 conv=74A SKIP(stop_dist=8.0%>5.0% (too wide, not a key level entry))
+[04:27:16] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.542480 conv=53B SKIP(stop_dist=8.6%>5.0% (too wide, not a key level entry))
+[04:27:17] SIG PIPPIN/USDT:USDT 15m EMA_RIB long entry=0.697500 conv=55B SKIP(conv=55<75)
+[04:27:18] SIG VVV/USDT:USDT 15m EMA_RIB long entry=5.149800 conv=73A SKIP(conv=73<75)
+[04:27:19] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099120 conv=57B SKIP(conv=57<75)
+[04:27:20] SIG WET/USDT:USDT 1h TR_PULL long entry=0.110200 conv=69A SKIP(stop_dist=5.0%>5.0% (too wide, not a key level entry))
+[04:27:21] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.136750 conv=55B SKIP(conv=55<75)
+[04:32:42] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.547520 conv=56B SKIP(stop_dist=8.7%>5.0% (too wide, not a key level entry))
+[04:32:43] SIG VVV/USDT:USDT 15m EMA_RIB long entry=5.151200 conv=66A SKIP(conv=66<75)
+[04:32:45] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006148 conv=43C SKIP(conv=43<75)
+[04:35:26] AFTER BNB/USDT:USDT sl -> NEUTRAL favor=+0.43R against=-0.38R checks=4
+[04:38:07] SIG SAHARA/USDT:USDT 1h TR_PULL long entry=0.022731 conv=60B SKIP(stop_dist=8.1%>5.0% (too wide, not a key level entry))
+[04:38:08] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.560160 conv=67A SKIP(stop_dist=8.6%>5.0% (too wide, not a key level entry))
+[04:38:09] SIG VVV/USDT:USDT 15m EMA_RIB long entry=5.156900 conv=66A SKIP(conv=66<75)
+[04:38:10] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099150 conv=52B SKIP(conv=52<75)
+[04:38:11] SIG ATH/USDT:USDT 15m TR_PULL long entry=0.006139 conv=46C SKIP(conv=46<75)
+[04:38:13] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.137260 conv=65A SKIP(conv=65<75)
+[04:43:34] SIG SAHARA/USDT:USDT 1h EMA_RIB long entry=0.022860 conv=45C SKIP(stop_dist=8.1%>5.0% (too wide, not a key level entry))
+[04:43:35] SIG POWER/USDT:USDT 15m BB_BREAK long entry=1.580160 conv=76A PASS
+[04:43:36] SIG VVV/USDT:USDT 15m EMA_RIB long entry=5.197200 conv=74A SKIP(conv=74<75)
+[04:43:36] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099140 conv=56B SKIP(conv=56<75)
+[04:43:37] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006164 conv=45C SKIP(conv=45<75)
+[04:43:40] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.138240 conv=68A SKIP(conv=68<75)
+[04:49:02] SIG SAHARA/USDT:USDT 15m TR_PULL long entry=0.022764 conv=55B SKIP(conv=55<75)
+[04:49:02] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.576160 conv=67A SKIP(stop_dist=8.6%>5.0% (too wide, not a key level entry))
+[04:49:05] SIG PUMPFUN/USDT:USDT 15m EMA_RIB long entry=0.001841 conv=52B SKIP(conv=52<75)
+[04:49:06] SIG ALICE/USDT:USDT 1h EMA_RIB long entry=0.138010 conv=73A SKIP(stop_dist=5.7%>5.0% (too wide, not a key level entry))
+[04:54:28] SIG SAHARA/USDT:USDT 15m EMA_RIB long entry=0.023397 conv=47C SKIP(conv=47<75)
+[04:54:29] SIG POWER/USDT:USDT 15m BB_BREAK long entry=1.661210 conv=87A+ PASS
+[04:54:30] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099320 conv=45C SKIP(conv=45<75)
+[04:54:33] SIG ALICE/USDT:USDT 1h EMA_RIB long entry=0.137770 conv=61B SKIP(stop_dist=5.8%>5.0% (too wide, not a key level entry))
+[04:58:36] AFTER VVV/USDT:USDT sl -> UNNECESSARY_SL favor=+1.65R against=+0.00R checks=4
+[04:59:54] SIG SAHARA/USDT:USDT 15m EMA_RIB long entry=0.023076 conv=33D SKIP(conv=33<75)
+[04:59:54] SIG POWER/USDT:USDT 15m BB_BREAK long entry=1.638160 conv=81A+ PASS
+[04:59:55] SIG PIPPIN/USDT:USDT 15m MTF_RSI short entry=0.660460 conv=75A PASS
+[04:59:58] ENTRY SHORT PIPPIN/USDT:USDT [MTF_RSI/15m] entry=0.660460 SL=0.678790 TP=0.477120 qty=78.0 risk=$1.44 lev=8x conv=74A exit=trl_tight eq=$520.54 mkt=bear(BTC↓ ETH↓ SOL↓) spread=0.1bps imb=+0.14 [tight]
+[04:59:59] SIG ARB/USDT:USDT 1h TR_PULL long entry=0.099340 conv=46C SKIP(conv=46<75)
+[05:00:00] SIG ATH/USDT:USDT 15m TR_PULL long entry=0.006163 conv=60B SKIP(conv=60<75)
+[05:00:01] SIG BNB/USDT:USDT 1h EMA_RIB short entry=612.100000 conv=59B SKIP(conv=59<75)
+[05:00:02] SIG WET/USDT:USDT 15m EMA_RIB short entry=0.109060 conv=52B SKIP(conv=52<75)
+[05:00:02] SIG ENA/USDT:USDT 15m TR_PULL short entry=0.103140 conv=39C SKIP(conv=39<75)
+[05:00:03] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.138930 conv=53B SKIP(conv=53<75)
+[05:05:25] SIG POWER/USDT:USDT 15m RSI_FADE short entry=1.587410 conv=56B SKIP(conv=56<75)
+[05:05:27] SIG ARB/USDT:USDT 15m TR_PULL short entry=0.099350 conv=60B SKIP(conv=60<75)
+[05:05:27] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006193 conv=50C SKIP(conv=50<75)
+[05:05:28] SIG BNB/USDT:USDT 15m IB_BREAK long entry=612.500000 conv=72A SKIP(conv=72<75)
+[05:05:29] SIG PUMPFUN/USDT:USDT 1h TR_PULL short entry=0.001832 conv=74A SKIP(conv=74<75)
+[05:05:29] SIG WET/USDT:USDT 1h TR_PULL long entry=0.109280 conv=64B SKIP(conv=64<75)
+[05:05:30] SIG ENA/USDT:USDT 15m TR_PULL short entry=0.103130 conv=42C SKIP(conv=42<75)
+[05:05:34] EXIT PIPPIN/USDT:USDT [MTF_RSI/15m] SL -1.11R ($-1.60) entry=0.660460 exit=0.681720 peak=0.00R dur=6m conv=74A eq=$518.95 mkt_entry=bear mkt_exit=bear
+[05:10:53] SIG POWER/USDT:USDT 15m RSI_FADE short entry=1.552050 conv=63B SKIP(conv=63<75)
+[05:10:54] SIG ARB/USDT:USDT 15m TR_PULL short entry=0.099330 conv=66A SKIP(conv=66<75)
+[05:10:55] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006221 conv=46C SKIP(conv=46<75)
+[05:10:56] SIG BNB/USDT:USDT 15m IB_BREAK long entry=612.700000 conv=73A SKIP(conv=73<75)
+[05:10:57] SIG PUMPFUN/USDT:USDT 1h TR_PULL short entry=0.001833 conv=73A SKIP(conv=73<75)
+[05:10:57] SIG ENA/USDT:USDT 15m TR_PULL short entry=0.103070 conv=53B SKIP(conv=53<75)
+[05:16:19] SIG POWER/USDT:USDT 15m EMA_RIB long entry=1.549160 conv=65A SKIP(conv=65<75)
+[05:16:22] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006191 conv=52B SKIP(conv=52<75)
+[05:16:22] SIG BNB/USDT:USDT 15m EMA_RIB short entry=612.500000 conv=61B SKIP(conv=61<75)
+[05:16:24] SIG PUMPFUN/USDT:USDT 1h TR_PULL short entry=0.001820 conv=59B SKIP(conv=59<75)
+[05:16:24] SIG WET/USDT:USDT 1h TR_PULL long entry=0.109330 conv=63B SKIP(conv=63<75)
+[05:16:25] SIG ENA/USDT:USDT 15m TR_PULL short entry=0.102980 conv=52B SKIP(conv=52<75)
+[05:21:48] SIG SAHARA/USDT:USDT 15m TR_PULL long entry=0.022869 conv=33D SKIP(conv=33<75)
+[05:21:48] SIG POWER/USDT:USDT 1h BB_FADE short entry=1.513660 conv=78A SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[05:21:50] SIG VVV/USDT:USDT 1h BB_FADE short entry=5.097500 conv=61B SKIP(conv=61<75)
+[05:21:51] SIG ARB/USDT:USDT 15m EMA_RIB short entry=0.099130 conv=76A PASS
+[05:21:54] ENTRY SHORT ARB/USDT:USDT [EMA_RIB/15m] entry=0.099130 SL=0.099690 TP=0.093560 qty=5520.0 risk=$3.08 lev=8x conv=76A exit=trl_tight eq=$518.95 mkt=bear(BTC↓ ETH↓ SOL↓) spread=1.0bps imb=+0.13 [tight]
+[05:21:55] SIG BNB/USDT:USDT 15m EMA_RIB short entry=611.800000 conv=64B SKIP(conv=64<75)
+[05:21:56] SIG PUMPFUN/USDT:USDT 15m TR_PULL long entry=0.001821 conv=51B SKIP(conv=51<75)
+[05:21:57] SIG WET/USDT:USDT 1h TR_PULL long entry=0.109940 conv=68A SKIP(conv=68<75)
+[05:21:57] SIG ENA/USDT:USDT 15m EMA_RIB short entry=0.102750 conv=68A SKIP(conv=68<75)
+[05:21:58] SIG ALICE/USDT:USDT 15m IB_BREAK short entry=0.136190 conv=59B SKIP(conv=59<75)
+[05:27:18] SIG SAHARA/USDT:USDT 15m IB_BREAK short entry=0.022661 conv=71A SKIP(conv=71<75)
+[05:27:19] SIG POWER/USDT:USDT 1h BB_FADE short entry=1.519710 conv=76A SKIP(stop_dist=9.4%>5.0% (too wide, not a key level entry))
+[05:27:20] SIG VVV/USDT:USDT 1h BB_FADE short entry=4.974900 conv=63B SKIP(conv=63<75)
+[05:27:23] SIG PUMPFUN/USDT:USDT 15m EMA_RIB long entry=0.001822 conv=56B SKIP(conv=56<75)
+[05:27:23] SIG WET/USDT:USDT 1h TR_PULL long entry=0.109480 conv=63B SKIP(conv=63<75)
+[05:27:24] SIG ENA/USDT:USDT 15m EMA_RIB short entry=0.102840 conv=66A SKIP(conv=66<75)
+[05:27:24] SIG ALICE/USDT:USDT 15m IB_BREAK short entry=0.135440 conv=45C SKIP(conv=45<75)
+[05:31:57] GUARD ARB/USDT:USDT tier_move R=0.65 peak=0.65 SL 0.099690->0.099297 tier0_protect
+[05:32:47] SIG SAHARA/USDT:USDT 15m EMA_RIB long entry=0.022766 conv=54B SKIP(conv=54<75)
+[05:32:47] SIG POWER/USDT:USDT 1h BB_FADE short entry=1.530020 conv=75A SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[05:32:49] SIG VVV/USDT:USDT 1h BB_FADE short entry=4.941600 conv=68A SKIP(conv=68<75)
+[05:32:50] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006198 conv=48C SKIP(conv=48<75)
+[05:32:51] SIG BNB/USDT:USDT 15m EMA_RIB short entry=610.500000 conv=69A SKIP(conv=69<75)
+[05:32:52] SIG PUMPFUN/USDT:USDT 1h EMA_RIB short entry=0.001816 conv=61B SKIP(conv=61<75)
+[05:32:52] SIG WET/USDT:USDT 15m EMA_RIB short entry=0.108790 conv=48C SKIP(conv=48<75)
+[05:32:53] SIG ENA/USDT:USDT 15m EMA_RIB short entry=0.102320 conv=68A SKIP(conv=68<75)
+[05:32:53] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.137320 conv=56B SKIP(conv=56<75)
+[05:34:30] GUARD XAUT/USDT:USDT tier_move R=0.50 peak=0.50 SL 5255.600000->5266.660000 tier0_protect
+[05:38:14] SIG POWER/USDT:USDT 1h BB_FADE short entry=1.532100 conv=70A SKIP(stop_dist=9.3%>5.0% (too wide, not a key level entry))
+[05:38:16] SIG VVV/USDT:USDT 15m EMA_RIB long entry=4.964400 conv=66A SKIP(conv=66<75)
+[05:38:17] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006235 conv=51B SKIP(conv=51<75)
+[05:38:18] SIG BNB/USDT:USDT 15m EMA_RIB short entry=610.300000 conv=74A SKIP(conv=74<75)
+[05:38:19] SIG PUMPFUN/USDT:USDT 1h EMA_RIB short entry=0.001812 conv=76A PASS
+[05:38:22] ENTRY SHORT PUMPFUN/USDT:USDT [EMA_RIB/1h] entry=0.001812 SL=0.001848 TP=0.001460 qty=15900.0 risk=$0.56 lev=8x conv=75A exit=trl_tight eq=$518.84 mkt=bear(BTC↓ ETH↓ SOL↓) spread=0.6bps imb=+0.22 [tight]
+[05:38:23] SIG ENA/USDT:USDT 15m EMA_RIB short entry=0.101940 conv=55B SKIP(conv=55<75)
+[05:38:23] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.136180 conv=52B SKIP(conv=52<75)
+[05:43:45] SIG POWER/USDT:USDT 1h BB_FADE short entry=1.510000 conv=77A SKIP(stop_dist=9.5%>5.0% (too wide, not a key level entry))
+[05:43:47] SIG VVV/USDT:USDT 15m EMA_RIB long entry=4.965000 conv=66A SKIP(conv=66<75)
+[05:43:48] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006268 conv=52B SKIP(conv=52<75)
+[05:43:49] SIG BNB/USDT:USDT 15m EMA_RIB short entry=610.800000 conv=77A PASS
+[05:43:51] ENTRY SHORT BNB/USDT:USDT [EMA_RIB/15m] entry=610.800000 SL=612.600000 TP=592.500000 qty=0.37 risk=$0.68 lev=8x conv=78A exit=trl_tight eq=$518.82 mkt=bear(BTC↓ ETH↓ SOL↓) spread=1.6bps imb=+0.15 [tight]
+[05:43:52] SIG WET/USDT:USDT 15m EMA_RIB short entry=0.107980 conv=71A SKIP(conv=71<75)
+[05:43:53] SIG ENA/USDT:USDT 15m EMA_RIB short entry=0.101830 conv=60B SKIP(conv=60<75)
+[05:43:54] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.136870 conv=65B SKIP(conv=65<75)
+[05:49:16] SIG SAHARA/USDT:USDT 15m EMA_RIB long entry=0.022610 conv=41C SKIP(conv=41<75)
+[05:49:17] SIG POWER/USDT:USDT 1h BB_FADE short entry=1.507580 conv=68A SKIP(stop_dist=9.5%>5.0% (too wide, not a key level entry))
+[05:49:19] SIG VVV/USDT:USDT 15m EMA_RIB long entry=4.990400 conv=63B SKIP(conv=63<75)
+[05:49:20] SIG ATH/USDT:USDT 15m BB_FADE short entry=0.006262 conv=34D SKIP(conv=34<75)
+[05:49:22] SIG WET/USDT:USDT 1h DONCHIAN short entry=0.107700 conv=45C SKIP(stop_dist=5.0%>5.0% (too wide, not a key level entry))
+[05:49:22] SIG ENA/USDT:USDT 1h EMA_RIB short entry=0.101650 conv=81A+ PASS
+[05:49:26] ENTRY SHORT ENA/USDT:USDT [EMA_RIB/1h] entry=0.101650 SL=0.103220 TP=0.086000 qty=1572.0 risk=$2.46 lev=8x conv=81A+ exit=trl_tight eq=$518.78 mkt=bear(BTC↓ ETH↓ SOL↓) spread=1.0bps imb=-0.01 [tight]
+[06:05:41] AFTER PIPPIN/USDT:USDT sl -> CORRECT_SL favor=+0.39R against=-0.78R checks=4
+[06:07:03] GUARD ARB/USDT:USDT tier_move R=1.06 peak=1.06 SL 0.099297->0.098963 tier1_lock030
+[06:07:04] GUARD BNB/USDT:USDT tier_move R=0.60 peak=0.60 SL 612.600000->611.349720 tier0_protect
+[06:08:31] EVENT[bot_start] Bot starting
+[06:09:24] GUARD ARB/USDT:USDT tier_move R=0.91 peak=0.91 SL 0.099690->0.099298 tier0_protect
+[06:09:24] GUARD XAUT/USDT:USDT tier_move R=0.55 peak=0.55 SL 5255.600000->5266.660000 tier0_protect
+[06:09:59] SIG POWER/USDT:USDT 15m EMA_RIB long entry=1.538270 conv=70A SKIP(conv=70<75)
+[06:10:01] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006381 conv=45C SKIP(conv=45<75)
+[06:10:04] SIG WET/USDT:USDT 1h TR_PULL long entry=0.107750 conv=51B SKIP(conv=51<75)
+[06:14:50] GUARD ARB/USDT:USDT tier_move R=1.20 peak=1.20 SL 0.099298->0.098962 tier1_lock030
+[06:15:07] GUARD BNB/USDT:USDT tier_move R=0.61 peak=0.61 SL 612.600000->611.340000 tier0_protect
+[06:15:24] SIG SAHARA/USDT:USDT 15m TR_PULL long entry=0.021743 conv=38C SKIP(conv=38<75)
+[06:15:25] SIG POWER/USDT:USDT 1h TR_PULL long entry=1.533660 conv=65B SKIP(stop_dist=8.8%>5.0% (too wide, not a key level entry))
+[06:15:26] SIG VVV/USDT:USDT 15m EMA_RIB long entry=4.990800 conv=70A SKIP(conv=70<75)
+[06:15:28] SIG ATH/USDT:USDT 15m EMA_RIB long entry=0.006279 conv=49C SKIP(conv=49<75)
+[06:15:31] SIG WET/USDT:USDT 15m IB_BREAK short entry=0.106900 conv=48C SKIP(conv=48<75)
+[06:15:31] SIG ALICE/USDT:USDT 15m TR_PULL long entry=0.136490 conv=52B SKIP(conv=52<75)
+[06:15:38] GUARD ARB/USDT:USDT tier_move R=1.55 peak=1.55 SL 0.098962->0.098682 tier2_lock080
+[06:15:38] GUARD ARB/USDT:USDT trail_activate R=1.55 peak=1.55 SL 0.098682->0.098682 activated_at_R=1.55_act=1.5_dist=0.5
+[06:15:38] GUARD ARB/USDT:USDT trail_move R=1.55 peak=1.55 SL 0.098682->0.098540 trail_dist=0.5
+[06:15:53] GUARD ARB/USDT:USDT trail_move R=1.66 peak=1.66 SL 0.098540->0.098480 trail_dist=0.5
+[06:16:09] GUARD BNB/USDT:USDT tier_move R=1.17 peak=1.17 SL 611.340000->610.260000 tier1_lock030
+[06:16:09] GUARD ARB/USDT:USDT trail_move R=1.82 peak=1.82 SL 0.098480->0.098390 trail_dist=0.5
+[06:16:09] GUARD PUMPFUN/USDT:USDT tier_move R=0.61 peak=0.61 SL 0.001848->0.001823 tier0_protect
+[06:16:25] GUARD ARB/USDT:USDT trail_move R=1.93 peak=1.93 SL 0.098390->0.098330 trail_dist=0.5

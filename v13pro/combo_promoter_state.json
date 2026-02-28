@@ -94,6 +94,11 @@
       "ts": 1772240935.4505765,
       "action": "promote",
       "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772252474.825185,
+      "action": "promote",
+      "combo": "RSI_FADE/3m"
     }
   ],
   "demotions": [
@@ -108,7 +113,7 @@
       "combo": "PIN_BAR/15m"
     }
   ],
-  "last_review": 1772240935.4505622,
+  "last_review": 1772252474.8251688,
   "live_combos": [
     [
       "BB_BREAK",
@@ -161,6 +166,10 @@
     [
       "MOM_SURGE",
       "1h"
+    ],
+    [
+      "MOM_SURGE",
+      "30m"
     ],
     [
       "MTF_RSI",

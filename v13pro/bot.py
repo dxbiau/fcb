@@ -15,6 +15,7 @@ No blocking calls anywhere in the hot path.
 """
 
 import asyncio
+import math
 import signal
 import sys
 import time
@@ -601,20 +602,24 @@ class FCBBot:
                         pass
                 return
         elif cfg.LONG_ONLY_MODE and sig.side == "short":
-            # Fallback: no directional data yet, use static config
-            if self._shadow:
-                try:
-                    await self._shadow.record_signal(
-                        symbol=symbol, side=sig.side, strategy=strat,
-                        tf=tf, entry_price=entry_price, stop_dist=stop_dist,
-                        conviction=0, grade="X", passed=False,
-                        rejection_reason="long_only_mode",
-                        exit_mode=exit_mode, session=session,
-                        source="hunter" if is_hunter else "portfolio",
-                    )
-                except Exception:
-                    pass
-            return
+            # Sentiment-gated shorts: block only in BEAR when gating enabled
+            if cfg.SENTIMENT_GATED_SHORTS and _sent_bias != "bear":
+                pass  # allow short through — DI gate already passed/absent
+            else:
+                # Fallback: no directional data yet, use static config
+                if self._shadow:
+                    try:
+                        await self._shadow.record_signal(
+                            symbol=symbol, side=sig.side, strategy=strat,
+                            tf=tf, entry_price=entry_price, stop_dist=stop_dist,
+                            conviction=0, grade="X", passed=False,
+                            rejection_reason=f"long_only_mode ({_sent_bias})",
+                            exit_mode=exit_mode, session=session,
+                            source="hunter" if is_hunter else "portfolio",
+                        )
+                    except Exception:
+                        pass
+                return
 
         # ── Edge Radar: block FROZEN strategy/tf combos ──
         if self._edge_radar:
@@ -748,6 +753,7 @@ class FCBBot:
         conviction = skill_result["score"]
         grade = skill_result["grade"]
         passed = skill_result["pass"]
+        kl_risk_mult = skill_result.get("kl_risk_mult", 1.0)
 
         # Build rejection reason from skill oracle or conviction threshold
         if passed:
@@ -757,8 +763,12 @@ class FCBBot:
         else:
             rej_reason = f"conv={conviction:.0f}<{skill_result['min_conviction']}"
 
-        # Log key-level and stop-dist rejections visibly
-        if not passed and rej_reason and ("key_level" in rej_reason or "stop_dist" in rej_reason):
+        # Log key-level sigmoid and stop-dist rejections visibly
+        if kl_risk_mult < 0.95:
+            _kl_score = skill_result.get("breakdown", {}).get("key_level", (0, ""))[0]
+            log.info(f"  {symbol}: KL sigmoid x{kl_risk_mult:.2f} "
+                     f"(kl_score={_kl_score:.0f})")
+        if not passed and rej_reason and "stop_dist" in rej_reason:
             log.info(f"  Skip {symbol}: {rej_reason}")
 
         # Journal: log every signal (pass or reject)
@@ -881,14 +891,12 @@ class FCBBot:
             elif conviction >= 35: grade = "C"
             else: grade = "D"
 
-        # ── OB alignment: tiered approach from shadow data ──
-        # Shadow: OF-rejected longs by imbalance bucket:
-        #   imb -0.20 to 0:    83.3% WR, +0.654 ExpR → allow (soft penalty)
-        #   imb 0 to +0.15:    75.0% WR, +0.629 ExpR → allow (soft penalty)
-        #   imb < -0.40:       70% WR but N=10 → block (strongly against)
-        #   imb -0.40 to -0.20: 33% WR, N=6 → block (moderately against)
-        # Rule: aligned=+8, neutral(>-0.30)=-3, strongly against(<-0.30)=block
+        # ── OB alignment: sigmoid multiplier from shadow data ──
+        # Shadow audit: hard block destroyed +110.5R at 76.8% WR.
+        # Sigmoid replaces binary block with smooth risk scaling.
+        # aligned=boost, unaligned=sigmoid(severity) ∈ [0.15, 1.0]
         ob_snap = {}
+        of_risk_mult = 1.0  # default: no OF data → full risk
         if self._orderflow:
             try:
                 ob_snap = await self._orderflow.snapshot(
@@ -903,38 +911,32 @@ class FCBBot:
                     log.info(f"  OB aligned +{ob_boost} -> conv={conviction:.0f} "
                              f"(imb={imb:+.2f} pres={pres})")
                 else:
-                    # Check how strongly against
-                    # For longs: imbalance < -0.30 means heavy sell pressure
-                    # For shorts: imbalance > +0.30 means heavy buy pressure
+                    # ── Unaligned: sigmoid risk multiplier (replaces hard block) ──
+                    # Shadow audit: hard block destroyed +110.5R at 76.8% WR.
+                    # Sigmoid smoothly scales risk: neutral→1.0x, threshold→0.58x,
+                    # extreme→0.15x.  Safety preserved, proven edge recovered.
                     _of_thresh = self._adaptive.of_block_threshold if self._adaptive else cfg.OF_HARD_BLOCK_IMB
-                    if sig.side == "long":
-                        strongly_against = imb < -_of_thresh
-                    else:
-                        strongly_against = imb > _of_thresh
 
-                    if strongly_against:
-                        # Hard block — OF strongly against our direction
-                        log.info(f"  Skip {symbol}: OF strongly against "
-                                 f"(imb={imb:+.2f} pres={pres} side={sig.side})")
-                        if self._shadow:
-                            try:
-                                await self._shadow.record_signal(
-                                    symbol=symbol, side=sig.side, strategy=strat,
-                                    tf=tf, entry_price=entry_price, stop_dist=stop_dist,
-                                    conviction=conviction, grade=grade, passed=False,
-                                    rejection_reason=f"of_strongly_against (imb={imb:+.2f} pres={pres})",
-                                    exit_mode=exit_mode, session=session,
-                                    source="hunter" if is_hunter else "portfolio",
-                                )
-                            except Exception:
-                                pass
-                        return
+                    # Normalised severity: 0=neutral, 1.0=at threshold, >1=beyond
+                    if sig.side == "long":
+                        _raw_sev = max(0.0, -imb) / max(_of_thresh, 0.01)
                     else:
-                        # Mildly unaligned — adaptive penalty, still trade
-                        ob_penalty = self._adaptive.of_penalty if self._adaptive else 3
-                        conviction -= ob_penalty
-                        log.info(f"  OB soft penalty -{ob_penalty} -> conv={conviction:.0f} "
-                                 f"(imb={imb:+.2f} pres={pres} side={sig.side})")
+                        _raw_sev = max(0.0, imb) / max(_of_thresh, 0.01)
+
+                    # Sigmoid: floor 0.15, ceiling 1.0, steepness 4.5
+                    _of_floor, _of_ceil, _of_steep = 0.15, 1.0, 4.5
+                    of_risk_mult = _of_floor + (_of_ceil - _of_floor) / (
+                        1.0 + math.exp(_of_steep * (_raw_sev - 1.0)))
+
+                    # Conviction penalty proportional to severity
+                    ob_penalty = self._adaptive.of_penalty if self._adaptive else 3
+                    _scaled_penalty = round(ob_penalty * min(_raw_sev, 2.0))
+                    conviction -= _scaled_penalty
+
+                    log.info(f"  OB unaligned: risk x{of_risk_mult:.2f} "
+                             f"conv-{_scaled_penalty} -> {conviction:.0f} "
+                             f"(imb={imb:+.2f} sev={_raw_sev:.2f} "
+                             f"pres={pres} side={sig.side})")
 
                 # Re-evaluate grade after OB adjustment
                 if conviction >= 80: grade = "A+"
@@ -945,24 +947,28 @@ class FCBBot:
             except Exception:
                 pass  # if OB check fails, proceed without gate
 
-        # ── Sentiment filter: block shorts when market is BULL ──
-        if self._sentiment and sig.side == "short":
-            try:
-                sent = await self._sentiment.get_sentiment()
-                s_bias = sent.get("bias", "neutral")
-                s_conf = sent.get("confidence", 0)
-                if s_bias == "bull" and s_conf >= 50:
-                    log.info(f"  Skip {symbol}: SHORT blocked — sentiment BULL "
-                             f"(conf={s_conf:.0f}%)")
-                    journal.log_signal(
-                        symbol=symbol, tf=tf, strategy=strat, side=sig.side,
-                        entry=entry_price, stop_dist=stop_dist, passed=False,
-                        conviction=conviction, grade=grade,
-                        rejection_reason=f"sentiment_bull_block (conf={s_conf:.0f}%)",
-                    )
-                    return
-            except Exception:
-                pass  # if sentiment fails, allow the trade
+        # ── Sentiment filter: DI-aware short gating ──
+        # Shadow audit: BULL shorts 78% WR (+0.619 ExpR), NEUTRAL 61% WR.
+        # Old code BLOCKED shorts in BULL — exactly inverted from data.
+        # Now: DirectionalIntel handles this via is_side_allowed().
+        # Only hard-block shorts in BEAR when no DI data available.
+        if sig.side == "short" and not self._directional:
+            if self._sentiment:
+                try:
+                    sent = await self._sentiment.get_sentiment()
+                    s_bias = sent.get("bias", "neutral")
+                    if s_bias == "bear":
+                        log.info(f"  Skip {symbol}: SHORT blocked — BEAR sentiment "
+                                 f"(no DI data, safety fallback)")
+                        journal.log_signal(
+                            symbol=symbol, tf=tf, strategy=strat, side=sig.side,
+                            entry=entry_price, stop_dist=stop_dist, passed=False,
+                            conviction=conviction, grade=grade,
+                            rejection_reason=f"bear_short_block_no_di",
+                        )
+                        return
+                except Exception:
+                    pass  # if sentiment fails, allow the trade
 
         # Hunter signals: reject only below minimum grade
         _GRADE_RANK = {"A+": 5, "A": 4, "B": 3, "C": 2, "D": 1}
@@ -1173,7 +1179,8 @@ class FCBBot:
                          * edge_combo_mult * edge_market_mult
                          * edge_sent_mult * edge_hot_mult
                          * cross_tf_mult
-                         * alignment_mult * session_lc_mult)
+                         * alignment_mult * session_lc_mult
+                         * of_risk_mult * kl_risk_mult)
         dollar_risk = equity * effective_risk
         leverage = int(cfg.get_leverage(equity) * burst_lev_mult)
 

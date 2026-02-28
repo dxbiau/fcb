@@ -1432,13 +1432,53 @@
       "pnl_r": 1.209,
       "win": true,
       "ts": "2026-02-28T02:12:16.818719+00:00"
+    },
+    {
+      "symbol": "VVV/USDT:USDT",
+      "score": 84.4,
+      "grade": "A+",
+      "pnl_r": -1.0985,
+      "win": false,
+      "ts": "2026-02-28T02:47:57.738157+00:00"
+    },
+    {
+      "symbol": "TAO/USDT:USDT",
+      "score": 84.45,
+      "grade": "A+",
+      "pnl_r": -1.181,
+      "win": false,
+      "ts": "2026-02-28T02:52:38.930220+00:00"
+    },
+    {
+      "symbol": "BNB/USDT:USDT",
+      "score": 75.98,
+      "grade": "A",
+      "pnl_r": -1.2839,
+      "win": false,
+      "ts": "2026-02-28T03:35:18.868605+00:00"
+    },
+    {
+      "symbol": "VVV/USDT:USDT",
+      "score": 77.24000000000001,
+      "grade": "A",
+      "pnl_r": -0.4077,
+      "win": false,
+      "ts": "2026-02-28T03:58:09.758769+00:00"
+    },
+    {
+      "symbol": "PIPPIN/USDT:USDT",
+      "score": 75.02,
+      "grade": "A",
+      "pnl_r": -1.1055,
+      "win": "False",
+      "ts": "2026-02-28T05:05:34.676215+00:00"
     }
   ],
   "buckets": {
     "70-80": {
       "wins": 40,
-      "losses": 61,
-      "total_r": -11.931564033618908
+      "losses": 64,
+      "total_r": -14.72869512365811
     },
     "50-60": {
       "wins": 2,
@@ -1452,8 +1492,8 @@
     },
     "80-90": {
       "wins": 19,
-      "losses": 13,
-      "total_r": 8.558508173975863
+      "losses": 15,
+      "total_r": 6.279093830165935
     },
     "90-100": {
       "wins": 3,
@@ -1474,8 +1514,8 @@
   "grade_stats": {
     "A": {
       "wins": 47,
-      "losses": 67,
-      "total_r": -7.96152291701348
+      "losses": 70,
+      "total_r": -10.758654007052682
     },
     "B": {
       "wins": 7,
@@ -1484,8 +1524,8 @@
     },
     "A+": {
       "wins": 22,
-      "losses": 14,
-      "total_r": 9.492758997113889
+      "losses": 16,
+      "total_r": 7.2133446533039605
     },
     "C": {
       "wins": 3,
@@ -1493,9 +1533,9 @@
       "total_r": 0.5001471432609854
     }
   },
-  "total_evaluated": 3166,
-  "total_passed": 1903,
-  "total_rejected": 1263,
-  "recal_count": 17,
-  "last_recal": "2026-02-27T21:51:35.751154+00:00"
+  "total_evaluated": 3301,
+  "total_passed": 1919,
+  "total_rejected": 1382,
+  "recal_count": 18,
+  "last_recal": "2026-02-28T02:47:57.746004+00:00"
 }

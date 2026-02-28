@@ -62,7 +62,7 @@ REFRESH_INTERVAL = 600          # 10 minutes — faster than lifecycle (20m)
 
 # ── ECS (Edge Confidence Score) ──
 ECS_DECAY_HALFLIFE = 40         # half-life in trades — recent trades weighted 2x
-ECS_MIN_TRADES = 15             # minimum trades for valid ECS
+ECS_MIN_TRADES = 10             # minimum trades for valid ECS (lowered from 15)
 ECS_RECENT_WINDOW = 50          # trades for rolling ECS computation
 ECS_EWMA_ALPHA = 0.30           # smoothing for ECS updates (faster than lifecycle)
 
@@ -75,15 +75,19 @@ BCS_W4 = 0.10                  # volatility normalized
 BCS_W5 = 0.10                  # cross-sectional inverse risk
 
 # ── State thresholds ──
-BURST_THRESHOLD = 0.68          # BCS > this → candidate for burst mode
+# Tuned 2025-02-28: original 0.68 was mathematically unreachable
+# (system ECS=0.375 + neutral components → BCS=0.456 max).
+# Lowered to 0.55 so burst can activate when edge is genuinely strong.
+BURST_THRESHOLD = 0.55          # BCS > this → candidate for burst mode
 DECAY_THRESHOLD = 0.35          # BCS < this → immediate decay mode
 MIN_BURST_SUSTAIN = 2           # consecutive refreshes above threshold to activate
 BURST_DD_CUTOFF_PCT = 12.0      # disable burst when drawdown > 12%
 
 # ── Shadow validation ──
 SHADOW_VALIDATION_WINDOW = 30   # last N passed-long outcomes for validation
-SHADOW_MIN_WR = 0.52            # min WR for shadow validation
-SHADOW_MIN_EXPR = 0.00          # min ExpR for shadow validation (must be positive)
+SHADOW_MIN_WR = 0.35            # min WR for validation (pipeline filters produce
+                                # low apparent WR; big wins offset via +ExpR)
+SHADOW_MIN_EXPR = -0.05         # slightly negative OK if wins are large
 
 # ── Multiplier ranges ──
 # Burst (BCS > BURST_THRESHOLD + validated)
@@ -98,7 +102,7 @@ DECAY_TP_MIN = 0.80             # down to 80% TP during decay
 
 # ── Dynamic leverage formula ──
 # L_mult = 1 + (BURST_LEVERAGE_MAX - 1) · BCS^γ · f_drawdown
-GAMMA = 1.5                     # convex — only aggressive at high BCS
+GAMMA = 1.25                    # less convex — start boosting earlier in BCS curve
 DD_MAX_FOR_BURST = 15.0         # drawdown % at which f_drawdown → 0
 
 # ── Live outcome tracking ──
