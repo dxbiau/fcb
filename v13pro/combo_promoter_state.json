@@ -104,6 +104,11 @@
       "ts": 1772263193.4151146,
       "action": "promote",
       "combo": "RSI_FADE/3m"
+    },
+    {
+      "ts": 1772269910.1493132,
+      "action": "promote",
+      "combo": "RSI_FADE/3m"
     }
   ],
   "demotions": [
@@ -118,7 +123,7 @@
       "combo": "PIN_BAR/15m"
     }
   ],
-  "last_review": 1772263193.4150963,
+  "last_review": 1772269910.1493018,
   "live_combos": [
     [
       "BB_BREAK",

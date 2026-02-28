@@ -1488,6 +1488,22 @@
       "pnl_r": 1.8339,
       "win": true,
       "ts": "2026-02-28T09:06:19.466041+00:00"
+    },
+    {
+      "symbol": "PAXG/USDT:USDT",
+      "score": 80.09,
+      "grade": "A+",
+      "pnl_r": -1.1924,
+      "win": "False",
+      "ts": "2026-02-28T09:57:37.771753+00:00"
+    },
+    {
+      "symbol": "POWER/USDT:USDT",
+      "score": 82.2,
+      "grade": "A+",
+      "pnl_r": -0.9824,
+      "win": "False",
+      "ts": "2026-02-28T10:32:56.401489+00:00"
     }
   ],
   "buckets": {
@@ -1508,8 +1524,8 @@
     },
     "80-90": {
       "wins": 20,
-      "losses": 15,
-      "total_r": 8.1130420657143
+      "losses": 17,
+      "total_r": 5.938253143821727
     },
     "90-100": {
       "wins": 4,
@@ -1540,8 +1556,8 @@
     },
     "A+": {
       "wins": 24,
-      "losses": 16,
-      "total_r": 10.364263733053996
+      "losses": 18,
+      "total_r": 8.189474811161423
     },
     "C": {
       "wins": 3,
@@ -1549,9 +1565,9 @@
       "total_r": 0.5001471432609854
     }
   },
-  "total_evaluated": 3392,
-  "total_passed": 1923,
-  "total_rejected": 1469,
+  "total_evaluated": 3423,
+  "total_passed": 1931,
+  "total_rejected": 1492,
   "recal_count": 18,
   "last_recal": "2026-02-28T02:47:57.746004+00:00"
 }
