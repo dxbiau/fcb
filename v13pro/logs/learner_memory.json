@@ -2,17 +2,17 @@
   "feature_trackers": {
     "direction": {
       "long": {
-        "a": 53.0,
+        "a": 54.0,
         "b": 67.0
       },
       "short": {
-        "a": 28.0,
+        "a": 29.0,
         "b": 41.0
       }
     },
     "strategy": {
       "EMA_RIB": {
-        "a": 32.0,
+        "a": 33.0,
         "b": 41.0
       },
       "PIN_BAR": {
@@ -24,7 +24,7 @@
         "b": 26.0
       },
       "BB_FADE": {
-        "a": 11.0,
+        "a": 12.0,
         "b": 15.0
       },
       "BB_BREAK": {
@@ -58,7 +58,7 @@
     },
     "timeframe": {
       "15m": {
-        "a": 66.0,
+        "a": 68.0,
         "b": 85.0
       },
       "1h": {
@@ -72,7 +72,7 @@
     },
     "body_ratio": {
       "large": {
-        "a": 24.0,
+        "a": 25.0,
         "b": 25.0
       },
       "tiny": {
@@ -84,7 +84,7 @@
         "b": 26.0
       },
       "medium": {
-        "a": 23.0,
+        "a": 24.0,
         "b": 21.0
       },
       "huge": {
@@ -94,7 +94,7 @@
     },
     "volume": {
       "avg": {
-        "a": 12.0,
+        "a": 13.0,
         "b": 21.0
       },
       "low": {
@@ -106,13 +106,13 @@
         "b": 9.0
       },
       "spike": {
-        "a": 14.0,
+        "a": 15.0,
         "b": 10.0
       }
     },
     "trend": {
       "down": {
-        "a": 38.0,
+        "a": 40.0,
         "b": 41.0
       },
       "up": {
@@ -126,11 +126,11 @@
     },
     "volatility": {
       "low_vol": {
-        "a": 32.0,
+        "a": 33.0,
         "b": 39.0
       },
       "high_vol": {
-        "a": 21.0,
+        "a": 22.0,
         "b": 24.0
       },
       "med_vol": {
@@ -140,7 +140,7 @@
     },
     "rr_tier": {
       "tight_sl": {
-        "a": 33.0,
+        "a": 34.0,
         "b": 37.0
       },
       "med_sl": {
@@ -148,7 +148,7 @@
         "b": 37.0
       },
       "wide_sl": {
-        "a": 27.0,
+        "a": 28.0,
         "b": 35.0
       }
     },
@@ -162,11 +162,11 @@
         "b": 23.0
       },
       "tens": {
-        "a": 32.0,
+        "a": 33.0,
         "b": 31.0
       },
       "sub_dollar": {
-        "a": 24.0,
+        "a": 25.0,
         "b": 33.0
       },
       "micro": {
@@ -176,7 +176,7 @@
     },
     "session": {
       "london": {
-        "a": 15.0,
+        "a": 16.0,
         "b": 6.0
       },
       "late": {
@@ -184,7 +184,7 @@
         "b": 23.0
       },
       "asia": {
-        "a": 23.0,
+        "a": 24.0,
         "b": 49.0
       },
       "overlap": {
@@ -198,7 +198,7 @@
     },
     "hour_block": {
       "h08_11": {
-        "a": 9.0,
+        "a": 10.0,
         "b": 5.0
       },
       "h20_23": {
@@ -218,7 +218,7 @@
         "b": 14.0
       },
       "h04_07": {
-        "a": 5.0,
+        "a": 6.0,
         "b": 9.0
       }
     },
@@ -244,7 +244,7 @@
         "b": 14.0
       },
       "sat": {
-        "a": 4.0,
+        "a": 6.0,
         "b": 8.0
       }
     },
@@ -254,13 +254,13 @@
         "b": 1.0
       },
       "Phase 2": {
-        "a": 79.0,
+        "a": 81.0,
         "b": 107.0
       }
     },
     "drawdown_zone": {
       "normal": {
-        "a": 77.0,
+        "a": 79.0,
         "b": 104.0
       },
       "danger": {
@@ -270,7 +270,7 @@
     },
     "trend_x_dir": {
       "down_long": {
-        "a": 18.0,
+        "a": 19.0,
         "b": 22.0
       },
       "up_long": {
@@ -286,7 +286,7 @@
         "b": 15.0
       },
       "down_short": {
-        "a": 21.0,
+        "a": 22.0,
         "b": 20.0
       },
       "flat_long": {
@@ -296,7 +296,7 @@
     },
     "session_x_dir": {
       "london_long": {
-        "a": 12.0,
+        "a": 13.0,
         "b": 4.0
       },
       "late_long": {
@@ -308,7 +308,7 @@
         "b": 10.0
       },
       "asia_short": {
-        "a": 11.0,
+        "a": 12.0,
         "b": 13.0
       },
       "asia_long": {
@@ -338,7 +338,7 @@
     },
     "strat_x_tf": {
       "EMA_RIB_15m": {
-        "a": 29.0,
+        "a": 30.0,
         "b": 33.0
       },
       "PIN_BAR_15m": {
@@ -358,7 +358,7 @@
         "b": 5.0
       },
       "BB_FADE_15m": {
-        "a": 11.0,
+        "a": 12.0,
         "b": 14.0
       },
       "BB_BREAK_15m": {
@@ -428,7 +428,7 @@
         "b": 10.0
       },
       "A+": {
-        "a": 38.0,
+        "a": 40.0,
         "b": 38.0
       },
       "C": {
@@ -1665,83 +1665,92 @@
     "POWER/USDT:USDT": {
       "symbol": "POWER/USDT:USDT",
       "tracker": {
-        "a": 4.0,
+        "a": 5.0,
         "b": 3.0
       },
-      "total_r": -0.3692,
-      "streak": -1,
-      "best_r": 0.4928,
+      "total_r": 1.4647,
+      "streak": 1,
+      "best_r": 1.8339,
       "worst_r": -1.1213,
-      "last_trade": "2026-02-27T21:51:35.746605+00:00",
+      "last_trade": "2026-02-28T09:06:19.469183+00:00",
       "affinity": {
         "direction": {
-          "long": 2,
+          "long": 3,
           "short": 1
         },
         "strategy": {
           "TR_PULL": 2,
-          "BB_BREAK": 1
+          "BB_BREAK": 1,
+          "BB_FADE": 1
         },
         "timeframe": {
           "1h": 1,
-          "15m": 2
+          "15m": 3
         },
         "body_ratio": {
           "medium": 2,
-          "tiny": 1
+          "tiny": 1,
+          "large": 1
         },
         "volume": {
           "low": 2,
-          "spike": 1
+          "spike": 1,
+          "avg": 1
         },
         "trend": {
-          "down": 2,
+          "down": 3,
           "up": 1
         },
         "volatility": {
-          "high_vol": 3
+          "high_vol": 4
         },
         "rr_tier": {
-          "wide_sl": 3
+          "wide_sl": 4
         },
         "price_magnitude": {
-          "sub_dollar": 3
+          "sub_dollar": 3,
+          "tens": 1
         },
         "session": {
-          "overlap": 3
+          "overlap": 3,
+          "london": 1
         },
         "hour_block": {
           "h12_15": 2,
-          "h16_19": 1
+          "h16_19": 1,
+          "h08_11": 1
         },
         "day": {
           "tue": 2,
-          "wed": 1
+          "wed": 1,
+          "sat": 1
         },
         "equity_phase": {
-          "Phase 2": 3
+          "Phase 2": 4
         },
         "drawdown_zone": {
-          "normal": 3
+          "normal": 4
         },
         "trend_x_dir": {
-          "down_long": 1,
+          "down_long": 2,
           "down_short": 1,
           "up_long": 1
         },
         "session_x_dir": {
           "overlap_long": 2,
-          "overlap_short": 1
+          "overlap_short": 1,
+          "london_long": 1
         },
         "strat_x_tf": {
           "TR_PULL_1h": 1,
           "TR_PULL_15m": 1,
-          "BB_BREAK_15m": 1
+          "BB_BREAK_15m": 1,
+          "BB_FADE_15m": 1
         },
         "grade": {
           "A": 1,
           "C": 1,
-          "A+": 1
+          "A+": 2
         }
       }
     },
@@ -2938,9 +2947,77 @@
           "A+": 1
         }
       }
+    },
+    "ASTER/USDT:USDT": {
+      "symbol": "ASTER/USDT:USDT",
+      "tracker": {
+        "a": 2.0,
+        "b": 1.0
+      },
+      "total_r": 1.317,
+      "streak": 1,
+      "best_r": 1.317,
+      "worst_r": 0.0,
+      "last_trade": "2026-02-28T06:30:35.172859+00:00",
+      "affinity": {
+        "direction": {
+          "short": 1
+        },
+        "strategy": {
+          "EMA_RIB": 1
+        },
+        "timeframe": {
+          "15m": 1
+        },
+        "body_ratio": {
+          "medium": 1
+        },
+        "volume": {
+          "spike": 1
+        },
+        "trend": {
+          "down": 1
+        },
+        "volatility": {
+          "low_vol": 1
+        },
+        "rr_tier": {
+          "tight_sl": 1
+        },
+        "price_magnitude": {
+          "sub_dollar": 1
+        },
+        "session": {
+          "asia": 1
+        },
+        "hour_block": {
+          "h04_07": 1
+        },
+        "day": {
+          "sat": 1
+        },
+        "equity_phase": {
+          "Phase 2": 1
+        },
+        "drawdown_zone": {
+          "normal": 1
+        },
+        "trend_x_dir": {
+          "down_short": 1
+        },
+        "session_x_dir": {
+          "asia_short": 1
+        },
+        "strat_x_tf": {
+          "EMA_RIB_15m": 1
+        },
+        "grade": {
+          "A+": 1
+        }
+      }
     }
   },
-  "total_updates": 185,
+  "total_updates": 187,
   "created": "2026-02-23T10:31:23.113375+00:00",
-  "last_update": "2026-02-28T05:05:34.679628+00:00"
+  "last_update": "2026-02-28T09:06:19.469262+00:00"
 }

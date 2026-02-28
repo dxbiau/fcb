@@ -11,9 +11,9 @@
     "burst_threshold": 0.6,
     "decay_threshold": 0.4
   },
-  "n_runs": 19,
+  "n_runs": 20,
   "last_score": 175.2453914618107,
-  "iterations_total": 1520,
-  "last_run": 1772257352.2293253,
-  "ts": 1772257352.2293456
+  "iterations_total": 1600,
+  "last_run": 1772264568.7773266,
+  "ts": 1772264568.777347
 }

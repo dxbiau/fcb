@@ -248,11 +248,11 @@ DRAWDOWN_THROTTLE = [
 
 MAX_CONCURRENT_CURVE = [
     (100,    5),
-    (250,    6),
-    (500,    7),
-    (1000,   8),
-    (5000,   10),
-    (10000,  12),
+    (250,    7),
+    (500,    9),     # raised from 7 → 9 (iter 11: expanded signal universe needs throughput)
+    (1000,   10),    # raised from 8 → 10
+    (5000,   12),    # raised from 10 → 12
+    (10000,  14),    # raised from 12 → 14
     (50000,  15),
 ]
 

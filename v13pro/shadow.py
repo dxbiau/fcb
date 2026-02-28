@@ -77,6 +77,8 @@ class ShadowTrader:
         self._edge_radar = None   # EdgeRadar (set via set_edge_radar)
         self._micro_tf = None     # MicroTFIntelligence (set via set_micro_tf)
         self._strategy_lab = None  # StrategyLab (set via set_strategy_lab)
+        self._shadow_live = None   # ShadowLive (set via set_shadow_live)
+        self._correlation = None   # CorrelationEngine (set via set_correlation)
 
     def set_thesis_logger(self, thesis):
         """Wire in thesis logger to receive all shadow outcomes."""
@@ -101,6 +103,14 @@ class ShadowTrader:
     def set_strategy_lab(self, lab):
         """Wire in strategy lab for ORB/FCB learning outcome tracking."""
         self._strategy_lab = lab
+
+    def set_shadow_live(self, shadow_live):
+        """Wire in ShadowLive for pair momentum + combo focus tracking."""
+        self._shadow_live = shadow_live
+
+    def set_correlation(self, correlation):
+        """Wire in CorrelationEngine for cross-pair signal logging."""
+        self._correlation = correlation
 
     async def start(self):
         """Start the shadow tracking loop."""
@@ -271,6 +281,17 @@ class ShadowTrader:
                       f" [{of_snap.get('quality','?')}]")
         log.debug(f"  Shadow: {side.upper()} {symbol} [{strategy}/{tf}] "
                   f"conv={conviction:.0f}{grade} {tag}{of_tag}")
+
+        # Feed CorrelationEngine signal log (ALL signals for confirmation)
+        if self._correlation:
+            try:
+                self._correlation.record_signal(
+                    symbol=symbol, side=side,
+                    strategy=strategy, tf=tf,
+                    ts=time.time(),
+                )
+            except Exception:
+                pass
 
     async def _loop(self):
         """Main loop — checks every 20s for due checkpoints + TP/SL hits."""
@@ -557,6 +578,22 @@ class ShadowTrader:
                     )
                 except Exception:
                     pass
+
+        # Feed ShadowLive (pair momentum + passed-only combo focus)
+        if self._shadow_live:
+            try:
+                self._shadow_live.record_outcome(
+                    pnl_r=pnl_r,
+                    peak_r=item.get("peak_r", 0),
+                    strategy=item.get("strategy", ""),
+                    tf=item.get("tf", ""),
+                    side=item.get("side", ""),
+                    symbol=item.get("symbol", ""),
+                    passed=item.get("passed", False),
+                    ts_ms=int(time.time() * 1000),
+                )
+            except Exception:
+                pass
 
         emoji = "✅" if pnl_r > 0 else "❌"
         traded = "TRADED" if item["passed"] else "REJECTED"

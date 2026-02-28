@@ -63,6 +63,9 @@ from v13pro.momentum import MomentumAlignment
 from v13pro.session_lifecycle import SessionTracker
 from v13pro.strategy_lab import StrategyLab, LAB_STRATEGIES, ORB_SESSIONS
 from v13pro.strat_orb_fcb import LAB_STRATEGY_NAMES, get_confirmations as _lab_confirmations
+from v13pro.shadow_live import ShadowLive
+from v13pro.correlation_engine import CorrelationEngine
+from v13pro.flow_throttle import FlowThrottle
 from v13pro import preflight
 
 
@@ -100,6 +103,9 @@ class FCBBot:
         self._alignment = None    # MomentumAlignment (BTC/ETH/SOL trend alignment)
         self._strategy_lab = None # StrategyLab (ORB/FCB learning system)
         self._session_lc = None   # SessionTracker (intra-session lifecycle)
+        self._shadow_live = None  # ShadowLive (pair momentum + focus)
+        self._correlation = None  # CorrelationEngine (cross-pair confirmation)
+        self._flow_throttle = None  # FlowThrottle (strategy-level adaptive throttle)
         self._watchdog = None     # Watchdog
         self._scan_count = 0
         self._signal_count = 0
@@ -256,6 +262,22 @@ class FCBBot:
         if self._shadow:
             self._shadow.set_micro_tf(self._micro_tf)
 
+        # Init ShadowLive (pair momentum + passed-only combo focus)
+        self._shadow_live = ShadowLive()
+        self._shadow_live.log_status()
+        # Wire shadow_live into shadow for incremental updates
+        if self._shadow:
+            self._shadow.set_shadow_live(self._shadow_live)
+
+        # Init Correlation Engine (cross-pair signal confirmation)
+        self._correlation = CorrelationEngine()
+        await self._correlation.initialize(
+            self._ws, self._registry.all_pairs)
+        self._correlation.log_status()
+        # Wire correlation into shadow for signal logging
+        if self._shadow:
+            self._shadow.set_correlation(self._correlation)
+
         # Init Momentum Alignment Detector (BTC/ETH/SOL unanimous trend)
         self._alignment = MomentumAlignment(
             sentiment_gauge=self._sentiment,
@@ -274,6 +296,10 @@ class FCBBot:
         # Wire lab into shadow for outcome tracking
         if self._shadow:
             self._shadow.set_strategy_lab(self._strategy_lab)
+
+        # Init Flow Throttle (smart strategy-level adaptive throttle)
+        self._flow_throttle = FlowThrottle()
+        log.info("FlowThrottle ready (strategy-level adaptive throttle + priority queue)")
 
         # Init Session Lifecycle Tracker (intra-session risk modulation)
         self._session_lc = SessionTracker()
@@ -701,7 +727,48 @@ class FCBBot:
                         pass
                 return
         else:
+            # ── FlowThrottle combo block: freeze losing combos, keep winners ──
+            if self._flow_throttle:
+                ft_blocked, ft_reason = self._flow_throttle.is_combo_blocked(strat, tf)
+                if ft_blocked:
+                    if self._shadow:
+                        try:
+                            await self._shadow.record_signal(
+                                symbol=symbol, side=sig.side, strategy=strat,
+                                tf=tf, entry_price=entry_price, stop_dist=stop_dist,
+                                conviction=0, grade="X", passed=False,
+                                rejection_reason=ft_reason,
+                                exit_mode=exit_mode, session=session,
+                                source="portfolio",
+                            )
+                        except Exception:
+                            pass
+                    return
+
+                # FlowThrottle portfolio pause (extreme safety net)
+                dd_pct_check = (
+                    (peak - equity) / peak * 100 if peak > 0 else 0)
+                if self._flow_throttle.is_portfolio_paused(dd_pct_check):
+                    if self._shadow:
+                        try:
+                            await self._shadow.record_signal(
+                                symbol=symbol, side=sig.side, strategy=strat,
+                                tf=tf, entry_price=entry_price, stop_dist=stop_dist,
+                                conviction=0, grade="X", passed=False,
+                                rejection_reason="portfolio_pause",
+                                exit_mode=exit_mode, session=session,
+                                source="portfolio",
+                            )
+                        except Exception:
+                            pass
+                    return
+
             if not self._state.can_trade(symbol, session, max_conc):
+                # ── Priority queue: check if this signal outranks an existing slot ──
+                # When slots are full, a high-priority signal can still proceed
+                # if FlowThrottle scores it above the minimum slot occupant.
+                # (For now, respect the limit — priority logic is via combo_risk_mult
+                #  which rewards HOT combos and penalises COLD ones.)
                 # Shadow: record risk-gated signal (no conviction data)
                 if self._shadow:
                     try:
@@ -1172,6 +1239,43 @@ class FCBBot:
                          f"{' HOT' if self._session_lc.summary().get('hot') else ''}"
                          f"{' FATIGUED' if self._session_lc.summary().get('fatigued') else ''}")
 
+        # ShadowLive: pair momentum + passed-only combo focus
+        shadow_live_mult = 1.0
+        if self._shadow_live:
+            shadow_live_mult = self._shadow_live.shadow_live_mult(
+                symbol, strat, tf)
+            if abs(shadow_live_mult - 1.0) > 0.05:
+                _pair_label = self._shadow_live.pair_label(symbol)
+                _focus_label = self._shadow_live.combo_focus_label(strat, tf)
+                _pair_m = self._shadow_live.pair_momentum_mult(symbol)
+                _focus_m = self._shadow_live.combo_focus_mult(strat, tf)
+                log.info(
+                    f"  {symbol}: ShadowLive x{shadow_live_mult:.2f} "
+                    f"[pair={_pair_label} x{_pair_m:.2f}, "
+                    f"focus={_focus_label} x{_focus_m:.2f}]")
+
+        # Correlation Engine: cross-pair signal confirmation
+        correlation_mult = 1.0
+        if self._correlation:
+            correlation_mult = self._correlation.correlation_mult(
+                symbol, sig.side)
+            if abs(correlation_mult - 1.0) > 0.05:
+                _cluster = self._correlation.get_cluster(symbol)
+                _c_names = [m.split('/')[0] for m in _cluster[:3]]
+                log.info(
+                    f"  {symbol}: Correlation x{correlation_mult:.2f} "
+                    f"[cluster={','.join(_c_names) or 'none'}]")
+
+        # FlowThrottle: per-combo adaptive risk (rewards HOT, penalises COLD)
+        flow_throttle_mult = 1.0
+        if self._flow_throttle:
+            flow_throttle_mult = self._flow_throttle.combo_risk_mult(strat, tf)
+            if abs(flow_throttle_mult - 1.0) > 0.05:
+                ft_s = self._flow_throttle.summary()
+                log.info(f"  {symbol}: FlowThrottle x{flow_throttle_mult:.2f} "
+                         f"[{strat}/{tf} H={ft_s['hot']} W={ft_s['warm']} "
+                         f"C={ft_s['cold']} F={ft_s['frozen']}]")
+
         effective_risk = (risk_pct * dd_mult * conv_mult * hunter_mult
                          * streak_mult * quality_mult * regime_mult
                          * lifecycle_risk_mult * cross_sect_mult * calibrator_mult
@@ -1180,7 +1284,9 @@ class FCBBot:
                          * edge_sent_mult * edge_hot_mult
                          * cross_tf_mult
                          * alignment_mult * session_lc_mult
-                         * of_risk_mult * kl_risk_mult)
+                         * of_risk_mult * kl_risk_mult
+                         * shadow_live_mult * correlation_mult
+                         * flow_throttle_mult)
         dollar_risk = equity * effective_risk
         leverage = int(cfg.get_leverage(equity) * burst_lev_mult)
 
@@ -1625,6 +1731,10 @@ class FCBBot:
         if self._session_lc:
             self._session_lc.record_trade(pnl_r, strategy=strat, symbol=symbol)
 
+        # FlowThrottle: feed per-combo + per-pair outcome
+        if self._flow_throttle:
+            self._flow_throttle.record_outcome(strat, tf, symbol, pnl_r)
+
         # Thesis logger: record live trade outcome
         if self._thesis:
             self._thesis.record_outcome({
@@ -1883,6 +1993,29 @@ class FCBBot:
         # Refresh edge radar (full shadow intelligence)
         if self._edge_radar:
             self._edge_radar.maybe_refresh()
+
+        # Refresh shadow live (pair momentum + combo focus)
+        if self._shadow_live:
+            self._shadow_live.maybe_refresh()
+
+        # FlowThrottle: log status if any combos are penalised
+        if self._flow_throttle:
+            ft_s = self._flow_throttle.summary()
+            if ft_s.get('cold', 0) or ft_s.get('frozen', 0):
+                log.info(f"  FlowThrottle: H={ft_s['hot']} W={ft_s['warm']} "
+                         f"C={ft_s['cold']} F={ft_s['frozen']} "
+                         f"pause={'YES' if ft_s['portfolio_paused'] else 'no'}")
+
+        # Refresh correlation engine (async — schedule as task)
+        if self._correlation and self._ws:
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    asyncio.ensure_future(
+                        self._correlation.maybe_refresh(
+                            self._ws, self._registry.all_pairs))
+            except Exception:
+                pass
 
         # Refresh micro-TF intelligence (3m/5m market barometer)
         # (auto-refreshes on access, no explicit refresh needed)
