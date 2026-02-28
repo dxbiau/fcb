@@ -77535,3 +77535,32 @@
 2026-03-01 00:25:14 | INFO    | [96m══════════════════════════════════════════════════════════[0m
 
 2026-03-01 00:25:18 | DEBUG   | Hunter: 142 liquid candidates (ex-portfolio)
+2026-03-01 00:25:39 | INFO    | Hunter: found 30 signals on non-portfolio pairs
+2026-03-01 00:25:40 | DEBUG   |   Shadow: LONG XAUT/USDT:USDT [TR_PULL/15m] conv=67A SKIP(conv=67<75) spread=0.2bps imb=-0.05 [tight]
+2026-03-01 00:25:40 | DEBUG   |   Shadow: SHORT SAHARA/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:40 | DEBUG   |   Shadow: SHORT SAHARA/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=1.1bps imb=+0.25 [tight]
+2026-03-01 00:25:40 | DEBUG   |   Shadow: SHORT PIPPIN/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:41 | DEBUG   |   Shadow: SHORT PIPPIN/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.2bps imb=+0.00 [tight]
+2026-03-01 00:25:41 | DEBUG   |   Shadow: SHORT FARTCOIN/USDT:USDT [TR_PULL/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:41 | DEBUG   |   Shadow: SHORT FARTCOIN/USDT:USDT [TR_PULL/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.7bps imb=-0.05 [tight]
+2026-03-01 00:25:41 | DEBUG   |   Shadow: LONG RIVER/USDT:USDT [EMA_RIB/15m] conv=72A SKIP(conv=72<75) spread=0.8bps imb=+0.58 [tight]
+2026-03-01 00:25:41 | DEBUG   |   Shadow: SHORT BNB/USDT:USDT [TR_PULL/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:42 | DEBUG   |   Shadow: SHORT BNB/USDT:USDT [TR_PULL/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=1.7bps imb=-0.06 [tight]
+2026-03-01 00:25:42 | DEBUG   |   Shadow: SHORT ZEC/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:42 | DEBUG   |   Shadow: SHORT ZEC/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.5bps imb=+0.02 [tight]
+2026-03-01 00:25:42 | DEBUG   |   Shadow: SHORT AAVE/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:42 | DEBUG   |   Shadow: SHORT AAVE/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.9bps imb=-0.03 [tight]
+2026-03-01 00:25:42 | DEBUG   |   Shadow: LONG BARD/USDT:USDT [IB_BREAK/1h] conv=0X SKIP(hunter_risk_gate) spread=1.0bps imb=-0.02 [tight]
+2026-03-01 00:25:43 | DEBUG   |   Shadow: LONG VVV/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(hunter_risk_gate) spread=0.2bps imb=+0.39 [tight]
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT ATH/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT ATH/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=3.7bps imb=-0.21 [normal]
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT NEAR/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT NEAR/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.9bps imb=-0.05 [tight]
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT PUMPFUN/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT PUMPFUN/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.6bps imb=-0.07 [tight]
+2026-03-01 00:25:43 | DEBUG   |   Shadow: SHORT ALICE/USDT:USDT [TR_PULL/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:44 | DEBUG   |   Shadow: SHORT ALICE/USDT:USDT [TR_PULL/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=0.8bps imb=-0.35 [tight]
+2026-03-01 00:25:44 | DEBUG   |   Shadow: SHORT ENA/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:44 | DEBUG   |   Shadow: SHORT ENA/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=1.0bps imb=+0.18 [tight]
+2026-03-01 00:25:44 | DEBUG   |   Shadow: SHORT ROBO/USDT:USDT [EMA_RIB/15m] SKIP(directional_block (short in bear market: shadow says no edge))
+2026-03-01 00:25:44 | DEBUG   |   Shadow: SHORT ROBO/USDT:USDT [EMA_RIB/15m] conv=0X SKIP(directional_block (short in bear market: shadow says no edge)) spread=2.8bps imb=+0.19 [tight]
