@@ -102,14 +102,16 @@ class KellySizer:
 
         # ── Step 6: Minimum threshold ──
         dollar_risk = risk * equity
-        if risk < MIN_KELLY_RISK or dollar_risk < cfg.MIN_REWARD_USD:
+        # Gate on expected reward (risk × 2R min TP), not just risk amount
+        expected_reward = dollar_risk * 2.0  # conservative 2R floor TP
+        if risk < MIN_KELLY_RISK or expected_reward < cfg.MIN_REWARD_USD:
             return {
                 "risk_pct": 0.0,
                 "dollar_risk": 0.0,
                 "blocked": True,
                 "reason": (f"below minimum "
                            f"(risk={risk:.4f}/{MIN_KELLY_RISK:.4f}, "
-                           f"${dollar_risk:.2f}/${cfg.MIN_REWARD_USD:.2f})"),
+                           f"reward=${expected_reward:.2f}/${cfg.MIN_REWARD_USD:.2f})"),
                 "components": {
                     "kelly_f": kelly_f, "confidence": confidence,
                     "dd_mult": dd_mult, "port_mult": port_mult,

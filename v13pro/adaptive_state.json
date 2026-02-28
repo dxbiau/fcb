@@ -4,12 +4,12 @@
     "of_boost": 5.0,
     "of_penalty": 2.0,
     "min_key_level_score": 10.0,
-    "conv_mult_A+": 1.0909,
-    "conv_mult_A": 0.9317,
-    "conv_mult_B": 0.9396,
-    "conv_mult_C": 1.7004,
+    "conv_mult_A+": 1.0885,
+    "conv_mult_A": 0.9324,
+    "conv_mult_B": 0.9402,
+    "conv_mult_C": 1.7022,
     "dna_boost_cap": 2.0
   },
   "refreshes": 1,
-  "ts": 1772279202.1936734
+  "ts": 1772284435.1090446
 }

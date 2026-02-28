@@ -80,6 +80,12 @@ class BotState:
         with self._lock:
             return list(self._state.get("pending_entries", []))
 
+    def set_pending_entries(self, entries: list):
+        """Replace pending_entries (used for stale-entry purge on startup)."""
+        with self._lock:
+            self._state["pending_entries"] = list(entries)
+            self._save()
+
     @property
     def pending_count(self):
         with self._lock:

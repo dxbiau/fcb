@@ -50,7 +50,7 @@ MAX_RISK_PCT = 0.02
 
 # Trade quality gates
 MIN_KEY_LEVEL_SCORE = 5      # shadow: rejected key_level longs still win 62.5% — loosened from 10 to 5
-MIN_REWARD_USD = 5.0         # minimum dollar reward to accept trade (skip tiny bets)
+MIN_REWARD_USD = 2.0         # minimum dollar reward to accept trade (lowered from 5→2 for $400 equity)
 MAX_STOP_DIST_PCT = 5.0      # reject signals with stop > 5% (shadow: wider stops won at 51% WR, 2.5% was too tight)
 DNA_BOOST_CAP = 6            # max +conviction from DNA profiler (prevent garbage inflation)
 
@@ -183,8 +183,8 @@ LOSS_STREAK_RISK_MULT = {
 }
 
 # Growth targets
-START_EQUITY = 500.0
-TARGET_EQUITY = 5000.0
+START_EQUITY = 400.0
+TARGET_EQUITY = 4000.0
 TARGET_DAYS = 10
 
 # ==================================================================

@@ -1202,11 +1202,11 @@ class FCBBot:
         edge_market_mult = 1.0
         edge_sent_mult = 1.0
         edge_hot_mult = 1.0
+        _sent_score = 0.0
         if self._edge_radar:
             edge_combo_mult = self._edge_radar.combo_risk_multiplier(strat, tf)
             edge_market_mult = self._edge_radar.market_heat_multiplier()
             # Get continuous sentiment score for fine-grained edge
-            _sent_score = 0.0
             if self._sentiment:
                 try:
                     _sent_snap = await self._sentiment.get_sentiment()
@@ -1302,16 +1302,8 @@ class FCBBot:
         # EdgeEstimator: (combo, sentiment, features) → predicted μ(R)
         # KellySizer: edge → position size with real-time adjustments
         # Replaces 16 absorbed multipliers; 7 real-time ones survive
-        _ee_sent = 0.0
-        if self._sentiment:
-            try:
-                _ee_s = await self._sentiment.get_sentiment()
-                _ee_sent = _ee_s.get("score", 0.0)
-            except Exception:
-                try:
-                    _ee_sent = self._sentiment.get_cached().get("score", 0.0)
-                except Exception:
-                    pass
+        # Reuse _sent_score from EdgeRadar block above (avoid double fetch)
+        _ee_sent = _sent_score if self._sentiment else 0.0
 
         _edge = self._edge_estimator.estimate(
             combo=f"{strat}/{tf}",
@@ -1381,6 +1373,7 @@ class FCBBot:
             exit_params["trail_activation_r"] = _eo["trail_activation_r"]
             exit_params["trail_distance_r"] = _eo["trail_distance_r"]
             if _eo["source"] != "static_default":
+                exit_params["tp_r"] = _eo["tp_r"]  # BUG-1 fix: actually use learned tp
                 log.info(f"  {symbol}: ExitOracle act={_eo['trail_activation_r']:.2f}R "
                          f"dist={_eo['trail_distance_r']:.2f}R "
                          f"tp={_eo['tp_r']:.2f}R [{_eo['source']}]")
@@ -1914,6 +1907,14 @@ class FCBBot:
             return
 
         if not live_positions:
+            live_positions = []
+            # No live positions — purge any stale pending entries
+            stale_count = self._state.pending_count
+            if stale_count > 0:
+                log.warning(f"Purging {stale_count} stale pending entries "
+                            f"(0 live positions on exchange)")
+                self._state.set_pending_entries([])
+            log.info("Position recovery: no open positions found")
             return
 
         # Build lookup from saved state
@@ -1994,6 +1995,23 @@ class FCBBot:
             log.info(f"Position recovery: {recovered} position(s) re-adopted")
         else:
             log.info("Position recovery: no open positions found")
+
+        # ── Purge stale pending_entries with no live position ──
+        live_symbols = set()
+        for pos in live_positions:
+            sym = pos.get("symbol", "")
+            contracts = abs(float(pos.get("contracts", 0) or 0))
+            if contracts > 0 and sym:
+                live_symbols.add(sym)
+        stale = [p for p in self._state.pending_entries
+                 if p.get("symbol") not in live_symbols]
+        if stale:
+            stale_syms = [p.get("symbol", "?") for p in stale]
+            log.warning(f"Purging {len(stale)} stale pending entries "
+                        f"(no live position): {stale_syms}")
+            self._state.set_pending_entries(
+                [p for p in self._state.pending_entries
+                 if p.get("symbol") in live_symbols])
 
     def _build_subscriptions(self) -> Dict[str, Set[str]]:
         """Build WS subscription map: {tf: {symbols}}."""

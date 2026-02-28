@@ -127,17 +127,17 @@ class ExitOracle:
             return None
 
         # ── Peak-R analysis ──
-        peak_rs = [r.get("peak_r", 0) for r in outcomes]
-        pnl_rs = [r.get("pnl_r", 0) for r in outcomes]
+        peak_rs = [r.get("peak_r") or 0 for r in outcomes]
+        pnl_rs = [r.get("pnl_r") or 0 for r in outcomes]
         med_peak = _median(peak_rs)
         p75_peak = _percentile(peak_rs, 75)
         p90_peak = _percentile(peak_rs, 90)
 
         # ── Give-back analysis (how much do winning trades give back?) ──
-        winners = [r for r in outcomes if r.get("pnl_r", 0) > 0]
+        winners = [r for r in outcomes if (r.get("pnl_r") or 0) > 0]
         if winners:
             give_backs = [
-                r.get("peak_r", 0) - r.get("pnl_r", 0) for r in winners
+                (r.get("peak_r") or 0) - (r.get("pnl_r") or 0) for r in winners
             ]
             med_give_back = _median(give_backs)
             p25_give_back = _percentile(give_backs, 25)
@@ -210,8 +210,6 @@ class ExitOracle:
             self._last_load = time.time()
             return
 
-        self._n_outcomes = len(outcomes)
-
         # ── Per-combo global exit params ──
         combo_groups = defaultdict(list)
         for r in outcomes:
@@ -240,8 +238,8 @@ class ExitOracle:
         with self._lock:
             self._exit_table = exit_table
             self._combo_global = combo_global
-
-        self._last_load = time.time()
+            self._n_outcomes = len(outcomes)
+            self._last_load = time.time()
 
         # ── Log summary ──
         n_cells = len(exit_table)

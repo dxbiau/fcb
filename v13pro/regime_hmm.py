@@ -59,7 +59,7 @@ class RegimeHMM:
     """Two-state online Bayesian regime filter."""
 
     def __init__(self):
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
 
         # HMM parameters (fitted from shadow data)
         self._mu_fav = DEFAULT_MU_FAV
@@ -118,6 +118,7 @@ class RegimeHMM:
         warmup = pnls[-200:] if len(pnls) > 200 else pnls
         for pnl in warmup:
             self._bayesian_update(pnl)
+        self._n_updates = 0  # reset: only count live updates
 
         log.info(f"  🔮 RegimeHMM: fitted from {len(pnls)} outcomes")
         log.info(f"    μ_fav={self._mu_fav:+.3f} σ_fav={self._sigma_fav:.3f}")
@@ -209,9 +210,9 @@ class RegimeHMM:
         Multiplier for EdgeEstimator confidence.
 
         Maps P(favorable) to [MIN_CONFIDENCE_MULT, MAX_CONFIDENCE_MULT]:
-            P=0.0 → 0.40x (floor)
-            P=0.5 → 1.00x (neutral)
-            P=1.0 → 1.25x (boost)
+            P=0.10 (clamp floor) → 0.52x
+            P=0.5  → 1.00x (neutral)
+            P=0.90 (clamp ceil) → 1.20x
         """
         p = self.p_favorable
         if p >= 0.5:

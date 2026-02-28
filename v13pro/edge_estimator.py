@@ -113,13 +113,13 @@ class EdgeEstimator:
             self._last_load = time.time()
             return
 
-        self._n_outcomes = len(outcomes)
+        n_outcomes = len(outcomes)
 
         # ── Global stats ──
         pnls = [r.get("pnl_r", 0.0) for r in outcomes]
-        self._global_mu = sum(pnls) / len(pnls) if pnls else 0.0
-        self._global_sigma2 = max(0.01,
-            sum((p - self._global_mu) ** 2 for p in pnls) / len(pnls))
+        global_mu = sum(pnls) / len(pnls) if pnls else 0.0
+        global_sigma2 = max(0.01,
+            sum((p - global_mu) ** 2 for p in pnls) / len(pnls))
 
         # ── Per-combo global (shrinkage target) ──
         combo_groups = defaultdict(list)
@@ -129,11 +129,11 @@ class EdgeEstimator:
 
         combo_global = {}
         for combo, pnls_c in combo_groups.items():
-            mu = sum(pnls_c) / len(pnls_c)
-            sigma2 = max(0.01,
-                sum((p - mu) ** 2 for p in pnls_c) / len(pnls_c))
+            mu_c = sum(pnls_c) / len(pnls_c)
+            sigma2_c = max(0.01,
+                sum((p - mu_c) ** 2 for p in pnls_c) / len(pnls_c))
             combo_global[combo] = {
-                "mu": mu, "sigma2": sigma2, "n": len(pnls_c)}
+                "mu": mu_c, "sigma2": sigma2_c, "n": len(pnls_c)}
 
         # ── Per-(combo, sent_bias) edge table ──
         cell_groups = defaultdict(list)
@@ -151,7 +151,7 @@ class EdgeEstimator:
 
             # Bayesian shrinkage toward combo global
             combo_g = combo_global.get(combo,
-                {"mu": self._global_mu, "sigma2": self._global_sigma2})
+                {"mu": global_mu, "sigma2": global_sigma2})
             shrink = n / (n + SHRINKAGE_K)
             mu = shrink * raw_mu + (1 - shrink) * combo_g["mu"]
             # Use combo-level σ² (more stable with small N)
@@ -172,8 +172,10 @@ class EdgeEstimator:
             self._edge_table = edge_table
             self._combo_global = combo_global
             self._feature_adj = feature_adj
-
-        self._last_load = time.time()
+            self._global_mu = global_mu
+            self._global_sigma2 = global_sigma2
+            self._n_outcomes = n_outcomes
+            self._last_load = time.time()
 
         # ── Log summary ──
         n_cells = len(edge_table)
@@ -289,16 +291,17 @@ class EdgeEstimator:
                             alt_cell = ac
 
                 combo_g = self._combo_global.get(combo)
-                if combo_g and combo_g["n"] >= MIN_N_FOR_COMBO:
-                    mu = combo_g["mu"]
-                    sigma2 = combo_g["sigma2"]
-                    n = combo_g["n"]
-                    reason = f"{combo}/global N={n}"
-                elif alt_cell:
+                if alt_cell:
+                    # Prefer alt sentiment cell (same combo, different sent bin)
                     mu = alt_cell["mu"]
                     sigma2 = alt_cell["sigma2"]
                     n = alt_cell["n"]
                     reason = f"{combo}/alt_sent N={n}"
+                elif combo_g and combo_g["n"] >= MIN_N_FOR_COMBO:
+                    mu = combo_g["mu"]
+                    sigma2 = combo_g["sigma2"]
+                    n = combo_g["n"]
+                    reason = f"{combo}/global N={n}"
                 else:
                     # Total fallback: global average
                     mu = self._global_mu
@@ -339,9 +342,20 @@ class EdgeEstimator:
             # Apply adjustments + EWMA calibration
             mu_adj = mu + adj + self._ewma_error
 
+            # ── Standard error of μ estimate ──
+            se = math.sqrt(sigma2 / n) if n > 0 and sigma2 > 0 else 0.5
+
             # ── Quarter-Kelly ──
+            # Block only when μ is statistically significantly negative
+            # (more than 1 SE below zero).  Near-zero μ gets minimum
+            # kelly_f so the trade proceeds at minimum sizing rather
+            # than being silently dropped.
+            MIN_KELLY_FLOOR = 0.015  # floor for near-zero edge (must survive HMM + KellySizer)
             if sigma2 > 0 and mu_adj > 0:
                 kelly_f = 0.25 * mu_adj / sigma2
+            elif mu_adj > -se:
+                # Near-zero: not statistically negative — use floor
+                kelly_f = MIN_KELLY_FLOOR
             else:
                 kelly_f = 0.0
 
@@ -351,10 +365,12 @@ class EdgeEstimator:
             confidence = (min(1.0, math.sqrt(n) / CONFIDENCE_THRESHOLD)
                           if n > 0 else 0.0)
 
-            # Block if negative edge
+            # Block only when significantly negative (beyond noise)
             blocked = kelly_f <= 0.0
             if blocked:
-                reason += f" (negative edge μ={mu_adj:+.3f})"
+                reason += f" (negative edge μ={mu_adj:+.3f} SE={se:.3f})"
+            elif mu_adj <= 0:
+                reason += f" (near-zero μ={mu_adj:+.3f}, floor)"
 
             return {
                 "mu": round(mu_adj, 4),
