@@ -485,6 +485,8 @@ class ShadowTrader:
                 pass
 
         # Feed directional intelligence (ALL sides, ALL regimes)
+        # Layer 2: pass the 'passed' flag so DI can filter rejected
+        # outcomes for the active side in LONG_ONLY_MODE.
         if self._directional:
             try:
                 sent = item.get("sentiment", {})
@@ -496,6 +498,7 @@ class ShadowTrader:
                     strategy=item.get("strategy", ""),
                     symbol=item.get("symbol", ""),
                     peak_r=item.get("peak_r", 0),
+                    passed=item.get("passed", True),
                 )
             except Exception:
                 pass

@@ -49,10 +49,66 @@
       "ts": 1772151871.816062,
       "action": "promote",
       "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772193456.2892144,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772193456.2892156,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772197058.1969078,
+      "action": "promote",
+      "combo": "RSI_FADE/3m"
+    },
+    {
+      "ts": 1772201809.5484505,
+      "action": "promote",
+      "combo": "RSI_FADE/3m"
+    },
+    {
+      "ts": 1772201809.5484517,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772201809.5484521,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
+    },
+    {
+      "ts": 1772240935.4505756,
+      "action": "promote",
+      "combo": "DONCHIAN/1h"
+    },
+    {
+      "ts": 1772240935.4505763,
+      "action": "promote",
+      "combo": "RSI_FADE/3m"
+    },
+    {
+      "ts": 1772240935.4505765,
+      "action": "promote",
+      "combo": "EMA_RIB/15m"
     }
   ],
-  "demotions": [],
-  "last_review": 1772151871.8160508,
+  "demotions": [
+    {
+      "ts": 1772197058.196911,
+      "action": "demote",
+      "combo": "PIN_BAR/15m"
+    },
+    {
+      "ts": 1772201809.5484538,
+      "action": "demote",
+      "combo": "PIN_BAR/15m"
+    }
+  ],
+  "last_review": 1772240935.4505622,
   "live_combos": [
     [
       "BB_BREAK",
@@ -125,6 +181,10 @@
     [
       "RSI_FADE",
       "1h"
+    ],
+    [
+      "RSI_FADE",
+      "3m"
     ],
     [
       "TR_PULL",

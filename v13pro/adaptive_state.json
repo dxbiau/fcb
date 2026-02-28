@@ -1,15 +1,15 @@
 {
   "smoothed": {
-    "of_block_threshold": 0.5995,
-    "of_boost": 2.0,
-    "of_penalty": 1.0,
-    "min_key_level_score": 5.0034,
-    "conv_mult_A+": 1.1028,
-    "conv_mult_A": 0.9273,
-    "conv_mult_B": 0.9379,
-    "conv_mult_C": 1.6959,
+    "of_block_threshold": 0.3,
+    "of_boost": 5.0,
+    "of_penalty": 2.0,
+    "min_key_level_score": 10.0,
+    "conv_mult_A+": 1.1081,
+    "conv_mult_A": 0.9263,
+    "conv_mult_B": 0.9353,
+    "conv_mult_C": 1.6888,
     "dna_boost_cap": 2.0
   },
-  "refreshes": 1,
-  "ts": 1772189853.181975
+  "refreshes": 3,
+  "ts": 1772245454.3956258
 }

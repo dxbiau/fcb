@@ -1,16 +1,16 @@
 {
-  "equity": 522.73487464,
+  "equity": 558.31879718,
   "peak_equity": 567.27884744,
-  "date": "2026-02-27",
-  "day_start_equity": 482.81388653,
-  "entries_today": 11,
-  "wins_today": 6,
-  "losses_today": 5,
-  "pnl_today_r": 3.171825266142123,
-  "pnl_today_usd": 2.2620554800000003,
-  "total_trades": 229,
-  "total_wins": 78,
-  "total_losses": 151,
+  "date": "2026-02-28",
+  "day_start_equity": 544.63204657,
+  "entries_today": 10,
+  "wins_today": 3,
+  "losses_today": 3,
+  "pnl_today_r": 0.8569295009824114,
+  "pnl_today_usd": 15.16316174,
+  "total_trades": 255,
+  "total_wins": 89,
+  "total_losses": 166,
   "pending_entries": [
     {
       "strategy": "unknown",
@@ -165,18 +165,58 @@
       "entry_time": "2026-02-26T12:41:42.592493+00:00"
     },
     {
-      "strategy": "PIN_BAR",
-      "exit": "trl_tight",
+      "strategy": "unknown",
+      "exit": "fix1.5",
       "side": "short",
-      "entry_price": 5164.2,
-      "sl": 5179.7,
-      "tp": 5009.3,
-      "qty": 0.053,
-      "risk_usd": 0.8237392500710963,
-      "order_id": "f8a9fb1f-ca10-4e1a-9866-3feff7dc70bb",
+      "entry_price": 112.99,
+      "sl": 113.9,
+      "qty": 0.14,
+      "risk_usd": 0.1274000000000015,
+      "symbol": "AAVE/USDT:USDT",
+      "session": "asia",
+      "entry_time": "2026-02-28T00:08:48.741026+00:00"
+    },
+    {
+      "strategy": "BB_BREAK",
+      "exit": "trl_tight",
+      "side": "long",
+      "entry_price": 0.04505,
+      "sl": 0.04356,
+      "tp": 0.05997,
+      "qty": 820.0,
+      "risk_usd": 1.2240524580685896,
+      "order_id": "6bd62130-6b6b-4315-92f3-4a68e5045b9e",
+      "symbol": "ROBO/USDT:USDT",
+      "session": "asia",
+      "entry_time": "2026-02-28T01:20:51.165162+00:00"
+    },
+    {
+      "strategy": "EMA_RIB",
+      "exit": "trl_tight",
+      "side": "long",
+      "entry_price": 5271.4,
+      "sl": 5255.6,
+      "tp": 5429.5,
+      "qty": 0.112,
+      "risk_usd": 1.7742233610017153,
+      "order_id": "e006a6b0-a567-40dd-afd7-beff47432b0d",
       "symbol": "XAUT/USDT:USDT",
-      "session": "london",
-      "entry_time": "2026-02-27T08:50:59.772179+00:00"
+      "session": "asia",
+      "entry_time": "2026-02-28T01:26:15.582916+00:00"
+    },
+    {
+      "strategy": "BB_BREAK",
+      "exit": "trl_tight",
+      "side": "long",
+      "entry_price": 222.32,
+      "sl": 220.78,
+      "tp": 237.67,
+      "qty": 5.21,
+      "risk_usd": 8.001746684483848,
+      "order_id": "ef0f3e78-5732-493e-805f-3a63afac0795",
+      "symbol": "ZEC/USDT:USDT",
+      "session": "asia",
+      "entry_time": "2026-02-28T02:22:32.246220+00:00"
     }
   ],
   "trade_history": [
@@ -1782,32 +1822,214 @@
       "pnl_usd": 1.49863938,
       "reason": "trail",
       "ts": "2026-02-27T10:16:06.365216+00:00"
+    },
+    {
+      "pair": "XAUT/USDT:USDT",
+      "pnl_r": -8.353775189668427,
+      "pnl_usd": -6.88133251,
+      "reason": "sl",
+      "ts": "2026-02-27T11:56:42.455010+00:00"
+    },
+    {
+      "pair": "AAVE/USDT:USDT",
+      "pnl_r": -1.0414102065515065,
+      "pnl_usd": -3.71761714,
+      "reason": "sl",
+      "ts": "2026-02-27T13:47:58.860662+00:00"
+    },
+    {
+      "pair": "ZEC/USDT:USDT",
+      "pnl_r": 1.0710869959019373,
+      "pnl_usd": 5.25241758,
+      "reason": "trail",
+      "ts": "2026-02-27T14:29:49.210313+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": -0.397832961003245,
+      "pnl_usd": -1.01184648,
+      "reason": "sl",
+      "ts": "2026-02-27T14:49:03.662201+00:00"
+    },
+    {
+      "pair": "ZEC/USDT:USDT",
+      "pnl_r": -0.3546897496159114,
+      "pnl_usd": -1.99799406,
+      "reason": "sl",
+      "ts": "2026-02-27T16:33:34.017747+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": 0,
+      "pnl_usd": 0,
+      "reason": "timeout",
+      "ts": "2026-02-27T17:23:58.130015+00:00"
+    },
+    {
+      "pair": "ARB/USDT:USDT",
+      "pnl_r": -0.39747435125712394,
+      "pnl_usd": -0.87529549,
+      "reason": "sl",
+      "ts": "2026-02-27T17:37:00.293553+00:00"
+    },
+    {
+      "pair": "ENA/USDT:USDT",
+      "pnl_r": -0.4079916398030828,
+      "pnl_usd": -1.03940351,
+      "reason": "sl",
+      "ts": "2026-02-27T17:38:21.343606+00:00"
+    },
+    {
+      "pair": "BNB/USDT:USDT",
+      "pnl_r": 0.1691399456926617,
+      "pnl_usd": 0.18003457,
+      "reason": "tp",
+      "ts": "2026-02-27T17:59:10.439635+00:00"
+    },
+    {
+      "pair": "PIPPIN/USDT:USDT",
+      "pnl_r": 1.6720567625092888,
+      "pnl_usd": 8.06830787,
+      "reason": "trail",
+      "ts": "2026-02-27T18:38:29.643128+00:00"
+    },
+    {
+      "pair": "AAVE/USDT:USDT",
+      "pnl_r": 0,
+      "pnl_usd": 0,
+      "reason": "timeout",
+      "ts": "2026-02-27T18:55:48.824971+00:00"
+    },
+    {
+      "pair": "MIRA/USDT:USDT",
+      "pnl_r": -0.3999577528883564,
+      "pnl_usd": -1.17334971,
+      "reason": "sl",
+      "ts": "2026-02-27T19:02:12.441892+00:00"
+    },
+    {
+      "pair": "ZEC/USDT:USDT",
+      "pnl_r": 1.4012608161357927,
+      "pnl_usd": 6.93193726,
+      "reason": "trail",
+      "ts": "2026-02-27T19:17:25.558862+00:00"
+    },
+    {
+      "pair": "ARB/USDT:USDT",
+      "pnl_r": 1.5401691162878521,
+      "pnl_usd": 3.7072953,
+      "reason": "trail",
+      "ts": "2026-02-27T20:02:17.221098+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": -1.094955035373757,
+      "pnl_usd": -1.60419958,
+      "reason": "sl",
+      "ts": "2026-02-27T20:09:14.696987+00:00"
+    },
+    {
+      "pair": "POWER/USDT:USDT",
+      "pnl_r": -1.1212666465723036,
+      "pnl_usd": -0.60426271,
+      "reason": "sl",
+      "ts": "2026-02-27T21:51:34.271161+00:00"
+    },
+    {
+      "pair": "ENA/USDT:USDT",
+      "pnl_r": 1.316591518738286,
+      "pnl_usd": 0.69628402,
+      "reason": "trail",
+      "ts": "2026-02-27T22:35:37.622272+00:00"
+    },
+    {
+      "pair": "PUMPFUN/USDT:USDT",
+      "pnl_r": 0.199458297512562,
+      "pnl_usd": 0.17915912,
+      "reason": "tp",
+      "ts": "2026-02-27T22:36:43.161412+00:00"
+    },
+    {
+      "pair": "BNB/USDT:USDT",
+      "pnl_r": -1.1870444176010329,
+      "pnl_usd": -1.3359762,
+      "reason": "sl",
+      "ts": "2026-02-27T22:41:38.879965+00:00"
+    },
+    {
+      "pair": "XAUT/USDT:USDT",
+      "pnl_r": 0.7351450166454817,
+      "pnl_usd": 0.50556451,
+      "reason": "trail",
+      "ts": "2026-02-27T22:51:09.019787+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": 0.1876799045027584,
+      "pnl_usd": 0.32829157,
+      "reason": "tp",
+      "ts": "2026-02-28T00:22:09.549021+00:00"
+    },
+    {
+      "pair": "ATH/USDT:USDT",
+      "pnl_r": 0.8105426508761582,
+      "pnl_usd": 4.33151008,
+      "reason": "trail",
+      "ts": "2026-02-28T00:33:00.103056+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": 0,
+      "pnl_usd": 0,
+      "reason": "timeout",
+      "ts": "2026-02-28T00:44:26.250869+00:00"
+    },
+    {
+      "pair": "ATH/USDT:USDT",
+      "pnl_r": -1.017189026954709,
+      "pnl_usd": -3.41237237,
+      "reason": "sl",
+      "ts": "2026-02-28T01:16:48.727267+00:00"
+    },
+    {
+      "pair": "PIPPIN/USDT:USDT",
+      "pnl_r": -0.3330725921964059,
+      "pnl_usd": -1.05925131,
+      "reason": "sl",
+      "ts": "2026-02-28T01:36:14.495393+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": 1.2089685647546098,
+      "pnl_usd": 14.97498377,
+      "reason": "trail",
+      "ts": "2026-02-28T02:12:15.643578+00:00"
     }
   ],
   "daily_counts": {},
   "pair_last_trade": {
     "BTC/USDT:USDT": "2026-02-26T12:12:00.474561+00:00",
     "ETH/USDT:USDT": "2026-02-26T12:01:00.883537+00:00",
-    "PIPPIN/USDT:USDT": "2026-02-27T08:56:27.480381+00:00",
+    "PIPPIN/USDT:USDT": "2026-02-28T01:28:23.014907+00:00",
     "SOL/USDT:USDT": "2026-02-26T09:16:51.437682+00:00",
-    "XAUT/USDT:USDT": "2026-02-27T08:50:59.772202+00:00",
+    "XAUT/USDT:USDT": "2026-02-28T01:26:15.582931+00:00",
     "FARTCOIN/USDT:USDT": "2026-02-26T11:37:22.829540+00:00",
     "BCH/USDT:USDT": "2026-02-26T11:10:16.171124+00:00",
     "HYPE/USDT:USDT": "2026-02-26T12:41:42.592502+00:00",
     "RIVER/USDT:USDT": "2026-02-25T21:39:22.622753+00:00",
-    "BNB/USDT:USDT": "2026-02-25T23:11:48.337486+00:00",
+    "BNB/USDT:USDT": "2026-02-27T22:35:59.738664+00:00",
     "SUI/USDT:USDT": "2026-02-26T09:37:26.169783+00:00",
     "ADA/USDT:USDT": "2026-02-24T23:34:23.452073+00:00",
-    "ZEC/USDT:USDT": "2026-02-27T09:39:38.876653+00:00",
+    "ZEC/USDT:USDT": "2026-02-28T02:22:32.246242+00:00",
     "XRP/USDT:USDT": "2026-02-26T11:37:18.671391+00:00",
     "ENSO/USDT:USDT": "2026-02-25T10:03:43.939610+00:00",
-    "POWER/USDT:USDT": "2026-02-27T03:12:50.178724+00:00",
+    "POWER/USDT:USDT": "2026-02-27T21:14:35.012534+00:00",
     "LA/USDT:USDT": "2026-02-25T09:43:27.504388+00:00",
     "GPS/USDT:USDT": "2026-02-25T01:07:01.020335+00:00",
     "AVAX/USDT:USDT": "2026-02-26T09:37:33.857036+00:00",
     "KITE/USDT:USDT": "2026-02-27T00:14:09.037255+00:00",
     "STEEM/USDT:USDT": "2026-02-25T00:28:35.448774+00:00",
-    "AAVE/USDT:USDT": "2026-02-27T00:08:39.893200+00:00",
+    "AAVE/USDT:USDT": "2026-02-28T00:08:48.741034+00:00",
     "TAO/USDT:USDT": "2026-02-25T13:29:52.738646+00:00",
     "LINK/USDT:USDT": "2026-02-25T02:33:32.357821+00:00",
     "BREV/USDT:USDT": "2026-02-25T02:33:32.353847+00:00",
@@ -1816,23 +2038,30 @@
     "ESP/USDT:USDT": "2026-02-26T01:15:04.140496+00:00",
     "NEAR/USDT:USDT": "2026-02-26T09:37:30.489804+00:00",
     "BARD/USDT:USDT": "2026-02-27T08:40:07.457180+00:00",
-    "MYX/USDT:USDT": "2026-02-27T00:52:03.553307+00:00"
+    "MYX/USDT:USDT": "2026-02-27T00:52:03.553307+00:00",
+    "VVV/USDT:USDT": "2026-02-28T01:44:43.180621+00:00",
+    "ARB/USDT:USDT": "2026-02-27T18:10:36.022392+00:00",
+    "ENA/USDT:USDT": "2026-02-27T22:25:06.450586+00:00",
+    "MIRA/USDT:USDT": "2026-02-27T18:05:10.206757+00:00",
+    "PUMPFUN/USDT:USDT": "2026-02-27T22:30:35.712673+00:00",
+    "ATH/USDT:USDT": "2026-02-28T00:58:54.016173+00:00",
+    "ROBO/USDT:USDT": "2026-02-28T01:20:51.165183+00:00"
   },
   "consecutive_losses": {
     "XAUT/USDT:USDT": 0,
     "BTC/USDT:USDT": 11,
     "HYPE/USDT:USDT": 1,
-    "PIPPIN/USDT:USDT": 0,
+    "PIPPIN/USDT:USDT": 1,
     "AGLD/USDT:USDT": 1,
     "ETH/USDT:USDT": 0,
     "ESP/USDT:USDT": 1,
     "FARTCOIN/USDT:USDT": 3,
     "SOL/USDT:USDT": 0,
     "BCH/USDT:USDT": 0,
-    "BNB/USDT:USDT": 6,
+    "BNB/USDT:USDT": 1,
     "ADA/USDT:USDT": 2,
     "WLFI/USDT:USDT": 0,
-    "POWER/USDT:USDT": 1,
+    "POWER/USDT:USDT": 2,
     "XRP/USDT:USDT": 2,
     "TRIA/USDT:USDT": 1,
     "RAVE/USDT:USDT": 1,
@@ -1848,7 +2077,7 @@
     "GPS/USDT:USDT": 2,
     "KITE/USDT:USDT": 5,
     "STEEM/USDT:USDT": 1,
-    "AAVE/USDT:USDT": 3,
+    "AAVE/USDT:USDT": 5,
     "LINK/USDT:USDT": 0,
     "BREV/USDT:USDT": 1,
     "TAO/USDT:USDT": 0,
@@ -1856,7 +2085,13 @@
     "UNI/USDT:USDT": 2,
     "NEAR/USDT:USDT": 1,
     "BARD/USDT:USDT": 1,
-    "MYX/USDT:USDT": 1
+    "MYX/USDT:USDT": 1,
+    "VVV/USDT:USDT": 0,
+    "ARB/USDT:USDT": 0,
+    "ENA/USDT:USDT": 0,
+    "MIRA/USDT:USDT": 1,
+    "PUMPFUN/USDT:USDT": 0,
+    "ATH/USDT:USDT": 1
   },
   "milestones_alerted": []
 }

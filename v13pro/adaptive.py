@@ -134,12 +134,30 @@ class AdaptiveParams:
         # Only use longs (we're in LONG_ONLY_MODE)
         longs = [o for o in data if o.get("side", "").lower() == "long"]
 
-        self._compute_of_params(longs)
-        self._compute_key_level_params(longs)
-        self._compute_grade_multipliers(longs)
-        self._compute_dna_cap(longs)
-        self._compute_pair_cooldowns(longs)
-        self._compute_tp_r(longs)
+        # For gate-driving parameters (OF threshold, grade multipliers),
+        # use PASSED-ONLY longs when LONG_ONLY_MODE is active.
+        # Rejected longs were correctly rejected by the conviction pipeline
+        # — learning from their hypothetical outcomes poisons the gates.
+        # Example: rejected A+ have 72% WR which inflates baseline,
+        # making passed A+ (58.5% WR) look average → grade inversion.
+        # Example: 3451 rejected-unaligned longs (41.8% WR) dilute
+        # 593 passed-unaligned (55.6% WR) → OF threshold doubles.
+        if cfg.LONG_ONLY_MODE:
+            passed_longs = [o for o in longs if o.get("passed", False)]
+        else:
+            passed_longs = longs
+
+        n_skipped = len(longs) - len(passed_longs)
+        if n_skipped > 0 and self._n_refreshes <= 1:
+            log.info(f"Adaptive: using {len(passed_longs)} passed-longs "
+                     f"(skipped {n_skipped} rejected for gate params)")
+
+        self._compute_of_params(passed_longs)
+        self._compute_key_level_params(passed_longs)
+        self._compute_grade_multipliers(passed_longs)
+        self._compute_dna_cap(passed_longs)
+        self._compute_pair_cooldowns(passed_longs)
+        self._compute_tp_r(passed_longs)
 
     # ─── 1. ORDER FLOW PARAMETERS ────────────────────────────
 

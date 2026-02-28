@@ -148,15 +148,27 @@ class DirectionalIntelligence:
 
     def record_outcome(self, pnl_r: float, side: str, tf: str,
                        sentiment_bias: str, strategy: str = "",
-                       symbol: str = "", peak_r: float = 0.0):
+                       symbol: str = "", peak_r: float = 0.0,
+                       passed: bool = True):
         """
         Record a new shadow outcome for directional analysis.
 
         Called incrementally for EVERY shadow completion.
+
+        LAYER 2 FIX: When LONG_ONLY_MODE is active, only learn from
+        PASSED outcomes for the active side (long). Rejected signals
+        were correctly rejected by the conviction pipeline — their
+        hypothetical outcomes poison the directional statistics.
         """
         bias = self._normalize_bias(sentiment_bias)
         side = side.lower()
         tf = tf.lower()
+
+        # Layer 2: Skip rejected outcomes for the active side in
+        # LONG_ONLY_MODE — the pipeline already validated these
+        # are bad trades, learning from them inverts the gate.
+        if cfg.LONG_ONLY_MODE and side == "long" and not passed:
+            return
 
         with self._lock:
             # Add to granular bucket
@@ -179,11 +191,21 @@ class DirectionalIntelligence:
                          "starting from defaults")
                 return
 
+            skipped = 0
             with self._lock:
                 for r in rows:
                     side = r.get("side", "").lower()
                     tf = r.get("tf", "").lower()
                     pnl_r = r.get("pnl_r", 0)
+                    was_passed = r.get("passed", True)
+
+                    # Layer 2: In LONG_ONLY_MODE, only learn from PASSED
+                    # long outcomes. Rejected longs were correctly filtered
+                    # by the conviction pipeline — including them poisons
+                    # the stats (42% WR rejected dilutes 58% WR passed).
+                    if cfg.LONG_ONLY_MODE and side == "long" and not was_passed:
+                        skipped += 1
+                        continue
 
                     # Extract sentiment bias from the snapshot at signal time
                     sent = r.get("sentiment", {})
@@ -196,6 +218,9 @@ class DirectionalIntelligence:
                 self._last_refresh = time.time()
                 self._save_state()
 
+            if skipped:
+                log.info(f"DirectionalIntel: skipped {skipped} rejected-long "
+                         f"outcomes (LONG_ONLY_MODE data-quality filter)")
             log.info(f"DirectionalIntel: loaded {self._n_outcomes} outcomes "
                      f"across {len(self._buckets)} buckets")
             self.log_status()
@@ -308,9 +333,19 @@ class DirectionalIntelligence:
 
         Returns True if the shadow data shows this direction has edge,
         or if we don't have enough data (falls back to current config).
+
+        LAYER 1 FIX: When LONG_ONLY_MODE is active, longs are NEVER
+        hard-blocked. The contaminated both-sides statistics were
+        blocking 100% of longs. The side_risk_multiplier() still
+        applies as a soft scaling factor (0.5x-1.2x).
         """
         bias = self._normalize_bias(sentiment_bias)
         side = side.lower()
+
+        # Layer 1: In LONG_ONLY_MODE, never hard-block our only
+        # tradeable side. Risk scaling handles edge confidence.
+        if cfg.LONG_ONLY_MODE and side == "long":
+            return True
 
         with self._lock:
             stats = self._side_stats.get((bias, side))

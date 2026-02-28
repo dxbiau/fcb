@@ -202,10 +202,21 @@ class EdgeRadar:
             self._recalc_hot_seat()
 
     def _recalc_combo_heat(self):
-        """Compute heat label + multiplier per strategy/tf combo."""
+        """Compute heat label + multiplier per strategy/tf combo.
+
+        SIDE-DEPENDENT FIX: When LONG_ONLY_MODE is active, combo heat
+        is computed from longs-only outcomes. Short-side losses (22% WR)
+        were dragging down combos that have strong long edge (e.g.
+        TR_PULL/15m: 62.5% WR longs, 17% WR both-sides → was FROZEN).
+        """
         heat = {}
+        side_filter = cfg.LONG_ONLY_MODE  # filter to longs when active
+
         for combo, outcomes in self._combo_outcomes.items():
-            ol = list(outcomes)
+            if side_filter:
+                ol = [o for o in outcomes if o.get("side", "long") == "long"]
+            else:
+                ol = list(outcomes)
             n = len(ol)
             if n < MIN_COMBO_TRADES:
                 heat[combo] = {
@@ -237,7 +248,14 @@ class EdgeRadar:
         self._combo_heat = heat
 
     def _recalc_market_heat(self):
-        """Compute rolling market heat from peak_r values."""
+        """Compute rolling market heat from peak_r values.
+
+        SIDE-DEPENDENT: When LONG_ONLY_MODE, market heat uses longs-only
+        peak_r to reflect actual tradeable conditions.
+        """
+        # Market heat uses the side-agnostic peak window for now —
+        # peak_r reflects market volatility regardless of trade direction.
+        # The combo heat (above) handles per-combo side filtering.
         peaks = list(self._peak_r_window)
         if not peaks:
             self._avg_peak_r = 0
