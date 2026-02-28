@@ -1565,9 +1565,9 @@
       "total_r": 0.5001471432609854
     }
   },
-  "total_evaluated": 3423,
-  "total_passed": 1931,
-  "total_rejected": 1492,
+  "total_evaluated": 3462,
+  "total_passed": 1933,
+  "total_rejected": 1529,
   "recal_count": 18,
   "last_recal": "2026-02-28T02:47:57.746004+00:00"
 }

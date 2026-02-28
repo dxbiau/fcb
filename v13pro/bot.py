@@ -66,6 +66,10 @@ from v13pro.strat_orb_fcb import LAB_STRATEGY_NAMES, get_confirmations as _lab_c
 from v13pro.shadow_live import ShadowLive
 from v13pro.correlation_engine import CorrelationEngine
 from v13pro.flow_throttle import FlowThrottle
+from v13pro.edge_estimator import EdgeEstimator
+from v13pro.kelly_sizer import KellySizer
+from v13pro.exit_oracle import ExitOracle
+from v13pro.regime_hmm import RegimeHMM
 from v13pro import preflight
 
 
@@ -106,6 +110,10 @@ class FCBBot:
         self._shadow_live = None  # ShadowLive (pair momentum + focus)
         self._correlation = None  # CorrelationEngine (cross-pair confirmation)
         self._flow_throttle = None  # FlowThrottle (strategy-level adaptive throttle)
+        self._edge_estimator = None  # EdgeEstimator (data-driven edge prediction)
+        self._kelly_sizer = None     # KellySizer (Kelly-based position sizing)
+        self._exit_oracle = None     # ExitOracle (learned exit thresholds)
+        self._regime_hmm = None      # RegimeHMM (continuous Bayesian regime)
         self._watchdog = None     # Watchdog
         self._scan_count = 0
         self._signal_count = 0
@@ -300,6 +308,20 @@ class FCBBot:
         # Init Flow Throttle (smart strategy-level adaptive throttle)
         self._flow_throttle = FlowThrottle()
         log.info("FlowThrottle ready (strategy-level adaptive throttle + priority queue)")
+
+        # Init EdgeEstimator + KellySizer (Iteration 13: data-driven Kelly sizing)
+        self._edge_estimator = EdgeEstimator()
+        self._edge_estimator.log_status()
+        self._kelly_sizer = KellySizer()
+        log.info("KellySizer ready (quarter-Kelly + 7 real-time multipliers)")
+
+        # Init ExitOracle (Iteration 14: learned exit thresholds)
+        self._exit_oracle = ExitOracle()
+        self._exit_oracle.log_status()
+
+        # Init RegimeHMM (Iteration 15: continuous Bayesian regime)
+        self._regime_hmm = RegimeHMM()
+        self._regime_hmm.log_status()
 
         # Init Session Lifecycle Tracker (intra-session risk modulation)
         self._session_lc = SessionTracker()
@@ -1276,19 +1298,73 @@ class FCBBot:
                          f"[{strat}/{tf} H={ft_s['hot']} W={ft_s['warm']} "
                          f"C={ft_s['cold']} F={ft_s['frozen']}]")
 
-        effective_risk = (risk_pct * dd_mult * conv_mult * hunter_mult
-                         * streak_mult * quality_mult * regime_mult
-                         * lifecycle_risk_mult * cross_sect_mult * calibrator_mult
-                         * burst_risk_mult * directional_mult
-                         * edge_combo_mult * edge_market_mult
-                         * edge_sent_mult * edge_hot_mult
-                         * cross_tf_mult
-                         * alignment_mult * session_lc_mult
-                         * of_risk_mult * kl_risk_mult
-                         * shadow_live_mult * correlation_mult
-                         * flow_throttle_mult)
-        dollar_risk = equity * effective_risk
+        # ── [ITERATION 13] Data-driven Kelly sizing ──────────────────
+        # EdgeEstimator: (combo, sentiment, features) → predicted μ(R)
+        # KellySizer: edge → position size with real-time adjustments
+        # Replaces 16 absorbed multipliers; 7 real-time ones survive
+        _ee_sent = 0.0
+        if self._sentiment:
+            try:
+                _ee_s = await self._sentiment.get_sentiment()
+                _ee_sent = _ee_s.get("score", 0.0)
+            except Exception:
+                try:
+                    _ee_sent = self._sentiment.get_cached().get("score", 0.0)
+                except Exception:
+                    pass
+
+        _edge = self._edge_estimator.estimate(
+            combo=f"{strat}/{tf}",
+            sent_score=_ee_sent,
+            features={
+                "conviction": conviction,
+                "hour_utc": datetime.now(timezone.utc).hour,
+                "of_spread_bps": (ob_snap.get("spread_bps", 50)
+                                  if isinstance(ob_snap, dict) else 50),
+            },
+        )
+
+        if _edge["blocked"]:
+            log.info(f"  {symbol}: Edge BLOCKED — {_edge['reason']}")
+            return
+
+        # ── [ITERATION 15] RegimeHMM confidence modulation ──
+        _hmm_mult = 1.0
+        if self._regime_hmm:
+            _hmm_mult = self._regime_hmm.confidence_multiplier()
+            _edge["confidence"] = round(
+                _edge["confidence"] * _hmm_mult, 3)
+            if abs(_hmm_mult - 1.0) > 0.05:
+                log.info(f"  {symbol}: RegimeHMM "
+                         f"P(fav)={self._regime_hmm.p_favorable:.2f} "
+                         f"conf x{_hmm_mult:.2f}")
+
+        _sizing = self._kelly_sizer.size(
+            edge=_edge,
+            equity=equity,
+            peak_equity=peak,
+            n_positions=len(self._trade_meta),
+            hunter=is_hunter,
+            pair_streak=consec_losses,
+            burst_mult=burst_risk_mult,
+            alignment_mult=alignment_mult,
+            lifecycle_mult=lifecycle_risk_mult,
+            flow_throttle_mult=flow_throttle_mult,
+        )
+
+        if _sizing["blocked"]:
+            log.info(f"  {symbol}: Kelly BLOCKED — {_sizing['reason']}")
+            return
+
+        effective_risk = _sizing["risk_pct"]
+        dollar_risk = _sizing["dollar_risk"]
         leverage = int(cfg.get_leverage(equity) * burst_lev_mult)
+
+        log.info(f"  {symbol}: EdgeKelly risk={effective_risk:.4f} "
+                 f"(${dollar_risk:.2f}) μ={_edge['mu']:+.3f} "
+                 f"¼K={_edge['kelly_f']:.4f} N={_edge['n']} "
+                 f"conf={_edge['confidence']:.2f}")
+        # ── End Iteration 13 ──────────────────────────────────────────
 
         if sig.side == "long":
             sl_price = entry_price - stop_dist
@@ -1296,6 +1372,19 @@ class FCBBot:
             sl_price = entry_price + stop_dist
 
         exit_params = EXIT_PARAMS.get(exit_mode, {"tp_r": 1.5})
+
+        # ── [ITERATION 14] ExitOracle: learned trail params per combo ──
+        if self._exit_oracle:
+            _eo = self._exit_oracle.get_exit_params(
+                f"{strat}/{tf}", sent_score=_ee_sent)
+            exit_params = dict(exit_params)  # copy to avoid mutating shared
+            exit_params["trail_activation_r"] = _eo["trail_activation_r"]
+            exit_params["trail_distance_r"] = _eo["trail_distance_r"]
+            if _eo["source"] != "static_default":
+                log.info(f"  {symbol}: ExitOracle act={_eo['trail_activation_r']:.2f}R "
+                         f"dist={_eo['trail_distance_r']:.2f}R "
+                         f"tp={_eo['tp_r']:.2f}R [{_eo['source']}]")
+
         # Trail modes: far safety-net TP on exchange, guardian handles real exit
         if exit_params.get("type") == "trail":
             tp_r = cfg.EXCHANGE_TP_R   # 10R safety net
@@ -1565,6 +1654,10 @@ class FCBBot:
             "orderflow_entry": of_snap,
             "quality_info": quality_info,
             "quality_mult": quality_mult,
+            # Iteration 13: edge prediction for live calibration
+            "edge_mu": _edge["mu"],
+            "edge_combo": f"{strat}/{tf}",
+            "edge_sent_score": _ee_sent,
         }
 
         # Record DNA features for statistical profiling
@@ -1734,6 +1827,19 @@ class FCBBot:
         # FlowThrottle: feed per-combo + per-pair outcome
         if self._flow_throttle:
             self._flow_throttle.record_outcome(strat, tf, symbol, pnl_r)
+
+        # EdgeEstimator: live calibration (Iteration 13)
+        if self._edge_estimator and meta.get("edge_mu") is not None:
+            self._edge_estimator.record_outcome(
+                combo=meta.get("edge_combo", f"{strat}/{tf}"),
+                sent_score=meta.get("edge_sent_score", 0.0),
+                predicted_mu=meta["edge_mu"],
+                actual_pnl_r=pnl_r,
+            )
+
+        # RegimeHMM: update Bayesian regime filter (Iteration 15)
+        if self._regime_hmm:
+            self._regime_hmm.update(pnl_r)
 
         # Thesis logger: record live trade outcome
         if self._thesis:

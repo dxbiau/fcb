@@ -231,8 +231,10 @@ class WSDataEngine:
                                 for _tf in list(self._ex.ohlcvs.get(sym, {}).keys()):
                                     cache = self._ex.ohlcvs[sym][_tf]
                                     if hasattr(cache, '__len__') and len(cache) > 250:
-                                        # Keep only last 220 candles
-                                        self._ex.ohlcvs[sym][_tf] = cache[-220:]
+                                        # Only trim plain lists; ccxt ArrayCache
+                                        # manages its own limit via getLimit()
+                                        if not hasattr(cache, 'getLimit'):
+                                            self._ex.ohlcvs[sym][_tf] = cache[-220:]
                         # Trim ticker cache (shadow adds many)
                         if hasattr(self._ex, 'tickers') and len(self._ex.tickers) > 80:
                             keep_syms = set()

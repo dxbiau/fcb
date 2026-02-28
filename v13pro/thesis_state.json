@@ -1,6 +1,6 @@
 {
-  "total_recorded": 6850,
-  "saved_at": "2026-02-28T10:10:27.376440+00:00",
+  "total_recorded": 7120,
+  "saved_at": "2026-02-28T11:44:37.460624+00:00",
   "combos": [
     {
       "pair": "BCH/USDT:USDT",
@@ -787,13 +787,13 @@
       "strategy": "BB_FADE",
       "tf": "15m",
       "side": "long",
-      "wins": 9,
-      "losses": 7,
-      "total_r": 4.014,
-      "streak": 3,
+      "wins": 10,
+      "losses": 8,
+      "total_r": 4.1129999999999995,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772236669
+      "last_ts": 1772278100
     },
     {
       "pair": "ARC/USDT:USDT",
@@ -1373,12 +1373,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 47,
-      "losses": 36,
-      "total_r": 17.254000000000005,
-      "streak": 6,
+      "losses": 38,
+      "total_r": 15.254000000000005,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273198
+      "last_ts": 1772276796
     },
     {
       "pair": "POWER/USDT:USDT",
@@ -1437,13 +1437,13 @@
       "strategy": "EMA_RIB",
       "tf": "15m",
       "side": "short",
-      "wins": 24,
-      "losses": 18,
-      "total_r": 12.736000000000002,
-      "streak": 2,
+      "wins": 25,
+      "losses": 22,
+      "total_r": 9.009000000000002,
+      "streak": -4,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273198
+      "last_ts": 1772279051
     },
     {
       "pair": "ESP/USDT:USDT",
@@ -1516,12 +1516,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 4,
-      "losses": 3,
-      "total_r": 1.9849999999999999,
-      "streak": -1,
+      "losses": 4,
+      "total_r": 0.9849999999999999,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272558
+      "last_ts": 1772278075
     },
     {
       "pair": "NEAR/USDT:USDT",
@@ -1542,12 +1542,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 1,
-      "losses": 3,
-      "total_r": -1.5,
-      "streak": 1,
+      "losses": 4,
+      "total_r": -1.831,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772195574
+      "last_ts": 1772279051
     },
     {
       "pair": "ZEC/USDT:USDT",
@@ -2178,13 +2178,13 @@
       "strategy": "EMA_RIB",
       "tf": "15m",
       "side": "long",
-      "wins": 10,
-      "losses": 26,
-      "total_r": -11.293,
-      "streak": -5,
+      "wins": 11,
+      "losses": 29,
+      "total_r": -11.386,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272891
+      "last_ts": 1772279051
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -2204,13 +2204,13 @@
       "strategy": "DONCHIAN",
       "tf": "1h",
       "side": "short",
-      "wins": 1,
-      "losses": 5,
-      "total_r": -1.011,
-      "streak": 1,
+      "wins": 2,
+      "losses": 7,
+      "total_r": -1.519,
+      "streak": -1,
       "best_r": 0.224,
       "worst_r": -0.453,
-      "last_ts": 1772263921
+      "last_ts": 1772277440
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -2269,13 +2269,13 @@
       "strategy": "BB_BREAK",
       "tf": "15m",
       "side": "long",
-      "wins": 4,
-      "losses": 3,
-      "total_r": 3.341,
-      "streak": -2,
+      "wins": 5,
+      "losses": 4,
+      "total_r": 2.668,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772258403
+      "last_ts": 1772277105
     },
     {
       "pair": "FARTCOIN/USDT:USDT",
@@ -2361,12 +2361,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 0,
-      "losses": 7,
-      "total_r": -5.16,
-      "streak": -7,
+      "losses": 10,
+      "total_r": -5.622000000000001,
+      "streak": -10,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772273198
+      "last_ts": 1772278075
     },
     {
       "pair": "PIPPIN/USDT:USDT",
@@ -2387,12 +2387,12 @@
       "tf": "15m",
       "side": "long",
       "wins": 56,
-      "losses": 37,
-      "total_r": 14.762145016645484,
-      "streak": 5,
+      "losses": 39,
+      "total_r": 12.762145016645484,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272891
+      "last_ts": 1772279051
     },
     {
       "pair": "ADA/USDT:USDT",
@@ -2582,12 +2582,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 24,
-      "losses": 10,
-      "total_r": 22.999,
-      "streak": -4,
+      "losses": 13,
+      "total_r": 19.999,
+      "streak": -7,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772271920
+      "last_ts": 1772277105
     },
     {
       "pair": "NEAR/USDT:USDT",
@@ -2621,12 +2621,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 30,
-      "losses": 26,
-      "total_r": 11.544599878935202,
-      "streak": 1,
+      "losses": 30,
+      "total_r": 7.544599878935202,
+      "streak": -4,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772263580
+      "last_ts": 1772277105
     },
     {
       "pair": "BNB/USDT:USDT",
@@ -2647,12 +2647,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 30,
-      "losses": 28,
-      "total_r": 8.309572669583668,
-      "streak": -1,
+      "losses": 31,
+      "total_r": 5.309572669583668,
+      "streak": -4,
       "best_r": 1.7319146071618496,
       "worst_r": -1.0,
-      "last_ts": 1772271920
+      "last_ts": 1772277105
     },
     {
       "pair": "XRP/USDT:USDT",
@@ -2946,12 +2946,12 @@
       "tf": "5m",
       "side": "long",
       "wins": 8,
-      "losses": 13,
-      "total_r": -0.4159999999999999,
-      "streak": 2,
+      "losses": 14,
+      "total_r": -1.416,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241922
+      "last_ts": 1772278511
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -3271,12 +3271,12 @@
       "tf": "3m",
       "side": "short",
       "wins": 19,
-      "losses": 0,
-      "total_r": 24.924,
-      "streak": 19,
+      "losses": 1,
+      "total_r": 23.924,
+      "streak": -1,
       "best_r": 1.5,
-      "worst_r": 0.0,
-      "last_ts": 1772241491
+      "worst_r": -1.0,
+      "last_ts": 1772278050
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -3297,12 +3297,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 29,
-      "losses": 32,
-      "total_r": 1.1670000000000007,
-      "streak": -3,
+      "losses": 37,
+      "total_r": -3.8329999999999993,
+      "streak": -8,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272814
+      "last_ts": 1772278230
     },
     {
       "pair": "SOL/USDT:USDT",
@@ -3348,13 +3348,13 @@
       "strategy": "BB_FADE",
       "tf": "3m",
       "side": "long",
-      "wins": 11,
+      "wins": 14,
       "losses": 18,
-      "total_r": -4.912000000000001,
-      "streak": -3,
+      "total_r": -0.4120000000000008,
+      "streak": 3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772264543
+      "last_ts": 1772277490
     },
     {
       "pair": "AVAX/USDT:USDT",
@@ -3491,13 +3491,13 @@
       "strategy": "BB_FADE",
       "tf": "3m",
       "side": "long",
-      "wins": 12,
+      "wins": 13,
       "losses": 21,
-      "total_r": -7.413999999999998,
-      "streak": -3,
+      "total_r": -5.913999999999998,
+      "streak": 1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772264543
+      "last_ts": 1772277313
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -3660,13 +3660,13 @@
       "strategy": "EMA_RIB",
       "tf": "1h",
       "side": "long",
-      "wins": 14,
+      "wins": 24,
       "losses": 12,
-      "total_r": 2.7179999999999995,
-      "streak": 8,
-      "best_r": 0.93,
+      "total_r": 11.839,
+      "streak": 18,
+      "best_r": 1.5,
       "worst_r": -0.811,
-      "last_ts": 1772258098
+      "last_ts": 1772279051
     },
     {
       "pair": "ENA/USDT:USDT",
@@ -3726,12 +3726,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 8,
-      "losses": 11,
-      "total_r": 1.8040000000000003,
-      "streak": -1,
+      "losses": 13,
+      "total_r": -0.19599999999999973,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772265318
+      "last_ts": 1772276719
     },
     {
       "pair": "SUI/USDT:USDT",
@@ -3739,12 +3739,12 @@
       "tf": "3m",
       "side": "short",
       "wins": 17,
-      "losses": 18,
-      "total_r": 9.367,
-      "streak": -3,
+      "losses": 20,
+      "total_r": 7.367000000000001,
+      "streak": -5,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772270480
+      "last_ts": 1772277130
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -3778,12 +3778,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 9,
-      "losses": 5,
-      "total_r": 6.6610000000000005,
-      "streak": 2,
+      "losses": 7,
+      "total_r": 4.6610000000000005,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772265009
+      "last_ts": 1772276719
     },
     {
       "pair": "SOL/USDT:USDT",
@@ -3843,12 +3843,12 @@
       "tf": "3m",
       "side": "short",
       "wins": 14,
-      "losses": 15,
-      "total_r": 6.404,
-      "streak": -1,
+      "losses": 16,
+      "total_r": 5.404,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772264361
+      "last_ts": 1772276770
     },
     {
       "pair": "ENSO/USDT:USDT",
@@ -3856,12 +3856,12 @@
       "tf": "1h",
       "side": "long",
       "wins": 0,
-      "losses": 2,
-      "total_r": -0.8999999999999999,
-      "streak": -2,
+      "losses": 3,
+      "total_r": -1.067,
+      "streak": -3,
       "best_r": 0.0,
       "worst_r": -0.708,
-      "last_ts": 1772273198
+      "last_ts": 1772279077
     },
     {
       "pair": "XRP/USDT:USDT",
@@ -3869,12 +3869,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 25,
-      "losses": 21,
-      "total_r": 12.246000000000002,
-      "streak": -1,
+      "losses": 24,
+      "total_r": 9.246000000000002,
+      "streak": -4,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273427
+      "last_ts": 1772276719
     },
     {
       "pair": "ADA/USDT:USDT",
@@ -3882,12 +3882,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 27,
-      "losses": 28,
-      "total_r": 8.691,
-      "streak": -1,
+      "losses": 32,
+      "total_r": 4.691000000000001,
+      "streak": -5,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272814
+      "last_ts": 1772276719
     },
     {
       "pair": "PUMPFUN/USDT:USDT",
@@ -3947,12 +3947,12 @@
       "tf": "3m",
       "side": "short",
       "wins": 19,
-      "losses": 17,
-      "total_r": 9.525,
-      "streak": -1,
+      "losses": 19,
+      "total_r": 7.525,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772264361
+      "last_ts": 1772277130
     },
     {
       "pair": "SOL/USDT:USDT",
@@ -3973,12 +3973,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 7,
-      "losses": 14,
-      "total_r": -5.6450000000000005,
-      "streak": -3,
+      "losses": 16,
+      "total_r": -7.6450000000000005,
+      "streak": -5,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273427
+      "last_ts": 1772276719
     },
     {
       "pair": "XRP/USDT:USDT",
@@ -3986,12 +3986,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 11,
-      "losses": 14,
-      "total_r": 0.04900000000000038,
-      "streak": -2,
+      "losses": 15,
+      "total_r": -0.9509999999999996,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772265623
+      "last_ts": 1772276719
     },
     {
       "pair": "ETH/USDT:USDT",
@@ -3999,12 +3999,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 36,
-      "losses": 30,
-      "total_r": 9.414000000000001,
-      "streak": -2,
+      "losses": 34,
+      "total_r": 5.4140000000000015,
+      "streak": -6,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273427
+      "last_ts": 1772278230
     },
     {
       "pair": "ETH/USDT:USDT",
@@ -4012,12 +4012,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 12,
-      "losses": 5,
-      "total_r": 10.802000000000001,
-      "streak": -2,
+      "losses": 7,
+      "total_r": 8.802000000000001,
+      "streak": -4,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273427
+      "last_ts": 1772276719
     },
     {
       "pair": "ETH/USDT:USDT",
@@ -4063,13 +4063,13 @@
       "strategy": "BB_BREAK",
       "tf": "5m",
       "side": "short",
-      "wins": 10,
-      "losses": 14,
-      "total_r": 2.2880000000000003,
-      "streak": -1,
+      "wins": 11,
+      "losses": 16,
+      "total_r": 0.40000000000000036,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772265318
+      "last_ts": 1772277313
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -4077,12 +4077,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 23,
-      "losses": 27,
-      "total_r": -0.387,
-      "streak": -3,
+      "losses": 31,
+      "total_r": -4.3870000000000005,
+      "streak": -7,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272814
+      "last_ts": 1772276719
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -4090,12 +4090,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 4,
-      "losses": 5,
-      "total_r": -0.7539999999999998,
-      "streak": -1,
+      "losses": 8,
+      "total_r": -3.7539999999999996,
+      "streak": -4,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772265318
+      "last_ts": 1772276719
     },
     {
       "pair": "XAUT/USDT:USDT",
@@ -4414,13 +4414,13 @@
       "strategy": "BB_BREAK",
       "tf": "3m",
       "side": "long",
-      "wins": 1,
-      "losses": 15,
-      "total_r": -13.768,
-      "streak": -14,
-      "best_r": 0.232,
+      "wins": 2,
+      "losses": 16,
+      "total_r": -13.268,
+      "streak": -1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278590
     },
     {
       "pair": "TAO/USDT:USDT",
@@ -4440,13 +4440,13 @@
       "strategy": "DONCHIAN",
       "tf": "5m",
       "side": "long",
-      "wins": 2,
+      "wins": 3,
       "losses": 10,
-      "total_r": -7.792,
-      "streak": -1,
+      "total_r": -6.292,
+      "streak": 1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278511
     },
     {
       "pair": "XRP/USDT:USDT",
@@ -4467,12 +4467,12 @@
       "tf": "5m",
       "side": "long",
       "wins": 0,
-      "losses": 9,
-      "total_r": -9.0,
-      "streak": -9,
+      "losses": 10,
+      "total_r": -10.0,
+      "streak": -10,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772229931
+      "last_ts": 1772278511
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -4531,26 +4531,26 @@
       "strategy": "BB_BREAK",
       "tf": "3m",
       "side": "long",
-      "wins": 2,
-      "losses": 16,
-      "total_r": -14.009,
+      "wins": 3,
+      "losses": 17,
+      "total_r": -13.509,
       "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278590
     },
     {
       "pair": "XRP/USDT:USDT",
       "strategy": "DONCHIAN",
       "tf": "3m",
       "side": "long",
-      "wins": 2,
+      "wins": 3,
       "losses": 19,
-      "total_r": -16.578,
-      "streak": -1,
+      "total_r": -15.078,
+      "streak": 1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278408
     },
     {
       "pair": "AVAX/USDT:USDT",
@@ -4558,25 +4558,25 @@
       "tf": "3m",
       "side": "long",
       "wins": 3,
-      "losses": 12,
-      "total_r": -6.678,
-      "streak": -12,
+      "losses": 14,
+      "total_r": -8.678,
+      "streak": -14,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772229982
+      "last_ts": 1772278590
     },
     {
       "pair": "SUI/USDT:USDT",
       "strategy": "EMA_RIB",
       "tf": "5m",
       "side": "short",
-      "wins": 25,
-      "losses": 26,
-      "total_r": 11.327999999999998,
-      "streak": 6,
+      "wins": 27,
+      "losses": 31,
+      "total_r": 7.939999999999998,
+      "streak": -4,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272508
+      "last_ts": 1772278820
     },
     {
       "pair": "POWER/USDT:USDT",
@@ -4661,26 +4661,26 @@
       "strategy": "DONCHIAN",
       "tf": "3m",
       "side": "long",
-      "wins": 1,
+      "wins": 2,
       "losses": 11,
-      "total_r": -9.5,
-      "streak": -11,
+      "total_r": -8.0,
+      "streak": 1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241152
+      "last_ts": 1772278408
     },
     {
       "pair": "SOL/USDT:USDT",
       "strategy": "DONCHIAN",
       "tf": "3m",
       "side": "long",
-      "wins": 1,
-      "losses": 15,
-      "total_r": -12.619,
-      "streak": -15,
+      "wins": 3,
+      "losses": 16,
+      "total_r": -10.619,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772235907
+      "last_ts": 1772278770
     },
     {
       "pair": "HYPE/USDT:USDT",
@@ -4688,12 +4688,12 @@
       "tf": "3m",
       "side": "long",
       "wins": 11,
-      "losses": 20,
-      "total_r": -3.9879999999999995,
-      "streak": -2,
+      "losses": 21,
+      "total_r": -4.9879999999999995,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772257870
+      "last_ts": 1772278408
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -4713,13 +4713,13 @@
       "strategy": "DONCHIAN",
       "tf": "5m",
       "side": "long",
-      "wins": 2,
+      "wins": 3,
       "losses": 8,
-      "total_r": -6.0440000000000005,
-      "streak": -7,
+      "total_r": -4.5440000000000005,
+      "streak": 1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772183429
+      "last_ts": 1772278511
     },
     {
       "pair": "WET/USDT:USDT",
@@ -4752,13 +4752,13 @@
       "strategy": "BB_BREAK",
       "tf": "3m",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 10,
-      "total_r": -10.0,
-      "streak": -10,
-      "best_r": 0.0,
+      "total_r": -8.5,
+      "streak": 1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241152
+      "last_ts": 1772278408
     },
     {
       "pair": "SUI/USDT:USDT",
@@ -4779,25 +4779,25 @@
       "tf": "3m",
       "side": "long",
       "wins": 4,
-      "losses": 19,
-      "total_r": -13.488,
-      "streak": -1,
+      "losses": 20,
+      "total_r": -14.488,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772257870
+      "last_ts": 1772278408
     },
     {
       "pair": "BTC/USDT:USDT",
       "strategy": "DONCHIAN",
       "tf": "5m",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 11,
-      "total_r": -10.905000000000001,
-      "streak": -11,
-      "best_r": 0.0,
+      "total_r": -10.071000000000002,
+      "streak": 1,
+      "best_r": 0.834,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278511
     },
     {
       "pair": "ETH/USDT:USDT",
@@ -4805,12 +4805,12 @@
       "tf": "3m",
       "side": "short",
       "wins": 10,
-      "losses": 4,
-      "total_r": 11.323,
-      "streak": -2,
+      "losses": 5,
+      "total_r": 10.323,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772256617
+      "last_ts": 1772278948
     },
     {
       "pair": "NEAR/USDT:USDT",
@@ -4844,12 +4844,12 @@
       "tf": "3m",
       "side": "short",
       "wins": 8,
-      "losses": 2,
-      "total_r": 7.0089999999999995,
-      "streak": -1,
+      "losses": 3,
+      "total_r": 6.0089999999999995,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772236643
+      "last_ts": 1772278948
     },
     {
       "pair": "AVAX/USDT:USDT",
@@ -4934,26 +4934,26 @@
       "strategy": "DONCHIAN",
       "tf": "5m",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 9,
-      "total_r": -9.0,
-      "streak": -9,
-      "best_r": 0.0,
+      "total_r": -7.5,
+      "streak": 1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278511
     },
     {
       "pair": "ETH/USDT:USDT",
       "strategy": "ENGULF",
       "tf": "5m",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 2,
-      "total_r": -2.0,
-      "streak": -2,
-      "best_r": 0.0,
+      "total_r": -0.5,
+      "streak": 1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772229906
+      "last_ts": 1772278511
     },
     {
       "pair": "SOL/USDT:USDT",
@@ -4973,13 +4973,13 @@
       "strategy": "ENGULF",
       "tf": "5m",
       "side": "long",
-      "wins": 1,
+      "wins": 2,
       "losses": 5,
-      "total_r": -4.484,
-      "streak": -5,
-      "best_r": 0.456,
+      "total_r": -2.984,
+      "streak": 1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772229931
+      "last_ts": 1772278511
     },
     {
       "pair": "BTC/USDT:USDT",
@@ -5116,52 +5116,52 @@
       "strategy": "EMA_RIB",
       "tf": "5m",
       "side": "long",
-      "wins": 3,
-      "losses": 29,
-      "total_r": -23.294,
-      "streak": 1,
+      "wins": 5,
+      "losses": 31,
+      "total_r": -22.294,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241922
+      "last_ts": 1772278511
     },
     {
       "pair": "SOL/USDT:USDT",
       "strategy": "BB_BREAK",
       "tf": "5m",
       "side": "long",
-      "wins": 0,
+      "wins": 2,
       "losses": 8,
-      "total_r": -8.0,
-      "streak": -8,
-      "best_r": 0.0,
+      "total_r": -5.0,
+      "streak": 2,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772183429
+      "last_ts": 1772278820
     },
     {
       "pair": "BTC/USDT:USDT",
       "strategy": "IB_BREAK",
       "tf": "5m",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 9,
-      "total_r": -9.0,
-      "streak": -9,
-      "best_r": 0.0,
+      "total_r": -8.166,
+      "streak": 1,
+      "best_r": 0.834,
       "worst_r": -1.0,
-      "last_ts": 1772236821
+      "last_ts": 1772278511
     },
     {
       "pair": "SOL/USDT:USDT",
       "strategy": "BB_BREAK",
       "tf": "3m",
       "side": "long",
-      "wins": 0,
-      "losses": 10,
-      "total_r": -10.0,
-      "streak": -10,
-      "best_r": 0.0,
+      "wins": 2,
+      "losses": 11,
+      "total_r": -8.0,
+      "streak": -1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772226918
+      "last_ts": 1772278770
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -5195,12 +5195,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 32,
-      "losses": 22,
-      "total_r": 10.051,
-      "streak": 3,
+      "losses": 25,
+      "total_r": 7.051,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772273198
+      "last_ts": 1772277440
     },
     {
       "pair": "HYPE/USDT:USDT",
@@ -5208,12 +5208,12 @@
       "tf": "5m",
       "side": "long",
       "wins": 0,
-      "losses": 14,
-      "total_r": -13.102,
-      "streak": -14,
+      "losses": 15,
+      "total_r": -14.102,
+      "streak": -15,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772257820
+      "last_ts": 1772278511
     },
     {
       "pair": "ENA/USDT:USDT",
@@ -5286,12 +5286,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 3,
-      "losses": 2,
-      "total_r": 0.87,
-      "streak": -1,
+      "losses": 3,
+      "total_r": -0.13,
+      "streak": -2,
       "best_r": 0.918,
-      "worst_r": -0.529,
-      "last_ts": 1772231149
+      "worst_r": -1.0,
+      "last_ts": 1772277105
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -5506,13 +5506,13 @@
       "strategy": "BB_BREAK",
       "tf": "3m",
       "side": "long",
-      "wins": 0,
+      "wins": 2,
       "losses": 13,
-      "total_r": -13.0,
-      "streak": -13,
-      "best_r": 0.0,
+      "total_r": -10.0,
+      "streak": 2,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772241311
+      "last_ts": 1772278408
     },
     {
       "pair": "ZEC/USDT:USDT",
@@ -5714,13 +5714,13 @@
       "strategy": "IB_BREAK",
       "tf": "5m",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 3,
-      "total_r": -3.0,
-      "streak": -3,
-      "best_r": 0.0,
+      "total_r": -1.5,
+      "streak": 1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772188515
+      "last_ts": 1772278511
     },
     {
       "pair": "FARTCOIN/USDT:USDT",
@@ -6755,12 +6755,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 27,
-      "losses": 29,
-      "total_r": 2.9039999999999977,
-      "streak": 7,
+      "losses": 32,
+      "total_r": -0.0960000000000023,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272814
+      "last_ts": 1772278230
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -7080,12 +7080,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 27,
-      "losses": 16,
-      "total_r": 20.109955582398968,
-      "streak": -1,
+      "losses": 18,
+      "total_r": 18.109955582398968,
+      "streak": -3,
       "best_r": 1.5,
       "worst_r": -1.1870444176010329,
-      "last_ts": 1772272558
+      "last_ts": 1772277105
     },
     {
       "pair": "ENSO/USDT:USDT",
@@ -7483,12 +7483,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 25,
-      "losses": 13,
-      "total_r": 15.113589793448494,
-      "streak": 2,
+      "losses": 14,
+      "total_r": 14.113589793448494,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0414102065515065,
-      "last_ts": 1772271920
+      "last_ts": 1772277105
     },
     {
       "pair": "SIREN/USDT:USDT",
@@ -7599,13 +7599,13 @@
       "strategy": "DONCHIAN",
       "tf": "15m",
       "side": "short",
-      "wins": 3,
-      "losses": 2,
-      "total_r": 0.694,
-      "streak": 2,
+      "wins": 4,
+      "losses": 4,
+      "total_r": -1.0070000000000001,
+      "streak": -2,
       "best_r": 0.621,
-      "worst_r": -0.341,
-      "last_ts": 1772211001
+      "worst_r": -1.0,
+      "last_ts": 1772277105
     },
     {
       "pair": "PUMPFUN/USDT:USDT",
@@ -7638,13 +7638,13 @@
       "strategy": "TR_PULL",
       "tf": "15m",
       "side": "long",
-      "wins": 5,
-      "losses": 13,
-      "total_r": -8.255,
-      "streak": -7,
-      "best_r": 0.786,
+      "wins": 11,
+      "losses": 14,
+      "total_r": -1.2830000000000008,
+      "streak": -1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272558
+      "last_ts": 1772279051
     },
     {
       "pair": "ETH/USDT:USDT",
@@ -7677,13 +7677,13 @@
       "strategy": "RSI_FADE",
       "tf": "15m",
       "side": "short",
-      "wins": 4,
-      "losses": 5,
-      "total_r": -2.7640000000000002,
-      "streak": -3,
-      "best_r": 0.714,
+      "wins": 5,
+      "losses": 6,
+      "total_r": -2.2640000000000002,
+      "streak": 1,
+      "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772266205
+      "last_ts": 1772278075
     },
     {
       "pair": "MYX/USDT:USDT",
@@ -7742,13 +7742,13 @@
       "strategy": "BB_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 2,
-      "losses": 4,
-      "total_r": -0.09799999999999998,
-      "streak": 2,
+      "wins": 4,
+      "losses": 7,
+      "total_r": -0.347,
+      "streak": -3,
       "best_r": 0.565,
       "worst_r": -0.492,
-      "last_ts": 1772236669
+      "last_ts": 1772279077
     },
     {
       "pair": "MYX/USDT:USDT",
@@ -7807,13 +7807,13 @@
       "strategy": "BB_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 0,
+      "wins": 2,
       "losses": 12,
-      "total_r": -8.209,
-      "streak": -12,
-      "best_r": 0.0,
+      "total_r": -7.617999999999999,
+      "streak": 2,
+      "best_r": 0.34,
       "worst_r": -1.0,
-      "last_ts": 1772272891
+      "last_ts": 1772277440
     },
     {
       "pair": "ARB/USDT:USDT",
@@ -7833,13 +7833,13 @@
       "strategy": "RSI_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 2,
+      "wins": 3,
       "losses": 4,
-      "total_r": -0.788,
-      "streak": 1,
-      "best_r": 0.086,
+      "total_r": -0.5690000000000001,
+      "streak": 2,
+      "best_r": 0.219,
       "worst_r": -0.399,
-      "last_ts": 1772236999
+      "last_ts": 1772276134
     },
     {
       "pair": "NEAR/USDT:USDT",
@@ -7937,13 +7937,13 @@
       "strategy": "EMA_RIB",
       "tf": "15m",
       "side": "short",
-      "wins": 16,
-      "losses": 11,
-      "total_r": 9.277458297512565,
-      "streak": 1,
+      "wins": 17,
+      "losses": 13,
+      "total_r": 7.344458297512565,
+      "streak": -2,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772272558
+      "last_ts": 1772277105
     },
     {
       "pair": "ADA/USDT:USDT",
@@ -7951,12 +7951,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 1,
-      "losses": 0,
-      "total_r": 0.267,
-      "streak": 1,
+      "losses": 2,
+      "total_r": -1.733,
+      "streak": -2,
       "best_r": 0.267,
-      "worst_r": 0.0,
-      "last_ts": 1772210132
+      "worst_r": -1.0,
+      "last_ts": 1772276719
     },
     {
       "pair": "XRP/USDT:USDT",
@@ -8107,12 +8107,12 @@
       "tf": "1h",
       "side": "short",
       "wins": 3,
-      "losses": 2,
-      "total_r": 0.921,
-      "streak": -2,
+      "losses": 3,
+      "total_r": 0.262,
+      "streak": -3,
       "best_r": 0.594,
-      "worst_r": -0.417,
-      "last_ts": 1772225280
+      "worst_r": -0.659,
+      "last_ts": 1772277440
     },
     {
       "pair": "ENA/USDT:USDT",
@@ -8133,12 +8133,12 @@
       "tf": "15m",
       "side": "long",
       "wins": 0,
-      "losses": 1,
-      "total_r": -1.0,
-      "streak": -1,
+      "losses": 3,
+      "total_r": -2.982352741914708,
+      "streak": -3,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772212947
+      "last_ts": 1772276796
     },
     {
       "pair": "PIPPIN/USDT:USDT",
@@ -8237,12 +8237,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 1,
-      "losses": 1,
-      "total_r": 0.766,
-      "streak": -1,
+      "losses": 2,
+      "total_r": -0.23399999999999999,
+      "streak": -2,
       "best_r": 0.857,
-      "worst_r": -0.091,
-      "last_ts": 1772256617
+      "worst_r": -1.0,
+      "last_ts": 1772276719
     },
     {
       "pair": "HYPE/USDT:USDT",
@@ -8393,12 +8393,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 0,
-      "losses": 3,
-      "total_r": -2.907,
-      "streak": -3,
+      "losses": 4,
+      "total_r": -3.907,
+      "streak": -4,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772254807
+      "last_ts": 1772276719
     },
     {
       "pair": "RIVER/USDT:USDT",
@@ -8431,26 +8431,26 @@
       "strategy": "BB_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 0,
+      "wins": 5,
       "losses": 2,
-      "total_r": -0.5820000000000001,
-      "streak": -2,
-      "best_r": 0.0,
+      "total_r": 2.649,
+      "streak": 5,
+      "best_r": 0.883,
       "worst_r": -0.46,
-      "last_ts": 1772218809
+      "last_ts": 1772279051
     },
     {
       "pair": "FARTCOIN/USDT:USDT",
       "strategy": "BB_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 0,
+      "wins": 1,
       "losses": 1,
-      "total_r": -0.629,
-      "streak": -1,
-      "best_r": 0.0,
+      "total_r": -0.20600000000000002,
+      "streak": 1,
+      "best_r": 0.423,
       "worst_r": -0.629,
-      "last_ts": 1772218809
+      "last_ts": 1772276134
     },
     {
       "pair": "ARB/USDT:USDT",
@@ -8484,12 +8484,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 0,
-      "losses": 2,
-      "total_r": -1.093,
-      "streak": -2,
+      "losses": 3,
+      "total_r": -2.093,
+      "streak": -3,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772265623
+      "last_ts": 1772276719
     },
     {
       "pair": "ARB/USDT:USDT",
@@ -8588,12 +8588,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 0,
-      "losses": 2,
-      "total_r": -2.0,
-      "streak": -2,
+      "losses": 3,
+      "total_r": -3.0,
+      "streak": -3,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772233811
+      "last_ts": 1772276719
     },
     {
       "pair": "1000BONK/USDT:USDT",
@@ -8601,12 +8601,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 2,
-      "losses": 2,
-      "total_r": -0.756,
-      "streak": -2,
+      "losses": 4,
+      "total_r": -2.7560000000000002,
+      "streak": -4,
       "best_r": 0.622,
       "worst_r": -1.0,
-      "last_ts": 1772234728
+      "last_ts": 1772276719
     },
     {
       "pair": "HYPE/USDT:USDT",
@@ -8679,12 +8679,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 0,
-      "losses": 2,
-      "total_r": -2.0,
-      "streak": -2,
+      "losses": 3,
+      "total_r": -3.0,
+      "streak": -3,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772265623
+      "last_ts": 1772276719
     },
     {
       "pair": "BARD/USDT:USDT",
@@ -8731,12 +8731,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 1,
-      "losses": 0,
-      "total_r": 1.171,
-      "streak": 1,
+      "losses": 1,
+      "total_r": 0.17100000000000004,
+      "streak": -1,
       "best_r": 1.171,
-      "worst_r": 0.0,
-      "last_ts": 1772224816
+      "worst_r": -1.0,
+      "last_ts": 1772276719
     },
     {
       "pair": "BARD/USDT:USDT",
@@ -8770,12 +8770,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 1,
-      "losses": 2,
-      "total_r": -0.11799999999999988,
-      "streak": 1,
+      "losses": 3,
+      "total_r": -1.1179999999999999,
+      "streak": -1,
       "best_r": 1.5,
-      "worst_r": -0.86,
-      "last_ts": 1772256617
+      "worst_r": -1.0,
+      "last_ts": 1772276719
     },
     {
       "pair": "DOGE/USDT:USDT",
@@ -8783,12 +8783,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 1,
-      "losses": 2,
-      "total_r": -1.033,
-      "streak": 1,
+      "losses": 3,
+      "total_r": -2.033,
+      "streak": -1,
       "best_r": 0.967,
       "worst_r": -1.0,
-      "last_ts": 1772256617
+      "last_ts": 1772276719
     },
     {
       "pair": "SAHARA/USDT:USDT",
@@ -8808,13 +8808,13 @@
       "strategy": "DONCHIAN",
       "tf": "1h",
       "side": "short",
-      "wins": 0,
-      "losses": 4,
-      "total_r": -2.38,
-      "streak": -4,
-      "best_r": 0.0,
+      "wins": 1,
+      "losses": 6,
+      "total_r": -2.4370000000000003,
+      "streak": -2,
+      "best_r": 0.308,
       "worst_r": -0.896,
-      "last_ts": 1772235701
+      "last_ts": 1772278100
     },
     {
       "pair": "BNB/USDT:USDT",
@@ -8886,13 +8886,13 @@
       "strategy": "TR_PULL",
       "tf": "1h",
       "side": "long",
-      "wins": 1,
-      "losses": 2,
-      "total_r": -0.35699999999999993,
+      "wins": 2,
+      "losses": 4,
+      "total_r": -0.2719999999999999,
       "streak": -2,
       "best_r": 0.4,
       "worst_r": -0.407,
-      "last_ts": 1772272558
+      "last_ts": 1772279077
     },
     {
       "pair": "VVV/USDT:USDT",
@@ -9030,12 +9030,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 2,
-      "losses": 1,
-      "total_r": 1.4,
-      "streak": 1,
+      "losses": 2,
+      "total_r": 0.3999999999999999,
+      "streak": -1,
       "best_r": 1.281,
       "worst_r": -1.0,
-      "last_ts": 1772256617
+      "last_ts": 1772276719
     },
     {
       "pair": "ZIL/USDT:USDT",
@@ -9082,12 +9082,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 2,
-      "losses": 4,
-      "total_r": -3.1960000000000006,
-      "streak": 2,
+      "losses": 6,
+      "total_r": -5.196000000000001,
+      "streak": -2,
       "best_r": 0.377,
       "worst_r": -1.0,
-      "last_ts": 1772256617
+      "last_ts": 1772276719
     },
     {
       "pair": "SAHARA/USDT:USDT",
@@ -9212,12 +9212,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 0,
-      "losses": 1,
-      "total_r": -1.0,
-      "streak": -1,
+      "losses": 2,
+      "total_r": -2.0,
+      "streak": -2,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772234728
+      "last_ts": 1772275823
     },
     {
       "pair": "PUMPFUN/USDT:USDT",
@@ -9277,12 +9277,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 0,
-      "losses": 1,
-      "total_r": -1.0,
-      "streak": -1,
+      "losses": 2,
+      "total_r": -2.0,
+      "streak": -2,
       "best_r": 0.0,
       "worst_r": -1.0,
-      "last_ts": 1772235314
+      "last_ts": 1772276719
     },
     {
       "pair": "SKR/USDT:USDT",
@@ -9628,12 +9628,12 @@
       "tf": "1h",
       "side": "short",
       "wins": 3,
-      "losses": 1,
-      "total_r": 1.6320000000000001,
-      "streak": 2,
+      "losses": 3,
+      "total_r": -0.3679999999999999,
+      "streak": -2,
       "best_r": 1.5,
-      "worst_r": -0.008,
-      "last_ts": 1772264881
+      "worst_r": -1.0,
+      "last_ts": 1772277769
     },
     {
       "pair": "BNB/USDT:USDT",
@@ -9784,12 +9784,12 @@
       "tf": "5m",
       "side": "short",
       "wins": 1,
-      "losses": 0,
-      "total_r": 0.705,
-      "streak": 1,
+      "losses": 2,
+      "total_r": -1.295,
+      "streak": -2,
       "best_r": 0.705,
-      "worst_r": 0.0,
-      "last_ts": 1772256617
+      "worst_r": -1.0,
+      "last_ts": 1772276719
     },
     {
       "pair": "SAHARA/USDT:USDT",
@@ -9809,13 +9809,13 @@
       "strategy": "TR_PULL",
       "tf": "1h",
       "side": "long",
-      "wins": 0,
+      "wins": 2,
       "losses": 3,
-      "total_r": -0.369,
-      "streak": -3,
-      "best_r": 0.0,
+      "total_r": 0.202,
+      "streak": 2,
+      "best_r": 0.336,
       "worst_r": -0.142,
-      "last_ts": 1772273198
+      "last_ts": 1772276770
     },
     {
       "pair": "XAUT/USDT:USDT",
@@ -10056,13 +10056,13 @@
       "strategy": "BB_BREAK",
       "tf": "15m",
       "side": "long",
-      "wins": 1,
-      "losses": 1,
-      "total_r": 0.5,
-      "streak": 1,
+      "wins": 2,
+      "losses": 2,
+      "total_r": 1.0,
+      "streak": -1,
       "best_r": 1.5,
       "worst_r": -1.0,
-      "last_ts": 1772271920
+      "last_ts": 1772277105
     },
     {
       "pair": "ARB/USDT:USDT",
@@ -10277,13 +10277,13 @@
       "strategy": "RSI_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 0,
-      "losses": 1,
-      "total_r": -0.483,
-      "streak": -1,
-      "best_r": 0.0,
+      "wins": 3,
+      "losses": 2,
+      "total_r": -0.13599999999999995,
+      "streak": 1,
+      "best_r": 0.278,
       "worst_r": -0.483,
-      "last_ts": 1772266205
+      "last_ts": 1772279051
     },
     {
       "pair": "BNB/USDT:USDT",
@@ -10316,13 +10316,13 @@
       "strategy": "RSI_FADE",
       "tf": "1h",
       "side": "long",
-      "wins": 0,
-      "losses": 2,
-      "total_r": -2.0,
+      "wins": 1,
+      "losses": 5,
+      "total_r": -2.0519999999999996,
       "streak": -2,
-      "best_r": 0.0,
+      "best_r": 0.052,
       "worst_r": -1.0,
-      "last_ts": 1772270302
+      "last_ts": 1772278744
     },
     {
       "pair": "ENA/USDT:USDT",
@@ -10369,12 +10369,12 @@
       "tf": "15m",
       "side": "short",
       "wins": 1,
-      "losses": 0,
-      "total_r": 0.825,
-      "streak": 1,
+      "losses": 1,
+      "total_r": -0.17500000000000004,
+      "streak": -1,
       "best_r": 0.825,
-      "worst_r": 0.0,
-      "last_ts": 1772271920
+      "worst_r": -1.0,
+      "last_ts": 1772276133
     },
     {
       "pair": "ROBO/USDT:USDT",
@@ -10407,39 +10407,39 @@
       "strategy": "BB_BREAK",
       "tf": "1h",
       "side": "long",
-      "wins": 2,
+      "wins": 3,
       "losses": 0,
-      "total_r": 2.1159999999999997,
-      "streak": 2,
+      "total_r": 2.4919999999999995,
+      "streak": 3,
       "best_r": 1.071,
       "worst_r": 0.0,
-      "last_ts": 1772272558
+      "last_ts": 1772278408
     },
     {
       "pair": "PAXG/USDT:USDT",
       "strategy": "RSI_FADE",
       "tf": "15m",
       "side": "short",
-      "wins": 0,
-      "losses": 1,
-      "total_r": -1.1924361799778647,
-      "streak": -1,
-      "best_r": 0.0,
+      "wins": 1,
+      "losses": 4,
+      "total_r": -3.5674361799778644,
+      "streak": -2,
+      "best_r": 0.625,
       "worst_r": -1.1924361799778647,
-      "last_ts": 1772272657
+      "last_ts": 1772278075
     },
     {
       "pair": "ATH/USDT:USDT",
       "strategy": "TR_PULL",
       "tf": "1h",
       "side": "long",
-      "wins": 1,
-      "losses": 0,
-      "total_r": 0.156,
-      "streak": 1,
-      "best_r": 0.156,
-      "worst_r": 0.0,
-      "last_ts": 1772272891
+      "wins": 4,
+      "losses": 4,
+      "total_r": 0.3999999999999999,
+      "streak": -4,
+      "best_r": 0.495,
+      "worst_r": -0.273,
+      "last_ts": 1772279051
     },
     {
       "pair": "ATH/USDT:USDT",
@@ -10453,6 +10453,344 @@
       "best_r": 0.0,
       "worst_r": -0.462,
       "last_ts": 1772273198
+    },
+    {
+      "pair": "ATH/USDT:USDT",
+      "strategy": "BB_FADE",
+      "tf": "1h",
+      "side": "long",
+      "wins": 2,
+      "losses": 0,
+      "total_r": 0.8280000000000001,
+      "streak": 2,
+      "best_r": 0.49,
+      "worst_r": 0.0,
+      "last_ts": 1772276134
+    },
+    {
+      "pair": "PAXG/USDT:USDT",
+      "strategy": "BB_FADE",
+      "tf": "15m",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772275798
+    },
+    {
+      "pair": "CLOUD/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "short",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 1.5,
+      "streak": 1,
+      "best_r": 1.5,
+      "worst_r": 0.0,
+      "last_ts": 1772275823
+    },
+    {
+      "pair": "HYPE/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "long",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772276108
+    },
+    {
+      "pair": "BCH/USDT:USDT",
+      "strategy": "IB_BREAK",
+      "tf": "1h",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -0.175,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -0.175,
+      "last_ts": 1772276134
+    },
+    {
+      "pair": "TRIA/USDT:USDT",
+      "strategy": "ENGULF",
+      "tf": "1h",
+      "side": "short",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 0.379,
+      "streak": 1,
+      "best_r": 0.379,
+      "worst_r": 0.0,
+      "last_ts": 1772276414
+    },
+    {
+      "pair": "1000PEPE/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772276719
+    },
+    {
+      "pair": "ROBO/USDT:USDT",
+      "strategy": "DONCHIAN",
+      "tf": "15m",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772276796
+    },
+    {
+      "pair": "SAHARA/USDT:USDT",
+      "strategy": "BB_FADE",
+      "tf": "1h",
+      "side": "long",
+      "wins": 4,
+      "losses": 2,
+      "total_r": 0.24999999999999997,
+      "streak": -1,
+      "best_r": 0.248,
+      "worst_r": -0.219,
+      "last_ts": 1772279051
+    },
+    {
+      "pair": "ROBO/USDT:USDT",
+      "strategy": "EMA_RIB",
+      "tf": "15m",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772277105
+    },
+    {
+      "pair": "XAUT/USDT:USDT",
+      "strategy": "BB_BREAK",
+      "tf": "1h",
+      "side": "long",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772277440
+    },
+    {
+      "pair": "ATH/USDT:USDT",
+      "strategy": "EMA_RIB",
+      "tf": "15m",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772277440
+    },
+    {
+      "pair": "ENA/USDT:USDT",
+      "strategy": "DONCHIAN",
+      "tf": "1h",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -0.287,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -0.287,
+      "last_ts": 1772277440
+    },
+    {
+      "pair": "SAHARA/USDT:USDT",
+      "strategy": "EMA_RIB",
+      "tf": "15m",
+      "side": "short",
+      "wins": 0,
+      "losses": 1,
+      "total_r": -1.0,
+      "streak": -1,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772277769
+    },
+    {
+      "pair": "AAVE/USDT:USDT",
+      "strategy": "BB_FADE",
+      "tf": "1h",
+      "side": "long",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 0.419,
+      "streak": 1,
+      "best_r": 0.419,
+      "worst_r": 0.0,
+      "last_ts": 1772277769
+    },
+    {
+      "pair": "PUMPFUN/USDT:USDT",
+      "strategy": "BB_FADE",
+      "tf": "1h",
+      "side": "long",
+      "wins": 0,
+      "losses": 3,
+      "total_r": -0.932,
+      "streak": -3,
+      "best_r": 0.0,
+      "worst_r": -0.392,
+      "last_ts": 1772279077
+    },
+    {
+      "pair": "ARB/USDT:USDT",
+      "strategy": "BB_FADE",
+      "tf": "1h",
+      "side": "long",
+      "wins": 0,
+      "losses": 2,
+      "total_r": -0.364,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -0.198,
+      "last_ts": 1772278744
+    },
+    {
+      "pair": "ENSO/USDT:USDT",
+      "strategy": "RSI_FADE",
+      "tf": "1h",
+      "side": "long",
+      "wins": 0,
+      "losses": 2,
+      "total_r": -0.496,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -0.31,
+      "last_ts": 1772278744
+    },
+    {
+      "pair": "AVAX/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "long",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 0.195,
+      "streak": 1,
+      "best_r": 0.195,
+      "worst_r": 0.0,
+      "last_ts": 1772278511
+    },
+    {
+      "pair": "SOL/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "long",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 0.583,
+      "streak": 1,
+      "best_r": 0.583,
+      "worst_r": 0.0,
+      "last_ts": 1772278511
+    },
+    {
+      "pair": "ADA/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "long",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 0.067,
+      "streak": 1,
+      "best_r": 0.067,
+      "worst_r": 0.0,
+      "last_ts": 1772278511
+    },
+    {
+      "pair": "POWER/USDT:USDT",
+      "strategy": "ENGULF",
+      "tf": "15m",
+      "side": "long",
+      "wins": 0,
+      "losses": 2,
+      "total_r": -2.0,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772279051
+    },
+    {
+      "pair": "FARTCOIN/USDT:USDT",
+      "strategy": "ENGULF",
+      "tf": "15m",
+      "side": "long",
+      "wins": 0,
+      "losses": 2,
+      "total_r": -1.416,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772279051
+    },
+    {
+      "pair": "PAXG/USDT:USDT",
+      "strategy": "EMA_RIB",
+      "tf": "15m",
+      "side": "long",
+      "wins": 0,
+      "losses": 2,
+      "total_r": -2.0,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -1.0,
+      "last_ts": 1772279051
+    },
+    {
+      "pair": "NEAR/USDT:USDT",
+      "strategy": "MTF_RSI",
+      "tf": "1h",
+      "side": "long",
+      "wins": 0,
+      "losses": 2,
+      "total_r": -1.028,
+      "streak": -2,
+      "best_r": 0.0,
+      "worst_r": -0.602,
+      "last_ts": 1772279077
+    },
+    {
+      "pair": "CLO/USDT:USDT",
+      "strategy": "FCB",
+      "tf": "5m",
+      "side": "long",
+      "wins": 1,
+      "losses": 0,
+      "total_r": 0.068,
+      "streak": 1,
+      "best_r": 0.068,
+      "worst_r": 0.0,
+      "last_ts": 1772278820
     }
   ]
 }

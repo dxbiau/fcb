@@ -1,16 +1,16 @@
 {
-  "equity": 534.67723628,
+  "equity": 531.77328396,
   "peak_equity": 567.27884744,
   "date": "2026-02-28",
   "day_start_equity": 544.63204657,
-  "entries_today": 26,
+  "entries_today": 28,
   "wins_today": 5,
-  "losses_today": 12,
+  "losses_today": 14,
   "pnl_today_r": -3.2434857750092565,
   "pnl_today_usd": -25.57763777,
-  "total_trades": 266,
+  "total_trades": 268,
   "total_wins": 91,
-  "total_losses": 175,
+  "total_losses": 177,
   "pending_entries": [
     {
       "strategy": "unknown",
@@ -2151,6 +2151,20 @@
       "pnl_usd": -5.30926636,
       "reason": "sl",
       "ts": "2026-02-28T10:32:55.092020+00:00"
+    },
+    {
+      "pair": "PAXG/USDT:USDT",
+      "pnl_r": 0,
+      "pnl_usd": 0,
+      "reason": "timeout",
+      "ts": "2026-02-28T11:18:35.045047+00:00"
+    },
+    {
+      "pair": "VVV/USDT:USDT",
+      "pnl_r": 0,
+      "pnl_usd": 0,
+      "reason": "timeout",
+      "ts": "2026-02-28T11:40:12.719663+00:00"
     }
   ],
   "daily_counts": {},
@@ -2186,7 +2200,7 @@
     "NEAR/USDT:USDT": "2026-02-26T09:37:30.489804+00:00",
     "BARD/USDT:USDT": "2026-02-27T08:40:07.457180+00:00",
     "MYX/USDT:USDT": "2026-02-27T00:52:03.553307+00:00",
-    "VVV/USDT:USDT": "2026-02-28T03:38:16.603996+00:00",
+    "VVV/USDT:USDT": "2026-02-28T11:38:12.317423+00:00",
     "ARB/USDT:USDT": "2026-02-28T05:21:54.393060+00:00",
     "ENA/USDT:USDT": "2026-02-28T05:49:26.654755+00:00",
     "MIRA/USDT:USDT": "2026-02-27T18:05:10.206757+00:00",
@@ -2194,7 +2208,7 @@
     "ATH/USDT:USDT": "2026-02-28T00:58:54.016173+00:00",
     "ROBO/USDT:USDT": "2026-02-28T01:20:51.165183+00:00",
     "ASTER/USDT:USDT": "2026-02-28T07:47:58.897714+00:00",
-    "PAXG/USDT:USDT": "2026-02-28T10:27:49.695181+00:00"
+    "PAXG/USDT:USDT": "2026-02-28T11:16:34.653155+00:00"
   },
   "consecutive_losses": {
     "XAUT/USDT:USDT": 0,
@@ -2235,14 +2249,14 @@
     "NEAR/USDT:USDT": 1,
     "BARD/USDT:USDT": 1,
     "MYX/USDT:USDT": 1,
-    "VVV/USDT:USDT": 2,
+    "VVV/USDT:USDT": 3,
     "ARB/USDT:USDT": 0,
     "ENA/USDT:USDT": 0,
     "MIRA/USDT:USDT": 1,
     "PUMPFUN/USDT:USDT": 0,
     "ATH/USDT:USDT": 1,
     "ASTER/USDT:USDT": 0,
-    "PAXG/USDT:USDT": 2
+    "PAXG/USDT:USDT": 3
   },
   "milestones_alerted": []
 }
